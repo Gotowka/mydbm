@@ -155,9 +155,9 @@ module.exports = {
     async action(cache) {
       const client = this.getDBM().Bot.bot
       const { Suggest } = require('discord-systems')
-      const { dbp } = require('../bot')
-      if (!dbp) return console.log(`BŁĄD - Zaaktualizuj plik bot.js, https://github.com/Gotowka/autorskieakcje/blob/main/bot/bot.js`)
-      if (dbp !== '2.0.2') console.log(`BŁĄD - Zaaktualizuj plik bot.js, https://github.com/Gotowka/autorskieakcje/blob/main/bot/bot.js`)
+      const { Money } = require('../bot')
+      if (!Money) return console.log(`ERROR - Update the file bot.js, https://raw.githubusercontent.com/Gotowka/mydbm/main/bot.js`)
+      if (Money !== '1.0.1') console.log(`ERROR - Update the file bot.js, https://raw.githubusercontent.com/Gotowka/mydbm/main/bot.js`)
       const data = cache.actions[cache.index];
       await client.guilds.fetch()
       const guild = client.guilds.cache.get(this.evalMessage(data.guild, cache))
