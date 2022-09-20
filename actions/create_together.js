@@ -23,18 +23,12 @@ module.exports = {
 
   variableStorage(data, varType) {
     if (parseInt(data.storage, 10) !== varType) return;
-    let dataType = 'Together Code';
-    const together = parseInt(data.together, 10);
-    switch (together) {
-      case 0:
-        dataType = 'Youtube';
-        break;
-    }
+    let dataType = 'Together Code'
     return [data.varName2, dataType];
   },
 
   subtitle(data, presets) {
-    return `Akcja stworzona przez money#6283`;
+    return `Start together - ${data.together}`;
   },
 
 
@@ -95,9 +89,9 @@ module.exports = {
     <option value="lettertile">Letter League</options>
     <option value="puttparty">Putt Party</options>
     <option value="bobble">Bobble League</options>
-    <option value="landio">Landio.io</options>
+    <option value="land">Landio.io</options>
     <option value="meme">Know What I Meme</options>
-    <option value="away">Ask Away</options>
+    <option value="askaway">Ask Away</options>
   </select>
 </div>
 </div>
@@ -131,18 +125,21 @@ module.exports = {
 const data = cache.actions[cache.index];
 const { MessageEmbed } = require('discord.js')
 const client = this.getDBM().Bot.bot
-const { interaction } = cache;
+const { interaction, msg } = cache;
 const { DiscordTogether } = require('discord-together');
 
 client.discordTogether = new DiscordTogether(client);
 
-if(interaction.member.voice.channel) {
-client.discordTogether.createTogetherCode(interaction.member.voice.channelId, data.together).then(invite => {
+if ((interaction ?? msg).member.voice.channel) {
+client.discordTogether.createTogetherCode((interaction ?? msg).member.voice.channelId, data.together).then(invite => {
 const result = invite.code
 if (result) {
 const storage = parseInt(data.storage, 10);
 const varName2 = this.evalMessage(data.varName2, cache);
 this.storeValue(result, storage, varName2, cache);
+} else {
+  console.log('Error with the discord-together!');
+  return (interaction ?? msg).reply({ content: 'Error with the discord-together!', tts: true, allowedMentions: { repliedUser: false } });
 }
 this.callNextAction(cache);
 });
@@ -156,8 +153,8 @@ this.callNextAction(cache);
               > **Join the voice channel!**
   
               `)
-              .setFooter({ text: `${interaction.member.user.username} (${interaction.member.user.id})`, iconURL: `${interaction.member.user.displayAvatarURL({ dynamic: true })}`})
-          interaction.reply({ embeds: [embederror], ephemeral: true });
+              .setFooter({ text: `${(msg ?? interaction).member.user.username} (${(msg ?? interaction).member.user.id})`, iconURL: `${(msg ?? interaction).member.user.displayAvatarURL({ dynamic: true })}`})
+          (interaction ?? msg).reply({ embeds: [embederror], ephemeral: true });
 }
 
   },
