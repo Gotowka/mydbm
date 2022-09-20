@@ -5,7 +5,7 @@ module.exports = {
   section: "Discord",
 
   subtitle(data, presets) {
-    return `Create the guild template - ${data.name2}`;
+    return `Guild template - ${data.name2}`;
   },
 
   variableStorage(data, varType) {
@@ -17,7 +17,7 @@ module.exports = {
 
   meta: { version: "2.1.6", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka/mydbm/blob/main/actions/create_guild_template.js', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/actions/create_guild_template.js' },
   
-  fields: ["server", "varName", "name2", "description", "storage", "varName2"],
+  fields: ["server", "varName", "name", "description", "storage", "varName"],
 
   html(isEvent, data) {
     return `
@@ -25,7 +25,6 @@ module.exports = {
     <p>
         <u>Mod Info:</u><br>
         Created by money#6283<br>
-        Zmienne: endtime
     </p>
 </div><br>
 <server-input dropdownLabel="Source Server" selectId="server" variableContainerId="varNameContainer" variableInputId="varName"></server-input>
@@ -33,7 +32,7 @@ module.exports = {
 <br><br><br><br>
 <div style="float: left; width: 50%;">
 <span class="dbminputlabel">Name</span><br>
-<input id="name2" class="round" type="text">
+<input id="name" class="round" type="text">
 </div>
 <br><br><br><br>
 <div style="float: left; width: 50%;">
@@ -42,7 +41,7 @@ module.exports = {
 </div><br><br><br>
 
 <div style="padding-top: 16px;">
-<store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>
+<store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName"></store-in-variable>
 </div>`;
   },
 
@@ -52,13 +51,13 @@ module.exports = {
   async action(cache) {
     const data = cache.actions[cache.index];
     const targetServer = await this.getServerFromData(data.server, data.varName, cache);
-    const name = this.evalMessage(data.name2, cache);
+    const name = this.evalMessage(data.name, cache);
     const description = this.evalMessage(data.description, cache);
   targetServer.createTemplate(name, description)
   .then((template) => {
     const storage = parseInt(data.storage, 10);
-    const varName2 = this.evalMessage(data.varName2, cache);
-    this.storeValue(template.url, storage, varName2, cache);
+    const varName = this.evalMessage(data.varName, cache);
+    this.storeValue(template.url, storage, varName, cache);
     this.callNextAction(cache)
   })
   .catch((err) => this.displayError(data, cache, err));

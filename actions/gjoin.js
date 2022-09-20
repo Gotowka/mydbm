@@ -91,7 +91,6 @@ module.exports = {
     const { interaction } = cache;
     const giveaways = require('../data/giveaways.json')
     const fs = require('fs')
-    const data = cache.actions[cache.index];
 
     let gg;
             

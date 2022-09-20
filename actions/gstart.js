@@ -109,17 +109,13 @@ module.exports = {
   //---------------------------------------------------------------------
 
   async action(cache) {
-    const { MessageEmbed, MessageButton, MessageActionRow } = require('discord.js')
     const { interaction } = cache;
     const giveaways = require('../data/giveaways.json')
     const fs = require('fs')
     const data = cache.actions[cache.index];
 
     giveaways[interaction.guildId] = [];
-
-
-  
-
+    
   let duration = this.evalMessage(data.time, cache)
 
   if (duration.includes("s")) {

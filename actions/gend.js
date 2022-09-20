@@ -96,7 +96,7 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
-      const { MessageEmbed, MessageButton, MessageActionRow } = require('discord.js')
+      const { MessageButton, MessageActionRow } = require('discord.js')
       const data = cache.actions[cache.index];
       const giveaways = require('../data/giveaways.json')
       const fs = require('fs')
