@@ -2,7 +2,7 @@ module.exports = {
     name: 'InviteLogger LEAVE',
     isEvent: true,
   
-    fields: ['Temp Variable Name (Stores the member that leaved the server):', 'Temp Variable Name (Stores the invite that member used):'],
+    fields: ['Member (Temp Variable Name):', 'Invite (Temp Variable Name):'],
   
     mod (DBM) {
       const { Actions, Bot } = DBM

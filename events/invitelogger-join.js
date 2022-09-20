@@ -2,7 +2,7 @@ module.exports = {
     name: 'InviteLogger JOIN',
     isEvent: true,
   
-    fields: ['Temp Variable Name (Stores the member that joined the server):', 'Temp Variable Name (Stores the invite that member used):'],
+    fields: ['Member (Temp Variable Name):', 'Invite (Temp Variable Name):'],
   
     mod (DBM) {
       DBM.Events = DBM.Events || {}
