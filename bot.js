@@ -22,6 +22,9 @@
  //#region Output Messages
  // Gathered all the output messages in single place for easier translation.
  //---------------------------------------------------------------------
+
+ module.exports.Money = '1.0.1'
+
  const MsgType = {
    MISSING_ACTION: 0,
    DATA_PARSING_ERROR: 1,
@@ -937,7 +940,21 @@
      }
      if (!Actions.checkTemporaryInteractionResponses(interaction)) {
        if (interaction.isButton()) {
-         this.onButtonInteraction(interaction);
+        if (interaction.customId == 'dcsys-yes') {
+          const { SuggestsYes } = require('discord-systems')
+          new SuggestsYes({
+           interaction: interaction,
+           language: 'eng'
+          }).start()
+        } else if (interaction.customId == 'dcsys-no') {
+          const { SuggestsNo } = require('discord-systems')
+          new SuggestsNo({
+            interaction: interaction,
+            language: 'eng'
+          }).start()
+        } else {
+          this.onButtonInteraction(interaction);
+        }
        } else if (interaction.isSelectMenu()) {
          this.onSelectMenuInteraction(interaction);
        }
