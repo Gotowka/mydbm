@@ -4,9 +4,9 @@ module.exports = {
   meta: {
     version: '2.1.6',
     preciseCheck: false,
-    author: 'DBM Mods',
-    authorUrl: 'https://github.com/dbm-network/mods',
-    downloadURL: 'https://github.com/dbm-network/mods/blob/master/actions/store_command_info_MOD.js',
+    author: 'DBM Mods/Gotowka',
+    authorUrl: 'https://github.com/Gotowka',
+    downloadURL: 'https://github.com/Gotowka/mydbm/blob/main/actions/store_command_info_MOD.js',
   },
 
   subtitle(data) {

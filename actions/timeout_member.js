@@ -8,7 +8,7 @@ module.exports = {
     return `${presets.getMemberText(data.member, data.varName)}`;
   },
 
-  meta: { version: "2.1.6", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka/mydbm/blob/main/actions/timeout_member.js', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/actions/timeout_member.js' },
+  meta: { version: "2.1.6", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/actions/timeout_member.js' },
 
   fields: ["member", "varName", "czas", "ilosc", "reason"],
 
@@ -18,7 +18,7 @@ module.exports = {
     <p>
         <u>Mod Info:</u><br>
         Created by money#6283<br>
-        Zmienne: endtime
+        Variables: endtime
     </p>
 </div><br>
 <member-input dropdownLabel="Member" selectId="member" variableContainerId="varNameContainer" variableInputId="varName"></member-input>
@@ -91,12 +91,8 @@ module.exports = {
     const endtimeout = Date.parse(new Date(new Date().getTime() + dur)) / 1000;
     const reason = this.evalMessage(data.reason, cache);
 
-    if (Array.isArray(member)) {
-      this.callListFunc(member, "disableCommunicationUntil", [time, reason])
-        .then(() => this.callNextAction(cache))
-        .catch((err) => this.displayError(data, cache, err));
-    } else if (member?.disableCommunicationUntil) {
-      member.disableCommunicationUntil(time, reason)
+    if (member?.timeout) {
+      member.timeout(time, reason)
         .then(() => {
           const endtime = `<t:${endtimeout}:R>`
           this.storeValue(endtime, 1, 'endtime', cache)

@@ -15,7 +15,7 @@ module.exports = {
     return [data.varName2, dataType];
   },
 
-  meta: { version: "2.1.6", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka/mydbm/blob/main/actions/create_guild_template.js', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/actions/create_guild_template.js' },
+  meta: { version: "2.1.6", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/actions/create_guild_template.js' },
   
   fields: ["server", "varName", "name", "description", "storage", "varName"],
 
