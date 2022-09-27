@@ -1,0 +1,44 @@
+{
+  "name": "leave",
+  "temp": "member",
+  "event-type": "InviteLogger LEAVE",
+  "_id": "DUjrx",
+  "actions": [
+    {
+      "invite": "${tempVars(\"invite\")}",
+      "info": "0",
+      "storage": "1",
+      "varName2": "owner",
+      "name": "InviteLogger INFO"
+    },
+    {
+      "member": "2",
+      "varName": "member",
+      "info": "2",
+      "storage": "1",
+      "varName2": "us",
+      "name": "Store Member Info"
+    },
+    {
+      "channel": "4",
+      "varName": "",
+      "message": "${tempVars(\"us\")} Dołączył od ${tempVars(\"owner\")}",
+      "buttons": [],
+      "selectMenus": [],
+      "attachments": [],
+      "embeds": [],
+      "reply": true,
+      "ephemeral": false,
+      "tts": false,
+      "overwrite": false,
+      "mention": false,
+      "dontSend": false,
+      "editMessage": "0",
+      "editMessageVarName": "",
+      "storage": "0",
+      "varName2": "",
+      "name": "Send Message"
+    }
+  ],
+  "temp2": "invite"
+}
