@@ -410,194 +410,81 @@ module.exports = {
     await client.guilds.fetch()
     const guild = client.guilds.cache.get(this.evalMessage(data.guild, cache))
     if (data.slevel === true) {
-      let texth = this.evalMessage(data.levelcard[0].texth, cache)
-      let barh = this.evalMessage(data.levelcard[0].barh, cache)
-      let borderh = this.evalMessage(data.levelcard[0].borderh, cache)
-      let avatarborderh = this.evalMessage(data.levelcard[0].avatarborderh, cache)
-      let background = this.evalMessage(data.levelcard[0].background, cache)
-      let barbackground = this.evalMessage(data.levelcard[0].barbackgroundh, cache)
-      if (texth.length < 5) texth = '#34eb89'
-      if (texth.length > 5) texth = texth
-      if (barh.length < 5) barh = '#FFFFFF'
-      if (barh.length > 5) barh = barh
-      if (borderh.length < 5) borderh = '#1f1f2f'
-      if (borderh.length > 5) borderh = borderh
-      if (avatarborderh.length < 5) avatarborderh = '#FF1493'
-      if (avatarborderh.length > 5) avatarborderh = avatarborderh
-      if (background.length < 5) background = 'brak'
-      if (background.length > 30) background = background
-      if (barbackground.length < 5) barbackground = '#5f5f6f'
-      if (barbackground.length > 8) barbackground = barbackground
-      if (background.length < 30) {
-        new levelRank({
-          message: {
-              msg: msg ?? interaction
-          },
-          member: (msg ?? interaction).guild.members.cache.get(this.evalMessage(data.levelcard[0].member, cache)).user,
-          exp: this.evalMessage(data.levelcard[0].exp, cache),
-          maxexp: this.evalMessage(data.levelcard[0].maxexp, cache),
-          level: this.evalMessage(data.levelcard[0].level, cache),
-          rank: this.evalMessage(data.levelcard[0].rank, cache),
-          text: texth,
-          bar: barh,
-          border: borderh,
-          avatarborder: avatarborderh,
-          barbackground: barbackground,
-      }).reply()
-      } else {
-        new levelRank({
-          message: {
-              msg: msg ?? interaction
-          },
-          member: (msg ?? interaction).guild.members.cache.get(this.evalMessage(data.levelcard[0].member, cache)).user,
-          exp: this.evalMessage(data.levelcard[0].exp, cache),
-          maxexp: this.evalMessage(data.levelcard[0].maxexp, cache),
-          level: this.evalMessage(data.levelcard[0].level, cache),
-          rank: this.evalMessage(data.levelcard[0].rank, cache),
-          text: texth,
-          bar: barh,
-          border: borderh,
-          avatarborder: avatarborderh,
-          background: background,
-          barbackground: barbackground,
-      }).reply()
-      }
+          const settings = {}
+          settings.message = {}
+          settings.message.msg = msg ?? interaction
+          settings.member = (msg ?? interaction).guild.members.cache.get(this.evalMessage(data.levelcard[0].member, cache)).user
+          settings.exp = this.evalMessage(data.levelcard[0].exp, cache)
+          settings.maxexp = this.evalMessage(data.levelcard[0].maxexp, cache)
+          settings.level = this.evalMessage(data.levelcard[0].level, cache)
+          settings.text = this.evalMessage(data.levelcard[0].texth, cache) || '#34eb89'
+          settings.bar = this.evalMessage(data.levelcard[0].barh, cache) || '#FFFFFF'
+          settings.border = this.evalMessage(data.levelcard[0].borderh, cache) || '#1f1f2f'
+          if(this.evalMessage(data.levelcard[0].background, cache) > 30) settings.background = this.evalMessage(data.levelcard[0].background, cache)
+          settings.barbackground = this.evalMessage(data.levelcard[0].barbackgroundh, cache) || '#5f5f6f'
+          settings.avatarborder = this.evalMessage(data.levelcard[0].avatarborderh, cache) || '#FF1493'
+
+        if (data.msgsend === '0') new levelRank(settings).reply()
+        else new levelRank(settings).send() 
     } else if (data.stvpis === true) {
-      if (data.msgsend === '0') {
-        new Tvpis({
-          message: {
-              msg: msg ?? interaction
-          },
-          text: this.evalMessage(data.text, cache),
-          style: data.style.replace('1', '2').replace('0', '1')
-      }).reply()
-      } else {
-        new Tvpis({
-          message: {
-              msg: msg ?? interaction
-          },
-          text: this.evalMessage(data.text, cache),
-          style: data.style.replace('1', '2').replace('0', '1')
-      }).send()
-      }
+      const settings = {}
+      settings.message = {}
+      settings.message.msg = msg ?? interaction
+      settings.text = this.evalMessage(data.text, cache)
+      settings.style = this.evalMessage(data.style, cache).replace('1', '2').replace('0', '1')
+      if (data.msgsend === '0') new Tvpis(settings).reply()
+      else if (data.msgsend === '1') new Tvpis(settings).send()
     } else if (data.sjoin === true) {
-      let texth = this.evalMessage(data.joincard[0].texth, cache)
-      let background = this.evalMessage(data.joincard[0].background, cache)
-      if (texth.length < 5) texth = '#FFFFFF'
-      if (texth.length > 5) texth = texth
-      const channel = guild.channels.cache.get(this.evalMessage(data.joincard[0].channelid, cache))
-      const member = guild.members.cache.get(this.evalMessage(data.joincard[0].memberid, cache))
-      if (data.joincard[0].captcha === '0') {
-        if (background.length > 30) {
-          new joinCard({
-            channel: channel,
-            member: member,
-            middle: this.evalMessage(data.joincard[0].text1, cache),
-            name: this.evalMessage(data.joincard[0].text2, cache),
-            bottom: this.evalMessage(data.joincard[0].text3, cache),
-            text: texth,
-            background: background,
-        }).send()
-        } else {
-          new joinCard({
-            channel: channel,
-            member: member,
-            middle: this.evalMessage(data.joincard[0].text1, cache),
-            name: this.evalMessage(data.joincard[0].text2, cache),
-            bottom: this.evalMessage(data.joincard[0].text3, cache),
-            text: texth,
-        }).send()
-        }
-      } else {
-        if (background.length < 30) {
-          new joinCard({
-            channel: channel,
-            member: member,
-            middle: this.evalMessage(data.joincard[0].text1, cache),
-            name: this.evalMessage(data.joincard[0].text2, cache),
-            bottom: this.evalMessage(data.joincard[0].text3, cache),
-            role: this.evalMessage(data.joincard[0].role, cache),
-            text: texth,
-            captcha: true,
-            client: client,
-            language: data.language.replace('0', 'eng').replace('1', 'pl'),
-        }).send()
-        } else {
-          new joinCard({
-            channel: channel,
-            member: member,
-            middle: this.evalMessage(data.joincard[0].text1, cache),
-            name: this.evalMessage(data.joincard[0].text2, cache),
-            bottom: this.evalMessage(data.joincard[0].text3, cache),
-            role: this.evalMessage(data.joincard[0].role, cache),
-            text: texth,
-            background: background,
-            captcha: true,
-            client: client,
-            language: data.language.replace('0', 'eng').replace('1', 'pl'),
-        }).send()
-        }
-      }
+      const settings = {}
+      settings.channel = guild.channels.cache.get(this.evalMessage(data.joincard[0].channelid, cache))
+      settings.member = guild.members.cache.get(this.evalMessage(data.joincard[0].memberid, cache))
+      settings.middle = this.evalMessage(data.joincard[0].text1, cache)
+      settings.name = this.evalMessage(data.joincard[0].text2, cache)
+      settings.bottom = this.evalMessage(data.joincard[0].text3, cache)
+      settings.text = this.evalMessage(data.joincard[0].texth, cache) || '#FFFFFF'
+      settings.language = data.language.replace('0', 'eng').replace('1', 'pl')
+      if (this.evalMessage(data.joincard[0].background, cache) > 30) settings.background = this.evalMessage(data.joincard[0].background, cache)
+      if (this.evalMessage(data.joincard[0].role, cache)) settings.role = this.evalMessage(data.joincard[0].role, cache)
+      if (data.joincard[0].captcha === '1') settings.captcha = true
+      if (data.joincard[0].captcha === '1') settings.client = client
+      
+      new joinCard(settings).send()
     } else if (data.sleave === true) {
-      const channel = guild.channels.cache.get(this.evalMessage(data.leavecard[0].channelid, cache))
-      const member = client.users.cache.get(this.evalMessage(data.leavecard[0].memberid, cache))
-      let texth = this.evalMessage(data.leavecard[0].texth, cache)
-      let background = this.evalMessage(data.leavecard[0].background, cache)
-      if (texth.length < 5) texth = '#FFFFFF'
-      if (texth.length > 5) texth = texth
-      if (background.length < 30) {
-        new leaveCard({
-          channel: channel, // CHANNEl OBJECT
-          member: member, // MEMBER OBJECT
-          middle: this.evalMessage(data.leavecard[0].text1, cache), // STRING
-          name: this.evalMessage(data.leavecard[0].text2, cache), // STRING
-          bottom: this.evalMessage(data.leavecard[0].text3, cache), // STRING
-          text: texth
-      }).send()
-      } else {
-        new leaveCard({
-          channel: channel, // CHANNEl OBJECT
-          member: member, // MEMBER OBJECT
-          middle: this.evalMessage(data.leavecard[0].text1, cache), // STRING
-          name: this.evalMessage(data.leavecard[0].text2, cache), // STRING
-          bottom: this.evalMessage(data.leavecard[0].text3, cache), // STRING
-          text: texth,
-          background: background
-      }).send()
-      }
+      const settings = {}
+      settings.channel = guild.channels.cache.get(this.evalMessage(data.leavecard[0].channelid, cache))
+      settings.member = client.users.cache.get(this.evalMessage(data.leavecard[0].memberid, cache))
+      settings.midle = this.evalMessage(data.leavecard[0].text1, cache)
+      settings.name = this.evalMessage(data.leavecard[0].text2, cache)
+      settings.bottom = this.evalMessage(data.leavecard[0].text3, cache)
+      if (this.evalMessage(data.leavecard[0].texth, cache)) settings.text = this.evalMessage(data.leavecard[0].texth, cache)
+      else settings.text = '#FFFFFF'
+      if (this.evalMessage(data.leavecard[0].background, cache) > 30) settings.background = this.evalMessage(data.leavecard[0].background, cache)
+        new leaveCard(settings).send()
     } else if (data.scalculator == true) {
-      const embed = {}
-      embed.footer = {}
-      embed.title = this.evalMessage(data.embeds[0].title, cache) ?? 'Calculator'
-      embed.color = this.evalMessage(data.embeds[0].color, cache) ?? '#4c97ed'
-      if (data.embeds[0].timestamp == true) embed.timestamp = true
-      embed.footer.text = this.evalMessage(data.embeds[0].footertext, cache) ?? 'Calculator'
-      embed.footer.iconURL = this.evalMessage(data.embeds[0].footericon, cache) ?? 'https://i.imgur.com/pq2ElIT.jpg'
       const test = require('simply-djs')
-      test.calculator(msg ?? interaction, {
-        embed: {
-          title: embed.title,
-          color: embed.color,
-          timestamp: embed.timestamp,
-          footer: {
-            text: embed.footer.text,
-            iconURL: embed.footer.iconURL
-          },
-          credit: false
-        }
-      })
+      const settings = {}
+      settings.embed = {}
+      settings.footer = {}
+      settings.credit = false
+      if (this.evalMessage(data.embeds[0].title, cache)) settings.embed.title = this.evalMessage(data.embeds[0].title, cache)
+      else settings.embed.title = 'Calculator'
+      if (this.evalMessage(data.embeds[0].color, cache)) settings.embed.color = this.evalMessage(data.embeds[0].color, cache)
+      else settings.embed.color = '#4c97ed'
+      if (data.embeds[0].timestamp) settings.embed.timestamp = data.embeds[0].timestamp
+      if (this.evalMessage(data.embeds[0].footertext, cache)) settings.embed.footer.text = this.evalMessage(data.embeds[0].footertext, cache)
+      else settings.embed.footer.text = 'Calculator'
+      if (this.evalMessage(data.embeds[0].footericon, cache)) settings.embed.footer.iconURL = this.evalMessage(data.embeds[0].footericon, cache)
+      else settings.embed.footer.iconURL = 'https://i.imgur.com/pq2ElIT.jpg'
+      test.calculator(msg ?? interaction, settings)
       } else if (data.ssuggest == true) {
-        const guild = client.guilds.cache.get(this.evalMessage(data.guild, cache))
-        const member = guild.members.cache.get(this.evalMessage(data.suggests[0].member, cache))
-        const channel = guild.channels.cache.get(this.evalMessage(data.suggests[0].channel, cache))
-        const message = channel.messages.cache.get(this.evalMessage(data.suggests[0].message, cache))
-        new Suggest({
-          suggest: this.evalMessage(data.suggests[0].suggest, cache),
-          guild: guild,
-          member: member,
-          message: message,
-          client: client
-        }).start()
+          const settings = {}
+          settings.suggest = this.evalMessage(data.suggests[0].suggest, cache)
+          settings.guild = client.guilds.cache.get(this.evalMessage(data.guild, cache))
+          settings.member = guild.members.cache.get(this.evalMessage(data.suggests[0].member, cache))
+          settings.channel = guild.channels.cache.get(this.evalMessage(data.suggests[0].channel, cache))
+          settings.message = channel.messages.cache.get(this.evalMessage(data.suggests[0].message, cache))
+          settings.client = client
+        new Suggest(settings).start()
       }
     },
 
