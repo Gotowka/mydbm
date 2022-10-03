@@ -12,6 +12,7 @@ module.exports = {
       const { writeFileSync } = require('fs-extra')
       const file = require('../data/settings.json')
       DBM.Events.loggerJoin = async function (member) {
+        if (!Bot.$evts['InviteLogger JOIN']) return;
         if (file.logger !== 'on') return;
         const guild = member.guild
         for (const event of Bot.$evts["InviteLogger JOIN"]) {
@@ -62,8 +63,8 @@ module.exports = {
                     inv[invite.code][0].joins = count
                 }
               }
-              writeFileSync('./data/logger.json', JSON.stringify(log))
-              writeFileSync('./data/invites.json', JSON.stringify(inv));
+              await writeFileSync('./data/logger.json', JSON.stringify(log))
+              await writeFileSync('./data/invites.json', JSON.stringify(inv));
             const temp = {}
             if (event.temp) temp[event.temp] = member
             if (event.temp2) temp[event.temp2] = invite.code

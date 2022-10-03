@@ -9,6 +9,7 @@ module.exports = {
       const { writeFileSync } = require('fs-extra')
       const file = require('../data/settings.json')
       DBM.Events.loggerLeave = async function (member) {
+        if (!Bot.$evts['InviteLogger LEAVE']) return;
         if (file.logger !== 'on') return;
         const guild = member.guild
         for (const event of Bot.$evts["InviteLogger LEAVE"]) {
