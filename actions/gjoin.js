@@ -22,7 +22,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   subtitle(data, presets) {
-    return `Umożliwiam dołączenie do konkursu!`;
+    return `Start the giveaway`;
   },
 
   //---------------------------------------------------------------------
@@ -45,7 +45,7 @@ module.exports = {
   // are also the names of the fields stored in the action's JSON data.
   //---------------------------------------------------------------------
 
-  fields: [],
+  fields: ["language"],
 
   //---------------------------------------------------------------------
   // Command HTML
@@ -65,6 +65,13 @@ module.exports = {
         <u>Mod Info:</u><br>
         Created by money#6283<br>
     </p>
+</div><br>
+<div style="float: left; width: 45%;">
+<span class="dbminputlabel">Language</span><br>
+<select id="language" class="round">
+  <option value="eng" selected>English</option>
+  <option value="pl">Polish</option>
+</select>
 </div>
 `;
   },
@@ -89,6 +96,8 @@ module.exports = {
 
   async action(cache) {
     const { interaction } = cache;
+    const data = cache.actions[cache.index];
+    const lang = data.language
     const giveaways = require('../data/giveaways.json')
     const fs = require('fs')
 
@@ -111,17 +120,20 @@ module.exports = {
         };
       };
 
-      interaction.reply({ content: "\`✅\` Już nie bierzesz udziału w konkursie!", ephemeral: true });
+      if(lang === 'pl') interaction.reply({ content: "\`✅\` Już nie bierzesz udziału w konkursie!", ephemeral: true });
+      if(lang === 'eng') interaction.reply({ content: "\`✅\` You are no longer participating in the giveaway!", ephemeral: true });
     } else {
       gg.members.push(interaction.user.id);
 
-      interaction.reply({ content: "\`✅\` Bierzesz udział w konkursie!", ephemeral: true });
+      if(lang === 'pl') interaction.reply({ content: "\`✅\` Bierzesz udział w konkursie!", ephemeral: true });
+      if(lang === 'eng') interaction.reply({ content: "\`✅\` You are in a giveaway!", ephemeral: true });
     };
 
     let msg = await interaction.guild.channels.cache.get(gg.channel).messages.fetch(gg.msg);
 
     let embed = msg.embeds[0];
-    embed.footer.text = "Udział bierze " + gg.members.length + " użytkowników!";
+    if(lang === 'pl') embed.footer.text = "Udział bierze " + gg.members.length + " użytkowników!";
+    if(lang === 'eng') embed.footer.text = "Users in the giveaway: " + gg.members.length;
 
     msg.edit({ embeds: [ embed ] });
     

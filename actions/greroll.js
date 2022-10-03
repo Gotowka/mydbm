@@ -22,7 +22,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   subtitle(data, presets) {
-    return `Umożliwiam zrerolowanie konkursu!`;
+    return `Reroll the new winner!`;
   },
 
   //---------------------------------------------------------------------
@@ -45,7 +45,7 @@ module.exports = {
   // are also the names of the fields stored in the action's JSON data.
   //---------------------------------------------------------------------
 
-  fields: ["msgid"],
+  fields: ["msgid", "language"],
 
   //---------------------------------------------------------------------
   // Command HTML
@@ -64,13 +64,20 @@ module.exports = {
     <p>
         <u>Mod Info:</u><br>
         Created by money#6283<br>
-        Zmienne: winner
+        Variables: winner
     </p>
 </div>
 <div style="float: left; width: calc(50% - 12px);">
 <span class="dbminputlabel">Msg ID <span style="color:red">*</span></span>
-<input id="msgid" class="round" placeholder="Id wiadomosci konkursu" type="text">
+<input id="msgid" class="round" placeholder="Message ID for the giveaway" type="text">
 
+<br>
+
+<span class="dbminputlabel">Language</span><br>
+<select id="language" class="round">
+  <option value="eng" selected>English</option>
+  <option value="pl">Polish</option>
+</select>
 </div>
 `;
   },
@@ -97,11 +104,14 @@ module.exports = {
     const { interaction } = cache;
     const giveaways = require('../data/giveaways.json')
     const data = cache.actions[cache.index];
+    const lang = data.language
     const givid = this.evalMessage(data.msgid, cache)
 
-    if (!giveaways[interaction.guildId]) return interaction.reply({ content: "`[ ❌ ]` Nie ma aktywnych konkursów, w których można wylosować zwyciężcę!", ephemeral: true });
+    if (!giveaways[interaction.guildId] && lang === 'pl') return interaction.reply({ content: "`[ ❌ ]` Nie ma aktywnych konkursów, w których można wylosować zwyciężcę!", ephemeral: true });
+    if (!giveaways[interaction.guildId] && lang === 'eng') return interaction.reply({ content: "`[ ❌ ]` There are no active giveaway in which to draw a winner!", ephemeral: true });
 
-    if (giveaways[interaction.guildId].length < 1) return interaction.reply({ content: "`[ ❌ ]` Nie ma aktywnych konkursów, które można zakończyć.", ephemeral: true });
+    if (giveaways[interaction.guildId].length < 1 && lang === 'pl') return interaction.reply({ content: "`[ ❌ ]` Nie ma aktywnych konkursów, które można zakończyć.", ephemeral: true });
+    if (giveaways[interaction.guildId].length < 1 && lang === 'eng') return interaction.reply({ content: "`[ ❌ ]` There are no active giveaway that can be ended.", ephemeral: true });
 
     let giveaway;
     let winner
@@ -109,8 +119,10 @@ module.exports = {
         if (giveaways[interaction.guildId][i].msg == givid) {
             giveaway = giveaways[interaction.guildId][i];
 
-            if (giveaways[interaction.guildId][i].ended == false) return interaction.reply({ content: "`[ ⚠️ ]` Konkurs jeszcze się nie zakończył!", ephemeral: true });
-            if (giveaways[interaction.guildId][i].members.length < 2) return interaction.reply({ content: "`[ ✔️ ]` Pomyślnie wylosowano nowego zwyciężcę konkursu!.", ephemeral: true });
+            if (giveaways[interaction.guildId][i].ended == false && lang === 'pl') return interaction.reply({ content: "`[ ⚠️ ]` Konkurs jeszcze się nie zakończył!", ephemeral: true });
+            if (giveaways[interaction.guildId][i].ended == false && lang === 'eng') return interaction.reply({ content: "`[ ⚠️ ]` The giveaway is not over yet!", ephemeral: true });
+            if (giveaways[interaction.guildId][i].members.length < 2 && lang === 'pl') return interaction.reply({ content: "`[ ✔️ ]` Pomyślnie wylosowano nowego zwyciężcę konkursu!", ephemeral: true });
+            if (giveaways[interaction.guildId][i].members.length < 2 && lang === 'eng') return interaction.reply({ content: "`[ ✔️ ]` Successfully drawn new giveaway winner !.", ephemeral: true });
 
             winner = giveaways[interaction.guild.id][i].members[Math.floor(Math.random() * giveaways[interaction.guild.id][i].members.length)]
 
@@ -118,9 +130,11 @@ module.exports = {
         };
       };
 
-    if (!giveaway) return interaction.reply({ content: "`[ ❌ ]` Wprowadzony konkurs nie istnieje!", ephemeral: true });
+    if (!giveaway && lang === 'pl') return interaction.reply({ content: "`[ ❌ ]` Wprowadzony konkurs nie istnieje!", ephemeral: true });
+    if (!giveaway && lang === 'eng') return interaction.reply({ content: "`[ ❌ ]` The entered giveaway does not exist!", ephemeral: true });
 
-    interaction.reply({ content: "`[ ✔️ ]` Pomyślnie wylosowano nowego zwyciężcę konkursu!", ephemeral: true });
+    if (lang === 'pl') interaction.reply({ content: "`[ ✔️ ]` Pomyślnie wylosowano nowego zwyciężcę konkursu!", ephemeral: true });
+    if (lang === 'eng') interaction.reply({ content: "`[ ✔️ ]` A new winner of the giveaway was drawn successfully!", ephemeral: true });
 
     this.storeValue(winner, 1, 'winner', cache)
   this.callNextAction(cache)

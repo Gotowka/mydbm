@@ -22,7 +22,7 @@ module.exports = {
     //---------------------------------------------------------------------
   
     subtitle(data, presets) {
-      return `Umożliwiam zakończanie konkursu!`;
+      return `Ending the giveaway`;
     },
   
     //---------------------------------------------------------------------
@@ -64,7 +64,7 @@ module.exports = {
       <p>
           <u>Mod Info:</u><br>
           Created by money#6283<br>
-          Zmienne: prize, hoster, message, users, icon, name
+          variables: prize, hoster, message, users, icon, name
       </p>
   </div><br><br>
   <div style="float: left; width: calc(100% - 12px);">
@@ -72,7 +72,7 @@ module.exports = {
   <input id="style" class="round" placeholder="DANGER, PRIMARY, SECONDARY, SUCCESS" type="text">
 <br>
 <span class="dbminputlabel">Button (Label)<span style="color:red">*</span></span>
-<input id="label" class="round" placeholder="[users] = ilosc osob co bralo udzial" type="text">
+<input id="label" class="round" placeholder="[users] = Users from the giveaway" type="text">
 </div>
   `;
     },
