@@ -92,6 +92,7 @@ module.exports = {
     <option value="land">Landio.io</options>
     <option value="meme">Know What I Meme</options>
     <option value="askaway">Ask Away</options>
+    <option value="bashout">Bash Out</options>
   </select>
 </div>
 </div>
