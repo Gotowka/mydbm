@@ -19,8 +19,9 @@ module.exports = {
             writeFileSync('./data/invites.json', JSON.stringify(inv));
           const temp = {}
           const invm = require('../data/invites.json')
+          const logg = invm[log[member.id][0].code]
           if (event.temp) temp[event.temp] = member
-          if (event.temp2) temp[event.temp2] = invm[log[member.id][0].code][0]
+          if (event.temp2) temp[event.temp2] = logg[0].code
           await Actions.invokeEvent(event, guild, temp)
       }
     }
