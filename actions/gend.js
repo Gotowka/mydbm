@@ -45,7 +45,7 @@ module.exports = {
     // are also the names of the fields stored in the action's JSON data.
     //---------------------------------------------------------------------
   
-    fields: ["style", "label"],
+    fields: ["style", "label", "call"],
   
     //---------------------------------------------------------------------
     // Command HTML
@@ -73,6 +73,13 @@ module.exports = {
 <br>
 <span class="dbminputlabel">Button (Label)<span style="color:red">*</span></span>
 <input id="label" class="round" placeholder="[users] = Users from the giveaway" type="text">
+
+<br>
+
+<div id="varNameContainer" style="float: left; width: 60%;">
+Jump to Action:<br>
+<input id="call" class="round" type="number">
+</div>
 </div>
   `;
     },
@@ -149,7 +156,12 @@ module.exports = {
                         .setLabel(this.evalMessage(data.label, cache).replace('[users]', users))
                     )
                     message.edit({ components: [button]})
-                    this.callNextAction(cache)
+                    const val = parseInt(this.evalMessage(data.call, cache), 10);
+                    const index = Math.max(val - 1, 0);
+                    if (cache.actions[index]) {
+                      cache.index = index - 1;
+                      this.callNextAction(cache);
+                    }
                 } else if (new Date().getTime() > giveaways[giveawayid][i].end + 1000 * 60 * 60 && giveaways[giveawayid][i].ended == true) {
                     giveaways[giveawayid].splice(i, 1);
                     const messageid = giveaways[giveawayid][i].msg
@@ -177,7 +189,12 @@ module.exports = {
                         .setLabel(this.evalMessage(data.label, cache).replace('[users]', users))
                     )
                     message.edit({ components: [button]})
-                    this.callNextAction(cache)
+                    const val = parseInt(this.evalMessage(data.call, cache), 10);
+                    const index = Math.max(val - 1, 0);
+                    if (cache.actions[index]) {
+                      cache.index = index - 1;
+                      this.callNextAction(cache);
+                    }
                     fs.writeFileSync("./data/giveaways.json", JSON.stringify(giveaways));
                 };
             };
