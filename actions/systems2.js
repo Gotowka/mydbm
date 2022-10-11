@@ -46,7 +46,7 @@ module.exports = {
     // are also the names of the fields stored in the action's JSON data.
     //---------------------------------------------------------------------
   
-    fields: ["suggests", "ssuggest", "language", "admin", "guild"],
+    fields: ["suggests", "music", "ssuggest", "slyrics", "language", "admin", "guild"],
   
     //---------------------------------------------------------------------
     // Command HTML
@@ -107,10 +107,20 @@ module.exports = {
   </dialog-list>
   </tab>
   
+      <tab label="Lyrics" icon="cogs">
+        <div style="float: left; width: calc(50% - 12px); padding: 8px;">
+        <span class="dbminputlabel">Music</span>
+        <input id="music" class="round" type="text">
+        </div>
+    </tab>
+  </tab-system>
+  
     <tab label="Settings" icon="cogs">
       <div style="padding: 8px;">
   
         <dbm-checkbox style="float: left;" id="ssuggest" label="Suggestions" checked></dbm-checkbox>
+        
+        <dbm-checkbox style="float: left;" id="slyrics" label="Lyrics" checked></dbm-checkbox>
   
         <br><br>
   
@@ -154,11 +164,14 @@ module.exports = {
   
     async action(cache) {
       const client = this.getDBM().Bot.bot
-      const { Suggest } = require('discord-systems')
+      const { msg, interaction } cache
+      const { Suggest, Lyrics, Version } = require('discord-systems')
       const { Money } = require('../bot')
       if (!Money) return console.log(`ERROR - Update the file bot.js, https://raw.githubusercontent.com/Gotowka/mydbm/main/bot.js`)
       if (Money !== '1.0.1') console.log(`ERROR - Update the file bot.js, https://raw.githubusercontent.com/Gotowka/mydbm/main/bot.js`)
+      if (Version !== '1.1.2') console.log(`ERROR - Update the discord-systems, npm i discord-systems`)
       const data = cache.actions[cache.index];
+      if(data.ssuggest) {
       await client.guilds.fetch()
       const guild = client.guilds.cache.get(this.evalMessage(data.guild, cache))
       const member = guild.members.cache.get(this.evalMessage(data.suggests[0].member, cache))
@@ -170,7 +183,11 @@ module.exports = {
         member: member,
         message: message,
         client: client
-      }).start()
+      }).start()    
+      } else if (data.slyrics) {
+          const text = await Lyrics.search(data.music)
+          (msg ?? interaction).reply({ content: text })
+      }
       },
   
       modInit(data) {
