@@ -330,6 +330,15 @@
      })
      .catch(noop);
  };
+
+ const { Player } = require("discord-player");
+ const client = Bot.bot
+ client.player = new Player(client, {
+   ytdlOptions: {
+     quality: "highestaudio",
+     highWaterMark: 1 << 25
+   }
+ })
  
  Bot.reformatData = function () {
    this.reformatCommands();
