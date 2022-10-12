@@ -93,6 +93,7 @@ module.exports = {
     <option value="meme">Know What I Meme</options>
     <option value="askaway">Ask Away</options>
     <option value="bashout">Bash Out</options>
+    <option value="puttpartyqa">Putt Part Qa</options>
   </select>
 </div>
 </div>
