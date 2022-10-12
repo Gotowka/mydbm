@@ -35,7 +35,7 @@ module.exports = {
     // This will make it so the patch version (0.0.X) is not checked.
     //---------------------------------------------------------------------
   
-    meta: { version: "2.1.6", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka/autorskieakcje/blob/main/play_all.js', downloadUrl: 'https://github.com/Gotowka/autorskieakcje/blob/main/play_all.js' },
+    meta: { version: "2.1.6", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/actions/play_all.js' },
   
     //---------------------------------------------------------------------
     // Action Fields
@@ -133,6 +133,7 @@ module.exports = {
     async action(cache) {
       const data = cache.actions[cache.index];
       const { musicPlayer } = require('../bot')
+      if (!musicPlayer) console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/main/bot.js')
       const { QueryType } = require("discord-player")
       const type = data.type
       const { interaction } = cache

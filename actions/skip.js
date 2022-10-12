@@ -25,7 +25,7 @@ module.exports = {
       return `Skip the music`;
     },
   
-    meta: { version: "2.1.6", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka/autorskieakcje/blob/main/skip.js', downloadUrl: 'https://github.com/Gotowka/autorskieakcje/blob/main/skip.js' },
+    meta: { version: "2.1.6", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/actions/skip.js' },
   
   
     fields: [""],
@@ -61,7 +61,7 @@ module.exports = {
     async action(cache) {
       const { interaction } = cache
       const { musicPlayer } = require('../bot')
-
+      if (!musicPlayer) console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/main/bot.js')
       if (!interaction.member.voice.channel) return interaction.reply("Error: You must join the voice channel!")
       const queue = musicPlayer.getQueue(interaction.guild)
 

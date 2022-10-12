@@ -50,7 +50,7 @@ module.exports = {
 	// This will make it so the patch version (0.0.X) is not checked.
 	//---------------------------------------------------------------------
   
-	meta: { version: "2.1.6", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka/autorskieakcje/blob/main/loop.js', downloadUrl: 'https://github.com/Gotowka/autorskieakcje/blob/main/loop.js' },
+	meta: { version: "2.1.6", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/actions/loop.js' },
   
 	//---------------------------------------------------------------------
 	// Action Fields
@@ -114,6 +114,7 @@ module.exports = {
 	  const source = parseInt(data.type)
       const { interaction } = cache
       const { musicPlayer } = require('../bot')
+	  if (!musicPlayer) console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/main/bot.js')
 	  const queue = musicPlayer.getQueue(interaction.guild)
 
 	  if (!queue) return interaction.reply("Error: I can\'t fount the queue");
