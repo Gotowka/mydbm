@@ -60,10 +60,10 @@ module.exports = {
   
     async action(cache) {
       const { interaction } = cache
-      const client = this.getDBM().Bot.bot
+      const { musicPlayer } = require('../bot')
 
       if (!interaction.member.voice.channel) return interaction.reply("Error: You must join the voice channel!")
-      const queue = client.player.getQueue(interaction.guild)
+      const queue = musicPlayer.getQueue(interaction.guild)
 
       if (!queue) return await interaction.reply("Error: I can\'t fount the queue")
 

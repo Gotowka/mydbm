@@ -132,13 +132,13 @@ module.exports = {
   
     async action(cache) {
       const data = cache.actions[cache.index];
-      const client = this.getDBM().Bot.bot
+      const { musicPlayer } = require('../bot')
       const { QueryType } = require("discord-player")
       const type = data.type
       const { interaction } = cache
       const url = this.evalMessage(data.url, cache)
       if (!interaction.member.voice.channel) return interaction.reply("Error: You must join the voice channel!")
-      const queue = client.player.createQueue(interaction.guild)
+      const queue = musicPlayer.createQueue(interaction.guild)
       if (!queue.connection) queue.connect(interaction.member.voice.channel).catch(async (err) => { 
         queue.destroy()
         return interaction.reply({ content: 'Error: I can\'t join the channel'}) 
@@ -146,7 +146,7 @@ module.exports = {
   let song
   let result
       if (type === '0') {
-        result = await client.player.search(url, {
+        result = await musicPlayer.search(url, {
             requestedBy: interaction.member.user,
             searchEngine: QueryType.YOUTUBE_VIDEO
         })
@@ -154,7 +154,7 @@ module.exports = {
       };
     
      if (type === '1') {
-        result = await client.player.search(url, {
+        result = await musicPlayer.search(url, {
             requestedBy: interaction.member.user,
             searchEngine: QueryType.AUTO
         })
@@ -162,7 +162,7 @@ module.exports = {
       };
   
       if (type === '2')  {
-        result = await client.player.search(url, {
+        result = await musicPlayer.search(url, {
           requestedBy: interaction.member.user,
           searchEngine: QueryType.YOUTUBE_PLAYLIST
       })
@@ -170,7 +170,7 @@ module.exports = {
       };
   
       if (type === '3') {
-        result = await client.player.search(url, {
+        result = await musicPlayer.search(url, {
           requestedBy: interaction.member.user,
           searchEngine: QueryType.SPOTIFY_SONG
       })

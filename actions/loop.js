@@ -113,8 +113,8 @@ module.exports = {
 	  const data = cache.actions[cache.index];
 	  const source = parseInt(data.type)
       const { interaction } = cache
-      const client = this.getDBM().Bot.bot
-	  const queue = client.player.getQueue(interaction.guild)
+      const { musicPlayer } = require('../bot')
+	  const queue = musicPlayer.getQueue(interaction.guild)
 
 	  if (!queue) return interaction.reply("Error: I can\'t fount the queue");
 			  
