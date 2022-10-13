@@ -164,7 +164,7 @@ module.exports = {
   
     async action(cache) {
       const client = this.getDBM().Bot.bot
-      const { msg, interaction } cache
+      const { msg, interaction } = cache
       const { Suggest, Lyrics, Version } = require('discord-systems')
       const { Money } = require('../bot')
       if (!Money) return console.log(`ERROR - Update the file bot.js, https://raw.githubusercontent.com/Gotowka/mydbm/main/bot.js`)
