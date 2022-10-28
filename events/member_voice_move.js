@@ -18,7 +18,7 @@ module.exports = {
                 const temp = {};
                 if (event.temp) temp[event.temp] = oldM.voice.channel;
                 if (event.temp2) temp[event.temp2] = newM.voice.channel;
-                                 temp['member'] = newM
+                temp['member'] = newM
           
                 Actions.invokeEvent(event, server, temp);
             }
