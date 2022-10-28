@@ -45,7 +45,7 @@ module.exports = {
   // are also the names of the fields stored in the action's JSON data.
   //---------------------------------------------------------------------
 
-  fields: ["language"],
+  fields: ["footer", "language"],
 
   //---------------------------------------------------------------------
   // Command HTML
@@ -67,6 +67,11 @@ module.exports = {
     </p>
 </div><br>
 <div style="float: left; width: 45%;">
+<span class="dbminputlabel">Footer<span style="color:red">*</span></span>
+<input id="footer" class="round" placeholder="[members] = Users of the giveaway" type="text">
+
+<br>
+
 <span class="dbminputlabel">Language</span><br>
 <select id="language" class="round">
   <option value="eng" selected>English</option>
@@ -132,8 +137,7 @@ module.exports = {
     let msg = await interaction.guild.channels.cache.get(gg.channel).messages.fetch(gg.msg);
 
     let embed = msg.embeds[0];
-    if(lang === 'pl') embed.footer.text = "Udział bierze " + gg.members.length + " użytkowników!";
-    if(lang === 'eng') embed.footer.text = "Users in the giveaway: " + gg.members.length;
+    embed.footer.text = this.evalMessage(data.footer, cache).replace('[members]', gg.members.length)
 
     msg.edit({ embeds: [ embed ] });
     
