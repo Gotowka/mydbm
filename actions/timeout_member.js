@@ -10,7 +10,7 @@ module.exports = {
 
   meta: { version: "2.1.6", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/actions/timeout_member.js' },
 
-  fields: ["member", "varName", "czas", "ilosc", "reason"],
+  fields: ["member", "varName", "time", "reason"],
 
   html(isEvent, data) {
     return `
@@ -25,18 +25,9 @@ module.exports = {
 
 <br><br><br><br>
 
-<div style="float: left; width: 45%;">
-<span class="dbminputlabel">Time</span><br>
-<select id="czas" class="round">
-  <option value="1" selected>Seconds</option>
-  <option value="2">Minutes</option>
-  <option value="3">Hours</option>
-  <option value="4">Days</option>
-</select>
-</div>
 <div style="float: right; width: 50%;">
-<span class="dbminputlabel">Amount</span><br>
-<input id="ilosc" class="round" type="text">
+<span class="dbminputlabel">Time</span><br>
+<input id="time" class="round" placeholder="Type: np 1d/1m/1s" type="text">
 </div><br><br><br>
 
 <div style="padding-top: 16px;">
@@ -50,51 +41,26 @@ module.exports = {
   async action(cache) {
     const data = cache.actions[cache.index];
     const member = await this.getMemberFromData(data.member, data.varName, cache);
-    const czas = parseInt(data.czas, 10)
+    let duration = this.evalMessage(data.time, cache)
 
-    let time = this.evalMessage(data.ilosc, cache);
-    const date = this.evalMessage(data.ilosc, cache)
-
-    switch (czas) {
-      case 1: 
-      time = time ? Date.now() + time * 1000 : null;
-      break;
-      case 2: 
-      time = time ? Date.now() + time * 60000 : null;
-      break;
-      case 3:
-      time = time ? Date.now() + time * 3600000 : null;
-      break;
-      case 4:
-      time = time ? Date.now() + time * 86400000 : null;
-      break;
-      default:
-      break;
-    }
-    let dur
-    switch (czas) {
-      case 1: 
-      dur = date * 1e3;
-      break;
-      case 2: 
-      dur = date * 1e3 * 60;
-      break;
-      case 3:
-      dur = date * 1e3 * 60 * 60;
-      break;
-      case 4:
-      dur = date * 1e3 * 60 * 60 * 60;
-      break;
-      default:
-      break;
-    }
-    const endtimeout = Date.parse(new Date(new Date().getTime() + dur)) / 1000;
+    if (duration.includes("s")) {
+        duration = duration.split("s")[0] * 1000;
+    } else if (duration.includes("m")) {
+        duration = duration.split("m")[0] * 60000;
+    } else if (duration.includes("h")) {
+        duration = duration.split("h")[0] * 3600000;
+    } else if (duration.includes("d")) {
+        duration = duration.split("d")[0] * 86400000;
+    } else {
+        duration = duration * 1000;
+    };
+    const endTimeout = Date.parse(new Date(new Date().getTime() + duration)) / 1000;
     const reason = this.evalMessage(data.reason, cache);
 
     if (member?.timeout) {
-      member.timeout(time, reason)
+      member.timeout(duration, reason)
         .then(() => {
-          const endtime = `<t:${endtimeout}:R>`
+          const endtime = `<t:${endTimeout}:R>`
           this.storeValue(endtime, 1, 'endtime', cache)
           this.callNextAction(cache)
         })
