@@ -45,7 +45,7 @@ module.exports = {
     // are also the names of the fields stored in the action's JSON data.
     //---------------------------------------------------------------------
   
-    fields: ["title", "description", "color", "reason", "time", "type", "member", "varName"],
+    fields: ["title", "description", "color", "reason", "time", "member", "varName"],
   
     //---------------------------------------------------------------------
     // Command HTML
@@ -94,16 +94,6 @@ module.exports = {
   
   <br>
   
-  <span class="dbminputlabel">Type <span style="color:red">*</span></span><br>
-  <select id="type" class="round">
-  <option value="0">Seconds</option>
-  <option value="1">Minutes</option>
-  <option value="2">Hours</option>
-  <option value="3">Days</option>
-  </select>
-  
-  <br>
-  
   <member-input dropdownLabel="Member" selectId="member" variableContainerId="varNameContainer" variableInputId="varName"></member-input>
   </div>
   `;
@@ -135,47 +125,22 @@ module.exports = {
       const title = this.evalMessage(data.title, cache)
       const description = this.evalMessage(data.description, cache)
       const color = this.evalMessage(data.color, cache) || 'RANDOM'
-      const reason = this.evalMessage(data.reason, cache)
-      let time = this.evalMessage(data.time, cache)
-      const type = parseInt(data.type, 10)
-      const date = this.evalMessage(data.time, cache)
   
-      switch(type) {
-        case 0: 
-        time = time ? Date.now() + time * 1000 : null;
-        break;
-        case 1: 
-        time = time ? Date.now() + time * 60000 : null;
-        break;
-        case 2:
-        time = time ? Date.now() + time * 3600000 : null;
-        break;
-        case 3:
-        time = time ? Date.now() + time * 86400000 : null;
-        break;
-        default:
-        break;
-      }
-      let dur
-      
-      switch(type) {
-        case 0: 
-        dur = date * 1e3;
-        break;
-        case 1: 
-        dur = date * 1e3 * 60;
-        break;
-        case 2:
-        dur = date * 1e3 * 60 * 60;
-        break;
-        case 3:
-        dur = date * 1e3 * 60 * 60 * 60;
-        break;
-        default:
-        break;
-      }
+      let duration = this.evalMessage(data.time, cache)
+
+      if (duration.includes("s")) {
+          duration = duration.split("s")[0] * 1000;
+      } else if (duration.includes("m")) {
+          duration = duration.split("m")[0] * 60000;
+      } else if (duration.includes("h")) {
+          duration = duration.split("h")[0] * 3600000;
+      } else if (duration.includes("d")) {
+          duration = duration.split("d")[0] * 86400000;
+      } else {
+          duration = duration * 1000;
+      };
   
-      const endban = Date.parse(new Date(new Date().getTime() + dur)) / 1000;
+      const endban = Date.parse(new Date(new Date().getTime() + duration)) / 1000;
       const endtime = `<t:${endban}:R>`
       this.storeValue(endtime, 1, 'endtime', cache)
       const days = '0'
