@@ -99,12 +99,13 @@ module.exports = {
 
       const link = await discordTranscripts.generateFromMessages(messages, channel);
 
-      if (!Boolean(data.logs)) return (interaction ?? msg).channel.send({ files: [link] });
+      if (!Boolean(data.logs)) (interaction ?? msg).channel.send({ files: [link] });
       else {
         const channel = await (interaction ?? msg).guild.channels.cache.get(data.logs);
-        if (!channel) return (interaction ?? msg).channel.send({ files: [link] });
-        else return channel.send({ files: [link] });
+        if (!channel) (interaction ?? msg).channel.send({ files: [link] });
+        else channel.send({ files: [link] });
       }
+      await this.callNextAction(cache)
     },
 
   mod() {},

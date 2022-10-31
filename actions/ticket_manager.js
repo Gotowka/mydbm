@@ -291,6 +291,7 @@ module.exports = {
       const send = this.evalMessage(data.E2, cache).replace('[name]', interaction.user.username).replace('[tag]', interaction.user.tag).replace('[id]', interaction.member.id).replace('[ticket]', `<#${channel.id}>`)
       interaction.reply({ content: send, ephemeral: true })
       channel.send(messageOptions)
+      await this.callNextAction(cache)
     },
     mod() {},
   }
