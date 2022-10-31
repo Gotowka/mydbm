@@ -52,3 +52,7 @@
 - [Music PAUSE](https://github.com/Gotowka/mydbm/blob/main/actions/pause.js)
 
 - [Send Message](https://github.com/Gotowka/mydbm/blob/main/actions/send_message.js)
+
+- [Ticket Create](https://github.com/Gotowka/mydbm/blob/main/actions/ticket_manager.js)
+
+- [Transcripts](https://github.com/Gotowka/mydbm/blob/main/actions/transcripts.js)
