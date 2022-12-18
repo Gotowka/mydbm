@@ -127,8 +127,6 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
-      const { dbp } = require('../bot')
-      if (!dbp) return console.log(`BŁĄD - Zaaktualizuj plik bot.js, https://github.com/Gotowka/autorskieakcje/blob/main/bot/bot.js`);
       const { interaction } = cache;
       const { RPSGame, Snake, TicTacToe, TwoZeroFourEight, Connect4 } = require('dbp-games')
       const data = cache.actions[cache.index];
