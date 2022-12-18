@@ -56,3 +56,9 @@
 - [Ticket Create](https://github.com/Gotowka/mydbm/blob/main/actions/ticket_manager.js)
 
 - [Transcripts](https://github.com/Gotowka/mydbm/blob/main/actions/transcripts.js)
+
+- [Games](https://github.com/Gotowka/mydbm/blob/main/actions/games.js)
+
+- [Store Command Info](https://github.com/Gotowka/mydbm/blob/main/actions/store_command_info_MOD.js)
+
+- [Set Time Restriction](https://github.com/Gotowka/mydbm/blob/main/actions/set_time_restriction_MOD.js)
