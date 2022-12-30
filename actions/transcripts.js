@@ -45,7 +45,7 @@ module.exports = {
     // are also the names of the fields stored in the action's JSON data.
     //---------------------------------------------------------------------
   
-    fields: ["channe", "varName", "logs"],
+    fields: ["logs"],
   
     //---------------------------------------------------------------------
     // Command HTML
@@ -90,7 +90,7 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
-        const { msg, interaction } = cache
+      const { msg, interaction } = cache
       const data = cache.actions[cache.index];
       const discordTranscripts = require('discord-html-transcripts');
       
@@ -99,7 +99,7 @@ module.exports = {
 
       const link = await discordTranscripts.generateFromMessages(messages, channel);
 
-      if (!Boolean(data.logs)) (interaction ?? msg).channel.send({ files: [link] });
+      if (!this.evalMessage(data.logs, cache)) (interaction ?? msg).channel.send({ files: [link] });
       else {
         const channel = await (interaction ?? msg).guild.channels.cache.get(data.logs);
         if (!channel) (interaction ?? msg).channel.send({ files: [link] });
