@@ -45,7 +45,7 @@ module.exports = {
     // are also the names of the fields stored in the action's JSON data.
     //---------------------------------------------------------------------
   
-    fields: ["channe", "varName", "logs"],
+    fields: ["logs"],
   
     //---------------------------------------------------------------------
     // Command HTML
@@ -67,8 +67,8 @@ module.exports = {
           Help: discord.gg/ae8hgMDxDc
       </p>
   </div><br>
-  <span class="dbminputlabel">Logs</span><br>
-  <input id="logs" class="round" type="text" placeholder="Leave blank for default">`;
+  <span class="dbminputlabel">Channel ID or Member ID</span><br>
+  <input id="logs" class="round" type="text" placeholder="Where send the transcript, Leave blank = using channel">`;
     },
   
     //---------------------------------------------------------------------
@@ -93,16 +93,21 @@ module.exports = {
         const { msg, interaction } = cache
       const data = cache.actions[cache.index];
       const discordTranscripts = require('discord-html-transcripts');
+      if (!discordTranscripts.version.includes('2.5.8')) return console.error('Install the discord-html-transcripts version 2.5.8 (npm i discord-html-transcripts@2.5.8)')
       
       const messages = await (msg ?? interaction).channel.messages.fetch({ limit: 100 }); 
       const channel = (msg ?? interaction).channel; 
 
       const link = await discordTranscripts.generateFromMessages(messages, channel);
 
-      if (!Boolean(data.logs)) (interaction ?? msg).channel.send({ files: [link] });
+      if (!data.logs) (interaction ?? msg).channel.send({ files: [link] });
       else {
-        const channel = await (interaction ?? msg).guild.channels.cache.get(data.logs);
-        if (!channel) (interaction ?? msg).channel.send({ files: [link] });
+        const channel = await (interaction ?? msg).guild.channels.cache.get(this.evalMessage(data.logs, cache));
+        if (!channel) {
+          const member = (interaction ?? msg).guild.members.cache.get(this.evalMessage(data.logs, cache))
+          if (!member) (interaction ?? msg).channel.send({ files: [link] });
+          else member.send({ files: [link] });
+        }
         else channel.send({ files: [link] });
       }
       await this.callNextAction(cache)
