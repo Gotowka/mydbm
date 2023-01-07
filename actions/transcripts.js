@@ -93,8 +93,7 @@ module.exports = {
       const { msg, interaction } = cache
       const data = cache.actions[cache.index];
       const discordTranscripts = require('discord-html-transcripts');
-      if (!discordTranscripts.version.includes('2.5.8')) return console.error('Install the discord-html-transcripts version 2.5.8 (npm i discord-html-transcripts@2.5.8)')
-      
+     
       const messages = await (msg ?? interaction).channel.messages.fetch({ limit: 100 }); 
       const channel = (msg ?? interaction).channel; 
 
