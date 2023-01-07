@@ -90,7 +90,7 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
-        const { msg, interaction } = cache
+      const { msg, interaction } = cache
       const data = cache.actions[cache.index];
       const discordTranscripts = require('discord-html-transcripts');
       if (!discordTranscripts.version.includes('2.5.8')) return console.error('Install the discord-html-transcripts version 2.5.8 (npm i discord-html-transcripts@2.5.8)')
@@ -100,7 +100,7 @@ module.exports = {
 
       const link = await discordTranscripts.generateFromMessages(messages, channel);
 
-      if (!data.logs) (interaction ?? msg).channel.send({ files: [link] });
+      if (!this.evalMessage(data.logs, cache)) (interaction ?? msg).channel.send({ files: [link] });
       else {
         const channel = await (interaction ?? msg).guild.channels.cache.get(this.evalMessage(data.logs, cache));
         if (!channel) {
