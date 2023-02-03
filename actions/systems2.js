@@ -190,14 +190,6 @@ module.exports = {
       }
       },
   
-      modInit(data) {
-        const { MessageButton } = require('discord.js')
-        const one = new MessageButton().setCustomId('dcsys-yes').setStyle('SUCCESS')
-        const two = new MessageButton().setCustomId('dcsys-no').setStyle('DANGER')
-        this.registerButtonInteraction('dcsys-yes', one)
-        this.registerButtonInteraction('dcsys-no', two)
-      },
-  
   mod() {},
   
   
