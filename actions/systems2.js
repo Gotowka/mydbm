@@ -169,7 +169,6 @@ module.exports = {
       const { Money } = require('../bot')
       if (!Money) return console.log(`ERROR - Update the file bot.js, https://raw.githubusercontent.com/Gotowka/mydbm/main/bot.js`)
       if (Money !== '1.0.1') console.log(`ERROR - Update the file bot.js, https://raw.githubusercontent.com/Gotowka/mydbm/main/bot.js`)
-      if (Version !== '1.1.2') console.log(`ERROR - Update the discord-systems, npm i discord-systems`)
       const data = cache.actions[cache.index];
       if(data.ssuggest) {
       await client.guilds.fetch()
