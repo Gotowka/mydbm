@@ -58,7 +58,6 @@ module.exports = {
         "Member Timed Out At",
         "Member Timed Out Timestamp",
         "Member Banner URL",
-        "Member Server Banner URL",
       ];
       return `${presets.getMemberText(data.member, data.varName)} - ${info[parseInt(data.info, 10)]}`;
     },
@@ -152,7 +151,6 @@ module.exports = {
           dataType = "Timestamp";
           break;
         case 34:
-        case 35:
             dataType = "Image URL";
             break;
       }
@@ -210,7 +208,6 @@ module.exports = {
           <option value="16">Member Avatar URL</option>
           <option value="31">Member Server Avatar URL</option>
           <option value="34">Member Banner URL</option>
-          <option value="35">Member Server Banner URL</option>
           <option value="5">Member Server</option>
           <option value="6">Member Last Message (Removed)</option>
           <option value="26">Member Last Message Id (Removed)</option>
@@ -391,10 +388,6 @@ module.exports = {
             await member.user?.fecth();
             result = member.user?.bannerURL({ dynamic: true });
             break;
-        case 35:
-            await member.fetch();
-            result = member.bannerURL({ dynamic: true });
-        break;
         default:
         break;
       }
