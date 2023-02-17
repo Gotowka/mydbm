@@ -169,7 +169,6 @@ module.exports = {
       const { Money } = require('../bot')
       if (!Money) return console.log(`ERROR - Update the file bot.js, https://raw.githubusercontent.com/Gotowka/mydbm/main/bot.js`)
       if (Money !== '1.0.1') console.log(`ERROR - Update the file bot.js, https://raw.githubusercontent.com/Gotowka/mydbm/main/bot.js`)
-      if (Version !== '1.1.2') console.log(`ERROR - Update the discord-systems, npm i discord-systems`)
       const data = cache.actions[cache.index];
       if(data.ssuggest) {
       await client.guilds.fetch()
@@ -188,14 +187,6 @@ module.exports = {
           const text = await Lyrics.search(data.music)
           (msg ?? interaction).reply({ content: text })
       }
-      },
-  
-      modInit(data) {
-        const { MessageButton } = require('discord.js')
-        const one = new MessageButton().setCustomId('dcsys-yes').setStyle('SUCCESS')
-        const two = new MessageButton().setCustomId('dcsys-no').setStyle('DANGER')
-        this.registerButtonInteraction('dcsys-yes', one)
-        this.registerButtonInteraction('dcsys-no', two)
       },
   
   mod() {},
