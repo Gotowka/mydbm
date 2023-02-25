@@ -145,7 +145,7 @@ Jump to Action:<br>
                     this.storeValue(hoster, 1, 'hoster', cache)
                     this.storeValue(message, 1, 'message', cache)
                     this.storeValue(users, 1, 'users', cache)
-                    this.storeValue(guild.iconURL({ dynamic: true}), 1, 'icon', cache)
+                    this.storeValue(guild.iconURL({ dynamic: true }), 1, 'icon', cache)
                     this.storeValue(guild.name, 1, 'name', cache)
                     this.storeValue(`<@!${winner.join(">, <@!")}>`, 1, 'winner', cache)
                     const button = new MessageActionRow().addComponents(
@@ -156,41 +156,41 @@ Jump to Action:<br>
                         .setLabel(this.evalMessage(data.label, cache).replace('[users]', users))
                     )
                     await message.edit({ components: [button]})
-                } //else if (new Date().getTime() > giveaways[giveawayid][i].end + 1000 * 10 && giveaways[giveawayid][i].ended == true) {
-                //     giveaways[giveawayid].splice(i, 1);
-                //     const messageid = giveaways[giveawayid][i].msg
-                //     const channelid = giveaways[giveawayid][i].channel
-                //     const guildid = giveaways[giveawayid][i].guild
-                //     const guild = client.guilds.cache.get(guildid)
-                //     const channel = guild.channels.cache.get(channelid)
-                //     const message = channel.messages.cache.get(messageid)
-                //     const footer = message.embeds[0].footer.text
-                //     const users = footer.split(' ').at(2)
-                //     const prize = giveaways[giveawayid][i].prize
-                //     const hoster = giveaways[giveawayid][i].hoster
-                //     this.storeValue(prize, 1, 'prize', cache)
-                //     this.storeValue(guild.iconURL({ dynamic: true}), 1, 'icon', cache)
-                //     this.storeValue(guild.name, 1, 'name', cache)
-                //     this.storeValue(hoster, 1, 'hoster', cache)
-                //     this.storeValue(message, 1, 'message', cache)
-                //     this.storeValue(users, 1, 'users', cache)
-                //     this.storeValue(`<@!${winner.join(">, <@!")}>`, 1, 'winner', cache)
-                //     const button = new MessageActionRow().addComponents(
-                //         new MessageButton()
-                //         .setCustomId('gend')
-                //         .setStyle(this.evalMessage(data.style, cache))
-                //         .setDisabled(true)
-                //         .setLabel(this.evalMessage(data.label, cache).replace('[users]', users))
-                //     )
-                //     message.edit({ components: [button]})
-                //     const val = parseInt(this.evalMessage(data.call, cache), 10);
-                //     const index = Math.max(val - 1, 0);
-                //     if (cache.actions[index]) {
-                //       cache.index = index - 1;
-                //       this.callNextAction(cache);
-                //     }
-                //     fs.writeFileSync("./data/giveaways.json", JSON.stringify(giveaways));
-                // };
+                } else if (new Date().getTime() > giveaways[giveawayid][i].end + 1000 * 10 && giveaways[giveawayid][i].ended == true) {
+                    giveaways[giveawayid].splice(i, 1);
+                    const messageid = giveaways[giveawayid][i].msg
+                    const channelid = giveaways[giveawayid][i].channel
+                    const guildid = giveaways[giveawayid][i].guild
+                    const guild = client.guilds.cache.get(guildid)
+                    const channel = guild.channels.cache.get(channelid)
+                    const message = channel.messages.cache.get(messageid)
+                    const footer = message.embeds[0].footer.text
+                    const users = footer.split(' ').at(2)
+                    const prize = giveaways[giveawayid][i].prize
+                    const hoster = giveaways[giveawayid][i].hoster
+                    this.storeValue(prize, 1, 'prize', cache)
+                    this.storeValue(guild.iconURL({ dynamic: true }), 1, 'icon', cache)
+                    this.storeValue(guild.name, 1, 'name', cache)
+                    this.storeValue(hoster, 1, 'hoster', cache)
+                    this.storeValue(message, 1, 'message', cache)
+                    this.storeValue(users, 1, 'users', cache)
+                    this.storeValue(`<@!${winner.join(">, <@!")}>`, 1, 'winner', cache)
+                    const button = new MessageActionRow().addComponents(
+                        new MessageButton()
+                        .setCustomId('gend')
+                        .setStyle(this.evalMessage(data.style, cache))
+                        .setDisabled(true)
+                        .setLabel(this.evalMessage(data.label, cache).replace('[users]', users))
+                    )
+                    message.edit({ components: [button]})
+                    const val = parseInt(this.evalMessage(data.call, cache), 10);
+                    const index = Math.max(val - 1, 0);
+                    if (cache.actions[index]) {
+                      cache.index = index - 1;
+                      this.callNextAction(cache);
+                    }
+                    fs.writeFileSync("./data/giveaways.json", JSON.stringify(giveaways));
+                };
             };
         });
     }, 1000);
