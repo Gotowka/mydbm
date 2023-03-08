@@ -48,15 +48,12 @@ module.exports = {
         const banCollection = await guild.bans.fetch()
         banCollection.map(ban => {
             if (list.length > 1700) {
-                console.log('Map returned length!')
             } else {
                 const ls = this.evalMessage(data.list, cache)
                 const con = replaceF(ls, ban)
                 list += `${con}`
-                console.log('Map added!')
             }
         })
-        console.log(list)
         const storage = parseInt(data.storage, 10);
         const varName2 = this.evalMessage(data.varName2, cache);
         if (list.length > 1) this.storeValue(list, storage, varName2, cache);
@@ -64,13 +61,11 @@ module.exports = {
         this.callNextAction(cache);
 
         function replaceF(l, ban) {
-            console.log('Function work!')
             const test = " "
             test.length = (l.match(new RegExp("%", "g")) || []).length
             let mes = l
             for(i in test) mes = mes.replace('%', '\n')
             mes = mes.replace('[id]', ban.user.id).replace('[tag]', ban.user.tag).replace('[username]', ban.user.username)
-            console.log('Function returned!')
             return mes;
         }
     },
