@@ -8,10 +8,16 @@ module.exports = {
       return `Create the ticket - ${data.Tname}`;
     },
   
-  
+    variableStorage(data, varType) {
+      const type = parseInt(data.storage, 10);
+      if (type !== varType) return;
+      let dataType = "Channel Object";
+      return [data.varName2, dataType];
+    },
+
     meta: { version: "2.1.6", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/actions/ticket_manager.js' },
     
-    fields: ["Tname", "Ttopic", "Tparent", "Tposition", "embeds", "E1", "E2", "limit", "role"],
+    fields: ["Tname", "Ttopic", "Tparent", "Tposition", "embeds", "E1", "E2", "limit", "role", "storage", "varName"],
   
     html(isEvent, data) {
         return `
@@ -196,6 +202,8 @@ module.exports = {
           <br><br>
           <span class="dbminputlabel">Ticket-Role ID</span><br>
           <input id="role" class="round" placeholder="Leave blank to  none" type="text">
+          <br><br>
+          <store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName"></store-in-variable>
           </div>
         </div>
       </tab>
@@ -291,7 +299,11 @@ module.exports = {
       const send = this.evalMessage(data.E2, cache).replace('[name]', interaction.user.username).replace('[tag]', interaction.user.tag).replace('[id]', interaction.member.id).replace('[ticket]', `<#${channel.id}>`)
       interaction.reply({ content: send, ephemeral: true })
       channel.send(messageOptions)
+      const storage = parseInt(data.storage, 10);
+      const varName = this.evalMessage(data.varName, cache);
+      this.storeValue(channel, storage, varName, cache);
       await this.callNextAction(cache)
     },
+    
     mod() {},
   }
