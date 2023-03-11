@@ -140,9 +140,8 @@ module.exports = {
       const url = this.evalMessage(data.url, cache)
       if (!interaction.member.voice.channel) return interaction.reply("Error: You must join the voice channel!")
       const queue = musicPlayer.createQueue(interaction.guild)
-      if (!queue.connection) queue.connect(interaction.member.voice.channel).catch(async (err) => { 
-        queue.destroy()
-        return interaction.reply({ content: 'Error: I can\'t join the channel'}) 
+      if (!queue.connection) await queue.connect(interaction.member.voice.channel).catch(async (err) => { 
+      console.error(err)
       })
   let song
   let result
