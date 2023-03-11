@@ -70,6 +70,7 @@ module.exports = {
     <p>
         <u>Mod Info:</u><br>
         Created by money#6283<br>
+        Err variables: 'voice', 'together'
     </p>
 </div><br>
     <div>
@@ -94,6 +95,7 @@ module.exports = {
     <option value="askaway">Ask Away</options>
     <option value="bashout">Bash Out</options>
     <option value="puttpartyqa">Putt Part Qa</options>
+    <option value="garticphone">Gartic Phone</options>
   </select>
 </div>
 </div>
@@ -124,42 +126,29 @@ module.exports = {
   //---------------------------------------------------------------------
 
   async action(cache) {
-const data = cache.actions[cache.index];
-const { MessageEmbed } = require('discord.js')
-const client = this.getDBM().Bot.bot
-const { interaction, msg } = cache;
-const { DiscordTogether } = require('discord-together');
+    const data = cache.actions[cache.index];
+    const client = this.getDBM().Bot.bot
+    const { interaction, msg } = cache;
+    const { DiscordTogether } = require('discord-together');
+    const storage = parseInt(data.storage, 10);
+    const varName2 = this.evalMessage(data.varName2, cache);
+    client.discordTogether = new DiscordTogether(client);
 
-client.discordTogether = new DiscordTogether(client);
-
-if ((interaction ?? msg).member.voice.channel) {
-client.discordTogether.createTogetherCode((interaction ?? msg).member.voice.channelId, data.together).then(invite => {
-const result = invite.code
-if (result) {
-const storage = parseInt(data.storage, 10);
-const varName2 = this.evalMessage(data.varName2, cache);
-this.storeValue(result, storage, varName2, cache);
-} else {
-  console.log('Error with the discord-together!');
-  return (interaction ?? msg).reply({ content: 'Error with the discord-together!', tts: true, allowedMentions: { repliedUser: false } });
-}
-this.callNextAction(cache);
-});
-} else {
-      const embederror = new MessageEmbed()
-              .setTitle(`Error!`)
-              .setColor('RED')
-              .setTimestamp()
-              .setDescription(`
-                  
-              > **Join the voice channel!**
-  
-              `)
-              .setFooter({ text: `${(msg ?? interaction).member.user.username} (${(msg ?? interaction).member.user.id})`, iconURL: `${(msg ?? interaction).member.user.displayAvatarURL({ dynamic: true })}`})
-          (interaction ?? msg).reply({ embeds: [embederror], ephemeral: true });
-}
-
-  },
+    if ((interaction ?? msg).member.voice.channel) {
+    client.discordTogether.createTogetherCode((interaction ?? msg).member.voice.channelId, data.together).then(invite => {
+    const result = invite.code
+    if (result) {
+    this.storeValue(result, storage, varName2, cache);
+    } else {
+      console.log('Error with the discord-together!');
+      this.storeValue('together', storage, varName2, cache);
+    }
+    });
+  } else {
+    this.storeValue('voice', storage, varName2, cache);
+  }
+  this.callNextAction(cache);
+},
 
   mod() {},
 };
