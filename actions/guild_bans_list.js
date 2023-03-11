@@ -47,7 +47,7 @@ module.exports = {
         let list = ""
         const banCollection = await guild.bans.fetch()
         banCollection.map(ban => {
-            if (list.length > 1700) {
+            if (list.length > 1900) {
             } else {
                 const ls = this.evalMessage(data.list, cache)
                 const con = replaceF(ls, ban)
