@@ -120,7 +120,7 @@ module.exports = {
       const channel = parseInt(data.channel, 10);
       const varName2 = this.evalMessage(data.varName2, cache);
       let target
-      if (channel === '0') target = cache.interaction ?? cache.msg
+      if (channel === 0) target = cache.interaction ?? cache.msg
       else target = await this.getSendTarget(channel, varName2, cache);
       const compress = parseInt(data.compress, 10);
       const image = new Canvas.Image();
