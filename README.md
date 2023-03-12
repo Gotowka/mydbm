@@ -29,7 +29,7 @@
 
 - [Giveaway REROLL](https://github.com/Gotowka/mydbm/blob/main/actions/greroll.js)
 
-- [InviteLogger - INFO](https://github.com/Gotowka/mydbm/blob/main/actions/loggerinfo.js)
+- [InviteLogger INFO](https://github.com/Gotowka/mydbm/blob/main/actions/loggerinfo.js)
 
 - [Systems](https://github.com/Gotowka/mydbm/blob/main/actions/systems.js)
 
@@ -62,3 +62,13 @@
 - [Store Command Info](https://github.com/Gotowka/mydbm/blob/main/actions/store_command_info_MOD.js)
 
 - [Set Time Restriction](https://github.com/Gotowka/mydbm/blob/main/actions/set_time_restriction_MOD.js)
+
+- [Canvas Send Image](https://github.com/Gotowka/mydbm/blob/main/actions/canvas_send_image_MOD.js)
+
+- [Ban Member](https://github.com/Gotowka/mydbm/blob/main/actions/ban_member.js)
+
+- [Add Time To Timestamp](https://github.com/Gotowka/mydbm/blob/main/actions/add_time_to_timestamp.js)
+
+- [Guild Bans List](https://github.com/Gotowka/mydbm/blob/main/actions/guild_bans_list.js)
+
+- [Member Role From Number](https://github.com/Gotowka/mydbm/blob/main/actions/get_member_role_from_number.js)
