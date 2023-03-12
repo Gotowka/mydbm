@@ -134,20 +134,20 @@ module.exports = {
       const content = this.evalMessage(data.message, cache);
       const options = { files: [attachment] };
       if (content) options.content = content;
-      if (channel !== 0) {
-        target.send(options).then((msgobject) => {
+      if (channel === 0) {
+        target.reply(options).then((msgobject) => {
           const varName3 = this.evalMessage(data.varName3, cache);
           const storage2 = parseInt(data.storage2, 10);
           this.storeValue(msgobject, storage2, varName3, cache);
           this.callNextAction(cache);
         });
       } else {
-        target.reply(options).then((msgobject) => {
-            const varName3 = this.evalMessage(data.varName3, cache);
-            const storage2 = parseInt(data.storage2, 10);
-            this.storeValue(msgobject, storage2, varName3, cache);
-            this.callNextAction(cache);
-          });
+        target.send(options).then((msgobject) => {
+          const varName3 = this.evalMessage(data.varName3, cache);
+          const storage2 = parseInt(data.storage2, 10);
+          this.storeValue(msgobject, storage2, varName3, cache);
+          this.callNextAction(cache);
+        });
       }
     },
   
