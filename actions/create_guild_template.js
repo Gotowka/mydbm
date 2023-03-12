@@ -5,7 +5,7 @@ module.exports = {
   section: "Discord",
 
   subtitle(data, presets) {
-    return `Guild template - ${data.name2}`;
+    return `Guild template - ${data.name}`;
   },
 
   variableStorage(data, varType) {

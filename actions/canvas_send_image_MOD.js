@@ -134,7 +134,7 @@ module.exports = {
       const content = this.evalMessage(data.message, cache);
       const options = { files: [attachment] };
       if (content) options.content = content;
-      if (channel !== '0') {
+      if (channel !== 0) {
         target.send(options).then((msgobject) => {
           const varName3 = this.evalMessage(data.varName3, cache);
           const storage2 = parseInt(data.storage2, 10);
