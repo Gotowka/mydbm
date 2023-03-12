@@ -1651,18 +1651,20 @@ const { Client, Intents } = require("discord.js")
  };
  
  Actions.findMemberOrUserFromID = async function (id, server) {
-   if (!Bot.hasMemberIntents) {
-     PrintError(MsgType.MISSING_MEMBER_INTENT_FIND_USER_ID);
-   }
-   if (id) {
-     const result = await Bot.bot.users.fetch(id);
-     if (result) {
-       return result;
-     }
-   } else {
+  if (!Bot.hasMemberIntents) {
+    PrintError(MsgType.MISSING_MEMBER_INTENT_FIND_USER_ID);
+  }
+  if (id) {
+   let res
+   if (server) res = await server.members.fetch(id);
+   if (res) return res;
+   else res = await Bot.bot.users.fetch(id);
+   if (res) return res;
+   else {
      PrintError(MsgType.CANNOT_FIND_USER_BY_ID, id);
    }
    return null;
+ }
  };
  
  Actions.getTargetFromVariableOrParameter = function (varType, varName, cache) {
