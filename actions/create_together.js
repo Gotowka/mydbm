@@ -96,6 +96,8 @@ module.exports = {
     <option value="bashout">Bash Out</options>
     <option value="puttpartyqa">Putt Part Qa</options>
     <option value="garticphone">Gartic Phone</options>
+    <option value="color">Color Together</options>
+    <option value="chefshowdown">Chef Showdown</options>
   </select>
 </div>
 </div>

@@ -25,7 +25,9 @@ const defaultApplications = {
   askaway: '976052223358406656',
   bobble: '947957217959759964',
   bashout: '1006584476094177371',
-  garticphone: '1007373802981822582'
+  garticphone: '1007373802981822582',
+  color: '1039835161136746497',
+  chefshowdown: '1037680572660727838'
 };
 
 /**
