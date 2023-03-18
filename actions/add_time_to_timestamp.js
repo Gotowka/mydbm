@@ -51,7 +51,7 @@ module.exports = {
     // are also the names of the fields stored in the action's JSON data.
     //---------------------------------------------------------------------
   
-    fields: ["addtime", "storage", "varName"],
+    fields: ["addtime", "storage", "varName2"],
   
     //---------------------------------------------------------------------
     // Command HTML
@@ -77,9 +77,7 @@ module.exports = {
   <input id="addtime" class="round" placeholder="example: 1s/1m/1h/1d" type="text">  
   </div>
   <br><br>
-  <div style="padding-top: 16px;">
-  <store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName"></store-in-variable>
-  </div>
+  <store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>
       `;
     },
   
@@ -110,8 +108,8 @@ module.exports = {
         };
         const result = Date.parse(new Date(new Date().getTime() + duration)) / 1000;
         const storage = parseInt(data.storage, 10);
-        const varName = this.evalMessage(data.varName, cache);
-        this.storeValue(result, storage, varName, cache);
+        const varName2 = this.evalMessage(data.varName2, cache);
+        this.storeValue(result, storage, varName2, cache);
         this.callNextAction(cache);
     },
   
