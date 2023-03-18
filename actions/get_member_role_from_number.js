@@ -22,7 +22,7 @@ module.exports = {
     //---------------------------------------------------------------------
   
     subtitle(data, presets) {
-      return `BETA!`;
+      return `Get the ${data.number} role from the member`;
     },
   
     //---------------------------------------------------------------------
