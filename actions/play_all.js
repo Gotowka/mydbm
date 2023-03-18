@@ -150,7 +150,7 @@ module.exports = {
             requestedBy: interaction.member.user,
             searchEngine: QueryType.YOUTUBE_VIDEO
         })
-        if (result.tracks.length === 0) return interaction.reply('Error: I can\'t found that music')
+        if (result.tracks.length === 0) return interaction.followUp('Error: I can\'t found that music')
       };
     
      if (type === '1') {
@@ -158,7 +158,7 @@ module.exports = {
             requestedBy: interaction.member.user,
             searchEngine: QueryType.AUTO
         })
-        if (result.tracks.length === 0) return interaction.reply('Error: I can\'t found that music')
+        if (result.tracks.length === 0) return interaction.followUp('Error: I can\'t found that music')
       };
   
       if (type === '2')  {
@@ -166,7 +166,7 @@ module.exports = {
           requestedBy: interaction.member.user,
           searchEngine: QueryType.YOUTUBE_PLAYLIST
       })
-      if (result.tracks.length === 0) return interaction.reply('Error: I can\'t found that music')
+      if (result.tracks.length === 0) return interaction.followUp('Error: I can\'t found that music')
       };
   
       if (type === '3') {
@@ -174,7 +174,7 @@ module.exports = {
           requestedBy: interaction.member.user,
           searchEngine: QueryType.SPOTIFY_SONG
       })
-      if (result.tracks.length === 0) return interaction.reply('Error: I can\'t found that music')
+      if (result.tracks.length === 0) return interaction.followUp('Error: I can\'t found that music')
       };
   
      song = result.tracks[0]
