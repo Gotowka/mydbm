@@ -23,7 +23,7 @@ module.exports = {
 
   subtitle(data, presets) {
     const presa = data.nagroda
-    return `Creator konkursów - Nagroda: ${presa}`;
+    return `Giveaway creator: ${presa}`;
   },
 
   //---------------------------------------------------------------------
@@ -64,7 +64,9 @@ module.exports = {
     <div>
         <p>
             <u>Mod Info:</u><br>
-            Created by money#6283\n[end] = Data zakończenia konkursu, [presa] = Nagroda, [author.tag] = Nazwa + tag, [author.username] = Nazwa, [author.id] = Id
+            Created by money#6283<br>
+            Help: discord.gg/ae8hgMDxDc<br>
+            [end] = End time, [presa] = Prize, [author.tag] = Name + tag, [author.username] = Username, [author.id] = Id
         </p>
     </div><br>
 

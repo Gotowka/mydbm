@@ -64,7 +64,7 @@ module.exports = {
       <p>
           <u>Mod Info:</u><br>
           Created by money#6283<br>
-          Zmienne: endtime
+          Variables: endtime
       </p>
   </div><br>
   <div style="float: left; width: calc(50% - 12px);">
@@ -149,6 +149,7 @@ module.exports = {
       .setTitle(title)
       .setColor(color)
       if (description) embed.setDescription(description)
+
       member.send({ embeds: [embed] })
       await member.ban({ days, reason })
       .then(() => {

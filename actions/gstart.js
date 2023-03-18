@@ -22,7 +22,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   subtitle(data, presets) {
-    return `Umożliwiam utworzenie konkursu!`;
+    return `I create the giveaway for ${data.prize}!`;
   },
 
   //---------------------------------------------------------------------
@@ -64,17 +64,18 @@ module.exports = {
     <p>
         <u>Mod Info:</u><br>
         Created by money#6283<br>
-        Zmienne: endtime, hoster, winners, prize
+        Help: discord.gg/ae8hgMDxDc<br>
+        Variables: endtime, hoster, winners, prize
     </p>
 </div><br>
 
 <div style="float: left; width: calc(50% - 12px);">
-  <span class="dbminputlabel">Czas <span style="color:red">*</span></span>
+  <span class="dbminputlabel">Time <span style="color:red">*</span></span>
   <input id="time" class="round" placeholder="Type: np 1d/1m/1s" type="text">
 
   <br>
 
-  <span class="dbminputlabel">Wygrani <span style="color:red">*</span></span>
+  <span class="dbminputlabel">Winners <span style="color:red">*</span></span>
   <input id="winners" class="round" type="text">
   
   <br>
