@@ -62,8 +62,9 @@ module.exports = {
       return `
       <div>
       <p>
-          <u>Mod Info:</u><br>
-          Created by money#6283<br>
+        <u>Mod Info:</u><br>
+        Created by money#6283<br>
+        Help: discord.gg/ae8hgMDxDc
       </p>
   </div>
     <div style="float: left; width: calc(60% - 12px);">

@@ -63,8 +63,9 @@ module.exports = {
       <div>
       <p>
           <u>Mod Info:</u><br>
-          Created by money#6283
-            Variables:
+          Created by money#6283<br>
+          Help: discord.gg/ae8hgMDxDc
+          Variables:
           <span id="cc" class="dbminputlabel">name, url, author, views, thumbnail, duration</span>
           <span id="cc2" class="dbminputlabel">tracks, name, url, thumbnail</span>
       </p>

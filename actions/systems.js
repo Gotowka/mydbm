@@ -69,9 +69,8 @@ module.exports = {
     <div>
     <p>
       <u>Mod Info:</u><br>
-      Created by money#6283
-      <br>Modules = discord-systems / simply-djs
-      <br>Help = discord.gg/ae8hgMDxDc
+      Created by money#6283<br>
+      Help: discord.gg/ae8hgMDxDc
     </p>
   </div>
 
