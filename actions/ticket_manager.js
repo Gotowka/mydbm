@@ -189,20 +189,16 @@ module.exports = {
 
       <tab label="Settings" icon="cogs">
         <div style="padding: 8px;">
-          <hr class="subtlebar" style="margin-top: 4px; margin-bottom: 4px;">
-    
-          <br><br>
-    
           <div style="padding-bottom: 12px; float: left; width: calc(30% - 12px);">
           <span class="dbminputlabel">Limit</span><br>
           <select id="limit" class="round">
                 <option value="0">1</option>
                 <option value="1">Unlimited</option>
           </select>
-          <br><br>
+          <br>
           <span class="dbminputlabel">Ticket-Role ID</span><br>
           <input id="role" class="round" placeholder="Leave blank to  none" type="text">
-          <br><br>
+          <br>
           <store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName"></store-in-variable>
           </div>
         </div>
