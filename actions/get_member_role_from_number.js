@@ -82,24 +82,8 @@ module.exports = {
   `;
     },
   
-    //---------------------------------------------------------------------
-    // Action Editor Init Code
-    //
-    // When the HTML is first applied to the action editor, this code
-    // is also run. This helps add modifications or setup reactionary
-    // functions for the DOM elements.
-    //---------------------------------------------------------------------
-  
     init() {},
-  
-    //---------------------------------------------------------------------
-    // Action Bot Function
-    //
-    // This is the function for the action within the Bot's Action class.
-    // Keep in mind event calls won't have access to the "msg" parameter,
-    // so be sure to provide checks for variable existence.
-    //---------------------------------------------------------------------
-  
+
     async action(cache) {
       const data = cache.actions[cache.index];
       const member = await this.getMemberFromData(data.member, data.varName, cache);
@@ -115,15 +99,7 @@ module.exports = {
       this.storeValue(role, storage, varName2, cache);
       this.callNextAction(cache);
     },
-    //---------------------------------------------------------------------
-    // Action Bot Mod
-    //
-    // Upon initialization of the bot, this code is run. Using the bot's
-    // DBM namespace, one can add/modify existing functions if necessary.
-    // In order to reduce conflicts between mods, be sure to alias
-    // functions you wish to overwrite.
-    //---------------------------------------------------------------------
-  
+    
     mod() {},
   };
   

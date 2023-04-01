@@ -85,32 +85,16 @@ module.exports = {
   `;
     },
   
-    //---------------------------------------------------------------------
-    // Action Editor Init Code
-    //
-    // When the HTML is first applied to the action editor, this code
-    // is also run. This helps add modifications or setup reactionary
-    // functions for the DOM elements.
-    //---------------------------------------------------------------------
-  
     init() {},
-  
-    //---------------------------------------------------------------------
-    // Action Bot Function
-    //
-    // This is the function for the action within the Bot's Action class.
-    // Keep in mind event calls won't have access to the "msg" parameter,
-    // so be sure to provide checks for variable existence.
-    //---------------------------------------------------------------------
   
     async action(cache) {
       const data = cache.actions[cache.index]
-    const end = Date.parse(new Date(new Date().getTime())) / 1000;
-    const storage = parseInt(data.storage);
-    const varName2 = this.evalMessage(data.varName2, cache);
-    this.storeValue(end, storage, varName2, cache);
-    this.callNextAction(cache);
-  },
+      const end = Date.parse(new Date(new Date().getTime())) / 1000;
+      const storage = parseInt(data.storage);
+      const varName2 = this.evalMessage(data.varName2, cache);
+      this.storeValue(end, storage, varName2, cache);
+      this.callNextAction(cache);
+    },
   
   
     mod() {},

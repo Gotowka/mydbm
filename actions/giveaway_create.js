@@ -1,63 +1,17 @@
 module.exports = {
-  //---------------------------------------------------------------------
-  // Action Name
-  //
-  // This is the name of the action displayed in the editor.
-  //---------------------------------------------------------------------
-
+  
   name: "Giveaway Create",
 
-  //---------------------------------------------------------------------
-  // Action Section
-  //
-  // This is the section the action will fall into.
-  //---------------------------------------------------------------------
-
   section: "Discord",
-
-  //---------------------------------------------------------------------
-  // Action Subtitle
-  //
-  // This function generates the subtitle displayed next to the name.
-  //---------------------------------------------------------------------
 
   subtitle(data, presets) {
     const presa = data.nagroda
     return `Giveaway creator: ${presa}`;
   },
 
-  //---------------------------------------------------------------------
-  // Action Meta Data
-  //
-  // Helps check for updates and provides info if a custom mod.
-  // If this is a third-party mod, please set "author" and "authorUrl".
-  //
-  // It's highly recommended "preciseCheck" is set to false for third-party mods.
-  // This will make it so the patch version (0.0.X) is not checked.
-  //---------------------------------------------------------------------
-
   meta: { version: "2.1.6", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/actions/giveaway_create.js' },
 
-  //---------------------------------------------------------------------
-  // Action Fields
-  //
-  // These are the fields for the action. These fields are customized
-  // by creating elements with corresponding IDs in the HTML. These
-  // are also the names of the fields stored in the action's JSON data.
-  //---------------------------------------------------------------------
-
   fields: ["title", "description", "color", "footertext", "footericon", "info", "time", "type", "nagroda", "find"],
-
-  //---------------------------------------------------------------------
-  // Command HTML
-  //
-  // This function returns a string containing the HTML used for
-  // editing actions.
-  //
-  // The "isEvent" parameter will be true if this action is being used
-  // for an event. Due to their nature, events lack certain information,
-  // so edit the HTML to reflect this.
-  //---------------------------------------------------------------------
 
   html(isEvent, data) {
     return `
