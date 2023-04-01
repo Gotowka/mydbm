@@ -15,7 +15,7 @@ module.exports = {
         return [data.varName2, dataType];
       },
   
-    meta: { version: "2.1.6", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/actions/guild_bans_list.js' },
+    meta: { version: "2.1.7", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/actions/guild_bans_list.js' },
   
     fields: ["guild", "list", "storage", "varName2"],
   

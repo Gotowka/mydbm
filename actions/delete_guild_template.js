@@ -8,7 +8,7 @@ module.exports = {
       return `Delete the guild template`;
     },
   
-    meta: { version: "2.1.6", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/actions/delete_guild_template.js' },
+    meta: { version: "2.1.7", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/actions/delete_guild_template.js' },
     
     fields: ["server", "varName"],
   
