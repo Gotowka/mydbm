@@ -20,26 +20,6 @@ Please use "Project > Module Manager" and "Project > Reinstall Node Modules" to 
 }
 
 const noop = () => void 0;
-
-const { Client, Intents } = require("discord.js")
-const client = new Client({ intents: [
-	Intents.FLAGS.GUILDS,
-	Intents.FLAGS.GUILD_MESSAGES,
-	Intents.FLAGS.GUILD_MEMBERS,
-	Intents.FLAGS.GUILD_VOICE_STATES,
-], partials: [
-	"MESSAGE",
-	"CHANNEL",
-	"GUILD_MEMBER",
-]});
-const { Player } = require("discord-player");
-const test = new Player(client, {
-   ytdlOptions: {
-     quality: "highestaudio",
-     highWaterMark: 1 << 25
-   }
-})
-module.exports.musicPlayer = test
 module.exports.Money = '1.0.1'
 
 
