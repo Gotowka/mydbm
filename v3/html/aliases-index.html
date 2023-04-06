@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<link rel="stylesheet" type="text/css" href="../style/semantic/dist/semantic.css">
+	<head>
+		<meta charset="UTF-8">
+		<title>Command Aliases</title>
+	</head>
+	<body>
+		<div style="padding: 16px;">
+			<dialog-list noInputContexts id="aliases" fields='["name"]' dialogTitle="Command Alias" dialogWidth="360" dialogHeight="140" listLabel="Aliases" listStyle="height: calc(100vh - 140px);" itemName="Alias" itemHeight="40px;" itemTextFunction="data.name" itemStyle="text-align: center; line-height: 40px;">
+				<div style="padding: 16px;">
+					<input id="name" class="round">
+				</div>
+			</dialog-list>
+		</div>
+		<div class="buttonbar">
+			<div class="buttonbar_internal">
+				<button class="tiny ui labeled icon button" onclick="onSavedClicked()"><i id="savebuttonicon" class="check icon"></i><span id="savebutton">Save Aliases</span></button>
+			</div>
+		</div>
+	</body>
+	<link rel="stylesheet" type="text/css" id="maintheme" href="../../../themes/Default/main.css">
+	<script>
+		if(typeof module === 'object') {
+			window.module = module;
+			module = undefined;
+		}
+	</script>
+	<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../lib/jquery/jquery.blockUI.js"></script>
+	<script type="text/javascript" src="../style/semantic/dist/semantic.min.js"></script>
+	<script type="text/javascript" src="../lib/dbm/Application.js"></script>
+	<script>
+		if(window.module) module = window.module;
+	</script>
+</html>

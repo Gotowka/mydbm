@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="../style/semantic/dist/semantic.css">
+<head>
+	<title>Module Manager</title>
+</head>
+<body>
+	<div class="parameteruicontainer" id="moduleManager" style="margin: 16px;">
+		<div class="modulemanagerlist">
+			<div id="moduleHeader" style="width: calc(100% - 8px); height: calc(100% - 300px)">
+				<table id="mm-table2" class="ui inverted fixed single line celled table">
+					<thead>
+						<tr>
+							<th id="nodeModuleLabel">Node Module</th>
+							<th id="versionLabel" style="width: 35%;">Custom Version</th>
+							<th id="installedLabel" style="width: 12%;">Installed?</th>
+							<th id="deleteLabel" style="width: 12%;">Delete?</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+			<div id="modulesList" style="overflow-y: scroll;">
+				<table id="mm-table" class="ui inverted fixed single line celled table">
+					<tbody id="mm-tbody">
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div>
+			<div style="width: 82%; margin-left: 10px; margin-top: 16px;" class="ui icon input">
+				<input class="forceStyle" style="height: 36px;" id="mm-input" type="text" placeholder="Add module..." onkeydown="globalPreventSpace(event)">
+				<i class="inverted circular plus link icon" onclick="window.addModule()"></i>
+			</div>
+			<button class="tiny ui labeled icon button" style="height: 36px; margin-left: 10px;" onclick="openRawDialog()"><i class="pencil alternate icon"></i><span id="raw_button">RAW</span></button>
+		</div>
+	</div>
+	<div class="bottombar_container">
+		<div style="display: flex; justify-content: center; align-items: center;">
+			<button style="margin-top: 17px;" class="tiny ui labeled icon button" onclick="onModulesSaved()"><i class="download icon"></i><span id="savemodules">Save Modules</span></button>
+		</div>
+	</div>
+</body>
+<script>
+	if(typeof module === 'object') {
+		window.module = module;
+		module = undefined;
+	}
+</script>
+<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../lib/jquery/jquery.blockUI.js"></script>
+<script type="text/javascript" src="../style/semantic/dist/semantic.min.js"></script>
+<link rel="stylesheet" type="text/css" id="maintheme" href="../../../themes/Default/main.css">
+<script type="text/javascript" src="../lib/dbm/Application.js"></script>
+<script>
+	if(window.module) module = window.module;
+</script>
+</html>

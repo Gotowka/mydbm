@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<link rel="stylesheet" type="text/css" href="../style/semantic/dist/semantic.css">
+	<link rel="stylesheet" type="text/css" href="../style//dismoji/emojis.css">
+	<link rel="stylesheet" type="text/css" href="../style/pretty/pretty-checkbox.min.css">
+	<head>
+		<meta charset="UTF-8">
+		<title>Editor Extension</title>
+	</head>
+	<body>
+		<div id="content" style="width: 100%; height: calc(100% - 80px); display: block;">
+		</div>
+		<br>
+		<div class="buttonbar">
+			<div class="buttonbar_internal">
+				<button class="tiny ui labeled icon button" onclick="onSavedClicked()"><i id="savebuttonicon" class="check icon"></i><span id="savebutton"></span></button>
+			</div>
+		</div>
+		<div class="ui modal" id="emojiListContainer">
+			<div id="emojiList"></div>
+		</div>
+	</body>
+	<link rel="stylesheet" type="text/css" id="maintheme" href="../../../themes/Default/main.css">
+	<link rel="stylesheet" type="text/css" id="actionstheme" href="../../../themes/Default/actions.css">
+	<link rel="stylesheet" type="text/css" id="emojistheme" href="../../../themes/Default/emojis.css">
+	<script>
+		if(typeof module === 'object') {
+			window.module = module;
+			module = undefined;
+		}
+	</script>
+	<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../lib/jquery/jquery.blockUI.js"></script>
+	<script type="text/javascript" src="../lib/dismoji/twemoji.min.js"></script>
+	<script type="text/javascript" src="../lib/dismoji/DisMojiPicker.js"></script>
+	<script type="text/javascript" src="../style/semantic/dist/semantic.min.js"></script>
+	<script type="text/javascript" src="../lib/dbm/Application.js"></script>
+	<script>
+		if(window.module) module = window.module;
+	</script>
+</html>

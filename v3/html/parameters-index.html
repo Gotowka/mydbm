@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<link rel="stylesheet" type="text/css" href="../style/semantic/dist/semantic.css">
+	<head>
+		<meta charset="UTF-8">
+		<title>Parameter Editor</title>
+	</head>
+	<body onkeydown="window.deleteSelection(event)">
+	<div id="outsideCompleteContainer">
+		<div style="margin-left: 16px; margin-right: 16px; height: 600px;">
+			<div class="parameterlistcontainer" style="float: left; width: calc(25% + 15px);">
+				<div class="action-holder">
+					<button class="tiny ui labeled icon button" style="width: 185px;" onclick="onCreateParameter()"><i class="plus icon"></i><span id="addnewparameter">Add Parameter</span></button>
+					<br><br>
+					<div class="actionslist" id="myparameters" style="width: 185px; height: 405px;">
+					</div>
+				</div>
+					<div>
+						<button style="margin-top: 17px;" class="tiny ui labeled icon button" onclick="onParametersSaved()"><i class="compress icon"></i><span id="saveparameters">Save Parameters</span></button>
+					</div>
+			</div>
+			<div id="parameter-content" style="margin-left: 240px;">
+				<br>
+				<div class="parameteruicontainer clearfix" style="height: 325px;">
+					<div style="width: 30%; float: left;">
+						<span class="dbminputlabel dbmdropdownlabel" id="paramTypeLabel">Parameter Type</span><br>
+						<select class="ui fluid dropdown" id="type" style="width: 100%;" onchange="myFunction()">
+							<option value="3" id="type_3">Text</option>
+							<option value="4" id="type_4">Number</option>
+							<option value="10" id="type_10">Decimal Number</option>
+							<option value="5" id="type_5">True or False</option>
+							<option value="6" id="type_6">Discord User</option>
+							<option value="7" id="type_7">Server Channel</option>
+							<option value="8" id="type_8">Server Role</option>
+							<option value="11" id="type_11">Attachment</option>
+						</select>
+					</div>
+					<div style="width: 30%; float: left; margin-left: 5%;">
+						<span class="dbminputlabel dbmdropdownlabel" id="requiredLabel">Parameter Required</span><br>
+						<div style="width: 100%;">
+							<select class="ui fluid dropdown" id="required" onchange="tempSaveData('required', 'required')">
+								<option value="1" id="commandrestrict_none" selected>Yes</option>
+								<option value="0" id="commandrestrict_server">No</option>
+							</select>
+						</div>
+					</div>
+					<div style="width: 30%; float: right;" id="enableChoicesDropdownDiv">
+						<span class="dbminputlabel dbmdropdownlabel" id="choicesLabel">Enable Choices</span><br>
+						<select class="ui fluid dropdown" id="enableChoicesDropdown" style="width: 100%;" onchange="onChoicesEnabledChanged()">
+							<option value="1" id="choices_yes">Yes</option>
+							<option value="0" id="choices_no" selected>No</option>
+						</select>
+					</div>
+					<div style="width: 30%; float: right; display: none" id="enableChoicesDropdownDisabledDiv">
+						<span class="dbminputlabel dbmdropdownlabel" id="choicesLabel">Enable Choices</span><br>
+						<select class="ui fluid dropdown" id="enableChoicesDropdownDisabled" style="width: 100%;">
+							<option value="" disabled selected id="choices_invalid">Choices Invalid</option>
+						</select>
+					</div>
+					<br><br><br><br>
+					<div style="float: left; width: 100%;">
+						<span class="dbminputlabel" id="paramNameLabel">Parameter Name</span><br>
+						<input class="dbm_input" id="name" style="width: 100%; height: 38px;" onkeydown="globalPreventSpace(event)" onkeyup="tempSaveData('name', 'name')" type="text">
+					</div>
+					<br><br><br><br>
+					<div style="float: left; width: 100%;">
+						<span class="dbminputlabel" id="paramDescLabel">Parameter Description</span><br>
+						<input class="dbm_input" id="description" style="width: 100%; height: 38px;" onkeyup="tempSaveData('description', 'description')" type="text">
+					</div>
+				</div>
+				<div id="choicesContainer" style="display: none;">
+					<div class="parameteruicontainer clearfix" style="height: 227px; margin-top: 18px;">
+						<div style="float: left; width: 47.5%">
+							<span class="dbminputlabel" id="choicesListLabel">Parameter Choices</span><br>
+							<div class="dbmlist" style="height: 177px;">
+								<div class="blackwhite" id="choicesList">
+								</div>
+							</div>
+						</div>
+						<div style="float: right; width: 47.5%">
+							<span class="dbminputlabel" id="choiceNameLabel">Choice Name</span><br>
+							<input class="dbm_input" id="choiceName" style="width: 100%; height: 38px;" onkeydown="globalPreventSpace(event)" type="text" maxlength="32">
+							<br>
+							<span class="dbminputlabel" id="choiceValueLabel">Choice Value</span><br>
+							<input class="dbm_input" id="choiceValue" style="width: 100%; height: 38px;" onkeydown="globalPreventSpace(event)" type="text" maxlength="100">
+							<br>
+							<div style="margin-top: 6px; align-items: center; display: flex; justify-content: center;">
+								<button class="tiny ui labeled icon button" onclick="onCreateChoice()"><i class="plus icon"></i><span id="addnewchoice">Add Choice</span></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		</div>
+	</body>
+	<link rel="stylesheet" type="text/css" id="maintheme" href="../../../themes/Default/main.css">
+	<script>
+		if(typeof module === 'object') {
+			window.module = module;
+			module = undefined;
+		}
+	</script> 
+	<script>
+		const type = document.getElementById("type")
+		const ch1 = document.getElementById('enableChoicesDropdownDiv')
+    	const ch2 = document.getElementById('enableChoicesDropdownDisabledDiv')
+    	const ch3 = document.getElementById('choicesContainer')
+    	const ch4 = document.getElementById('enableChoicesDropdown')
+    	if (type.value !== '3' & type.value !== '4' & type.value !== '10') {
+    	    ch2.style.display = 'block'
+    	    ch3.style.display = 'none'
+    	    ch1.style.display = 'none'
+    	} else {
+    	    ch2.style.display = 'none'
+    	    ch1.style.display = 'block'
+    	    if (ch4.value === '1') ch3.style.display = 'block'
+    	}
+	function myFunction() {
+		const type = document.getElementById("type")
+    	tempSaveData('type', 'type')
+    	const ch1 = document.getElementById('enableChoicesDropdownDiv')
+    	const ch2 = document.getElementById('enableChoicesDropdownDisabledDiv')
+    	const ch3 = document.getElementById('choicesContainer')
+    	const ch4 = document.getElementById('enableChoicesDropdown')
+    	if (type.value !== '3' & type.value !== '4' & type.value !== '10') {
+    	    ch2.style.display = 'block'
+    	    ch3.style.display = 'none'
+    	    ch1.style.display = 'none'
+    	} else {
+    	    ch2.style.display = 'none'
+    	    ch1.style.display = 'block'
+    	    if (ch4.value === '1') ch3.style.display = 'block'
+    	}
+	}
+	</script>
+	<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../style/semantic/dist/semantic.min.js"></script>
+	<script type="text/javascript" src="../lib/dbm/Application.js"></script>
+	<script>
+		if(window.module) module = window.module;
+
+		jQuery(document).ready(function() {
+			jQuery('#required').dropdown();
+			jQuery("#enableChoicesDropdown").dropdown();
+			jQuery("#enableChoicesDropdownDisabled").dropdown();
+			jQuery("#choicesDropdown").dropdown();
+		});
+	</script>
+</html>
