@@ -602,6 +602,7 @@ Bot.validateSlashCommandParameters = function (parameters, commandName) {
         paramsData.name = name;
         paramsData.description = this.validateSlashCommandDescription(paramsData.description);
         paramsData.type = parseInt(paramsData.type)
+        paramsData.choices?.map(p => p.type = 3)
         if (paramsData.required) {
           requireParams.push(paramsData);
         } else {
