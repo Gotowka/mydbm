@@ -1,4 +1,24 @@
-# MYDBM
+# 14.8.0 [v3]
+
+**Actions:**
+
+- [Play Music](https://github.com/Gotowka/mydbm/blob/main/v3/actions/play_all.js)
+
+- [Loop](https://github.com/Gotowka/mydbm/blob/main/v3/actions/loop.js)
+
+- [Queue](https://github.com/Gotowka/mydbm/blob/main/v3/actions/queue.js)
+
+- [Pause](https://github.com/Gotowka/mydbm/blob/main/v3/actions/queue.js)
+
+- [Send Message](https://github.com/Gotowka/mydbm/blob/main/v3/actions/send_message.js)
+
+- [Show Modal](https://github.com/Gotowka/mydbm/blob/main/v3/actions/show_modal.js)
+
+- [Automod Create](https://github.com/Gotowka/mydbm/blob/main/v3/actions/automod_create.js)
+
+- [Automod Delete](https://github.com/Gotowka/mydbm/blob/main/v3/actions/automod_delete.js)
+
+# 13.14.0 [v2]
 
 **Events:**
 
