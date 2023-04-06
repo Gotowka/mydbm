@@ -35,7 +35,7 @@ module.exports = {
   // This will make it so the patch version (0.0.X) is not checked.
   //---------------------------------------------------------------------
 
-  meta: { version: "3.0.0", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/actions/play_all.js' },
+  meta: { version: "3.0.0", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/v3/actions/play_all.js' },
 
   //---------------------------------------------------------------------
   // Action Fields
@@ -99,9 +99,9 @@ module.exports = {
     const { musicPlayer, djsV } = require('../bot')
     const { interaction, msg } = cache
     const { version } = require("discord-player");
-    if (!musicPlayer) console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/main/v14/bot.js')
-    if (!djsV) console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/main/v14/bot.js')
-    if (version !== '6.0.0') console.error('Change version module, npm i discord-player@6.0.0')
+    if (!musicPlayer) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/main/v14/bot.js');
+    if (!djsV) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/main/v14/bot.js');
+    if (version !== '6.0.0') return console.error('Change version module, npm i discord-player@6.0.0');
     const channel = (interaction ?? msg).member.voice.channel
     const url = this.evalMessage(data.url, cache)
     if (url.includes('playlist')) {
