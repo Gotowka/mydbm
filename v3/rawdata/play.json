@@ -1,0 +1,156 @@
+{
+    "name": "play",
+    "permissions": "NONE",
+    "permissions2": "NONE",
+    "restriction": "1",
+    "_id": "xCIOI",
+    "actions": [
+      {
+        "url": "${slashParams(\"music\")}",
+        "name": "Play Music"
+      },
+      {
+        "storage": "1",
+        "varName": "error",
+        "branches": [
+          {
+            "comparison": "1",
+            "value": "'voice'",
+            "actions": [
+              {
+                "channel": "0",
+                "varName": "",
+                "message": "Join the voice channel to use this command!",
+                "buttons": [],
+                "selectMenus": [],
+                "attachments": [],
+                "embeds": [],
+                "reply": true,
+                "ephemeral": true,
+                "tts": false,
+                "overwrite": false,
+                "mention": false,
+                "dontSend": false,
+                "editMessage": "0",
+                "editMessageVarName": "",
+                "storage": "0",
+                "varName2": "",
+                "name": "Send Message"
+              }
+            ]
+          },
+          {
+            "comparison": "1",
+            "value": "'playlist'",
+            "actions": [
+              {
+                "channel": "0",
+                "varName": "",
+                "message": "I can't play playlist!",
+                "buttons": [],
+                "selectMenus": [],
+                "attachments": [],
+                "embeds": [],
+                "reply": true,
+                "ephemeral": true,
+                "tts": false,
+                "overwrite": false,
+                "mention": false,
+                "dontSend": false,
+                "editMessage": "0",
+                "editMessageVarName": "",
+                "storage": "0",
+                "varName2": "",
+                "name": "Send Message"
+              }
+            ]
+          },
+          {
+            "comparison": "1",
+            "value": "'notfound'",
+            "actions": [
+              {
+                "channel": "0",
+                "varName": "",
+                "message": "I can't found this music!",
+                "buttons": [],
+                "selectMenus": [],
+                "attachments": [],
+                "embeds": [],
+                "reply": true,
+                "ephemeral": true,
+                "tts": false,
+                "overwrite": false,
+                "mention": false,
+                "dontSend": false,
+                "editMessage": "0",
+                "editMessageVarName": "",
+                "storage": "0",
+                "varName2": "",
+                "name": "Send Message"
+              }
+            ]
+          }
+        ],
+        "name": "Multi-Check Variable"
+      },
+      {
+        "storage": "1",
+        "varName": "name",
+        "comparison": "0",
+        "value": "",
+        "branch": {
+          "iftrue": "0",
+          "iffalse": "1"
+        },
+        "name": "Check Variable"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "",
+        "buttons": [],
+        "selectMenus": [],
+        "attachments": [],
+        "embeds": [
+          {
+            "title": "${tempVars(\"author\")}",
+            "url": "",
+            "color": "",
+            "timestamp": "true",
+            "imageUrl": "",
+            "thumbUrl": "",
+            "description": "I playing current [${tempVars(\"name\")}](${tempVars(\"url\")})",
+            "fields": [],
+            "author": "",
+            "authorUrl": "",
+            "authorIcon": "",
+            "footerText": "Duration: ${tempVars(\"duration\")}",
+            "footerIconUrl": ""
+          }
+        ],
+        "reply": true,
+        "ephemeral": false,
+        "tts": false,
+        "overwrite": false,
+        "mention": false,
+        "dontSend": false,
+        "editMessage": "0",
+        "editMessageVarName": "",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      }
+    ],
+    "comType": "1",
+    "description": "Play music",
+    "parameters": [
+      {
+        "name": "music",
+        "description": "Title or url for music",
+        "type": "3",
+        "required": true,
+        "choices": null
+      }
+    ]
+  }
