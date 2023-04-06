@@ -1,6 +1,6 @@
 /******************************************************
  * Discord Bot Maker Bot
- * Version 2.1.7
+ * Version 3.0.0
  * Robert Borghese
  ******************************************************/
 
@@ -498,7 +498,7 @@ Bot.createApiJsonFromCommand = function (com, name) {
 };
 
 Bot.mergeSubCommandIntoCommandData = function (names, data) {
-  data.type = "SUB_COMMAND";
+  data.type = 1;
 
   const baseName = names[0];
   let baseCommand = this.applicationCommandData.find(data => data.name === baseName) ?? null;
@@ -531,11 +531,11 @@ Bot.mergeSubCommandIntoCommandData = function (names, data) {
       baseGroup = {
         name: groupName,
         description: this.getNoDescriptionText(),
-        type: "SUB_COMMAND_GROUP",
+        type: 2,
         options: [],
       }
       baseCommand.options.push(baseGroup);
-    } else if (baseGroup.type === "SUB_COMMAND") {
+    } else if (baseGroup.type === 1) {
       PrintError(MsgType.SUB_COMMAND_ALREADY_EXISTS, names.join(" "), `${names[0]} ${names[1]}`);
       return;
     }
