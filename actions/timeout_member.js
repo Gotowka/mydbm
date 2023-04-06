@@ -14,7 +14,7 @@ module.exports = {
 
   html(isEvent, data) {
     return `
-    <div>
+  <div>
     <p>
         <u>Mod Info:</u><br>
         Created by money#6283<br>
@@ -27,7 +27,7 @@ module.exports = {
 
 <div style="float: right; width: 50%;">
 <span class="dbminputlabel">Time</span><br>
-<input id="time" class="round" placeholder="Type: np 1d/1m/1s" type="text">
+<input id="time" class="round" placeholder="Type: np 1s/1m/1h/1d" type="text">
 </div><br><br><br>
 
 <div style="padding-top: 16px;">
@@ -41,24 +41,25 @@ module.exports = {
   async action(cache) {
     const data = cache.actions[cache.index];
     const member = await this.getMemberFromData(data.member, data.varName, cache);
+    
     let duration = this.evalMessage(data.time, cache)
 
     if (duration.includes("s")) {
-        duration = duration.split("s")[0] * 1000;
+        duration = duration.split("s")[0] * 1e3;
     } else if (duration.includes("m")) {
-        duration = duration.split("m")[0] * 60000;
+        duration = duration.split("m")[0] * 1e3 * 60;
     } else if (duration.includes("h")) {
-        duration = duration.split("h")[0] * 3600000;
+        duration = duration.split("h")[0] * 1e3 * 60 * 60;
     } else if (duration.includes("d")) {
-        duration = duration.split("d")[0] * 86400000;
+        duration = duration.split("d")[0] * 1e3 * 60 * 60 * 60;
     } else {
-        duration = duration * 1000;
+        duration = 5 * 1e3;
     };
+    duration = new Date() + duration
     const endTimeout = Date.parse(new Date(new Date().getTime() + duration)) / 1000;
     const reason = this.evalMessage(data.reason, cache);
-
-    if (member?.timeout) {
-      member.timeout(duration, reason)
+    if (member?.disableCommunicationUntil) {
+      member.disableCommunicationUntil(duration, reason)
         .then(() => {
           const endtime = `<t:${endTimeout}:R>`
           this.storeValue(endtime, 1, 'endtime', cache)
