@@ -10,7 +10,7 @@ module.exports = {
 
   meta: { version: "3.0.0", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/v3/actions/automod_create.js' },
   
-  fields: ["autoName", "autoType", "autoAction", "textTime", "autoTime"],
+  fields: ["autoName", "autoType", "autoAction", "channel", "storage", "varName"],
 
   html(isEvent, data) {
     return `
@@ -35,24 +35,22 @@ module.exports = {
 <span class="dbminputlabel">Action</span><br>
 <select id="autoAction" class="round" onchange="glob.changeType(this)">
   <option value="delete">BlockMessage</options>
-  <option value="timeout">TimeoutMember</options>
-</select><br>
-<span id="textTime" style="display: none;" class="dbminputlabel">Time</span><br>
-<input id="autoTime" style="display: none;" class="round" placeholder="Timeout in seconds" type="text">
+  <option value="alert">SendAlert</options>
+</select><br><br>
+</div>
+<div id="channel" style="padding-top: 8px;">
+  <channel-input dropdownLabel="Source Channel" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></channel-input>
 </div>`;
 },
 
   init() {
       const { document, glob } = this;
       glob.changeType = function(select) {
-          const timeDoc = document.getElementById('autoTime')
-          const timeText = document.getElementById('textTime')
-          if (select.value === 'timeout') {
-              timeDoc.style.display = null
-              timeText.style.display = null
+          const ch = document.getElementById('channel')
+          if (select.value === 'alert') {
+              ch.style.display = null
           } else {
-              timeDoc.style.display = 'none'
-              timeText.style.display = 'none'
+              ch.style.display = 'none'
           }
       }
   },
@@ -67,10 +65,10 @@ module.exports = {
     }
     const settings = {};
     const name = this.evalMessage(data.autoName, cache);
+    if (!name) return console.error('You must give the name!');
     const type = data.autoType;
     const action = data.autoAction;
-    const time = this.evalMessage(data.autoTime, cache);
-
+    const targetChannel = await this.getChannelFromData(data.storage, data.varName, cache);
     switch(type) {
       case "spam":
         settings.triggerType = 3
@@ -81,13 +79,11 @@ module.exports = {
       case "delete":
         settings.actions = [{ type: 1 }]
         break;
-      case "timeout":
-        settings.actions = [{ type: 3, metadata: { durationSeconds: parseInt(time) } }]
+      case "alert":
+        settings.actions = [{ type: 2, metadata: { channel: targetChannel } }]
         break;
     }
     
-    if (!name) return console.error('You must give the name!');
-    if (action === 'timeout' && !time) return console.error('You must give the time!');
 
     settings.name = name;
     settings.eventType = 1;
