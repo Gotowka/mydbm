@@ -52,7 +52,6 @@ const music = new Player(client, {
    }
 })
 module.exports.musicPlayer = music
-module.exports.Money = '1.0.1'
 module.exports.djsV = '14.9.0'
 
 const MsgType = {
