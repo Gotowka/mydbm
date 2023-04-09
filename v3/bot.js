@@ -9,7 +9,7 @@ DBM.version = "3.0.0";
 
 const DiscordJS = (DBM.DiscordJS = require("discord.js"));
 
-const requiredDjsVersion = "14.8.0";
+const requiredDjsVersion = "14.9.0";
 if (requiredDjsVersion.localeCompare(DiscordJS.version, { numeric: true, sensitivity: "base" }) > 0) {
   console.log(
     `This version of Discord Bot Maker requires discord.js ${requiredDjsVersion}+.
@@ -53,7 +53,7 @@ const music = new Player(client, {
 })
 module.exports.musicPlayer = music
 module.exports.Money = '1.0.1'
-module.exports.djsV = '14.8.0'
+module.exports.djsV = '14.9.0'
 
 const MsgType = {
   MISSING_ACTION: 0,
