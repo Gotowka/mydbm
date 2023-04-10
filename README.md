@@ -18,6 +18,14 @@
 
 - [Automod Delete](https://github.com/Gotowka/mydbm/blob/main/v3/actions/automod_delete.js)
 
+- [Set Member Channel Perms](https://github.com/Gotowka/mydbm/blob/main/v3/actions/set_member_channel_perms.js)
+
+- [Check Role Permissions](https://github.com/Gotowka/mydbm/blob/main/v3/actions/check_role_permissions.js)
+
+- [Check Member Permissions](https://github.com/Gotowka/mydbm/blob/main/v3/actions/check_member_permissions.js)
+
+- [Create Channel](https://github.com/Gotowka/mydbm/blob/main/v3/actions/create_channel.js)
+
 # 13.14.0 [v2]
 
 **Events:**
