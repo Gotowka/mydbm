@@ -10,6 +10,10 @@
 
 - [Pause](https://github.com/Gotowka/mydbm/blob/main/v3/actions/queue.js)
 
+- [Skip](https://github.com/Gotowka/mydbm/blob/main/v3/actions/skip.js)
+
+- [Store Song Info](https://github.com/Gotowka/mydbm/blob/main/v3/actions/store_song_info.js)
+
 - [Send Message](https://github.com/Gotowka/mydbm/blob/main/v3/actions/send_message.js)
 
 - [Show Modal](https://github.com/Gotowka/mydbm/blob/main/v3/actions/show_modal.js)
