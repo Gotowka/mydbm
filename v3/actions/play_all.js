@@ -114,24 +114,43 @@ module.exports = {
       this.callNextAction(cache);
       return;
     }
-    const ms = await musicPlayer.play(channel, url, {
-      nodeOptions: {
-        metadata: interaction ?? msg
-      }
-    }).catch(er => {
+    let queue = musicPlayer.queues.cache.get((interaction ?? msg).guild.id)
+    const tracks = await musicPlayer.search(url, {
+      fallbackSearchEngine: 'auto',
+      requestedBy: (interaction ?? msg).member.user
+    })
+
+    if (!tracks.tracks) {
       this.storeValue('notfound', 1, 'error', cache)
       this.callNextAction(cache);
       return;
+    }
+
+    if (!queue) {
+      queue = musicPlayer.queues.create((interaction ?? msg).guild, {
+        selfDeaf: true,
+        leaveOnEnd: true
+      })
+    } else queue.addTrack(tracks.tracks[0])
+
+    queue.connect(channel, {
+      deaf: true,
+      timeout: 10000,
     })
 
-    if (!ms) return;
+    await musicPlayer.play(channel, tracks.tracks[0], {
+      nodeOptions: {
+        metadata: interaction ?? msg
+      },
+      deaf: true
+    })
 
-    this.storeValue(ms.track.title, 1, 'name', cache);
-    this.storeValue(ms.track.url, 1, 'url', cache);
-    this.storeValue(ms.track.author, 1, 'author', cache);
-    this.storeValue(ms.track.views, 1, 'views', cache);
-    this.storeValue(ms.track.thumbnail, 1, 'thumbnail', cache);
-    this.storeValue(ms.track.duration, 1, 'duration', cache);
+    this.storeValue(tracks.tracks[0].title, 1, 'name', cache);
+    this.storeValue(tracks.tracks[0].url, 1, 'url', cache);
+    this.storeValue(tracks.tracks[0].author, 1, 'author', cache);
+    this.storeValue(tracks.tracks[0].views, 1, 'views', cache);
+    this.storeValue(tracks.tracks[0].thumbnail, 1, 'thumbnail', cache);
+    this.storeValue(tracks.tracks[0].duration, 1, 'duration', cache);
     this.callNextAction(cache);
   },
 
