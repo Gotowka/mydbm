@@ -156,7 +156,7 @@ Jump to Action:<br>
                         .setDisabled(true)
                         .setLabel(this.evalMessage(data.label, cache).replace('[users]', users))
                     )
-                    await message.edit({ components: [button]})
+                    await message.edit({ components: [button] })
                     const val = parseInt(this.evalMessage(data.call, cache), 10);
                     const index = Math.max(val - 1, 0);
                     if (cache.actions[index]) {
@@ -165,6 +165,19 @@ Jump to Action:<br>
                     }
                     fs.writeFileSync("./data/giveaways.json", JSON.stringify(giveaways));
                 } else if (new Date().getTime() > giveaways[giveawayid][i].end + 1000 * 10 && giveaways[giveawayid][i].ended == true) {
+                    let winner2 = [];
+    
+                    if (giveaways[giveawayid][i].members.length > 0) {
+                        while(winner2.length < giveaways[giveawayid][i].winners && winner2.length < giveaways[giveawayid][i].members.length){
+                            for (o = 0; o < giveaways[giveawayid][i].winners; o++) {
+                                let winnerr = giveaways[giveawayid][i].members[Math.floor(Math.random() * giveaways[giveawayid][i].members.length)]
+    
+                                if (!winner2.includes(winnerr)) {
+                                    winner2.push(winnerr);
+                                };
+                            };
+                        };
+                    };
                     const messageid = giveaways[giveawayid][i].msg
                     const channelid = giveaways[giveawayid][i].channel
                     const guildid = giveaways[giveawayid][i].guild
@@ -181,7 +194,7 @@ Jump to Action:<br>
                     this.storeValue(hoster, 1, 'hoster', cache)
                     this.storeValue(message, 1, 'message', cache)
                     this.storeValue(users, 1, 'users', cache)
-                    this.storeValue(`<@!${winner.join(">, <@!")}>`, 1, 'winner', cache)
+                    this.storeValue(`<@!${winner2.join(">, <@!")}>`, 1, 'winner', cache)
                     const button = new MessageActionRow().addComponents(
                         new MessageButton()
                         .setCustomId('gend')
@@ -189,7 +202,7 @@ Jump to Action:<br>
                         .setDisabled(true)
                         .setLabel(this.evalMessage(data.label, cache).replace('[users]', users))
                     )
-                    message.edit({ components: [button]})
+                    await message.edit({ components: [button] })
                     const val = parseInt(this.evalMessage(data.call, cache), 10);
                     const index = Math.max(val - 1, 0);
                     if (cache.actions[index]) {
