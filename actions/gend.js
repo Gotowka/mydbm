@@ -157,8 +157,14 @@ Jump to Action:<br>
                         .setLabel(this.evalMessage(data.label, cache).replace('[users]', users))
                     )
                     await message.edit({ components: [button]})
+                    const val = parseInt(this.evalMessage(data.call, cache), 10);
+                    const index = Math.max(val - 1, 0);
+                    if (cache.actions[index]) {
+                      cache.index = index - 1;
+                      this.callNextAction(cache);
+                    }
+                    fs.writeFileSync("./data/giveaways.json", JSON.stringify(giveaways));
                 } else if (new Date().getTime() > giveaways[giveawayid][i].end + 1000 * 10 && giveaways[giveawayid][i].ended == true) {
-                    giveaways[giveawayid].splice(i, 1);
                     const messageid = giveaways[giveawayid][i].msg
                     const channelid = giveaways[giveawayid][i].channel
                     const guildid = giveaways[giveawayid][i].guild
