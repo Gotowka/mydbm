@@ -36,7 +36,7 @@ module.exports = {
       <p>
           <u>Mod Info:</u><br>
           Created by money#6283<br>
-          Help: discord.gg/ae8hgMDxDc
+          Help: https://discord.gg/apUVFy7SUh
       </p>
   </div><br>
   <store-in-variable dropdownLabel="Store Current Song In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName"></store-in-variable>`;

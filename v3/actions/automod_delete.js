@@ -18,7 +18,7 @@ module.exports = {
       <p>
           <u>Mod Info:</u><br>
           Created by money#6283<br>
-          Help = discord.gg/ae8hgMDxDc<br>
+          Help = https://discord.gg/apUVFy7SUh<br>
           Variables:(var error is required to use)<br>
           <span class="dbminputlabel">error('disabled', 'delete')</span>
       </p>

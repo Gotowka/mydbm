@@ -64,7 +64,7 @@ module.exports = {
     <p>
         <u>Mod Info:</u><br>
         Created by money#6283<br>
-        Help: discord.gg/ae8hgMDxDc
+        Help: https://discord.gg/apUVFy7SUh
         Playlist are disabled!<br>
         Variables:(var error is required to use)<br>
         <span id="variables" class="dbminputlabel">name, url, author, views, thumbnail, duration, error('playlist', 'voice', 'notfound')</span>

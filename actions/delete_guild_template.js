@@ -18,7 +18,7 @@ module.exports = {
       <p>
         <u>Mod Info:</u><br>
         Created by money#6283<br>
-        Help: discord.gg/ae8hgMDxDc
+        Help: https://discord.gg/apUVFy7SUh
       </p>
   </div><br>
   <server-input dropdownLabel="Source Server" selectId="server" variableContainerId="varNameContainer" variableInputId="varName"></server-input>`;

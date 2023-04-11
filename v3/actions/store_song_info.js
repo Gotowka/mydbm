@@ -106,7 +106,7 @@ module.exports = {
         <p>
             <u>Mod Info:</u><br>
             Created by money#6283<br>
-            Help: discord.gg/ae8hgMDxDc<br>
+            Help: https://discord.gg/apUVFy7SUh<br>
         </p>
         </div><br>
         <div style="float: left; width: calc(50% - 12px);">
