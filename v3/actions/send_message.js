@@ -866,7 +866,7 @@ module.exports = {
         if (cache.interaction.deferred) {
           promise = cache.interaction.editReply(messageOptions);
         } else {
-          promise = cache.interaction.reply(messageOptions);
+          promise = cache.interaction.followUp(messageOptions);
         }
         promise.then(onComplete).catch((err) => this.displayError(data, cache, err));
       }
