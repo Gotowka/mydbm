@@ -12,6 +12,8 @@
 
 - [Skip](https://github.com/Gotowka/mydbm/blob/main/v3/actions/skip.js)
 
+- [Stop](https://github.com/Gotowka/mydbm/blob/main/v3/actions/stop.js)
+
 - [Store Song Info](https://github.com/Gotowka/mydbm/blob/main/v3/actions/store_song_info.js)
 
 - [Send Message](https://github.com/Gotowka/mydbm/blob/main/v3/actions/send_message.js)
@@ -28,7 +30,11 @@
 
 - [Check Member Permissions](https://github.com/Gotowka/mydbm/blob/main/v3/actions/check_member_permissions.js)
 
+- [Set Bot Activity](https://github.com/Gotowka/mydbm/blob/main/v3/actions/set_bot_activity_MOD.js)
+
 - [Create Channel](https://github.com/Gotowka/mydbm/blob/main/v3/actions/create_channel.js)
+
+- [Games](https://github.com/Gotowka/mydbm/blob/main/v3/actions/games.js)
 
 # 13.14.0 [v2]
 
