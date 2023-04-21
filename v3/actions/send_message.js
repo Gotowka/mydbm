@@ -719,8 +719,8 @@ module.exports = {
           }
           let Soptions = []
   
-          for (let a = 0; i < data.selectMenus[i].options.length; i++) {
-            const op = data.selectMenus[i].options[a]
+          for (let a = 0; i < select.options.length; i++) {
+            const op = select.options[a]
             Soptions.push({
                 label: op.label,
                 description: op.description,
