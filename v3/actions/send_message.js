@@ -692,6 +692,8 @@ module.exports = {
           .setCustomId(button.id)
           .setStyle(button.type)
           .setLabel(button.name)
+
+          if (button.emoji) bt.setEmoji(button.emoji)
           
           if (button.type === '5') bt.setURL(button.url)
   
