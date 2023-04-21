@@ -1,4 +1,4 @@
-# 14.8.0 [v3]
+# 14.9.0 [v3]
 
 **Actions:**
 
@@ -33,6 +33,8 @@
 - [Set Bot Activity](https://github.com/Gotowka/mydbm/blob/main/v3/actions/set_bot_activity_MOD.js)
 
 - [Create Channel](https://github.com/Gotowka/mydbm/blob/main/v3/actions/create_channel.js)
+
+- [Create Embed Message](https://github.com/Gotowka/mydbm/blob/main/v3/actions/create_embed_message.js)
 
 - [Games](https://github.com/Gotowka/mydbm/blob/main/v3/actions/games.js)
 
