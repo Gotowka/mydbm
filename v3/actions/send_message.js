@@ -818,6 +818,7 @@ module.exports = {
       if (data.dontSend) {
         const varName2 = this.evalMessage(data.varName2, cache);
         const storage = parseInt(data.storage, 10);
+        cache.interaction?.deferUpdate()
         messageOptions._awaitResponses = awaitResponses;
         this.storeValue(messageOptions, storage, varName2, cache);
         this.callNextAction(cache);
