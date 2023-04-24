@@ -127,23 +127,13 @@ module.exports = {
     }
 
     if (!queue) {
-      queue = musicPlayer.queues.create((interaction ?? msg).guild, {
-        selfDeaf: true,
-        leaveOnEnd: true
+      await musicPlayer.play(channel, tracks.tracks[0], {
+        nodeOptions: {
+          metadata: interaction ?? msg
+        },
+        deaf: true
       })
     } else queue.addTrack(tracks.tracks[0])
-
-    queue.connect(channel, {
-      deaf: true,
-      timeout: 10000,
-    })
-
-    await musicPlayer.play(channel, tracks.tracks[0], {
-      nodeOptions: {
-        metadata: interaction ?? msg
-      },
-      deaf: true
-    })
 
     this.storeValue(tracks.tracks[0].title, 1, 'name', cache);
     this.storeValue(tracks.tracks[0].url, 1, 'url', cache);
