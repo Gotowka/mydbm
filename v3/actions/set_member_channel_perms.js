@@ -119,11 +119,6 @@ module.exports = {
               <option value="2">Disallow</option>
           </select>
       </div>
-  </div>
-  <br><br><br>
-  <div style="padding-top: 8px;">
-    <span class="dbminputlabel">Reason</span>
-    <input id="reason" placeholder="Optional" class="round" type="text">
   </div>`;
     },
   
@@ -149,7 +144,6 @@ module.exports = {
       const data = cache.actions[cache.index];
       const channel = await this.getChannelFromData(data.channel, data.varName, cache);
       const member = await this.getMemberFromData(data.member, data.varName2, cache);
-      const reason = this.evalMessage(data.reason, cache);
       let disabler
       if (data.state === '0') disabler = true;
       else if (data.state === '1') disabler = false;
