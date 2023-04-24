@@ -32,6 +32,8 @@
 
 - [Set Bot Activity](https://github.com/Gotowka/mydbm/blob/main/v3/actions/set_bot_activity_MOD.js)
 
+- [Create Voice Channel](https://github.com/Gotowka/mydbm/blob/main/v3/actions/create_voice_channel.js)
+
 - [Create Channel](https://github.com/Gotowka/mydbm/blob/main/v3/actions/create_channel.js)
 
 - [Create Embed Message](https://github.com/Gotowka/mydbm/blob/main/v3/actions/create_embed_message.js)
