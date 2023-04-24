@@ -25,7 +25,7 @@ module.exports = {
       return `Skip the music`;
     },
   
-    meta: { version: "3.0.0", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/v3/actions/skip.js' },
+    meta: { version: "3.1.0", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/v3/actions/skip.js' },
   
   
     fields: ["storage", "varName"],

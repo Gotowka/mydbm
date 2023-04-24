@@ -9,7 +9,7 @@ module.exports = {
     return `Starting the game: ${games[data.game]}`;
   },
 
-  meta: { version: "3.0.0", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/v3/actions/games.js' },
+  meta: { version: "3.1.0", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/v3/actions/games.js' },
 
   fields: ["game"],
 

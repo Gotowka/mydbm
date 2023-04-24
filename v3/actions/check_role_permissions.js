@@ -2,7 +2,7 @@ module.exports = {
     name: 'Check Role Permissions',
     section: 'Conditions',
     meta: {
-      version: '3.0.0',
+      version: '3.1.0',
       preciseCheck: false,
       author: 'DBM Mods',
       authorUrl: 'https://github.com/dbm-network/mods',
