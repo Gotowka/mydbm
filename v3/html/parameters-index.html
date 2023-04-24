@@ -24,15 +24,15 @@
 				<div class="parameteruicontainer clearfix" style="height: 325px;">
 					<div style="width: 30%; float: left;">
 						<span class="dbminputlabel dbmdropdownlabel" id="paramTypeLabel">Parameter Type</span><br>
-						<select class="ui fluid dropdown" id="type" style="width: 100%;" onchange="myFunction()">
-							<option value="3" id="type_3">Text</option>
-							<option value="4" id="type_4">Number</option>
-							<option value="10" id="type_10">Decimal Number</option>
-							<option value="5" id="type_5">True or False</option>
-							<option value="6" id="type_6">Discord User</option>
-							<option value="7" id="type_7">Server Channel</option>
-							<option value="8" id="type_8">Server Role</option>
-							<option value="11" id="type_11">Attachment</option>
+						<select class="ui fluid dropdown" id="type" style="width: 100%;" onchange="tempSaveData('type', 'type')">
+							<option value="STRING" id="type_string">Text</option>
+							<option value="INTEGER" id="type_integer">Number</option>
+							<option value="NUMBER" id="type_number">Decimal Number</option>
+							<option value="BOOLEAN" id="type_boolean">True or False</option>
+							<option value="USER" id="type_user">Discord User</option>
+							<option value="CHANNEL" id="type_channel">Server Channel</option>
+							<option value="ROLE" id="type_role">Server Role</option>
+							<option value="ATTACHMENT" id="type_attachment">Attachment</option>
 						</select>
 					</div>
 					<div style="width: 30%; float: left; margin-left: 5%;">
@@ -102,39 +102,6 @@
 			module = undefined;
 		}
 	</script> 
-	<script>
-		const type = document.getElementById("type")
-		const ch1 = document.getElementById('enableChoicesDropdownDiv')
-    	const ch2 = document.getElementById('enableChoicesDropdownDisabledDiv')
-    	const ch3 = document.getElementById('choicesContainer')
-    	const ch4 = document.getElementById('enableChoicesDropdown')
-    	if (type.value !== '3' & type.value !== '4' & type.value !== '10') {
-    	    ch2.style.display = 'block'
-    	    ch3.style.display = 'none'
-    	    ch1.style.display = 'none'
-    	} else {
-    	    ch2.style.display = 'none'
-    	    ch1.style.display = 'block'
-    	    if (ch4.value === '1') ch3.style.display = 'block'
-    	}
-	function myFunction() {
-		const type = document.getElementById("type")
-    	tempSaveData('type', 'type')
-    	const ch1 = document.getElementById('enableChoicesDropdownDiv')
-    	const ch2 = document.getElementById('enableChoicesDropdownDisabledDiv')
-    	const ch3 = document.getElementById('choicesContainer')
-    	const ch4 = document.getElementById('enableChoicesDropdown')
-    	if (type.value !== '3' & type.value !== '4' & type.value !== '10') {
-    	    ch2.style.display = 'block'
-    	    ch3.style.display = 'none'
-    	    ch1.style.display = 'none'
-    	} else {
-    	    ch2.style.display = 'none'
-    	    ch1.style.display = 'block'
-    	    if (ch4.value === '1') ch3.style.display = 'block'
-    	}
-	}
-	</script>
 	<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="../style/semantic/dist/semantic.min.js"></script>
 	<script type="text/javascript" src="../lib/dbm/Application.js"></script>
@@ -143,6 +110,7 @@
 
 		jQuery(document).ready(function() {
 			jQuery('#required').dropdown();
+			jQuery('#type').dropdown();
 			jQuery("#enableChoicesDropdown").dropdown();
 			jQuery("#enableChoicesDropdownDisabled").dropdown();
 			jQuery("#choicesDropdown").dropdown();

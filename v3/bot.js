@@ -1,11 +1,11 @@
 /******************************************************
  * Discord Bot Maker Bot
- * Version 3.0.0
+ * Version 3.1.0
  * Robert Borghese
  ******************************************************/
 
 const DBM = {};
-DBM.version = "3.0.0";
+DBM.version = "3.1.0";
 
 const DiscordJS = (DBM.DiscordJS = require("discord.js"));
 
@@ -378,7 +378,7 @@ Bot.reformatCommands = function () {
     if (com) {
       this.prepareActions(com.actions);
 
-      if(com.comType === "1" || '2' || '3') {
+      if(com.comType === "4" || '5' || '6') {
         this._textCommandCount++;
         if(com.restriction === "7") {
           this._dmTextCommandCount++;
@@ -386,7 +386,7 @@ Bot.reformatCommands = function () {
       }
 
       switch (com.comType) {
-        case "4": {
+        case "0": {
           this._hasTextCommands = true;
           if (this._caseSensitive) {
             this.$cmds[com.name] = com;
@@ -407,19 +407,19 @@ Bot.reformatCommands = function () {
           }
           break;
         }
-        case "5": {
+        case "1": {
           this.$icds.push(com);
           break;
         }
-        case "6": {
+        case "2": {
           this.$regx.push(com);
           break;
         }
-        case "7": {
+        case "3": {
           this.$anym.push(com);
           break;
         }
-        case "1": {
+        case "4": {
           const names = this.validateSlashCommandName(com.name);
           if (names) {
             if (names.length > 3) {
@@ -442,7 +442,7 @@ Bot.reformatCommands = function () {
           }
           break;
         }
-        case "2": {
+        case "5": {
           const name = com.name;
           if (this.$user[name]) {
             PrintError(MsgType.DUPLICATE_USER_COMMAND, name);
@@ -452,7 +452,7 @@ Bot.reformatCommands = function () {
           }
           break;
         }
-        case "3": {
+        case "6": {
           const name = com.name;
           if (this.$msge[name]) {
             PrintError(MsgType.DUPLICATE_MESSAGE_COMMAND, name);
@@ -477,20 +477,20 @@ Bot.createApiJsonFromCommand = function (com, name) {
     description: this.generateSlashCommandDescription(com),
   };
   switch (com.comType) {
-    case "1": {
+    case "4": {
       result.type = 1;
       break;
     }
-    case "2": {
+    case "5": {
       result.type = 2;
       break;
     }
-    case "3": {
+    case "6": {
       result.type = 3;
       break;
     }
   }
-  if (com.comType === "1" && com.parameters && Array.isArray(com.parameters)) {
+  if (com.comType === "4" && com.parameters && Array.isArray(com.parameters)) {
     result.options = this.validateSlashCommandParameters(com.parameters, result.name);
   }
   return result;
@@ -571,7 +571,7 @@ Bot.validateSlashCommandParameterName = function (name) {
 
 Bot.generateSlashCommandDescription = function (com) {
   const desc = com.description;
-  if (com.comType !== "1") {
+  if (com.comType !== "4") {
     return "";
   }
   return this.validateSlashCommandDescription(desc);
@@ -588,6 +588,38 @@ Bot.getNoDescriptionText = function () {
   return Files.data.settings.noDescriptionText ?? "(no description)";
 };
 
+Bot.validateSlashCommandParameterType = function (type) {
+  let resul
+  switch(type) {
+    case "STRING":
+      resul = 3
+      break;
+    case "INTEGER":
+      resul = 4
+      break;
+    case "NUMBER":
+      resul = 10
+      break
+    case "BOOLEAN":
+      resul = 5
+      break;
+    case "USER":
+      resul = 6
+      break
+    case "CHANNEL":
+      resul = 7
+      break;
+    case "ROLE":
+      resul = 8
+      break
+    case "ATTACHMENT":
+      resul = 11
+      break;
+  }
+
+  return resul;
+}
+
 Bot.validateSlashCommandParameters = function (parameters, commandName) {
   const requireParams = [];
   const optionalParams = [];
@@ -600,7 +632,7 @@ Bot.validateSlashCommandParameters = function (parameters, commandName) {
         existingNames[name] = true;
         paramsData.name = name;
         paramsData.description = this.validateSlashCommandDescription(paramsData.description);
-        paramsData.type = parseInt(paramsData.type)
+        paramsData.type = this.validateSlashCommandParameterType(paramsData.type)
         paramsData.choices?.map(p => p.type = 3)
         if (paramsData.required) {
           requireParams.push(paramsData);

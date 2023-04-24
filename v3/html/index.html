@@ -42,20 +42,20 @@
 					<br>
 					<div style="display:block">
 						<div style="float: left; width: calc(100% - max(220px, 50% - 162px) - 174px);">
-							<span class="dbminputlabel" id="comLabell">Command Name</span><br>
+							<span class="dbminputlabel" id="comLabel">Slash Command Name</span><br>
 							<input class="dbm_input" id="name" style="width: 100%; height: 38px;" onkeydown="DBM.preventSpace(event)" onkeyup="DBM.tempSaveData('name')" type="text">
 						</div>
 						<div style="float: left; width: calc(max(220px, 50% - 162px)); padding-left: 25px;">
 							<span class="dbminputlabel dbmdropdownlabel" id="commandtype">Command Type</span><br>
 							<div class="ui right labeled icon input" style="width: 100%;">
 								<select class="ui fluid dropdown" style="width: 60%; float: left;" id="comType" onchange="DBM.tempSaveData('comType')">
-									<option value="1" id="slashcommand">Slash Command</option>
-									<option value="2" id="usercommand">User Menu Command</option>
-									<option value="3" id="messagecommand">Msg. Menu Command</option>
-									<option value="4" id="normalcommand">Text Command</option>
-									<option value="5" id="includesword">Includes Word</option>
-									<option value="6" id="matchesregularexpression">Regular Expression</option>
-									<option value="7" id="anymessage">Any Message</option>
+									<option value="4" id="slashcommand">Slash Command</option>
+									<option value="5" id="usercommand">User Menu Command</option>
+									<option value="6" id="messagecommand">Msg. Menu Command</option>
+									<option value="0" id="normalcommand">Text Command</option>
+									<option value="1" id="includesword">Includes Word</option>
+									<option value="2" id="matchesregularexpression">Regular Expression</option>
+									<option value="3" id="anymessage">Any Message</option>
 								</select>
 								
 							</div>
@@ -90,12 +90,6 @@
 							<select class="ui fluid dropdown" id="permissions" onchange="DBM.tempSaveData('permissions')">
 								<!-- Permissions now managed in "config/Permissions.json" -->
 								<!-- TEMPLATE: <option value="NONE" id="userreq_none">None</option> -->
-							</select>
-							<br>
-							<span class="dbminputlabel dbmdropdownlabel" id="updateslashparam2">Slash params</span><br>
-							<select class="ui fluid dropdown" id="param2" onchange="myFunction()">
-								<option value="0" id="off">Off</option>
-								<option value="1" id="on">On</option>
 							</select>
 						</div>
 						<div style="float: right; width: calc(50% - 13px);" id="secondarypermissionselectorid">
@@ -556,16 +550,6 @@
 			if(typeof module === 'object') {
 				window.module = module;
 				module = undefined;
-			}
-		</script>
-		<script>
-			const cmdType = document.getElementById('comType')
-			cmdType.value = '1'
-			function myFunction() {
-				const doc = document.getElementById('param2')
-				if (doc.value === '1') {
-					document.getElementById('paramsbutton').disabled = false
-				} else document.getElementById('paramsbutton').disabled = true
 			}
 		</script>
 		<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
