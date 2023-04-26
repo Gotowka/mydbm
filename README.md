@@ -1,4 +1,4 @@
-# 14.9.0 [v3]
+# 14.9.0 [v3-3.1.0]
 
 **Actions:**
 
@@ -38,9 +38,11 @@
 
 - [Create Embed Message](https://github.com/Gotowka/mydbm/blob/main/v3/actions/create_embed_message.js)
 
+- [Giveaway END](https://github.com/Gotowka/mydbm/blob/main/v3/actions/gend.js)
+
 - [Games](https://github.com/Gotowka/mydbm/blob/main/v3/actions/games.js)
 
-# 13.14.0 [v2]
+# 13.14.0 [v2-2.7.0]
 
 **Events:**
 
@@ -114,3 +116,5 @@
 - [Guild Bans List](https://github.com/Gotowka/mydbm/blob/main/actions/guild_bans_list.js)
 
 - [Member Role From Number](https://github.com/Gotowka/mydbm/blob/main/actions/get_member_role_from_number.js)
+
+- [Store Voice Channel Info](https://github.com/Gotowka/mydbm/blob/main/actions/store_voice_channel_info.js)
