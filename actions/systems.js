@@ -406,7 +406,6 @@ module.exports = {
     const client = this.getDBM().Bot.bot
     const { levelRank, Tvpis, joinCard, leaveCard } = require('discord-systems')
     const data = cache.actions[cache.index];
-    await client.guilds.fetch()
     const guild = client.guilds.cache.get(this.evalMessage(data.guild, cache))
     if (data.slevel === true) {
           const settings = {}

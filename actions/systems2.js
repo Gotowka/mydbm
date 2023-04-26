@@ -164,13 +164,9 @@ module.exports = {
     async action(cache) {
       const client = this.getDBM().Bot.bot
       const { msg, interaction } = cache
-      const { Suggest, Lyrics, Version } = require('discord-systems')
-      const { Money } = require('../bot')
-      if (!Money) return console.log(`ERROR - Update the file bot.js, https://raw.githubusercontent.com/Gotowka/mydbm/main/bot.js`)
-      if (Money !== '1.0.1') console.log(`ERROR - Update the file bot.js, https://raw.githubusercontent.com/Gotowka/mydbm/main/bot.js`)
+      const { Suggest, Lyrics } = require('discord-systems')
       const data = cache.actions[cache.index];
-      if(data.ssuggest) {
-      await client.guilds.fetch()
+      if (data.ssuggest) {
       const guild = client.guilds.cache.get(this.evalMessage(data.guild, cache))
       const member = guild.members.cache.get(this.evalMessage(data.suggests[0].member, cache))
       const channel = guild.channels.cache.get(this.evalMessage(data.suggests[0].channel, cache))
