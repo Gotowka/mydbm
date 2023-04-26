@@ -701,43 +701,41 @@ module.exports = {
         }
       }
   
-      if (Array.isArray(data.selectMenus)) {
-        for (let i = 0; i < data.selectMenus.length; i++) {
-          const select = data.selectMenus[i];
-          const selectData = this.generateSelectMenu(select, cache);
-          this.addSelectToActionRowArray(componentsArr, this.evalMessage(select.row, cache), selectData, cache);
+      for (var i in data.selectMenus) {
+        const select = data.selectMenus[i];
+        const selectData = this.generateSelectMenu(select, cache);
+        this.addSelectToActionRowArray(componentsArr, this.evalMessage(select.row, cache), selectData, cache);
   
-          if (select.mode !== "PERSISTENT") {
-            awaitResponses.push({
-              type: "SELECT",
-              time: select.time ? parseInt(this.evalMessage(select.time, cache)) || defaultTime : defaultTime,
-              id: this.evalMessage(select.id, cache),
-              user: select.mode.endsWith("PERSONAL") ? cache.getUser()?.id : null,
-              multi: select.mode.startsWith("MULTI"),
-              data: select,
-            });
-          }
-          let Soptions = []
-  
-          for (let a = 0; i < select.options.length; i++) {
-            const op = select.options[a]
-            const set = {}
-            set.label = op.label
-            set.description = op.description
-            set.value = op.value
-            set.default = op.default === 'true'
-            if (op.emoji) set.emoji = op.emoji
-            Soptions.push(set)
-          }
-  
-          const bt = new StringSelectMenuBuilder()
-          .setCustomId(select.id)
-          .setPlaceholder(select.placeholder)
-          .setMinValues(parseInt(select.min))
-          .addOptions(Soptions)
-  
-          sendComponents.push(bt)
+        if (select.mode !== "PERSISTENT") {
+          awaitResponses.push({
+            type: "SELECT",
+            time: select.time ? parseInt(this.evalMessage(select.time, cache)) || defaultTime : defaultTime,
+            id: this.evalMessage(select.id, cache),
+            user: select.mode.endsWith("PERSONAL") ? cache.getUser()?.id : null,
+            multi: select.mode.startsWith("MULTI"),
+            data: select,
+          });
         }
+        let Soptions = []
+  
+        for (var a in data.selectMenus[i].options) {
+          const op = data.selectMenus[i].options[a]
+          const set = {}
+          set.label = op.label
+          set.description = op.description
+          set.value = op.value
+          set.default = op.default === 'true'
+          if (op.emoji) set.emoji = op.emoji
+          Soptions.push(set)
+        }
+  
+        const bt = new StringSelectMenuBuilder()
+        .setCustomId(select.id)
+        .setPlaceholder(select.placeholder)
+        .setMinValues(parseInt(select.min))
+        .addOptions(Soptions)
+  
+        sendComponents.push(bt)
       }
   
       if (messageOptions._awaitResponses?.length > 0) {
