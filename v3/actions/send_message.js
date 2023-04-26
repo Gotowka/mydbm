@@ -721,13 +721,13 @@ module.exports = {
   
           for (let a = 0; i < select.options.length; i++) {
             const op = select.options[a]
-            Soptions.push({
-                label: op.label,
-                description: op.description,
-                value: op.value,
-                emoji: op.emoji,
-                default: Boolean(op.default)
-            })
+            const set = {}
+            set.label = op.label
+            set.description = op.description
+            set.value = op.value
+            set.default = op.default === 'true'
+            if (op.emoji) set.emoji = op.emoji
+            Soptions.push(set)
           }
   
           const bt = new StringSelectMenuBuilder()
