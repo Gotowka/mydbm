@@ -88,8 +88,6 @@ module.exports = {
 	//---------------------------------------------------------------------
   
 	async action(cache) {
-	  const data = cache.actions[cache.index];
-	  const source = parseInt(data.type)
 	  console.log('ACTION: stop; [v1.0] (v3.1.1)')
       const { interaction, msg } = cache
       const { musicPlayer } = require('../bot')
