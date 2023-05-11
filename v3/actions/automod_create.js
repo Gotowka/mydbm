@@ -57,6 +57,7 @@ module.exports = {
 
 
   async action(cache) {
+    console.log('ACTION: automod_create; [v1.0] (v3.1.1)')
     const data = cache.actions[cache.index];
     if (!cache.server.features.includes('AUTO_MODERATION')) {
       this.storeValue('disabled', 1, 'error', cache)

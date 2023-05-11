@@ -38,6 +38,7 @@ module.exports = {
     init() {},
   
     async action(cache) {
+      console.log('ACTION: automod_delete; [v1.0] (v3.1.1)')
       const data = cache.actions[cache.index];
       const value = this.evalMessage(data.value, cache)
       const type = parseInt(data.type)

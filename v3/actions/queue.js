@@ -91,6 +91,7 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
+      console.log('ACTION: queue; [v1.0] (v3.1.1)')
       const data = cache.actions[cache.index];
       const { interaction, msg } = cache
       const { musicPlayer } = require('../bot.js')

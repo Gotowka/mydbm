@@ -95,6 +95,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   async action(cache) {
+    console.log('ACTION: play_all; [v1.0] (v3.1.1)')
     const data = cache.actions[cache.index];
     const { musicPlayer, djsV } = require('../bot')
     const { interaction, msg } = cache

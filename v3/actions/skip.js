@@ -45,6 +45,7 @@ module.exports = {
     init() {},
   
     async action(cache) {
+      console.log('ACTION: skip; [v1.0] (v3.1.1)')
       const { musicPlayer, djsV } = require('../bot')
       const { interaction, msg } = cache
       const { version } = require("discord-player");

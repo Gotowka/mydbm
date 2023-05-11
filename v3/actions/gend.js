@@ -104,6 +104,7 @@ Jump to Action:<br>
     //---------------------------------------------------------------------
   
     async action(cache) {
+      console.log('ACTION: gend; [v1.0] (v3.1.1)')
       const { ButtonBuilder, ActionRowBuilder } = require('discord.js')
       const { writeFileSync } = require('fs-extra')
       const data = cache.actions[cache.index];

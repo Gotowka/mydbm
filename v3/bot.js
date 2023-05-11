@@ -53,6 +53,7 @@ const music = new Player(client, {
 })
 module.exports.musicPlayer = music
 module.exports.djsV = '14.9.0'
+console.log('BOT: bot.js; [v1.0] (v3.1.1)')
 
 const MsgType = {
   MISSING_ACTION: 0,

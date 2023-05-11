@@ -53,6 +53,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   async action(cache) {
+    console.log('ACTION: games; [v1.0] (v3.1.1)')
     const data = cache.actions[cache.index];
     const { Snake } = require('discord-gamecord')
     const { djsV } = require('../bot')
