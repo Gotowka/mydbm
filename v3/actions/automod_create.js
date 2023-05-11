@@ -58,7 +58,9 @@ module.exports = {
 
   async action(cache) {
     console.log('ACTION: automod_create; [v1.0] (v3.1.1)')
+    const { djsV } = require('../bot')
     const data = cache.actions[cache.index];
+    if (!djsV) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/main/v3/bot.js');
     if (!cache.server.features.includes('AUTO_MODERATION')) {
       this.storeValue('disabled', 1, 'error', cache)
       this.callNextAction(cache);

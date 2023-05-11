@@ -117,7 +117,7 @@ module.exports = {
       const { interaction, msg } = cache
       const { musicPlayer } = require('../bot')
       const { version } = require("discord-player");
-	  if (!musicPlayer) console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/main/v14/bot.js')
+	  if (!musicPlayer) console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/main/v3/bot.js')
       if (version !== '6.0.0') console.error('Change version module, npm i discord-player@6.0.0')
 	  const queue = musicPlayer.queues.cache.get((interaction ?? msg).guild.id)
 	  if (!queue) return (interaction ?? msg).reply("Error: I can\'t found the queue");
