@@ -5,7 +5,7 @@
  ******************************************************/
 
 const DBM = {};
-DBM.version = "3.1.0";
+DBM.version = "3.1.1";
 
 const DiscordJS = (DBM.DiscordJS = require("discord.js"));
 
