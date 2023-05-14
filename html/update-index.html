@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<link rel="stylesheet" type="text/css" href="../style/semantic/dist/semantic.css">
+	<head>
+		<meta charset="UTF-8">
+		<title>2.0.0 Update Welcome</title>
+	</head>
+	<body style="overflow: scroll;">
+		<div id="contents" style="padding: 16px">
+			<img src="../style/img/Splash.png" style="top: 0px; left: 0px; position: absolute;" width="128" height="128"></img>
+
+			<div class="help_mainHeader">Welcome to Discord Bot Maker v3.1.1!</div>
+
+			<br>
+
+			<div class="help_textContainer">
+				<span class="help_textContainerHeader">New Features</span>
+				<p class="help_text">
+					This update aims to provide all the new features for Discord bots! This includes slash commands, context menu commands, buttons, select menus, and more!<br><br>
+
+					However, since this update is so big and so many things were changed, there may be a couple problems when trying to begin. Please read through this information before proceeding!
+				</p>
+			</div>
+
+			<br>
+
+			<div class="help_textContainer">
+				<span class="help_textContainerHeader">Existing Projects</span>
+				<p class="help_text">
+					To safetly ensure there are no problems, your last project was not opened automatically.<br><br>
+
+					It may contain mods that are not compatible with this update. There may be other issues that occur, so be sure to make a copy of your projects before opening in this new update.<br><br>
+
+					It's recommended you create a new project at <span class="help_highlightText">File > Create New Project</span>!<br>
+					However, you can go to <span class="help_highlightText">File > Open Existing Project</span> to open an old project.<br><br>
+
+					If you would like to use the previous version of Discord Bot Maker, visit Steam and go to <span class="help_highlightText">Properties... > BETAS</span> and select <span class="help_highlightText">old_version_v1.6</span>.
+				</p>
+			</div>
+
+			<br>
+
+			<div class="help_textContainer">
+				<span class="help_textContainerHeader">Existing Themes</span>
+				<p class="help_text">
+					Themes from the previous version of Discord Bot Maker are also no longer compatible. As a result, your current theme has been set to default.<br><br>
+					Old themes can still be selected again from the <span class="help_highlightText">Theme</span> menubar.
+				</p>
+			</div>
+
+			<br>
+
+			<div class="help_textContainer">
+				<span class="help_textContainerHeader">Porting Old Project</span>
+				<p class="help_text">
+					If you would like to use an old project, please follow the following steps after opening it:<br><br>
+
+					• Use <span class="help_highlightText">Project > Module Manager</span> and clear the version text on <u>discord.js</u>. It should say <span class="help_highlightText">^13.2.0</span>. Click "Save Modules" and the project should update.<br><br>
+
+					• Use <span class="help_highlightText">File > Actions/Events/Extensions > Update Default Actions/Events/Extesions</span> to install the new actions into your project.<br><br>
+
+					• Use <span class="help_highlightText">File > Music Capabiltiies > Update Music Libraries</span> to install the new music libraries.<br><br>
+
+					• Use the invite link in <span class="help_highlightText">SETTINGS > Bot Settings</span> to re-invite the bot into the server you test it with. You do NOT need to kick the bot. This just gives it the permissions to setup Slash Commands in the server.<br><br>
+					If your bot is in a lot of servers, go to <span class="help_highlightText">Slash Command Options > Slash Command Creation Preference</span> and choose an option that enables global commands. Global commands do not require re-invite, but take a long time to update (about 1 hour), so they are not very good for testing.
+				</p>
+			</div>
+
+			<br>
+
+			<div class="help_textContainer">
+				<span class="help_textContainerHeader">Final Info</span>
+				<p class="help_text">
+					Thank you for reading! This page will only appear once. Next time you open Discord Bot Maker, you will be sent to your most recent project.<br><br>
+
+					If you would like to view this page again, please go to: <span class="help_highlightText">About > Update Information</span>.
+				</p>
+			</div>
+		</div>
+	</body>
+	<link rel="stylesheet" type="text/css" id="maintheme" href="../../../themes/Default/main.css">
+	<script>
+		if(typeof module === 'object') {
+			window.module = module;
+			module = undefined;
+		}
+	</script>
+	<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../style/semantic/dist/semantic.min.js"></script>
+	<script type="text/javascript">
+		require("electron").ipcRenderer.on("modifyBodyHtml", (event, html) => document.getElementById("contents").innerHTML = html);
+	</script>
+	<script>
+		if(window.module) module = window.module;
+	</script>
+</html>

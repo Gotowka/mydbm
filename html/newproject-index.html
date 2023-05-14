@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<link rel="stylesheet" type="text/css" href="../style/semantic/dist/semantic.css">
+	<head>
+		<meta charset="UTF-8">
+		<title>Create New Bot</title>
+	</head>
+	<body>
+		<input style="display:none;" id="fileDialog" type="file" nwdirectory onchange="onFileChange(this)" />
+		<div style="padding: 15px 15px 0px 15px;">
+			<span class="dbminputlabel" id="projectname">Project Name</span><br>
+			<div style="float: left; width: 87%;">
+				<input id="name" class="round" type="text" style="width: 100%; border-top-right-radius: 0; border-bottom-right-radius: 0;" value="New Bot Project">
+			</div>
+			<div style="float: left; width: 13%;">
+				<button id="generatebutton" class="tiny compact ui icon button" onclick="generateName()" style="height: 28px; border-top-left-radius: 0; border-bottom-left-radius: 0;">Generate</button>
+			</div>
+
+			<br><br>
+
+			<div style="padding-top: 6px;">
+				<span class="dbminputlabel" id="locationlabel">Project Folder Creation Location</span><br>
+				<div style="float: left; width: 87%;">
+					<input id="location" class="round" type="text" style="width: 100%; border-top-right-radius: 0; border-bottom-right-radius: 0;" disabled>
+				</div>
+				<div style="float: left; width: 13%;">
+					<button id="browsebutton" class="tiny compact ui icon button" onclick="chooseFile()" style="height: 28px; border-top-left-radius: 0; border-bottom-left-radius: 0;">Browse</button>
+				</div>
+			</div>
+
+			<br>
+
+			<div style="padding-top: 28px;">
+				<span class="dbminputlabel" id="projecttemp">Project Template</span><br>
+				<select id="samples" style="width: 90%;" class="round">
+					<option value="0" id="blankproject">Blank Project</option>
+				</select>
+			</div>
+
+			<br>
+		</div>
+		<div class="bottombar_container" style="text-align: center; padding-top: 12px;">
+			<button class="tiny compact ui labeled icon button" onclick="createProject()"><i class="star icon"></i><span id="createbot">Create Bot!</span></button>
+		</div>
+	</body>
+	<style>
+		input[type=text] {
+			width: 50%;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" id="maintheme" href="../../../themes/Default/main.css">
+	<script>
+		if(typeof module === 'object') {
+			window.module = module;
+			module = undefined;
+		}
+	</script>
+	<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../style/semantic/dist/semantic.min.js"></script>
+	<script type="text/javascript" src="../lib/dbm/Application.js"></script>
+	<script>
+		if(window.module) module = window.module;
+	</script>
+</html>

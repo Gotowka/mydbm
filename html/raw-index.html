@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<link rel="stylesheet" type="text/css" href="../style/semantic/dist/semantic.css">
+	<head>
+		<meta charset="UTF-8">
+		<title>Raw Data</title>
+	</head>
+	<body>
+		<textarea id="main" rows="9" style="font-family: monospace; margin-top: 20px; margin-left: 20px; margin-right: 20px; width: 93%; height: 80%; resize: none;"></textarea>
+		<div style="text-align: center;">
+			<button style="text-align: center; margin-top: 20px;" onclick="resolve()" class="tiny compact ui labeled icon button"><i class="legal icon"></i><span id="savedata">Save Data</span></button>
+		</div>
+	</body>
+	<link rel="stylesheet" type="text/css" id="maintheme" href="../../../themes/Default/main.css">
+	<script>
+		if(typeof module === 'object') {
+			window.module = module;
+			module = undefined;
+		}
+	</script>
+	<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../style/semantic/dist/semantic.min.js"></script>
+	<script type="text/javascript" src="../lib/dbm/Application.js"></script>
+	<script>
+		if(window.module) module = window.module;
+	</script>
+</html>

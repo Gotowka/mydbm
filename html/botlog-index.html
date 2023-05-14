@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<link rel="stylesheet" type="text/css" href="../style/semantic/dist/semantic.css">
+	<head>
+		<meta charset="UTF-8">
+		<title>Testing Bot Log</title>
+	</head>
+	<body>
+		<div id="log" class="botlog"></div>
+		<div class="botlog_buttoncontainer">
+			<button class="tiny compact ui labeled icon button" onclick="window.onClearStuff()"><i class="eraser icon"></i><span id="but_clear">Clear</span></button>
+			<button class="tiny compact ui labeled icon button" onclick="window.onCopyStuff()"><i class="copy outline icon"></i><span id="but_copy">Copy</span></button>
+			<button class="tiny compact ui labeled icon button" onclick="window.onCopyAllStuff()"><i class="download icon"></i><span id="but_copy_all">Copy All</span></button>
+		</div>
+	</body>
+	<link rel="stylesheet" type="text/css" id="maintheme" href="../../../themes/Default/main.css">
+	<script>
+		if(typeof module === 'object') {
+			window.module = module;
+			module = undefined;
+		}
+	</script>
+	<style>
+		body {
+			background-color: #222;
+			color: #eee;
+			font-family: 'Lucida Console', monospace;
+			display: block !important;
+			overflow: hidden;
+		}
+	</style>
+	<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../style/semantic/dist/semantic.min.js"></script>
+	<script type="text/javascript" src="../lib/dbm/Application.js"></script>
+	<script>
+		if(window.module) module = window.module;
+	</script>
+</html>
