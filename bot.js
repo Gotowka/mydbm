@@ -26,21 +26,9 @@ const client = new Client({ intents: [
   GatewayIntentBits.Guilds,
   GatewayIntentBits.GuildMembers,
   GatewayIntentBits.GuildIntegrations,
-  GatewayIntentBits.GuildEmojisAndStickers,
-  GatewayIntentBits.GuildWebhooks,
-  GatewayIntentBits.GuildInvites,
-  GatewayIntentBits.GuildPresences,
   GatewayIntentBits.GuildVoiceStates,
-  GatewayIntentBits.GuildMessages,
-  GatewayIntentBits.GuildMessageReactions,
-  GatewayIntentBits.GuildMessageTyping,
-  GatewayIntentBits.DirectMessages,
-  GatewayIntentBits.DirectMessageReactions,
-  GatewayIntentBits.DirectMessageTyping,
-  GatewayIntentBits.MessageContent
 ], partials: [
    Partials.User,
-   Partials.Message,
    Partials.Channel,
    Partials.GuildMember,
 ]});
