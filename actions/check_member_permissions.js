@@ -8,7 +8,7 @@ module.exports = {
       return `${presets.getConditionsText(data)}`;
     },
   
-    meta: { version: "3.1.1", preciseCheck: true, author: null, authorUrl: null, downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/v3/actions/check_member_permissions.js' },
+    meta: { version: "3.1.1", preciseCheck: true, author: null, authorUrl: null, downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/check_member_permissions.js' },
   
     fields: ["member", "varName", "permission", "branch"],
   

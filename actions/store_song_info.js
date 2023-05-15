@@ -77,7 +77,7 @@ module.exports = {
     // This will make it so the patch version (0.0.X) is not checked.
     //---------------------------------------------------------------------
   
-    meta: { version: "3.1.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/v3/actions/store_song_info.js' },
+    meta: { version: "3.1.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/store_song_info.js' },
   
     //---------------------------------------------------------------------
     // Action Fields
@@ -152,7 +152,7 @@ module.exports = {
     async action(cache) {
       console.log('ACTION: store_song_info; [v1.0] (v3.1.1)')
       const { djsV } = require('../bot')
-      if (!djsV) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/main/v3/bot.js');
+      if (!djsV) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/v3/bot.js');
       const data = cache.actions[cache.index];
       const song = this.evalMessage(data.song, cache)
   

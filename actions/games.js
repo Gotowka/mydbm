@@ -9,7 +9,7 @@ module.exports = {
     return `Starting the game: ${games[data.game]}`;
   },
 
-  meta: { version: "3.1.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/v3/actions/games.js' },
+  meta: { version: "3.1.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/games.js' },
 
   fields: ["game"],
 
@@ -57,7 +57,7 @@ module.exports = {
     const data = cache.actions[cache.index];
     const { Snake } = require('discord-gamecord')
     const { djsV } = require('../bot')
-    if (!djsV) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/main/v3/bot.js');
+    if (!djsV) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/v3/bot.js');
     const settings = {
       message: cache.interaction ?? cache.msg
     }

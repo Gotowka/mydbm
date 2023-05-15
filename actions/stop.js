@@ -35,7 +35,7 @@ module.exports = {
 	// This will make it so the patch version (0.0.X) is not checked.
 	//---------------------------------------------------------------------
   
-	meta: { version: "3.1.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/v3/actions/stop.js' },
+	meta: { version: "3.1.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/stop.js' },
   
 	//---------------------------------------------------------------------
 	// Action Fields
@@ -92,7 +92,7 @@ module.exports = {
       const { interaction, msg } = cache
       const { musicPlayer } = require('../bot')
       const { version } = require("discord-player");
-	  if (!musicPlayer) console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/main/v3/bot.js')
+	  if (!musicPlayer) console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/v3/bot.js')
       if (version !== '6.0.0') console.error('Change version module, npm i discord-player@6.0.0')
 	  const queue = musicPlayer.queues.cache.get((interaction ?? msg).guild?.id)
 	  if (!queue) return (interaction ?? msg).reply("Error: I can\'t found the queue");

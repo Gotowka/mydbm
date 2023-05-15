@@ -25,7 +25,7 @@ module.exports = {
       return `Skip the music`;
     },
   
-    meta: { version: "3.1.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/v3/actions/skip.js' },
+    meta: { version: "3.1.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/skip.js' },
   
   
     fields: ["storage", "varName"],
@@ -49,7 +49,7 @@ module.exports = {
       const { musicPlayer, djsV } = require('../bot')
       const { interaction, msg } = cache
       const { version } = require("discord-player");
-      if (!musicPlayer) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/main/v3/bot.js');
+      if (!musicPlayer) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/v3/bot.js');
       if (!djsV) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/main/v3/bot.js');
       if (version !== '6.0.0') console.error('Change version module, npm i discord-player@6.0.0');
       if (!interaction.member.voice.channel) return interaction.reply("Error: You must join the voice channel!")

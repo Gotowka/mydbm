@@ -35,7 +35,7 @@ module.exports = {
     // This will make it so the patch version (0.0.X) is not checked.
     //---------------------------------------------------------------------
   
-    meta: { version: "3.1.1", preciseCheck: true, author: null, authorUrl: null, downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/v3/actions/set_member_channel_perms.js' },
+    meta: { version: "3.1.1", preciseCheck: true, author: null, authorUrl: null, downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/set_member_channel_perms.js' },
   
     //---------------------------------------------------------------------
     // Action Fields

@@ -8,7 +8,7 @@ module.exports = {
     return `Create automod - ${data.autoName}`;
   },
 
-  meta: { version: "3.1.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/v3/actions/automod_create.js' },
+  meta: { version: "3.1.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/automod_create.js' },
   
   fields: ["autoName", "autoType", "channel", "storage", "varName", "delete", "alert" ],
 
@@ -71,7 +71,7 @@ module.exports = {
     console.log('ACTION: automod_create; [v1.1] (v3.1.1)')
     const { djsV } = require('../bot')
     const data = cache.actions[cache.index];
-    if (!djsV) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/main/v3/bot.js');
+    if (!djsV) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/v3/bot.js');
     if (!cache.server.features.includes('AUTO_MODERATION')) {
       this.storeValue('disabled', 1, 'error', cache)
       this.callNextAction(cache);

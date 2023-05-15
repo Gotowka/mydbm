@@ -8,7 +8,7 @@ module.exports = {
       return `Delete automod - ${data.value}`;
     },
   
-    meta: { version: "3.1.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/v3/actions/automod_delete.js' },
+    meta: { version: "3.1.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/automod_delete.js' },
     
     fields: ["value", "type"],
   
@@ -40,7 +40,7 @@ module.exports = {
     async action(cache) {
       console.log('ACTION: automod_delete; [v1.0] (v3.1.1)')
       const { djsV } = require('../bot')
-      if (!djsV) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/main/v3/bot.js');
+      if (!djsV) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/v3/bot.js');
       const data = cache.actions[cache.index];
       const value = this.evalMessage(data.value, cache)
       const type = parseInt(data.type)

@@ -6,7 +6,7 @@ module.exports = {
       preciseCheck: false,
       author: 'DBM Mods',
       authorUrl: 'https://github.com/dbm-network/mods',
-      downloadURL: 'https://github.com/Gotowka/mydbm/blob/main/v3/actions/check_role_permissions.js',
+      downloadURL: 'https://github.com/Gotowka/mydbm/blob/v3/actions/check_role_permissions.js',
     },
   
     subtitle(data, presets) {

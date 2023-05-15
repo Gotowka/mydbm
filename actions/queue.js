@@ -32,7 +32,7 @@ module.exports = {
         return [data.varName2, dataType];
       },
   
-    meta: { version: "3.1.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/v3/actions/queue.js' },
+    meta: { version: "3.1.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/queue.js' },
   
     //---------------------------------------------------------------------
     // Action Fields
@@ -96,7 +96,7 @@ module.exports = {
       const { interaction, msg } = cache
       const { musicPlayer } = require('../bot.js')
       const { version } = require("discord-player");
-	  if (!musicPlayer) console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/main/v3/bot.js')
+	  if (!musicPlayer) console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/v3/bot.js')
       if (version !== '6.0.0') console.error('Change version module, npm i discord-player@6.0.0')
       const queue = musicPlayer.queues.cache.get((interaction ?? msg).guild.id)
       if (!queue || !queue.playing) {
