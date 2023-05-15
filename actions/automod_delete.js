@@ -19,7 +19,7 @@ module.exports = {
           <u>Mod Info:</u><br>
           Created by money#6283<br>
           Help = https://discord.gg/apUVFy7SUh<br>
-          Variables:(var error is required to use)<br>
+          Variables:<br>
           <span class="dbminputlabel">error('disabled', 'delete')</span>
       </p>
   </div><br>
@@ -61,8 +61,8 @@ module.exports = {
       }
       await result.delete().catch(er => {
         this.storeValue('delete', 1, 'error', cache)
-        this.callNextAction(cache);
       })
+      this.callNextAction(cache);
     },
   
     mod() {},
