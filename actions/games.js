@@ -35,7 +35,7 @@ module.exports = {
     // This will make it so the patch version (0.0.X) is not checked.
     //---------------------------------------------------------------------
   
-    meta: { version: "2.1.7", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka/dbmmody/blob/main/beta/games.js', downloadUrl: 'https://github.com/Gotowka/dbmmody/blob/main/beta/games.js' },
+    meta: { version: "2.1.7", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka/dbmmody/blob/v2/beta/games.js', downloadUrl: 'https://github.com/Gotowka/dbmmody/blob/v2/beta/games.js' },
   
     //---------------------------------------------------------------------
     // Action Fields

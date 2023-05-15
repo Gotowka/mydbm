@@ -6,7 +6,7 @@ module.exports = {
     preciseCheck: false,
     author: 'DBM Mods/Gotowka',
     authorUrl: 'https://github.com/Gotowka',
-    downloadURL: 'https://github.com/Gotowka/mydbm/blob/main/actions/store_command_info_MOD.js',
+    downloadURL: 'https://github.com/Gotowka/mydbm/blob/v2/actions/store_command_info_MOD.js',
   },
 
   subtitle(data) {

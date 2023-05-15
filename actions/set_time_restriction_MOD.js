@@ -6,7 +6,7 @@ module.exports = {
       preciseCheck: false,
       author: 'DBM Mods',
       authorUrl: 'https://github.com/Gotowka', 
-      downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/actions/set_time_restriction_MOD.js'
+      downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/set_time_restriction_MOD.js'
     },
   
     subtitle(data) {
