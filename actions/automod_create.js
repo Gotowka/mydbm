@@ -10,7 +10,9 @@ module.exports = {
 
   meta: { version: "3.1.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/main/v3/actions/automod_create.js' },
   
-  fields: ["autoName", "autoType", "autoAction", "channel", "storage", "varName"],
+  fields: ["autoName", "autoType", "channel", "storage", "varName", "delete", "alert" ],
+
+  actions: [],
 
   html(isEvent, data) {
     return `
@@ -19,7 +21,7 @@ module.exports = {
         <u>Mod Info:</u><br>
         Created by money#6283<br>
         Help = https://discord.gg/apUVFy7SUh<br>
-        Variables:(var error is required to use)<br>
+        Variables:<br>
         <span class="dbminputlabel">error('disabled')</span>
     </p>
 </div><br>
@@ -31,23 +33,32 @@ module.exports = {
 <select id="autoType" class="round">
   <option value="spam">Spam</options>
 </select>
-<br>
-<span class="dbminputlabel">Action</span><br>
-<select id="autoAction" class="round" onchange="glob.changeType(this)">
-  <option value="delete">BlockMessage</options>
-  <option value="alert">SendAlert</options>
-</select><br><br>
 </div>
-<div id="channel" style="padding-top: 8px;">
+<br><br><br><br><br><br><br>
+<div id="channel" style="float: left; padding-top: 8px; width: 100%;">
   <channel-input dropdownLabel="Source Channel" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></channel-input>
+</div><br><br><br><br>
+<div style="float: left; width: 50%;">
+<dbm-checkbox id="delete" onchange="glob.changeType()" label="BlockMessage"></dbm-checkbox>
+</div>
+<div style="float: right; width: 50%;">
+<dbm-checkbox id="alert" onchange="glob.changeType()" label="SendAlert"></dbm-checkbox>
 </div>`;
 },
 
+
   init() {
       const { document, glob } = this;
-      glob.changeType = function(select) {
+      glob.changeType = function() {
           const ch = document.getElementById('channel')
-          if (select.value === 'alert') {
+          const alert = document.getElementById('alert')
+          const deletem = document.getElementById('delete')
+          if (tp === "delete") {
+            if (alert.value === 'true' && deletem.value === 'true') this.actions = ["alert", "delete"]
+            else if (alert.value === 'true') this.actions = ["alert"]
+            else if (deletem.value === 'true') this.actions = ["delete"]
+          }
+          if (alert.value === 'true') {
               ch.style.display = null
           } else {
               ch.style.display = 'none'
@@ -57,7 +68,7 @@ module.exports = {
 
 
   async action(cache) {
-    console.log('ACTION: automod_create; [v1.0] (v3.1.1)')
+    console.log('ACTION: automod_create; [v1.1] (v3.1.1)')
     const { djsV } = require('../bot')
     const data = cache.actions[cache.index];
     if (!djsV) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/main/v3/bot.js');
@@ -66,11 +77,12 @@ module.exports = {
       this.callNextAction(cache);
       return;
     }
-    const settings = {};
+    const settings = {
+      actions: []
+    };
     const name = this.evalMessage(data.autoName, cache);
     if (!name) return console.error('You must give the name!');
     const type = data.autoType;
-    const action = data.autoAction;
     const targetChannel = await this.getChannelFromData(data.storage, data.varName, cache);
     switch(type) {
       case "spam":
@@ -78,16 +90,9 @@ module.exports = {
         break;
     }
 
-    switch(action) {
-      case "delete":
-        settings.actions = [{ type: 1 }]
-        break;
-      case "alert":
-        settings.actions = [{ type: 2, metadata: { channel: targetChannel } }]
-        break;
-    }
-    
-
+    if (this.actions.includes('delete')) settings.actions.push({ type: 1 })
+    if (this.actions.includes('alert')) settings.actions.push({ type: 2, metadata: { channel: targetChannel } })
+  
     settings.name = name;
     settings.eventType = 1;
     settings.enabled = true;
