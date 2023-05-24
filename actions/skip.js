@@ -50,8 +50,8 @@ module.exports = {
       const { interaction, msg } = cache
       const { version } = require("discord-player");
       if (!musicPlayer) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/v3/bot.js');
-      if (!djsV) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/main/v3/bot.js');
-      if (version !== '6.0.0') console.error('Change version module, npm i discord-player@6.0.0');
+      if (!djsV) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/v3/bot.js');
+      if (version !== '6.0.0') console.warn('Change version module, npm i discord-player@6.0.0');
       if (!interaction.member.voice.channel) return interaction.reply("Error: You must join the voice channel!")
       const queue = musicPlayer.queues.cache.get((interaction ?? msg).guild.id)
 
