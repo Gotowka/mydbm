@@ -1,6 +1,6 @@
 /******************************************************
  * Discord Bot Maker Bot
- * Version 3.1.0
+ * Version 3.1.1
  * Robert Borghese
  ******************************************************/
 
@@ -41,7 +41,7 @@ const music = new Player(client, {
 })
 module.exports.musicPlayer = music
 module.exports.djsV = '14.11.0'
-console.log('BOT: bot.js; [v1.0] (v3.1.1) (14.11.0)')
+console.log('BOT: bot.js; [v1.1] (v3.1.1) (14.11.0)')
 
 const MsgType = {
   MISSING_ACTION: 0,
@@ -1091,7 +1091,7 @@ Bot.onSelectMenuInteraction = function (interaction) {
 //---------------------------------------------------------------------
 
 const Actions = (DBM.Actions = {});
-
+let mClient
 Actions.actionsLocation = null;
 Actions.eventsLocation = null;
 Actions.extensionsLocation = null;
@@ -1196,6 +1196,46 @@ Actions.getLocalFile = function (url) {
 Actions.getDBM = function () {
   return DBM;
 };
+
+/**
+ * 
+ * @param {string} uri - Uri for login to your mongoDB
+ */
+Actions.mongoConnect = async function (uri) {
+  const { MongoClient } = require("mongodb");
+
+ mClient = new MongoClient(uri);
+  
+  await mClient.connect().catch(e => console.error(e));
+}
+
+Actions.mongoGetClient = function () {
+  return mClient;
+}
+
+/**
+ * 
+ * @param {number} property - The number for running function for() 
+ */
+Actions.mongoGetSettingData = function (property) {
+  let namee
+  let valuee
+  if (property === 0) {
+    namee = cData.split(':').at(property)
+    valuee = cData.split(':').at(property + 1).split(' ').at(property)
+  } else if (property === 1) {
+    namee = cData.split(':').at(property).split(' ').at(property)
+    valuee = cData.split(':').at(property + 1).split(' ').at(property - 1)
+  } else if (property === 2) {
+    namee = cData.split(':').at(property).split(' ').at(property - 1)
+    valuee = cData.split(':').at(property + 1).split(' ').at(property - 2)
+  } else if (property === 3) { 
+    namee = cData.split(':').at(property).split(' ').at(property - 2)
+    valuee = cData.split(':').at(property + 1).split(' ').at(property - 3)
+  }
+
+  return { name: namee, value: valuee }
+}
 
 Actions.callListFunc = function (list, funcName, args) {
   return new Promise((resolve) => {
