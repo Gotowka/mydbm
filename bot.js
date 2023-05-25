@@ -1216,8 +1216,9 @@ Actions.mongoGetClient = function () {
 /**
  * 
  * @param {number} property - The number for running function for() 
+ * @param {string} cData - The data
  */
-Actions.mongoGetSettingData = function (property) {
+Actions.mongoGetSettingData = function (property, cData) {
   let namee
   let valuee
   if (property === 0) {

@@ -50,7 +50,7 @@ module.exports = {
       if (t > 4) console.warn('The New Collection Data is limited to 4, more is not created in the data!')
       const nData = []
       for (var i = 0; i + 1 === t ;i++) {
-        const t = this.mongoGetSettingData(i)
+        const t = this.mongoGetSettingData(i, cData)
         if (i > 3 === false) nData.push(t)
       }
       await mClient.collection(base).insertOne({ [nData[0].name]: [nData[0].value], [nData[1].name]: [nData[1].value], [nData[2].name]: [nData[2].value], [nData[3].name]: [nData[3].value] })
