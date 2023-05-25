@@ -689,13 +689,13 @@ module.exports = {
             });
           }
           const bt = new ButtonBuilder()
-          .setCustomId(button.id)
           .setStyle(button.type)
           .setLabel(button.name)
 
           if (button.emoji) bt.setEmoji(button.emoji)
           
           if (button.type === '5') bt.setURL(button.url)
+          else bt.setCustomId(button.id)
   
           sendComponents.push(bt)
         }
