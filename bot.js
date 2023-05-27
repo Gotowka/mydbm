@@ -1197,10 +1197,6 @@ Actions.getDBM = function () {
   return DBM;
 };
 
-/**
- * 
- * @param {string} uri - Uri for login to your mongoDB
- */
 Actions.mongoConnect = async function (uri) {
   const { MongoClient } = require("mongodb");
 
@@ -1213,11 +1209,6 @@ Actions.mongoGetClient = function () {
   return mClient;
 }
 
-/**
- * 
- * @param {number} property - The number for running function for() 
- * @param {string} cData - The data
- */
 Actions.mongoGetSettingData = function (property, cData) {
   let namee
   let valuee
