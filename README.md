@@ -57,8 +57,6 @@
 
 - [Transcripts](https://github.com/Gotowka/mydbm/blob/v2/actions/transcripts.js)
 
-- [Games](https://github.com/Gotowka/mydbm/blob/v2/actions/games.js)
-
 - [Store Command Info](https://github.com/Gotowka/mydbm/blob/v2/actions/store_command_info_MOD.js)
 
 - [Set Time Restriction](https://github.com/Gotowka/mydbm/blob/v2/actions/set_time_restriction_MOD.js)
