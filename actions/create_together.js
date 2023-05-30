@@ -99,6 +99,10 @@ module.exports = {
     <option value="garticphone">Gartic Phone</options>
     <option value="color">Color Together</options>
     <option value="chefshowdown">Chef Showdown</options>
+    <option value="scrappies">Bobble Land: Scrappies</options>
+    <option value="jamspace">Jamspace</options>
+    <option value="guestbook">Guestbook</options>
+    <option value="krunker">Project K(Known as Krunker)</options>
   </select>
 </div>
 </div>
