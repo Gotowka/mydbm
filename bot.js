@@ -21,7 +21,7 @@ Please use "Project > Module Manager" and "Project > Reinstall Node Modules" to 
 
 const noop = () => void 0;
 module.exports.Money = '1.0.1'
-
+console.log('BOT: bot.js; [v1.0] (v2.1.8)')
 
 const MsgType = {
   MISSING_ACTION: 0,

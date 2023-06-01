@@ -93,6 +93,7 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
+        console.log('ACTION: add_time_to_timestamp; [v1.0] (v2.1.8)')
         const data = cache.actions[cache.index];
         let duration = this.evalMessage(data.addtime, cache)
 

@@ -28,6 +28,7 @@ module.exports = {
   
   
     async action(cache) {
+      console.log('ACTION: delete_guild_template; [v1.0] (v2.1.8)')
       const data = cache.actions[cache.index];
       const targetServer = await this.getServerFromData(data.server, data.varName, cache);
     const template = await targetServer.fetchTemplates()

@@ -133,6 +133,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   async action(cache) {
+    console.log('ACTION: create_together; [v1.0] (v2.1.8)')
     const data = cache.actions[cache.index];
     const client = this.getDBM().Bot.bot
     const { interaction, msg } = cache;

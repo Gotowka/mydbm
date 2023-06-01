@@ -102,6 +102,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   async action(cache) {
+    console.log('ACTION: greroll; [v1.0] (v2.1.8)')
     const { interaction } = cache;
     const giveaways = require('../data/giveaways.json')
     const data = cache.actions[cache.index];

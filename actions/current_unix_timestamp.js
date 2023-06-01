@@ -88,6 +88,7 @@ module.exports = {
     init() {},
   
     async action(cache) {
+      console.log('ACTION: current_unix_timestamp; [v1.0] (v2.1.8)')
       const data = cache.actions[cache.index]
       const end = Date.parse(new Date(new Date().getTime())) / 1000;
       const storage = parseInt(data.storage);

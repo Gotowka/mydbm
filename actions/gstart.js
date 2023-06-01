@@ -111,6 +111,7 @@ module.exports = {
 
   async action(cache) {
     const { interaction } = cache;
+    console.log('ACTION: gstart; [v1.0] (v2.1.8)')
     const giveaways = require('../data/giveaways.json')
     const fs = require('fs')
     const data = cache.actions[cache.index];

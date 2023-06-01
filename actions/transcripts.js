@@ -90,6 +90,7 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
+      console.log('ACTION: transcripts; [v1.0] (v2.1.8)')
       const { msg, interaction } = cache
       const data = cache.actions[cache.index];
       const discordTranscripts = require('discord-html-transcripts');

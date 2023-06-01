@@ -211,6 +211,7 @@ module.exports = {
   
   
     async action(cache) {
+      console.log('ACTION: ticket_manager; [v1.0] (v2.1.8)')
       const data = cache.actions[cache.index];
       const { interaction } = cache
       const { Permissions, MessageEmbed } = require('discord.js')

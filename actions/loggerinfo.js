@@ -131,6 +131,7 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
+      console.log('ACTION: loggerinfo; [v1.0] (v2.1.8)')
       const data = cache.actions[cache.index];
       const invite = await this.evalMessage(data.invite, cache);
       const info = parseInt(data.info, 10)

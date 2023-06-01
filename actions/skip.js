@@ -61,6 +61,7 @@ module.exports = {
   
     async action(cache) {
       const { interaction } = cache
+      console.log('ACTION: skip; [v1.0] (v2.1.8)')
       const { musicPlayer } = require('../bot')
       if (!musicPlayer) console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/v2/bot.js')
       if (!interaction.member.voice.channel) return interaction.reply("Error: You must join the voice channel!")
