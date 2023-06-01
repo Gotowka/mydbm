@@ -408,8 +408,8 @@ module.exports = {
     const { levelRank, Tvpis, joinCard, leaveCard } = require('discord-systems')
     const data = cache.actions[cache.index];
     const guild = client.guilds.cache.get(this.evalMessage(data.guild, cache))
+    let settings = {}
     if (data.slevel === true) {
-          const settings = {}
           settings.message = {}
           settings.message.msg = msg ?? interaction
           settings.member = (msg ?? interaction).guild.members.cache.get(this.evalMessage(data.levelcard[0].member, cache)).user
@@ -426,7 +426,6 @@ module.exports = {
         if (data.msgsend === '0') new levelRank(settings).reply()
         else new levelRank(settings).send() 
     } else if (data.stvpis === true) {
-      const settings = {}
       settings.message = {}
       settings.message.msg = msg ?? interaction
       settings.text = this.evalMessage(data.text, cache)
@@ -434,7 +433,6 @@ module.exports = {
       if (data.msgsend === '0') new Tvpis(settings).reply()
       else if (data.msgsend === '1') new Tvpis(settings).send()
     } else if (data.sjoin === true) {
-      const settings = {}
       settings.channel = guild.channels.cache.get(this.evalMessage(data.joincard[0].channelid, cache))
       settings.member = guild.members.cache.get(this.evalMessage(data.joincard[0].memberid, cache))
       settings.middle = this.evalMessage(data.joincard[0].text1, cache)
@@ -449,7 +447,6 @@ module.exports = {
       
       new joinCard(settings).send()
     } else if (data.sleave === true) {
-      const settings = {}
       settings.channel = guild.channels.cache.get(this.evalMessage(data.leavecard[0].channelid, cache))
       settings.member = client.users.cache.get(this.evalMessage(data.leavecard[0].memberid, cache))
       settings.midle = this.evalMessage(data.leavecard[0].text1, cache)
@@ -461,7 +458,6 @@ module.exports = {
         new leaveCard(settings).send()
     } else if (data.scalculator == true) {
       const test = require('simply-djs')
-      const settings = {}
       settings.embed = {}
       settings.footer = {}
       settings.credit = false
@@ -476,7 +472,6 @@ module.exports = {
       else settings.embed.footer.iconURL = 'https://i.imgur.com/pq2ElIT.jpg'
       test.calculator(msg ?? interaction, settings)
       } else if (data.ssuggest == true) {
-          const settings = {}
           settings.suggest = this.evalMessage(data.suggests[0].suggest, cache)
           settings.guild = client.guilds.cache.get(this.evalMessage(data.guild, cache))
           settings.member = guild.members.cache.get(this.evalMessage(data.suggests[0].member, cache))

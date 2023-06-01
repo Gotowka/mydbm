@@ -28,7 +28,7 @@ module.exports = {
     meta: { version: "2.1.8", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/skip.js' },
   
   
-    fields: [""],
+    fields: [],
 
     html(isEvent, data) {
       return `
@@ -68,11 +68,11 @@ module.exports = {
       if (!mess.member.voice.channel) return mess.reply("Error: You must join the voice channel!")
       const queue = musicPlayer.getQueue(mess.guild)
 
-      if (!queue) return await interaction.reply("Error: I can\'t fount the queue")
+      if (!queue) return mess.reply("Error: I can\'t fount the queue")
 
       const currentSong = queue.current
 
-      queue.skip()
+      await queue.skip()
 
       this.storeValue(currentSong.title, 1, 'name', cache);
       this.storeValue(currentSong.url, 1, 'url', cache);

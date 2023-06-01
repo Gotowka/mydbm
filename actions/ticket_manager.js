@@ -299,7 +299,7 @@ module.exports = {
       const storage = parseInt(data.storage, 10);
       const varName = this.evalMessage(data.varName, cache);
       this.storeValue(channel, storage, varName, cache);
-      await this.callNextAction(cache)
+      this.callNextAction(cache)
     },
     
     mod() {},
