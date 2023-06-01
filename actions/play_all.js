@@ -97,12 +97,11 @@ module.exports = {
   async action(cache) {
     console.log('ACTION: play_all; [v1.0] (v3.1.1)')
     const data = cache.actions[cache.index];
-    const { musicPlayer, djsV } = require('../bot')
+    const { musicPlayer } = require('../bot')
     const { interaction, msg } = cache
     const { version } = require("discord-player");
     if (!musicPlayer) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/v3/bot.js');
-    if (!djsV) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/main/v3/bot.js');
-    if (version !== '6.0.0') return console.error('Change version module, npm i discord-player@6.0.0');
+    if (version !== '6.0.0') console.warn('Change version module, npm i discord-player@6.0.0');
     const channel = (interaction ?? msg).member.voice.channel
     const url = this.evalMessage(data.url, cache)
     if (url.includes('playlist')) {

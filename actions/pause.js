@@ -112,12 +112,11 @@ module.exports = {
 	  console.log('ACTION: pause; [v1.0] (v3.1.1)')
 	  const data = cache.actions[cache.index];
 	  const source = parseInt(data.type)
-	  const { musicPlayer, djsV } = require('../bot')
+	  const { musicPlayer } = require('../bot')
 	  const { interaction, msg } = cache
 	  const { version } = require("discord-player");
 	  if (!musicPlayer) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/v3/bot.js');
-	  if (!djsV) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/main/v3/bot.js');
-	  if (version !== '6.0.0') return console.error('Change version module, npm i discord-player@6.0.0');
+	  if (version !== '6.0.0') console.warn('Change version module, npm i discord-player@6.0.0');
 	  const queue = musicPlayer.queues.cache.get((interaction ?? msg).guild.id)
 
 	  if (!queue) {

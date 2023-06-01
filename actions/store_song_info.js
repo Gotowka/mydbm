@@ -151,8 +151,6 @@ module.exports = {
   
     async action(cache) {
       console.log('ACTION: store_song_info; [v1.0] (v3.1.1)')
-      const { djsV } = require('../bot')
-      if (!djsV) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/v3/bot.js');
       const data = cache.actions[cache.index];
       const song = this.evalMessage(data.song, cache)
   
