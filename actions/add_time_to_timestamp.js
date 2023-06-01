@@ -74,7 +74,7 @@ module.exports = {
       </p>
   </div><br>
   <div style="padding-top: 8px; width: 100%;">
-  <span class="dbminputlabel">Time to add<span style="color:red">*</span></span>
+  <span class="dbminputlabel">Time to add</span>
   <input id="addtime" class="round" placeholder="example: 1s/1m/1h/1d" type="text">  
   </div>
   <br><br>

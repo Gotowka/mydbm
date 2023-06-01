@@ -69,7 +69,7 @@ module.exports = {
     </p>
 </div>
 <div style="float: left; width: calc(50% - 12px);">
-<span class="dbminputlabel">Msg ID <span style="color:red">*</span></span>
+<span class="dbminputlabel">Msg ID</span>
 <input id="msgid" class="round" placeholder="Message ID for the giveaway" type="text">
 
 <br>

@@ -70,22 +70,22 @@ module.exports = {
 </div><br>
 
 <div style="float: left; width: calc(50% - 12px);">
-  <span class="dbminputlabel">Time <span style="color:red">*</span></span>
+  <span class="dbminputlabel">Time</span>
   <input id="time" class="round" placeholder="Type: np 1d/1m/1s" type="text">
 
   <br>
 
-  <span class="dbminputlabel">Winners <span style="color:red">*</span></span>
+  <span class="dbminputlabel">Winners</span>
   <input id="winners" class="round" type="text">
   
   <br>
 
-  <span class="dbminputlabel">Prize <span style="color:red">*</span></span>
+  <span class="dbminputlabel">Prize</span>
   <input id="prize" class="round" type="text">
   
   <br>
 
-  <span class="dbminputlabel">Msg ID <span style="color:red">*</span></span>
+  <span class="dbminputlabel">Msg ID</span>
   <input id="msgid" class="round" type="text">
 </div>
 `;
