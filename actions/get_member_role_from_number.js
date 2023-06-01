@@ -65,7 +65,6 @@ module.exports = {
           <u>Mod Info:</u><br>
           Created by money#6283<br>
           Help: https://discord.gg/apUVFy7SUh
-          Variable: number-role
       </p>
       <br><br>
       <member-input dropdownLabel="Source Member" selectId="member" variableContainerId="varNameContainer" variableInputId="varName"></member-input>
