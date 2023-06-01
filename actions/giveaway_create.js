@@ -9,7 +9,7 @@ module.exports = {
     return `Giveaway creator: ${presa}`;
   },
 
-  meta: { version: "2.1.7", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/giveaway_create.js' },
+  meta: { version: "2.1.8", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/giveaway_create.js' },
 
   fields: ["title", "description", "color", "footertext", "footericon", "info", "time", "type", "nagroda", "find"],
 

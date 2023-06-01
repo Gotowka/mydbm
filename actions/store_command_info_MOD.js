@@ -2,7 +2,7 @@ module.exports = {
   name: 'Store Command Info',
   section: 'Bot Client Control',
   meta: {
-    version: '2.1.7',
+    version: '2.1.8',
     preciseCheck: false,
     author: 'DBM Mods/Gotowka',
     authorUrl: 'https://github.com/Gotowka',
