@@ -102,9 +102,10 @@ module.exports = {
   async action(cache) {
     console.log('ACTION: giveaway_create; [v1.0] (v2.1.8)')
     const data = cache.actions[cache.index]
-    const { interaction } = cache
+    const { interaction, msg } = cache
     const { MessageEmbed } = require("discord.js");
-    const author = interaction.member
+    const mess = (interaction ?? msg)
+    const author = mess.member
     const title = this.evalMessage(data.title, cache)
     const d1 = this.evalMessage(data.description, cache)
     const color = this.evalMessage(data.color, cache)
@@ -114,7 +115,7 @@ module.exports = {
     const type = parseInt(data.type, 10);
     const emoji = this.evalMessage(data.find, cache)
     const nagroda = this.evalMessage(data.nagroda, cache)
-    const channel = interaction.channel
+    const channel = mess.channel
     let duration
     let time2 = this.evalMessage(data.time, cache)
     const ttype = data.type
@@ -141,9 +142,9 @@ module.exports = {
     if(footertext) {
       embed.setFooter({ text: footertext, iconURL: footericon ?? footericon ? footericon : null })
     }
-    interaction.reply({ content: 'Sukces!', ephemeral: true })
-    const msg = await channel.send({ embeds: [embed] })
-       await msg.react(emoji)
+    mess.reply({ content: ':white_check_mark:!', ephemeral: true })
+    const ms = await channel.send({ embeds: [embed] })
+       await ms.react(emoji)
         switch (type) {
           case 0:
             time *= 1e3;
@@ -158,15 +159,15 @@ module.exports = {
             break;
       }
         setTimeout(async () => {
-            let osoby = await msg.reactions.cache.get(emoji).users.fetch()
+            let osoby = await ms.reactions.cache.get(emoji).users.fetch()
             const member = osoby.random()
             if(member.bot) {
               const member = osoby.random()
-              const winner = interaction.guild.members.cache.get(member.id)
-              msg.reply({ content: `${winner} Aby odebrać nagrode, zgłoś się w wiadomości prywatnej do ${author.user.tag} (${nagroda})`})
+              const winner = mess.guild.members.cache.get(member.id)
+              ms.reply({ content: `${winner} Aby odebrać nagrode, zgłoś się w wiadomości prywatnej do ${author.user.tag} (${nagroda})`})
             } else {
-              const winner = interaction.guild.members.cache.get(member.id)
-              msg.reply({ content: `${winner} Aby odebrać nagrode, zgłoś się w wiadomości prywatnej do ${author.user.tag} (${nagroda})`})
+              const winner = mess.guild.members.cache.get(member.id)
+              ms.reply({ content: `${winner} Aby odebrać nagrode, zgłoś się w wiadomości prywatnej do ${author.user.tag} (${nagroda})`})
             }
         }, time)
 },

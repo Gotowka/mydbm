@@ -110,13 +110,14 @@ module.exports = {
   //---------------------------------------------------------------------
 
   async action(cache) {
-    const { interaction } = cache;
     console.log('ACTION: gstart; [v1.0] (v2.1.8)')
+    const { interaction, msg } = cache;
     const giveaways = require('../data/giveaways.json')
     const fs = require('fs')
     const data = cache.actions[cache.index];
+    const mess = (interaction ?? msg)
 
-    giveaways[interaction.guild.id] = [];
+    giveaways[mess.guild.id] = [];
     
   let duration = this.evalMessage(data.time, cache)
 
@@ -134,10 +135,10 @@ module.exports = {
   const endtime2 = new Date().getTime() + duration;
   const endtime = Date.parse(new Date(new Date().getTime() + duration)) / 1000;
 
-  giveaways[interaction.guild.id].push({
-    "guild": interaction.guild.id,
-    "channel": interaction.channel.id,
-    "hoster": interaction.member.user.tag,
+  giveaways[mess.guild.id].push({
+    "guild": mess.guild.id,
+    "channel": mess.channel.id,
+    "hoster": mess.member.user.tag,
     "winners": this.evalMessage(data.winners, cache),
     "prize": this.evalMessage(data.prize, cache),
     "end": endtime2,
@@ -150,7 +151,7 @@ fs.writeFileSync("./data/giveaways.json", JSON.stringify(giveaways));
 this.storeValue(`<t:${endtime}:R>`, 1, 'endtime', cache)
 this.storeValue(this.evalMessage(data.winners, cache), 1, 'winners', cache)
 this.storeValue(this.evalMessage(data.prize, cache), 1, 'prize', cache)
-this.storeValue(interaction.member.user.tag, 1, 'hoster', cache)
+this.storeValue(mess.member.user.tag, 1, 'hoster', cache)
 this.callNextAction(cache)
 
   },

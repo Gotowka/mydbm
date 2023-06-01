@@ -60,12 +60,13 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
-      const { interaction } = cache
       console.log('ACTION: skip; [v1.0] (v2.1.8)')
+      const { interaction, msg } = cache
       const { musicPlayer } = require('../bot')
+      const mess = (interaction ?? msg)
       if (!musicPlayer) console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/v2/bot.js')
-      if (!interaction.member.voice.channel) return interaction.reply("Error: You must join the voice channel!")
-      const queue = musicPlayer.getQueue(interaction.guild)
+      if (!mess.member.voice.channel) return mess.reply("Error: You must join the voice channel!")
+      const queue = musicPlayer.getQueue(mess.guild)
 
       if (!queue) return await interaction.reply("Error: I can\'t fount the queue")
 
