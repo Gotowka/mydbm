@@ -27,8 +27,8 @@ module.exports = {
           Created by money#6283<br>
           Help: https://discord.gg/apUVFy7SUh<br>
           Vars: 
-          - #1: [name, tag, id]
-          - #2: [name, tag, id, ticket]
+          - #1: [name, tag, id, ticket] (reply int - ticket exist)
+          - #2: [name, tag, id, ticket] (reply int - new ticket)
         </p>
       </div>
     
@@ -219,14 +219,15 @@ module.exports = {
       const createSettings = {}
       if (data.limit === '0') {
         createSettings.topic = interaction.member.id
-        if (guild.channels.cache.find(c => c.topic === interaction.member.id)) return interaction.reply({ content: this.evalMessage(data.E1, cache).replace('[name]', interaction.user.username).replace('[tag]', interaction.user.tag).replace('[id]', interaction.member.id), ephemeral: true });
+        const t = guild.channels.cache.find(c => c.topic === interaction.member.id)
+        if (t) return interaction.reply({ content: this.evalMessage(data.E1, cache).replace('[name]', interaction.user.username).replace('[tag]', interaction.user.tag).replace('[id]', interaction.member.id).replace('[ticket]', `<#${t.id}`), ephemeral: true });
       } else if (data.Ttopic) createSettings.topic = this.evalMessage(data.Ttopic, cache)
       if (data.Tparent) createSettings.parent = this.evalMessage(data.Tparent, cache)
       if (data.Tposition) createSettings.position = this.evalMessage(data.Tposition, cache)
       if (data.role) createSettings.permissionOverwrites = [
         {
            id: interaction.member.id,
-           allow: [Permissions.FLAGS.VIEW_CHANNEL],
+           allow: [Permissions.FLAGS.VIEW_CHANNEL, Permissions.FLAGS.SEND_MESSAGES],
            deny: [Permissions.FLAGS.MENTION_EVERYONE]
         }, {
             id: interaction.guild.roles.everyone.id,
@@ -234,14 +235,14 @@ module.exports = {
             deny: [Permissions.FLAGS.VIEW_CHANNEL]
         }, {
             id: this.evalMessage(data.role, cache),
-            allow: [Permissions.FLAGS.VIEW_CHANNEL],
+            allow: [Permissions.FLAGS.VIEW_CHANNEL, Permissions.FLAGS.SEND_MESSAGES],
             deny: []
         }
       ]
       else createSettings.permissionOverwrites = [
         {
            id: interaction.member.id,
-           allow: [Permissions.FLAGS.VIEW_CHANNEL],
+           allow: [Permissions.FLAGS.VIEW_CHANNEL, Permissions.FLAGS.SEND_MESSAGES],
            deny: [Permissions.FLAGS.MENTION_EVERYONE]
         }, {
             id: interaction.guild.roles.everyone.id,
