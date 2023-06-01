@@ -22,7 +22,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   subtitle(data, presets) {
-    return `Start the giveaway`;
+    return `Join to the giveaway`;
   },
 
   //---------------------------------------------------------------------
