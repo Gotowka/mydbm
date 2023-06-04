@@ -36,13 +36,12 @@ const client = new Client({
 });
 
 const { Player } = require("discord-player");
-const music = new Player(client, {
+const musicP = new Player(client, {
    ytdlOptions: {
      quality: "highestaudio",
      highWaterMark: 1 << 25
    }
 })
-module.exports.musicPlayer = music
 module.exports.djsV = '14.11.0'
 console.log('BOT: bot.js; [v1.2] (v3.2.0) (14.11.0)')
 
@@ -1199,6 +1198,10 @@ Actions.getLocalFile = function (url) {
 Actions.getDBM = function () {
   return DBM;
 };
+
+Actions.getPlayer = function () {
+  return musicP;
+}
 
 Actions.mongoConnect = async function (uri) {
   const { MongoClient } = require("mongodb");
