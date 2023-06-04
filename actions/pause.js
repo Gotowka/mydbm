@@ -22,6 +22,12 @@ module.exports = {
   
 	meta: { version: "3.2.0", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/pause.js' },
   
+	variableStorage(data, varType) {
+		if (varType !== 1) return;
+		let dataType = "Error ('queue')";
+		return ['error', dataType];
+	},
+
 	fields: ["type"],
   
 	html(isEvent, data) {
@@ -73,4 +79,5 @@ module.exports = {
 	},
 
 	mod() {},
-  };
+
+};
