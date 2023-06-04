@@ -95,7 +95,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   async action(cache) {
-    console.log('ACTION: play_all; [v1.0] (v3.1.1)')
+    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mplay_all; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.0\x1b[30m)')
     const data = cache.actions[cache.index];
     const { musicPlayer } = require('../bot')
     const { interaction, msg } = cache

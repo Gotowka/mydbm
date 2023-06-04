@@ -30,7 +30,7 @@ module.exports = {
     init() {}, 
   
     async action(cache) {
-      console.log('ACTION: mongodb_connect; [v1.0] (v3.1.1)')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mmongodb_connect; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.0\x1b[30m)')
       const data = cache.actions[cache.index];
 
       await this.mongoConnect(data.uri)

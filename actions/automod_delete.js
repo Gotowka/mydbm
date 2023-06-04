@@ -38,7 +38,7 @@ module.exports = {
     init() {},
   
     async action(cache) {
-      console.log('ACTION: automod_delete; [v1.0] (v3.1.1)')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mautomod_delete; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.0\x1b[30m)')
       const { djsV } = require('../bot')
       if (!djsV) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/v3/bot.js');
       const data = cache.actions[cache.index];

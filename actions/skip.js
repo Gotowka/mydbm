@@ -45,8 +45,8 @@ module.exports = {
     init() {},
   
     async action(cache) {
-      console.log('ACTION: skip; [v1.0] (v3.1.1)')
       const { musicPlayer } = require('../bot')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mskip; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.0\x1b[30m)')
       const { interaction, msg } = cache
       const { version } = require("discord-player");
       if (!musicPlayer) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/v3/bot.js');

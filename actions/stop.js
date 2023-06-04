@@ -88,7 +88,7 @@ module.exports = {
 	//---------------------------------------------------------------------
   
 	async action(cache) {
-	  console.log('ACTION: stop; [v1.0] (v3.1.1)')
+	  console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mstop; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.0\x1b[30m)')
       const { interaction, msg } = cache
       const { musicPlayer } = require('../bot')
       const { version } = require("discord-player");
