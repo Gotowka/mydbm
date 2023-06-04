@@ -21,28 +21,6 @@ Please use "Project > Module Manager" and "Project > Reinstall Node Modules" to 
 
 const noop = () => void 0;
 
-const { Client, GatewayIntentBits, Partials } = require("discord.js")
-const client = new Client({
-  intents: [
-    GatewayIntentBits.GuildMembers,
-    GatewayIntentBits.GuildVoiceStates,
-    GatewayIntentBits.GuildPresences,
-    GatewayIntentBits.GuildScheduledEvents,
-  ], partials: [
-    Partials.GuildMember,
-    Partials.Channel,
-    Partials.User
-  ]
-});
-
-const { Player } = require("discord-player");
-const musicP = new Player(client, {
-   ytdlOptions: {
-     quality: "highestaudio",
-     highWaterMark: 1 << 25
-   }
-})
-module.exports.djsV = '14.11.0'
 console.log('BOT: bot.js; [v1.2] (v3.2.0) (14.11.0)')
 
 const MsgType = {
@@ -1094,6 +1072,7 @@ Bot.onSelectMenuInteraction = function (interaction) {
 
 const Actions = (DBM.Actions = {});
 let mClient
+let musicP
 Actions.actionsLocation = null;
 Actions.eventsLocation = null;
 Actions.extensionsLocation = null;
@@ -1198,6 +1177,30 @@ Actions.getLocalFile = function (url) {
 Actions.getDBM = function () {
   return DBM;
 };
+
+Actions.playerConnect = function () {
+  const { Client, GatewayIntentBits, Partials } = require("discord.js")
+  const client = new Client({
+  intents: [
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.GuildVoiceStates,
+    GatewayIntentBits.GuildPresences,
+    GatewayIntentBits.GuildScheduledEvents,
+  ], partials: [
+    Partials.GuildMember,
+    Partials.Channel,
+    Partials.User
+  ]
+  });
+
+  const { Player } = require("discord-player");
+  musicP = new Player(client, {
+   ytdlOptions: {
+     quality: "highestaudio",
+     highWaterMark: 1 << 25
+   }
+  })
+}
 
 Actions.getPlayer = function () {
   return musicP;
