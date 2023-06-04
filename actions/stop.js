@@ -34,6 +34,11 @@ module.exports = {
 	// It's highly recommended "preciseCheck" is set to false for third-party mods.
 	// This will make it so the patch version (0.0.X) is not checked.
 	//---------------------------------------------------------------------
+    variableStorage(data, varType) {
+		if (varType !== 1) return;
+		let dataType = "Error ('queue')";
+		return ['error', dataType];
+	},
   
 	meta: { version: "3.2.0", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/stop.js' },
   
@@ -93,7 +98,13 @@ module.exports = {
       const player = this.getPlayer()
       if (!player) return console.warn('\x1b[30m[\x1b[31mERROR\x1b[30m]\x1b[36m Use action \x1b[33mconnect_music_player\x1b[36m, https://github.com/Gotowka/mydbm/blob/v3/actions/connect_music_player.js')
 	  const queue = player.queues.cache.get((interaction ?? msg).guild?.id)
-	  if (!queue) return (interaction ?? msg).reply("Error: I can\'t found the queue");
+	  if (!queue) {
+		this.storeValue('queue', 1, 'error', cache)
+		this.callNextAction(cache);
+		return;
+	  }
+	  queue.delete()
+	  await (interaction ?? msg).guild.members?.me?.voice?.disconnect()
 	  this.callNextAction(cache);
 	},
   
