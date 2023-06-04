@@ -135,12 +135,6 @@ module.exports = {
       })
     } else queue.addTrack(tracks.tracks[0])
 
-    this.storeValue(tracks.tracks[0].title, 1, 'name', cache);
-    this.storeValue(tracks.tracks[0].url, 1, 'url', cache);
-    this.storeValue(tracks.tracks[0].author, 1, 'author', cache);
-    this.storeValue(tracks.tracks[0].views, 1, 'views', cache);
-    this.storeValue(tracks.tracks[0].thumbnail, 1, 'thumbnail', cache);
-    this.storeValue(tracks.tracks[0].duration, 1, 'duration', cache);
     this.callNextAction(cache);
   },
 
