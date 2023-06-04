@@ -40,15 +40,11 @@ module.exports = {
 	  return `Loop: ${hm}`;
 	},
   
-	//---------------------------------------------------------------------
-	// Action Meta Data
-	//
-	// Helps check for updates and provides info if a custom mod.
-	// If this is a third-party mod, please set "author" and "authorUrl".
-	//
-	// It's highly recommended "preciseCheck" is set to false for third-party mods.
-	// This will make it so the patch version (0.0.X) is not checked.
-	//---------------------------------------------------------------------
+    variableStorage(data, varType) {
+		if (varType !== 1) return;
+		let dataType = "Error ('queue')";
+		return ['error', dataType];
+	},
   
 	meta: { version: "3.2.0", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/loop.js' },
   
