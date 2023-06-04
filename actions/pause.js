@@ -60,7 +60,7 @@ module.exports = {
 	  const queue = player.queues.cache.get((cache.interaction ?? cache.msg).guild.id)
 
 	  if (!queue) {
-		this.storeValue('dontplay', 1, 'error', cache)
+		this.storeValue('queue', 1, 'error', cache)
 		this.callNextAction(cache);
 		return;
 	  }
