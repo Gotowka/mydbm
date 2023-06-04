@@ -2,21 +2,21 @@
 
 **Actions:**
 
-- [Play Music](https://github.com/Gotowka/mydbm/blob/v3/actions/play_all.js) [1.0]
+- [Play Music](https://github.com/Gotowka/mydbm/blob/v3/actions/play_all.js) [1.1]
 
-- [Loop](https://github.com/Gotowka/mydbm/blob/v3/actions/loop.js) [1.0]
+- [Loop](https://github.com/Gotowka/mydbm/blob/v3/actions/loop.js) [1.1]
 
-- [Queue](https://github.com/Gotowka/mydbm/blob/v3/actions/queue.js) [1.0]
+- [Queue](https://github.com/Gotowka/mydbm/blob/v3/actions/queue.js) [1.1]
 
-- [Pause](https://github.com/Gotowka/mydbm/blob/v3/actions/queue.js) [1.0]
+- [Pause](https://github.com/Gotowka/mydbm/blob/v3/actions/queue.js) [1.1]
 
-- [Skip](https://github.com/Gotowka/mydbm/blob/v3/actions/skip.js) [1.0]
+- [Skip](https://github.com/Gotowka/mydbm/blob/v3/actions/skip.js) [1.1]
 
-- [Stop](https://github.com/Gotowka/mydbm/blob/v3/actions/stop.js) [1.0]
+- [Stop](https://github.com/Gotowka/mydbm/blob/v3/actions/stop.js) [1.1]
 
 - [Store Song Info](https://github.com/Gotowka/mydbm/blob/v3/actions/store_song_info.js) [1.0]
 
-- [MongoDB Collection Create](https://github.com/Gotowka/mydbm/blob/v3/actions/mongodb_collection_create.js) [1.0]
+- [MongoDB Collection Create](https://github.com/Gotowka/mydbm/blob/v3/actions/mongodb_collection_create.js) [1.1]
 
 - [MongoDB Collection Get](https://github.com/Gotowka/mydbm/blob/v3/actions/mongodb_collection_get.js) [1.0]
 
@@ -44,4 +44,4 @@
 
 - [Giveaway END](https://github.com/Gotowka/mydbm/blob/v3/actions/gend.js) [1.0]
 
-- [Games](https://github.com/Gotowka/mydbm/blob/v3/actions/games.js) [1.0]
+- [Games](https://github.com/Gotowka/mydbm/blob/v3/actions/games.js) [1.1]
