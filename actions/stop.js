@@ -90,14 +90,10 @@ module.exports = {
 	async action(cache) {
 	  console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mstop; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.0\x1b[30m)')
       const { interaction, msg } = cache
-      const { musicPlayer } = require('../bot')
-      const { version } = require("discord-player");
-	  if (!musicPlayer) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/v3/bot.js')
-      if (version !== '6.0.0') console.warn('Change version module, npm i discord-player@6.0.0')
-	  const queue = musicPlayer.queues.cache.get((interaction ?? msg).guild?.id)
+      const player = this.getPlayer()
+      if (!player) return console.warn('\x1b[30m[\x1b[31mERROR\x1b[30m]\x1b[36m Use action \x1b[33mconnect_music_player\x1b[36m, https://github.com/Gotowka/mydbm/blob/v3/actions/connect_music_player.js')
+	  const queue = player.queues.cache.get((interaction ?? msg).guild?.id)
 	  if (!queue) return (interaction ?? msg).reply("Error: I can\'t found the queue");
-      await (msg ?? interaction).guild?.members?.me?.voice?.disconnect()
-      queue.delete()
 	  this.callNextAction(cache);
 	},
   
