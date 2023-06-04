@@ -8,7 +8,7 @@ module.exports = {
       return `Delete automod - ${data.value}`;
     },
   
-    meta: { version: "3.1.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/automod_delete.js' },
+    meta: { version: "3.2.0", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/automod_delete.js' },
     
     fields: ["value", "type"],
   

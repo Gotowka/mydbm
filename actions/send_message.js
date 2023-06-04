@@ -64,7 +64,7 @@ module.exports = {
     // This will make it so the patch version (0.0.X) is not checked.
     //---------------------------------------------------------------------
   
-    meta: { version: "3.1.1", preciseCheck: true, author: 'DBM Mods', authorUrl: 'https://github.com/dbm-network/mods', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/send_message.js' },
+    meta: { version: "3.2.0", preciseCheck: true, author: 'DBM Mods', authorUrl: 'https://github.com/dbm-network/mods', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/send_message.js' },
   
     //---------------------------------------------------------------------
     // Action Fields

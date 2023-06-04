@@ -32,7 +32,7 @@ module.exports = {
         return [data.varName2, dataType];
       },
   
-    meta: { version: "3.1.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/queue.js' },
+    meta: { version: "3.2.0", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/queue.js' },
   
     //---------------------------------------------------------------------
     // Action Fields

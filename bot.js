@@ -1,11 +1,11 @@
 /******************************************************
  * Discord Bot Maker Bot
- * Version 3.1.1
+ * Version 3.2.0
  * Robert Borghese
  ******************************************************/
 
 const DBM = {};
-DBM.version = "3.1.1";
+DBM.version = "3.2.0";
 
 const DiscordJS = (DBM.DiscordJS = require("discord.js"));
 
