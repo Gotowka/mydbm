@@ -25,15 +25,12 @@ module.exports = {
     return `I play your music!`;
   },
 
-  //---------------------------------------------------------------------
-  // Action Meta Data
-  //
-  // Helps check for updates and provides info if a custom mod.
-  // If this is a third-party mod, please set "author" and "authorUrl".
-  //
-  // It's highly recommended "preciseCheck" is set to false for third-party mods.
-  // This will make it so the patch version (0.0.X) is not checked.
-  //---------------------------------------------------------------------
+  variableStorage(data, varType) {
+		const type = parseInt(data.storage, 10);
+		if (type !== varType) return;
+		let dataType = "Song Data";
+		return [data.varName, dataType];
+	},
 
   meta: { version: "3.2.0", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/play_all.js' },
 
@@ -45,7 +42,7 @@ module.exports = {
   // are also the names of the fields stored in the action's JSON data.
   //---------------------------------------------------------------------
 
-  fields: ["variables", "url"],
+  fields: ["variables", "url", "storage", "varName"],
 
   //---------------------------------------------------------------------
   // Command HTML
@@ -66,14 +63,15 @@ module.exports = {
         Created by money#6283<br>
         Help: https://discord.gg/apUVFy7SUh
         Playlist are disabled!<br>
-        Variables:(var error is required to use)<br>
-        <span id="variables" class="dbminputlabel">name, url, author, views, thumbnail, duration, error('playlist', 'voice', 'notfound')</span>
+        Variables: error('playlist', 'voice', 'notfound')
     </p>
 </div><br>
 <div>
     <span class="dbminputlabel">Music</span><br>
     <input id="url" class="round" type="text" placeholder="Give a url or title to music">
-</div>`;
+</div>
+
+<store-in-variable dropdownLabel="Store in" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName"></store-in-variable>`;
   },
 
   //---------------------------------------------------------------------
@@ -99,9 +97,9 @@ module.exports = {
     const data = cache.actions[cache.index];
     const { interaction, msg } = cache
     const { version } = require("discord-player");
-    if (version !== '6.0.0') console.warn('Change version module, npm i discord-player@6.0.0');
     const player = this.getPlayer()
 	  if (!player) return console.warn('\x1b[30m[\x1b[31mERROR\x1b[30m]\x1b[36m Use action \x1b[33mconnect_music_player\x1b[36m, https://github.com/Gotowka/mydbm/blob/v3/actions/connect_music_player.js')
+    if (version !== '6.1.1') console.warn('\x1b[30m[\x1b[31mERROR\x1b[30m]\x1b[0m Change version module, npm i discord-player@6.1.1')
     const channel = (interaction ?? msg).member.voice.channel
     const url = this.evalMessage(data.url, cache)
     if (url.includes('playlist')) {
@@ -135,6 +133,9 @@ module.exports = {
       })
     } else queue.addTrack(tracks.tracks[0])
 
+    const storage = parseInt(data.storage, cache)
+    const varName = this.evalMessage(data.varName, cache);
+    this.storeValue(tracks.tracks[0], storage, varName, cache);
     this.callNextAction(cache);
   },
 
