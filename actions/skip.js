@@ -14,15 +14,16 @@ module.exports = {
     //---------------------------------------------------------------------
   
     section: "Audio Control",
-  
-    //---------------------------------------------------------------------
-    // Action Subtitle
-    //
-    // This function generates the subtitle displayed next to the name.
-    //---------------------------------------------------------------------
-  
+
     subtitle(data, presets) {
       return `Skip the music`;
+    },
+
+    variableStorage(data, varType) {
+      const type = parseInt(data.storage, 10);
+      if (type !== varType) return;
+      let dataType = "Song Data";
+      return [data.varName, dataType];
     },
   
     meta: { version: "3.2.0", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/skip.js' },
