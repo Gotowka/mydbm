@@ -1221,15 +1221,9 @@ Actions.mongoGetSettingData = function (property, cData) {
   if (property === 0) {
     namee = cData.split(':').at(property)
     valuee = cData.split(':').at(property + 1).split(' ').at(property)
-  } else if (property === 1) {
-    namee = cData.split(':').at(property).split(' ').at(property)
-    valuee = cData.split(':').at(property + 1).split(' ').at(property - 1)
-  } else if (property === 2) {
-    namee = cData.split(':').at(property).split(' ').at(property - 1)
-    valuee = cData.split(':').at(property + 1).split(' ').at(property - 2)
-  } else if (property === 3) { 
-    namee = cData.split(':').at(property).split(' ').at(property - 2)
-    valuee = cData.split(':').at(property + 1).split(' ').at(property - 3)
+  } else {
+    namee = cData.split(':').at(property).split(' ').at(1)
+    valuee = cData.split(':').at(property + 1).split(' ').at(0)
   }
 
   return { name: namee, value: valuee }
