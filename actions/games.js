@@ -5,7 +5,7 @@ module.exports = {
   section: "Discord",
 
   subtitle(data, presets) {
-      const games = ["Snake"]
+      const games = ["Snake", "2048", "FastType", "Wordle"]
     return `Starting the game: ${games[data.game]}`;
   },
 
@@ -26,7 +26,9 @@ module.exports = {
   <span class="dbminputlabel">Game</span><br>
   <select id="game" class="round">
       <option value="0">Snake</option>
-
+      <option value="1">2048</option>
+      <option value="2">FastType</option>
+      <option value="3">Wordle</option>
   </select>
 </div>
 
@@ -55,7 +57,7 @@ module.exports = {
   async action(cache) {
     console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mgames; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.0\x1b[30m)')
     const data = cache.actions[cache.index];
-    const { Snake } = require('discord-gamecord')
+    const { Snake, TwoZeroFourEight, FastType, Wordle } = require('discord-gamecord')
     const settings = {
       message: cache.interaction ?? cache.msg
     }
@@ -66,6 +68,17 @@ module.exports = {
       case "0": 
           game = new Snake(settings)
           break;
+      case "1":
+          game = new TwoZeroFourEight(settings)
+          break;
+      case "2":
+          game = new FastType(settings)
+          break;
+      case "3":
+          game = new Wordle(settings)
+          break;
+      default:
+        break;
     }
 
     game.startGame()
