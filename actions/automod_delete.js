@@ -19,8 +19,7 @@ module.exports = {
           <u>Mod Info:</u><br>
           Created by money#6283<br>
           Help = https://discord.gg/apUVFy7SUh<br>
-          Variables:<br>
-          <span class="dbminputlabel">error('disabled', 'delete')</span>
+          Variables: error('disabled', 'delete')
       </p>
   </div><br>
   <div style="float: left; width: 50%;">

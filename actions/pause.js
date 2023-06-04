@@ -31,8 +31,7 @@ module.exports = {
 		  <u>Mod Info:</u><br>
 		  Created by money#6283<br>
 		  Help: https://discord.gg/apUVFy7SUh<br>
-		  Variables:(var error is required to use)<br>
-		  <span id="variables" class="dbminputlabel">error('dontplay')</span>
+		  Variables: error('queue')
 	  </p>
   </div><br>
   <div>

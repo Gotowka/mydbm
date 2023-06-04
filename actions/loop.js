@@ -80,6 +80,7 @@ module.exports = {
 		  <u>Mod Info:</u><br>
 		  Created by money#6283<br>
 		  Help: https://discord.gg/apUVFy7SUh
+		  Variables: error('queue')
 	  </p>
   </div><br>
   <div>

@@ -45,7 +45,7 @@ module.exports = {
     // are also the names of the fields stored in the action's JSON data.
     //---------------------------------------------------------------------
   
-    fields: ["style", "label", "call"],
+    fields: ["style", "label"],
   
     //---------------------------------------------------------------------
     // Command HTML
@@ -69,18 +69,11 @@ module.exports = {
       </p>
   </div><br><br>
   <div style="float: left; width: calc(100% - 12px);">
-  <span class="dbminputlabel">Button (Style)<span style="color:red">*</span></span>
+  <span class="dbminputlabel">Button (Style)</span>
   <input id="style" class="round" placeholder="DANGER, PRIMARY, SECONDARY, SUCCESS" type="text">
 <br>
-<span class="dbminputlabel">Button (Label)<span style="color:red">*</span></span>
+<span class="dbminputlabel">Button (Label)</span>
 <input id="label" class="round" placeholder="[users] = Users from the giveaway" type="text">
-
-<br>
-
-<div id="varNameContainer" style="float: left; width: 60%;">
-Jump to Action:<br>
-<input id="call" class="round" type="number">
-</div>
 </div>
   `;
     },
@@ -158,8 +151,7 @@ Jump to Action:<br>
                         .setLabel(this.evalMessage(data.label, cache).replace('[users]', users))
                     )
                     await message.edit({ components: [button] })
-                    const val = parseInt(this.evalMessage(data.call, cache), 10);
-                    const index = Math.max(val - 1, 0);
+                    const index = Math.max(1 - 1, 0);
                     if (cache.actions[index]) {
                       cache.index = index - 1;
                       this.callNextAction(cache);
@@ -204,8 +196,7 @@ Jump to Action:<br>
                         .setLabel(this.evalMessage(data.label, cache).replace('[users]', users))
                     )
                     await message.edit({ components: [button] })
-                    const val = parseInt(this.evalMessage(data.call, cache), 10);
-                    const index = Math.max(val - 1, 0);
+                    const index = Math.max(1 - 1, 0);
                     if (cache.actions[index]) {
                       cache.index = index - 1;
                       this.callNextAction(cache);
