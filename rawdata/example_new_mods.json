@@ -1,0 +1,72 @@
+{
+    "name": "test",
+    "permissions": "NONE",
+    "permissions2": "NONE",
+    "restriction": "1",
+    "_id": "FeGxn",
+    "actions": [
+      {
+        "pname": "testpar",
+        "min": "5",
+        "max": "10",
+        "name": "Command Parameter Set String Length"
+      },
+      {
+        "pname": "xadwad",
+        "min": "3",
+        "max": "15",
+        "name": "Command Parameter Set String Length"
+      },
+      {
+        "pname": "testd",
+        "min": "12",
+        "max": "30",
+        "name": "Command Parameter Set Number Value"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "check",
+        "buttons": [],
+        "selectMenus": [],
+        "attachments": [],
+        "embeds": [],
+        "reply": true,
+        "ephemeral": false,
+        "tts": false,
+        "overwrite": false,
+        "mention": false,
+        "dontSend": false,
+        "editMessage": "0",
+        "editMessageVarName": "",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      }
+    ],
+    "comType": "4",
+    "description": "test",
+    "parameters": [
+      {
+        "name": "testpar",
+        "description": "123123",
+        "type": "STRING",
+        "required": true,
+        "choices": null
+      },
+      {
+        "name": "xadwad",
+        "description": "axadwad",
+        "type": "STRING",
+        "required": true,
+        "choices": null
+      },
+      {
+        "name": "testd",
+        "description": "adwadadadad",
+        "type": "INTEGER",
+        "required": true,
+        "choices": null
+      }
+    ]
+  }
