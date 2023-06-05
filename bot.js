@@ -460,7 +460,7 @@ Bot.createApiJsonFromCommand = function (com, name) {
     }
   }
   if (com.comType === "4" && com.parameters && Array.isArray(com.parameters)) {
-    result.options = this.validateSlashCommandParameters(com.parameters, result.name);
+    result.options = this.validateSlashCommandParameters(com.parameters, result.name, com);
   }
   return result;
 };
@@ -589,7 +589,19 @@ Bot.validateSlashCommandParameterType = function (type) {
   return resul;
 }
 
-Bot.validateSlashCommandParameters = function (parameters, commandName) {
+Bot.pushParametersPlusData = function (pData, cmd) {
+  cmd.actions.map(action => {
+    if (action.name === 'Command Parameter Set String Length' && pData.name === action.pname) {
+      pData.minLength = action.min
+      pData.maxLength = action.max
+    } else if(action.name === 'Command Parameter Set Number Value' && pData.name === action.pname) {
+      pData.minValue = action.min
+      pData.maxValue = action.max
+    }
+  })
+}
+
+Bot.validateSlashCommandParameters = function (parameters, commandName, cmd) {
   const requireParams = [];
   const optionalParams = [];
   const existingNames = {};
@@ -603,6 +615,7 @@ Bot.validateSlashCommandParameters = function (parameters, commandName) {
         paramsData.description = this.validateSlashCommandDescription(paramsData.description);
         paramsData.type = this.validateSlashCommandParameterType(paramsData.type)
         paramsData.choices?.map(p => p.type = 3)
+        this.pushParametersPlusData(paramsData, cmd)
         if (paramsData.required) {
           requireParams.push(paramsData);
         } else {
