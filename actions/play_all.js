@@ -61,7 +61,7 @@ module.exports = {
     <p>
         <u>Mod Info:</u><br>
         Created by money#6283<br>
-        Help: https://discord.gg/apUVFy7SUh
+        Help: https://discord.gg/apUVFy7SUh<br>
         Playlist are disabled!<br>
         Variables: error('playlist', 'voice', 'notfound')
     </p>
@@ -69,8 +69,7 @@ module.exports = {
 <div>
     <span class="dbminputlabel">Music</span><br>
     <input id="url" class="round" type="text" placeholder="Give a url or title to music">
-</div>
-
+</div><br>
 <store-in-variable dropdownLabel="Store in" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName"></store-in-variable>`;
   },
 
@@ -112,8 +111,8 @@ module.exports = {
       this.callNextAction(cache);
       return;
     }
-    let queue = musicPlayer.queues.cache.get((interaction ?? msg).guild.id)
-    const tracks = await musicPlayer.search(url, {
+    let queue = player.queues.cache.get((interaction ?? msg).guild.id)
+    const tracks = await player.search(url, {
       fallbackSearchEngine: 'auto',
       requestedBy: (interaction ?? msg).member.user
     })
@@ -125,7 +124,7 @@ module.exports = {
     }
 
     if (!queue) {
-      await musicPlayer.play(channel, tracks.tracks[0], {
+      await player.play(channel, tracks.tracks[0], {
         nodeOptions: {
           metadata: interaction ?? msg
         },

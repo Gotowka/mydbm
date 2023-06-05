@@ -5,7 +5,7 @@ module.exports = {
     section: "Audio Control",
   
     subtitle(data, presets) {
-      return `Connecting to database!`;
+      return `Connecting Music Player!`;
     },
   
     meta: { version: "3.2.0", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/mongodb_connect.js' },
