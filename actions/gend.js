@@ -97,7 +97,7 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
-      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mgend; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.0\x1b[30m)')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mgend; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.0\x1b[30m)\x1b[0m')
       const { ButtonBuilder, ActionRowBuilder } = require('discord.js')
       const { writeFileSync } = require('fs-extra')
       const data = cache.actions[cache.index];

@@ -52,7 +52,7 @@ module.exports = {
 	init() {},
   
 	async action(cache) {
-	  console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mpause; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.0\x1b[30m)')
+	  console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mpause; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.0\x1b[30m)\x1b[0m')
 	  const data = cache.actions[cache.index];
 	  const player = this.getPlayer()
 	  const source = parseInt(data.type)

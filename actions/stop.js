@@ -84,10 +84,10 @@ module.exports = {
 	//---------------------------------------------------------------------
   
 	async action(cache) {
-	  console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mstop; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.0\x1b[30m)')
+	  console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mstop; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.0\x1b[30m)\x1b[0m')
       const { interaction, msg } = cache
       const player = this.getPlayer()
-      if (!player) return console.warn('\x1b[30m[\x1b[31mERROR\x1b[30m]\x1b[36m Use action \x1b[33mconnect_music_player\x1b[36m, https://github.com/Gotowka/mydbm/blob/v3/actions/connect_music_player.js')
+      if (!player) return console.warn('\x1b[30m[\x1b[31mERROR\x1b[30m]\x1b[36m Use action \x1b[33mconnect_music_player\x1b[36m, https://github.com/Gotowka/mydbm/blob/v3/actions/connect_music_player.js\x1b[0m')
 	  const queue = player.queues.cache.get((interaction ?? msg).guild?.id)
 	  if (!queue) {
 		this.storeValue('queue', 1, 'error', cache)
