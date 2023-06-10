@@ -26,7 +26,7 @@ module.exports = {
     <input id="database" class="round" type="text">
   </div>
   <div style="float: right; width: calc(50% - 12px);">
-    <span class="dbminputlabel">New Collection Name</span>
+    <span class="dbminputlabel">Collection Name</span>
     <input id="cname" class="round" type="text">
   </div>
   <div style="float: left; width: calc(100% - 12px);">
