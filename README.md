@@ -18,11 +18,15 @@
 
 - [Store Song Info](https://github.com/Gotowka/mydbm/blob/v3/actions/store_song_info.js) [1.0]
 
--  [Command Parameter Set String Length](https://github.com/Gotowka/mydbm/blob/v3/actions/command_param_set_length.js) [1.0]
+- [Command Parameter Set String Length](https://github.com/Gotowka/mydbm/blob/v3/actions/command_param_set_length.js) [1.0]
 
 - [Command Parameter Set Number Value](https://github.com/Gotowka/mydbm/blob/v3/actions/command_param_set_value.js) [1.0]
 
 - [MongoDB Collection Create](https://github.com/Gotowka/mydbm/blob/v3/actions/mongodb_collection_create.js) [1.1]
+
+- [MongoDB Collection Edit](https://github.com/Gotowka/mydbm/blob/v3/actions/mongodb_collection_edit.js) [1.0]
+
+- [MongoDB Store Collection Info](https://github.com/Gotowka/mydbm/blob/v3/actions/mongodb_store_collection_info.js) [1.0]
 
 - [MongoDB Collection Get](https://github.com/Gotowka/mydbm/blob/v3/actions/mongodb_collection_get.js) [1.0]
 
