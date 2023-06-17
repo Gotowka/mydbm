@@ -8,7 +8,7 @@ module.exports = {
     return `${presets.getMemberText(data.member, data.varName)}`;
   },
 
-  meta: { version: "2.1.6", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka/dbmmody/blob/main/beta/timeout_member.js', downloadUrl: 'https://github.com/Gotowka/dbmmody/blob/main/beta/timeout_member.js' },
+  meta: { version: "2.1.8", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka/dbmmody/blob/main/beta/timeout_member.js', downloadUrl: 'https://github.com/Gotowka/dbmmody/blob/main/beta/timeout_member.js' },
 
   fields: ["member", "varName", "czas", "ilosc", "reason"],
 
