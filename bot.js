@@ -1,6 +1,6 @@
 /******************************************************
  * Discord Bot Maker Bot
- * Version 2.1.7
+ * Version 2.1.8
  * Robert Borghese
  ******************************************************/
 
@@ -21,7 +21,7 @@ Please use "Project > Module Manager" and "Project > Reinstall Node Modules" to 
 
 const noop = () => void 0;
 module.exports.Money = '1.0.1'
-console.log('BOT: bot.js; [v1.0] (v2.1.8)')
+console.log('BOT: bot.js; [v1.1] (v2.1.8)')
 
 const MsgType = {
   MISSING_ACTION: 0,
@@ -465,7 +465,7 @@ Bot.createApiJsonFromCommand = function (com, name) {
     }
   }
   if (com.comType === "4" && com.parameters && Array.isArray(com.parameters)) {
-    result.options = this.validateSlashCommandParameters(com.parameters, result.name);
+    result.options = this.validateSlashCommandParameters(com.parameters, result.name, com);
   }
   return result;
 };
@@ -562,7 +562,20 @@ Bot.getNoDescriptionText = function () {
   return Files.data.settings.noDescriptionText ?? "(no description)";
 };
 
-Bot.validateSlashCommandParameters = function (parameters, commandName) {
+Bot.pushParametersPlusData = function (pData, cmd) {
+  cmd.actions.map(action => {
+    console.log(action)
+    if (action.name === 'Command Parameter Set String Length' && pData.name === action.pname) {
+      pData.minLength = action.min
+      pData.maxLength = action.max
+    } else if(action.name === 'Command Parameter Set Number Value' && pData.name === action.pname) {
+      pData.minValue = action.min
+      pData.maxValue = action.max
+    }
+  })
+}
+
+Bot.validateSlashCommandParameters = function (parameters, commandName, cmd) {
   const requireParams = [];
   const optionalParams = [];
   const existingNames = {};
@@ -574,6 +587,7 @@ Bot.validateSlashCommandParameters = function (parameters, commandName) {
         existingNames[name] = true;
         paramsData.name = name;
         paramsData.description = this.validateSlashCommandDescription(paramsData.description);
+        this.pushParametersPlusData(paramsData, cmd)
         if (paramsData.required) {
           requireParams.push(paramsData);
         } else {
@@ -1133,6 +1147,7 @@ const ActionsCache = (Actions.ActionsCache = class ActionsCache {
     });
   }
 });
+let mClient
 
 Actions.exists = function (action) {
   if (!action) return false;
@@ -1146,6 +1161,32 @@ Actions.getLocalFile = function (url) {
 Actions.getDBM = function () {
   return DBM;
 };
+
+Actions.mongoConnect = async function (uri) {
+  const { MongoClient } = require("mongodb");
+
+ mClient = new MongoClient(uri);
+  
+  await mClient.connect().catch(e => console.error(e));
+}
+
+Actions.mongoGetClient = function () {
+  return mClient;
+}
+
+Actions.mongoGetSettingData = function (property, cData) {
+  let namee
+  let valuee
+  if (property === 0) {
+    namee = cData.split(':').at(property)
+    valuee = cData.split(':').at(property + 1).split(' ').at(property)
+  } else {
+    namee = cData.split(':').at(property).split(' ').at(1)
+    valuee = cData.split(':').at(property + 1).split(' ').at(0)
+  }
+
+  return { name: namee, value: valuee }
+}
 
 Actions.callListFunc = function (list, funcName, args) {
   return new Promise((resolve) => {
