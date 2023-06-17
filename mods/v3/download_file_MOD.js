@@ -1,0 +1,82 @@
+module.exports = {
+  name: 'Download File',
+  section: 'File Stuff',
+  meta: {
+    version: '2.1.7',
+    preciseCheck: false,
+    author: 'DBM Mods',
+    authorUrl: 'https://github.com/dbm-network/mods',
+    downloadURL: 'https://github.com/dbm-network/mods/blob/master/actions/download_file_MOD.js',
+  },
+
+  subtitle(data) {
+    return `From: ${data.url} to ${data.filePath}/${data.fileName || 'download'}.${data.fileFormat || 'txt'}`;
+  },
+
+  fields: ['url', 'fileName', 'fileFormat', 'filePath'],
+
+  html() {
+    return `
+<div style="float: left;">
+  <span class="dbminputlabel">Web URL</span>
+  <input id="url" class="round" type="text" style="width: 522px"><br>
+</div>
+<br><br><br>
+
+<div style="float: left;">
+  <div style="float: left; width: 55%;">
+    <span class="dbminputlabel">File Name</span>
+    <input id="fileName" class="round" type="text" style="width: 400px"><br>
+  </div>
+  <div style="float: right; width: 40%; padding-left: 100px;">
+    <span class="dbminputlabel">File Format</span>
+    <input id="fileFormat" class="round" type="text" style="width: 100px"><br>
+  </div>
+</div>
+<br><br><br><br>
+
+<div style="float: left;">
+  <span class="dbminputlabel">File Path</span>
+  <input id="filePath" class="round" type="text" style="width: 522px" value="./downloads"><br>
+</div>
+<br><br><br><br>
+
+<p>
+  <u><b><span style="color: white;">NOTE:</span></b></u><br>
+  In File Path, "./" represents the path to your bot folder<br>
+  File Name and File Format are automatic but you can change them
+</p>`;
+  },
+
+  init() {},
+
+  async action(cache) {
+    const data = cache.actions[cache.index];
+
+    let url = this.evalMessage(data.url, cache);
+    const fileName = this.evalMessage(data.fileName, cache);
+    const fileFormat = this.evalMessage(data.fileFormat, cache);
+    const filePath = this.evalMessage(data.filePath, cache);
+    const Mods = this.getMods();
+    const http = require('https');
+    const fs = require('fs');
+    const path = `${filePath}/${fileName || 'download'}.${fileFormat || 'txt'}`;
+
+    if (!Mods.checkURL(url)) {
+      url = encodeURI(url);
+    }
+
+    if (!fs.existsSync(path)) {
+      fs.writeFileSync(path, '');
+    }
+
+    const ws = fs.createWriteStream(path);
+    ws.on('open', () => {
+      http.get(url, (res) => res.pipe(ws));
+    });
+
+    this.callNextAction(cache);
+  },
+
+  mod() {},
+};
