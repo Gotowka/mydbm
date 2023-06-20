@@ -8,9 +8,15 @@ module.exports = {
     return `Create automod - ${data.autoName}`;
   },
 
+  variableStorage(data, varType) {
+		if (1 !== varType) return;
+		let dataType = "Check result 'disable'/'error'";
+		return ['error', dataType];
+	},
+
   meta: { version: "3.2.0", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/automod_create.js' },
   
-  fields: ["autoName", "autoType", "channel", "storage", "varName", "delete", "alert" ],
+  fields: ["autoName", "autoType", "channel", "storage", "varName", "delete", "alert"],
 
   actions: [],
 
@@ -22,7 +28,7 @@ module.exports = {
         Created by money#6283<br>
         Help = https://discord.gg/apUVFy7SUh<br>
         Variables:<br>
-        <span class="dbminputlabel">error('disabled')</span>
+        <span class="dbminputlabel">error('disabled', 'create')</span>
     </p>
 </div><br>
 <div style="float: left; width: 50%;">
@@ -50,28 +56,24 @@ module.exports = {
   init() {
       const { document, glob } = this;
       glob.changeType = function() {
-          const ch = document.getElementById('channel')
-          const alert = document.getElementById('alert')
-          const deletem = document.getElementById('delete')
-          if (tp === "delete") {
-            if (alert.value === 'true' && deletem.value === 'true') this.actions = ["alert", "delete"]
-            else if (alert.value === 'true') this.actions = ["alert"]
-            else if (deletem.value === 'true') this.actions = ["delete"]
-          }
+          const ch = document.getElementById('channel');
+          const alert = document.getElementById('alert');
+          const deletem = document.getElementById('delete');
+          if (alert.value === 'true' && deletem.value === 'true') this.actions = ["alert", "delete"];
+          else if (alert.value === 'true') this.actions = ["alert"];
+          else if (deletem.value === 'true') this.actions = ["delete"];
           if (alert.value === 'true') {
-              ch.style.display = null
+              ch.style.display = null;
           } else {
-              ch.style.display = 'none'
+              ch.style.display = 'none';
           }
       }
   },
 
 
   async action(cache) {
-    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mautomod_create; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.0\x1b[30m)\x1b[0m')
-    const { djsV } = require('../bot')
+    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mautomod_create; \x1b[30m[\x1b[32mv1.2\x1b[30m] \x1b[30m(\x1b[36mv3.2.0\x1b[30m)\x1b[0m')
     const data = cache.actions[cache.index];
-    if (!djsV) return console.error('Update the bot.js, https://github.com/Gotowka/mydbm/blob/v3/bot.js');
     if (!cache.server.features.includes('AUTO_MODERATION')) {
       this.storeValue('disabled', 1, 'error', cache)
       this.callNextAction(cache);
@@ -81,7 +83,7 @@ module.exports = {
       actions: []
     };
     const name = this.evalMessage(data.autoName, cache);
-    if (!name) return console.error('You must give the name!');
+    if (!name) return this.callNextAction(cache);
     const type = data.autoType;
     const targetChannel = await this.getChannelFromData(data.storage, data.varName, cache);
     switch(type) {
@@ -97,7 +99,10 @@ module.exports = {
     settings.eventType = 1;
     settings.enabled = true;
 
-    await cache.server.autoModerationRules.create(settings);
+    await cache.server.autoModerationRules.create(settings).catch(er => {
+      this.storeValue('create', 1, 'error', cache)
+    });
+    this.callNextAction(cache);
   },
 
   mod() {},
