@@ -594,7 +594,7 @@ Bot.pushParametersPlusData = function (pData, cmd) {
     if (action.name === 'Command Parameter Set String Length' && pData.name === action.pname) {
       pData.minLength = action.min
       pData.maxLength = action.max
-    } else if(action.name === 'Command Parameter Set Number Value' && pData.name === action.pname) {
+    } else if (action.name === 'Command Parameter Set Number Value' && pData.name === action.pname) {
       pData.minValue = action.min
       pData.maxValue = action.max
     }
