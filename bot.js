@@ -1,11 +1,11 @@
 /******************************************************
  * Discord Bot Maker Bot
- * Version 3.2.0
+ * Version 3.2.1
  * Robert Borghese
  ******************************************************/
 
 const DBM = {};
-DBM.version = "3.2.0";
+DBM.version = "3.2.1";
 
 const DiscordJS = (DBM.DiscordJS = require("discord.js"));
 
@@ -21,7 +21,7 @@ Please use "Project > Module Manager" and "Project > Reinstall Node Modules" to 
 
 const noop = () => void 0;
 
-console.log('BOT: bot.js; [v1.2] (v3.2.0) (14.11.0)')
+console.log('BOT: bot.js; [v1.2] (v3.2.1) (14.11.0)')
 
 const MsgType = {
   MISSING_ACTION: 0,
@@ -264,7 +264,9 @@ Bot.NON_PRIVILEGED_INTENTS =
   DiscordJS.GatewayIntentBits.GuildMessageTyping |
   DiscordJS.GatewayIntentBits.DirectMessages |
   DiscordJS.GatewayIntentBits.DirectMessageReactions |
-  DiscordJS.GatewayIntentBits.DirectMessageTyping;
+  DiscordJS.GatewayIntentBits.DirectMessageTyping |
+  DiscordJS.GatewayIntentBits.AutoModerationConfiguration |
+  DiscordJS.GatewayIntentBits.AutoModerationExecution;
 
 Bot.ALL_INTENTS = Bot.PRIVILEGED_INTENTS | Bot.NON_PRIVILEGED_INTENTS;
 
