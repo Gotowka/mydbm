@@ -2,7 +2,7 @@ module.exports = {
   name: 'Set Member Voice Channel Perms',
   section: 'Channel Control',
   meta: {
-    version: '2.1.7',
+    version: '3.2.1',
     preciseCheck: false,
     author: 'DBM Mods',
     authorUrl: 'https://github.com/dbm-network/mods',

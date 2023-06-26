@@ -2,7 +2,7 @@ module.exports = {
   name: 'Attach Image To Embed',
   section: 'Embed Message',
   meta: {
-    version: '2.1.7',
+    version: '3.2.1',
     preciseCheck: false,
     author: 'DBM Mods',
     authorUrl: 'https://github.com/dbm-network/mods',

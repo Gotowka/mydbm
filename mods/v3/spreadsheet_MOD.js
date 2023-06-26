@@ -2,7 +2,7 @@ module.exports = {
   name: 'Spreadsheets',
   section: 'Data',
   meta: {
-    version: '2.1.7',
+    version: '3.2.1',
     preciseCheck: false,
     author: 'DBM Mods',
     authorUrl: null,

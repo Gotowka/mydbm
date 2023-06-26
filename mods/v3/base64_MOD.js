@@ -25,7 +25,7 @@ section: "Other Stuff",
 //---------------------------------------------------------------------
 
 // Who made the mod (If not set, defaults to "DBM Mods")
-meta: { version: "2.1.6", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
+meta: { version: "3.2.1", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
 // If it depends on any other mods by name, ex: WrexMODS if the mod uses something from WrexMods
 
 

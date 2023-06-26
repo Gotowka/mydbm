@@ -16,7 +16,7 @@ name: "Get Dominant Color",
 
 section: "Image Editing",
 
-meta: { version: "2.1.6", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
+meta: { version: "3.2.1", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
 //---------------------------------------------------------------------
 
 subtitle: function(data) {
