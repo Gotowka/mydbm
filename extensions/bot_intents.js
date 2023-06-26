@@ -17,7 +17,9 @@ const INTENTS = [
   "4096",
   "8192",
   "16384",
-  "32768"
+  "32768",
+  "1048576",
+  "2097152"
 ];
 
 module.exports = {
@@ -92,7 +94,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   size: function () {
-    return { width: 340, height: 575 };
+    return { width: 340, height: 610 };
   },
 
   //---------------------------------------------------------------------
@@ -204,6 +206,16 @@ module.exports = {
         intents & (1 << 15) ? "checked" : ""
       }>
       <label for="32768">Message Content ***</label><br>
+
+      <input type="checkbox" id="1048576" name="AUTOMOD_CONFIGURATION" value="1048576" ${
+        intents & (1 << 20) ? "checked" : ""
+      }>
+      <label for="1048576">Automod Configuration</label><br>
+
+      <input type="checkbox" id="2097152" name="AUTOMOD_EXECUTION" value="2097152" ${
+        intents & (1 << 21) ? "checked" : ""
+      }>
+      <label for="2097152">Automod Execution</label><br>
 
       <br>
 
