@@ -1,11 +1,11 @@
 /******************************************************
  * Discord Bot Maker Bot
- * Version 2.1.8
+ * Version 2.1.9
  * Robert Borghese
  ******************************************************/
 
 const DBM = {};
-DBM.version = "2.1.8";
+DBM.version = "2.1.9";
 
 const DiscordJS = (DBM.DiscordJS = require("discord.js"));
 
@@ -21,7 +21,7 @@ Please use "Project > Module Manager" and "Project > Reinstall Node Modules" to 
 
 const noop = () => void 0;
 module.exports.Money = '1.0.1'
-console.log('BOT: bot.js; [v1.1] (v2.1.8)')
+console.log('BOT: bot.js; [v1.1] (v2.1.9)')
 
 const MsgType = {
   MISSING_ACTION: 0,
