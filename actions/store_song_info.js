@@ -63,6 +63,15 @@ module.exports = {
         case 5:
          dataType = "Song Duration";
          break;
+        case 6:
+         dataType = "Song Description";
+         break;
+        case 7:
+         dataType = "Song RequestedBy (user)";
+         break;
+        case 8:
+         dataType = "Song Source";
+         break;
       }
       return [data.varName2, dataType];
     },
@@ -123,6 +132,9 @@ module.exports = {
           <option value="3">Song Views</option>
           <option value="4">Song Thumbnail</option>
           <option value="5">Song Duration</option>
+          <option value="6">Song Description</option>
+          <option value="7">Song RequestedBy</option>
+          <option value="8">Song Source</option>
       </select>
   </div>
   
@@ -150,7 +162,7 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
-      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mstore_song_info; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.0\x1b[30m)\x1b[0m')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mstore_song_info; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.0\x1b[30m)\x1b[0m')
       const data = cache.actions[cache.index];
       const song = this.evalMessage(data.song, cache)
   
@@ -181,8 +193,17 @@ module.exports = {
         case 5:
           result = song.duration;
           break;
+        case 6:
+          result = song.description
+          break;
+        case 7:
+          result = song.requestedBy
+          break;
+        case 8:
+          result = song.source
+          break;
         default:
-        break;
+          break;
       }
   
       if (result !== undefined) {
