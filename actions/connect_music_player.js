@@ -8,7 +8,7 @@ module.exports = {
       return `Connecting Music Player!`;
     },
   
-    meta: { version: "3.2.0", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/mongodb_connect.js' },
+    meta: { version: "3.2.0", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/connect_music_player.js' },
   
     fields: [],
   
@@ -28,6 +28,7 @@ module.exports = {
     async action(cache) {
       console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mconnect_music_player; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.0\x1b[30m)\x1b[0m')
       this.playerConnect()
+
       this.callNextAction(cache)
     },
   
