@@ -57,7 +57,7 @@ module.exports = {
   // are also the names of the fields stored in the action's JSON data.
   //---------------------------------------------------------------------
 
-  fields: ["channelName", "topic", "position", "storage", "varName", "categoryID", "reason"],
+  fields: ["channelName", "categoryID", "topic", "position", "reason", "storage", "varName", ],
 
   //---------------------------------------------------------------------
   // Command HTML
