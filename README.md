@@ -1,22 +1,22 @@
-# 14.11.0 [v3-3.2.0]
+# 14.11.0 [v3-3.2.1]
 
 **Actions:**
 
-- [Play Music](https://github.com/Gotowka/mydbm/blob/v3/actions/play_all.js) [1.1]
+- [Play Music](https://github.com/Gotowka/mydbm/blob/v3/actions/play_all.js) [1.2]
 
 - [Loop](https://github.com/Gotowka/mydbm/blob/v3/actions/loop.js) [1.1]
 
 - [Queue](https://github.com/Gotowka/mydbm/blob/v3/actions/queue.js) [1.1]
 
-- [Pause](https://github.com/Gotowka/mydbm/blob/v3/actions/queue.js) [1.1]
+- [Pause](https://github.com/Gotowka/mydbm/blob/v3/actions/queue.js) [1.2]
 
 - [Skip](https://github.com/Gotowka/mydbm/blob/v3/actions/skip.js) [1.1]
 
 - [Stop](https://github.com/Gotowka/mydbm/blob/v3/actions/stop.js) [1.1]
 
-- [Connect Music Player](https://github.com/Gotowka/mydbm/blob/v3/actions/connect_music_player.js) [1.0]
+- [Store Song Info](https://github.com/Gotowka/mydbm/blob/v3/actions/store_song_info.js) [1.1]
 
-- [Store Song Info](https://github.com/Gotowka/mydbm/blob/v3/actions/store_song_info.js) [1.0]
+- [Connect Music Player](https://github.com/Gotowka/mydbm/blob/v3/actions/connect_music_player.js) [1.0]
 
 - [Command Parameter Set String Length](https://github.com/Gotowka/mydbm/blob/v3/actions/command_param_set_length.js) [1.0]
 
@@ -36,7 +36,7 @@
 
 - [Show Modal](https://github.com/Gotowka/mydbm/blob/v3/actions/show_modal.js)
 
-- [Automod Create](https://github.com/Gotowka/mydbm/blob/v3/actions/automod_create.js) [1.1]
+- [Automod Create](https://github.com/Gotowka/mydbm/blob/v3/actions/automod_create.js) [1.2]
 
 - [Automod Delete](https://github.com/Gotowka/mydbm/blob/v3/actions/automod_delete.js) [1.0]
 
@@ -54,4 +54,4 @@
 
 - [Giveaway END](https://github.com/Gotowka/mydbm/blob/v3/actions/gend.js) [1.0]
 
-- [Games](https://github.com/Gotowka/mydbm/blob/v3/actions/games.js) [1.1]
+- [Games](https://github.com/Gotowka/mydbm/blob/v3/actions/games.js) [1.2]
