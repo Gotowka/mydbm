@@ -196,7 +196,7 @@ const Mods = {
     displayName: 'Dependencies',
   
     meta: {
-      version: '2.1.8',
+      version: '2.1.9',
       preciseCheck: false,
       author: 'DBM Mods',
       authorUrl: 'https://github.com/dbm-network/mods',

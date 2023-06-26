@@ -3,7 +3,7 @@ module.exports = {
   displayName: 'Find Custom Emoji/Sticker in Server',
   section: 'Emoji Control',
   meta: {
-    version: '2.1.8',
+    version: '2.1.9',
     preciseCheck: false,
     author: 'DBM Mods',
     authorUrl: 'https://github.com/dbm-network/mods',

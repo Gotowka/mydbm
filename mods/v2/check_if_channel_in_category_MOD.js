@@ -27,7 +27,7 @@ subtitle: function(data) {
 	return `If True: ${results[parseInt(data.iftrue)]} ~ If False: ${results[parseInt(data.iffalse)]}`;
 },
 
-meta: { version: "2.1.8", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
+meta: { version: "2.1.9", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
 
 //---------------------------------------------------------------------
 // Action Fields
