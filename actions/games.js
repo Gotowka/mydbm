@@ -5,7 +5,7 @@ module.exports = {
   section: "Discord",
 
   subtitle(data, presets) {
-      const games = ["Snake", "2048", "FastType", "Wordle"]
+      const games = ["Snake", "2048", "FastType", "Wordle", "FindEmoji", "GuessThePokemon", "MatchPairs", "WouldYouRather", "Trivia", "Slots", "Hangman", "Minesweeper", "Flood"]
     return `Starting the game: ${games[data.game]}`;
   },
 
@@ -29,6 +29,15 @@ module.exports = {
       <option value="1">2048</option>
       <option value="2">FastType</option>
       <option value="3">Wordle</option>
+      <option value="4">FindEmoji</option>
+      <option value="5">GuessThePokemon</option>
+      <option value="6">MatchPairs</option>
+      <option value="7">WouldYouRather</option>
+      <option value="8">Trivia</option>
+      <option value="9">Slots</option>
+      <option value="10">Hangman</option>
+      <option value="11">Minesweeper</option>
+      <option value="12">Flood</option>
   </select>
 </div>
 
@@ -55,9 +64,9 @@ module.exports = {
   //---------------------------------------------------------------------
 
   async action(cache) {
-    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mgames; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.0\x1b[30m)\x1b[0m')
+    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mgames; \x1b[30m[\x1b[32mv1.2\x1b[30m] \x1b[30m(\x1b[36mv3.2.0\x1b[30m)\x1b[0m')
     const data = cache.actions[cache.index];
-    const { Snake, TwoZeroFourEight, FastType, Wordle } = require('discord-gamecord')
+    const { Snake, TwoZeroFourEight, FastType, Wordle, FindEmoji, GuessThePokemon, MatchPairs, WouldYouRather, Slots, Hangman, Minesweeper, Flood } = require('discord-gamecord')
     const settings = {
       message: cache.interaction ?? cache.msg
     }
@@ -76,6 +85,33 @@ module.exports = {
           break;
       case "3":
           game = new Wordle(settings)
+          break;
+      case "4":
+          game = new FindEmoji(settings)
+          break;
+      case "5":
+          game = new GuessThePokemon(settings)
+          break;
+      case "6":
+          game = new MatchPairs(settings)
+          break;
+      case "7":
+          game = new WouldYouRather(settings)
+          break;
+      case "8":
+          game = new Trivia(settings)
+          break;
+      case "9":
+          game = new Slots(settings)
+          break;
+      case "10":
+          game = new Hangman(settings)
+          break;
+      case "11":
+          game = new Minesweeper(settings)
+          break;
+      case "12":
+          game = new Flood(settings)
           break;
       default:
         break;
