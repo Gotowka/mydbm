@@ -15,7 +15,7 @@ module.exports = {
       return [data.varName2, dataType];
     },
 
-    meta: { version: "2.1.8", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/ticket_manager.js' },
+    meta: { version: "2.1.9", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/ticket_manager.js' },
     
     fields: ["Tname", "Ttopic", "Tparent", "Tposition", "embeds", "E1", "E2", "limit", "role", "storage", "varName"],
   
