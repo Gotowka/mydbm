@@ -21,7 +21,7 @@ module.exports = {
       return result;
     },
   
-    meta: { version: "3.2.0", preciseCheck: true, author: null, authorUrl: null, downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/show_modal.js' },
+    meta: { version: "3.2.1", preciseCheck: true, author: null, authorUrl: null, downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/show_modal.js' },
   
     fields: ["title", "textInputs"],
   
