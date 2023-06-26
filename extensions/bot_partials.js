@@ -7,6 +7,8 @@ const PARTIALS = [
   "3",
   "4",
   "1",
+  "5",
+  "6"
 ];
 
 module.exports = {
@@ -63,7 +65,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   size: function () {
-    return { width: 320, height: 190 };
+    return { width: 320, height: 200 };
   },
 
   //---------------------------------------------------------------------
@@ -107,6 +109,8 @@ module.exports = {
       "Message",
       "Reaction",
       "Channel (Enables DMs)",
+      "Guild Schedule Event",
+      "Thread Member"
     ];
     for(let i = 0; i < PARTIALS.length; i++) {
       const partial = PARTIALS[i];
