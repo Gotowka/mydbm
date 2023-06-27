@@ -29,6 +29,9 @@ module.exports = {
         "Song Views",
         "Song Thumbnail",
         "Song Duration",
+        "Song Description",
+        "Song RequestedBy",
+        "Song Source"
       ];
       return `Get the - ${info[parseInt(data.info, 10)]}`;
     },
