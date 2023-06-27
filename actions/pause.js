@@ -5,11 +5,11 @@ module.exports = {
 	section: "Audio Control",
   
 	subtitle(data, presets) {
-		const type = parseInt(data.type)
+		const type = parseInt(data.type, 10)
 		let hm
 		switch(type) {
 			case 0:
-				hm = 'UnPaused'
+				hm = 'Playing'
 				break;
 			case 1:
 				hm = 'Paused'
@@ -17,7 +17,7 @@ module.exports = {
 			default:
 				break;
 		}
-	  return `The music are ${hm}`;
+	  return `The music is ${hm}`;
 	},
   
 	meta: { version: "3.2.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/pause.js' },
@@ -55,7 +55,7 @@ module.exports = {
 	  console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mpause; \x1b[30m[\x1b[32mv1.2\x1b[30m] \x1b[30m(\x1b[36mv3.2.1\x1b[30m)\x1b[0m')
 	  const data = cache.actions[cache.index];
 	  const player = this.getPlayer()
-	  const source = parseInt(data.type)
+	  const source = parseInt(data.type, 10)
 	  if (!player) return console.warn('\x1b[30m[\x1b[31mERROR\x1b[30m]\x1b[36m Use action \x1b[33mconnect_music_player\x1b[36m, https://github.com/Gotowka/mydbm/blob/v3/actions/connect_music_player.js')
 	  const queue = player.queues.cache.get((cache.interaction ?? cache.msg).guild.id)
 
