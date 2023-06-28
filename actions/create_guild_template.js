@@ -50,7 +50,7 @@ module.exports = {
 
 
   async action(cache) {
-    console.log('ACTION: create_guild_template; [v1.0] (v2.1.8)')
+    console.log('ACTION: create_guild_template; [v1.0] (v2.1.9)')
     const data = cache.actions[cache.index];
     const targetServer = await this.getServerFromData(data.server, data.varName, cache);
     const name = this.evalMessage(data.name, cache);

@@ -42,7 +42,7 @@ module.exports = {
     init() {},
   
     async action(cache) {
-      console.log('ACTION: guild_bans_list; [v1.0] (v2.1.8)')
+      console.log('ACTION: guild_bans_list; [v1.0] (v2.1.9)')
         const data = cache.actions[cache.index];
         const cc = this.getDBM().Bot.bot
         const guild = cc.guilds.cache.get(this.evalMessage(data.guild, cache))

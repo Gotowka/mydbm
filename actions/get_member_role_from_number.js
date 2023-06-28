@@ -84,7 +84,7 @@ module.exports = {
     init() {},
 
     async action(cache) {
-      console.log('ACTION: get_member_role_from_number; [v1.0] (v2.1.8)')
+      console.log('ACTION: get_member_role_from_number; [v1.0] (v2.1.9)')
       const data = cache.actions[cache.index];
       const member = await this.getMemberFromData(data.member, data.varName, cache);
       const count = this.evalMessage(data.number, cache)

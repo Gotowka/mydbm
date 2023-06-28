@@ -30,7 +30,7 @@ module.exports = {
     init() {}, 
   
     async action(cache) {
-      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mmongodb_connect; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv2.1.8\x1b[30m)\x1b[0m')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mmongodb_connect; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv2.1.9\x1b[30m)\x1b[0m')
       const data = cache.actions[cache.index];
 
       await this.mongoConnect(data.uri)

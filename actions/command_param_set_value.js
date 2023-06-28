@@ -57,7 +57,7 @@ module.exports = {
   
   
     async action(cache) {
-      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mcommand_param_set_value; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv2.1.8\x1b[30m)\x1b[0m')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mcommand_param_set_value; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv2.1.9\x1b[30m)\x1b[0m')
 
       this.callNextAction(cache)
     },

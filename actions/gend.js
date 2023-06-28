@@ -104,7 +104,7 @@ Jump to Action:<br>
     //---------------------------------------------------------------------
   
     async action(cache) {
-      console.log('ACTION: gend; [v1.0] (v2.1.8)')
+      console.log('ACTION: gend; [v1.0] (v2.1.9)')
       const { MessageButton, MessageActionRow } = require('discord.js')
       const data = cache.actions[cache.index];
       const giveaways = require('../data/giveaways.json')

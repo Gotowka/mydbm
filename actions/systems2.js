@@ -162,7 +162,7 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
-      console.log('ACTION: systems2; [v1.0] (v2.1.8)')
+      console.log('ACTION: systems2; [v1.0] (v2.1.9)')
       const client = this.getDBM().Bot.bot
       const { msg, interaction } = cache
       const { Suggest, Lyrics } = require('discord-systems')

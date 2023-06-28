@@ -101,7 +101,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   async action(cache) {
-    console.log('ACTION: gjoin; [v1.0] (v2.1.8)')
+    console.log('ACTION: gjoin; [v1.0] (v2.1.9)')
     const { interaction } = cache;
     const data = cache.actions[cache.index];
     const lang = data.language
