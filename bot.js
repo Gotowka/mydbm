@@ -577,6 +577,38 @@ Bot.pushParametersPlusData = function (pData, cmd) {
   })
 }
 
+Bot.validateSlashCommandParameterType = function (type) {
+  let resul = parseInt(type)
+  switch(type) {
+    case "STRING":
+      resul = 3
+      break;
+    case "INTEGER":
+      resul = 4
+      break;
+    case "NUMBER":
+      resul = 10
+      break
+    case "BOOLEAN":
+      resul = 5
+      break;
+    case "USER":
+      resul = 6
+      break
+    case "CHANNEL":
+      resul = 7
+      break;
+    case "ROLE":
+      resul = 8
+      break
+    case "ATTACHMENT":
+      resul = 11
+      break;
+  }
+
+  return resul;
+}
+
 Bot.validateSlashCommandParameters = function (parameters, commandName, cmd) {
   const requireParams = [];
   const optionalParams = [];
@@ -589,6 +621,7 @@ Bot.validateSlashCommandParameters = function (parameters, commandName, cmd) {
         existingNames[name] = true;
         paramsData.name = name;
         paramsData.description = this.validateSlashCommandDescription(paramsData.description);
+        paramsData.type = this.validateSlashCommandParameterType(paramsData.type);
         this.pushParametersPlusData(paramsData, cmd)
         if (paramsData.required) {
           requireParams.push(paramsData);
