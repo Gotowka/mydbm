@@ -36,9 +36,9 @@
 
 - [Show Modal](https://github.com/Gotowka/mydbm/blob/v3/actions/show_modal.js)
 
-- [Automod Create](https://github.com/Gotowka/mydbm/blob/v3/actions/automod_create.js) [1.2]
+- [Automod Create](https://github.com/Gotowka/mydbm/blob/v3/actions/automod_create.js) [1.3]
 
-- [Automod Delete](https://github.com/Gotowka/mydbm/blob/v3/actions/automod_delete.js) [1.0]
+- [Automod Delete](https://github.com/Gotowka/mydbm/blob/v3/actions/automod_delete.js) [1.1]
 
 - [Set Member Channel Perms](https://github.com/Gotowka/mydbm/blob/v3/actions/set_member_channel_perms.js)
 
