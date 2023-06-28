@@ -8,7 +8,7 @@
     {
       "member": "1",
       "varName": "",
-      "permission": "MANAGE_GUILD",
+      "permission": "32",
       "branch": {
         "iftrue": "0",
         "iffalse": "2",
@@ -293,7 +293,7 @@
       "name": "Send Message"
     }
   ],
-  "comType": "4",
+  "comType": "1",
   "description": "Create the automod",
   "parameters": [
     {
