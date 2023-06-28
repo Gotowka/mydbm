@@ -19,7 +19,7 @@ module.exports = {
           <u>Mod Info:</u><br>
           Created by money#6283<br>
           Help = https://discord.gg/apUVFy7SUh<br>
-          Variables: error('disabled', 'delete')
+          Variables: error('notfound', 'delete')
       </p>
   </div><br>
   <div style="float: left; width: 50%;">
@@ -37,26 +37,32 @@ module.exports = {
     init() {},
   
     async action(cache) {
-      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mautomod_delete; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.1\x1b[30m)\x1b[0m')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mautomod_delete; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.1\x1b[30m)\x1b[0m')
       const data = cache.actions[cache.index];
       const value = this.evalMessage(data.value, cache)
       const type = parseInt(data.type)
-      if (!cache.server.features.includes('AUTO_MODERATION')) {
-        this.storeValue('disabled', 1, 'error', cache)
-        this.callNextAction(cache);
-        return;
-      }
       
       let result
       switch(type) {
         case 0:
-            result = cache.server.autoModerationRules.cache.find(a => a.name === value)
+            result = cache.server.autoModerationRules.cache.find(a => a.name === value);
             break;
         case 1:
-            result = cache.server.autoModerationRules.cache.get(value)
+            result = cache.server.autoModerationRules.cache.get(value);
             break;
       }
+
+      if (!result) {
+        if (type === 1) result = await cache.server.autoModerationRules.fetch(value)
+        if (!result) {
+          this.storeValue('notfound', 1, 'error', cache)
+          this.callNextAction(cache)
+          return;
+        }
+      }
+  
       await result.delete().catch(er => {
+        console.log(er)
         this.storeValue('delete', 1, 'error', cache)
       })
       this.callNextAction(cache);
