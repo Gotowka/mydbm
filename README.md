@@ -1,4 +1,4 @@
-# 13.14.0 [v2-2.1.9]
+# 13.16.0 [v2-2.1.9]
 
 **Events:**
 
@@ -48,6 +48,10 @@
 - [Systems](https://github.com/Gotowka/mydbm/blob/v2/actions/systems.js) [1.0]
 
 - [Systems2](https://github.com/Gotowka/mydbm/blob/v2/actions/systems2.js) [1.0]
+
+- [Automod Create](https://github.com/Gotowka/mydbm/blob/v2/actions/automod_create.js) [1.0]
+
+- [Automod Delete](https://github.com/Gotowka/mydbm/blob/v2/actions/automod_delete.js) [1.0]
 
 - [Timeout Member](https://github.com/Gotowka/mydbm/blob/v2/actions/timeout_member.js)
 
