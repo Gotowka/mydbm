@@ -17,7 +17,9 @@ const INTENTS = [
   "DIRECT_MESSAGES",
   "DIRECT_MESSAGE_REACTIONS",
   "DIRECT_MESSAGE_TYPING",
-  "MESSAGE_CONTENT"
+  "MESSAGE_CONTENT",
+  "AUTO_MODERATION_CONFIGURATION",
+  "AUTO_MODERATION_EXECUTION"
 ];
 
 module.exports = {
@@ -92,7 +94,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   size: function () {
-    return { width: 340, height: 575 };
+    return { width: 340, height: 610 };
   },
 
   //---------------------------------------------------------------------
@@ -204,6 +206,16 @@ module.exports = {
         intents & (1 << 15) ? "checked" : ""
       }>
       <label for="MESSAGE_CONTENT">Message Content ***</label><br>
+
+      <input type="checkbox" id="AUTO_MODERATION_CONFIGURATION" name="AUTO_MODERATION_CONFIGURATION" value="AUTO_MODERATION_CONFIGURATION" ${
+        intents & (1 << 20) ? "checked" : ""
+      }>
+			<label for="AUTO_MODERATION_CONFIGURATION">Automod Configuration</label><br>
+
+      <input type="checkbox" id="AUTO_MODERATION_EXECUTION" name="AUTO_MODERATION_EXECUTION" value="AUTO_MODERATION_EXECUTION" ${
+        intents & (1 << 21) ? "checked" : ""
+      }>
+			<label for="AUTO_MODERATION_EXECUTION">Automod Execution</label><br>
 
       <br>
 
