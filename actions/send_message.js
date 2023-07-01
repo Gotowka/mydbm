@@ -852,10 +852,12 @@ module.exports = {
       }
   
       else if (data.reply === true && !canReply) {
-        (cache.msg ?? cache.interaction)
+        if (cache.msg) {
+          cache.msg
           .reply(messageOptions)
           .then(onComplete)
           .catch((err) => this.displayError(data, cache, err));
+        }
       }
   
       else if (data.reply === true && canReply) {
