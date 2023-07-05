@@ -68,7 +68,7 @@ module.exports = {
       </p>
   </div><br>
   <span class="dbminputlabel">Channel ID or Member ID</span><br>
-  <input id="logs" class="round" type="text" placeholder="Where send the transcript, Leave blank = using channel">`;
+  <input id="logs" class="round" type="text" placeholder="Leave blank = command channel">`;
     },
   
     //---------------------------------------------------------------------
