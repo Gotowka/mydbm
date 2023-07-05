@@ -566,7 +566,6 @@ Bot.getNoDescriptionText = function () {
 
 Bot.pushParametersPlusData = function (pData, cmd) {
   cmd.actions.map(action => {
-    console.log(action)
     if (action.name === 'Command Parameter Set String Length' && pData.name === action.pname) {
       pData.minLength = action.min
       pData.maxLength = action.max
