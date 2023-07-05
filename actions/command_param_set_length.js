@@ -14,7 +14,7 @@ module.exports = {
       return ``;
     },
   
-    meta: { version: "2.1.9", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/command_param_set_length.js' },
+    meta: { version: "2.1.8", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/command_param_set_length.js' },
     
     fields: ["pname", "min", "max"],
   
