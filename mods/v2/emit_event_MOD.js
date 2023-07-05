@@ -4,7 +4,7 @@ module.exports = {
   section: 'Bot Client Control',
   fields: ['eventType', 'firstArg', 'secondArg'],
   meta: {
-    version: '2.1.9',
+    version: '2.1.8',
     preciseCheck: false,
     author: 'DBM Mods',
     authorUrl: 'https://github.com/dbm-network/mods',

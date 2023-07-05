@@ -2,7 +2,7 @@ module.exports = {
   name: 'Send Stats to BFD',
   section: 'Other Stuff',
   meta: {
-    version: '2.1.9',
+    version: '2.1.8',
     preciseCheck: false,
     author: 'DBM Mods',
     authorUrl: 'https://github.com/dbm-network/mods',

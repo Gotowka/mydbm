@@ -2,7 +2,7 @@ module.exports = {
   name: 'Store Member Data List',
   section: 'Member Control',
   meta: {
-    version: '2.1.9',
+    version: '2.1.8',
     preciseCheck: false,
     author: 'DBM Mods',
     authorUrl: 'https://github.com/dbm-network/mods',

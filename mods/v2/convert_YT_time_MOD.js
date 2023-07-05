@@ -34,7 +34,7 @@ return `Convert into ${data.varName}`;
 	 // about the mods for people to see in the list.
 	 //---------------------------------------------------------------------
 
-	 meta: { version: "2.1.9", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
+	 meta: { version: "2.1.8", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
 
 
  //---------------------------------------------------------------------

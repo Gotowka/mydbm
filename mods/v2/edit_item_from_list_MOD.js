@@ -3,7 +3,7 @@ module.exports = {
   displayName: 'Edit Item from List',
   section: 'Lists and Loops',
   meta: {
-    version: '2.1.9',
+    version: '2.1.8',
     preciseCheck: false,
     author: 'DBM Mods',
     authorUrl: 'https://github.com/dbm-network/mods',

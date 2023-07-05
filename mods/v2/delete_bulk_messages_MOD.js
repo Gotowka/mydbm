@@ -5,7 +5,7 @@ module.exports = {
   name: 'Delete Bulk Messages MOD',
   displayName: 'Delete Bulk Messages',
   section: 'Messaging',
-  meta: { version: "2.1.9", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
+  meta: { version: "2.1.8", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
 
   subtitle(data) {
     const channels = [
