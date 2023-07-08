@@ -1,0 +1,229 @@
+{
+    "name": "automod delete",
+    "permissions": "NONE",
+    "permissions2": "NONE",
+    "restriction": "1",
+    "_id": "BujpL",
+    "actions": [
+      {
+        "member": "1",
+        "varName": "",
+        "permission": "MANAGE_GUILD",
+        "branch": {
+          "iftrue": "0",
+          "iffalse": "2",
+          "iffalseVal": "4"
+        },
+        "name": "Check Member Permissions"
+      },
+      {
+        "storage": "4",
+        "varName": "deleteby",
+        "branches": [
+          {
+            "comparison": "1",
+            "value": "'name'",
+            "actions": [
+              {
+                "value": "${slashParams(\"value\")}",
+                "type": "0",
+                "name": "Automod Delete"
+              },
+              {
+                "storage": "1",
+                "varName": "error",
+                "comparison": "1",
+                "value": "'notfound'",
+                "branch": {
+                  "iftrue": "2",
+                  "iffalse": "0",
+                  "iftrueVal": "6"
+                },
+                "name": "Check Variable"
+              },
+              {
+                "storage": "1",
+                "varName": "error",
+                "comparison": "1",
+                "value": "'delete'",
+                "branch": {
+                  "iftrue": "2",
+                  "iffalse": "0",
+                  "iftrueVal": "6"
+                },
+                "name": "Check Variable"
+              },
+              {
+                "channel": "0",
+                "varName": "",
+                "message": "Deleted the automod!",
+                "buttons": [],
+                "selectMenus": [],
+                "attachments": [],
+                "embeds": [],
+                "reply": true,
+                "ephemeral": true,
+                "tts": false,
+                "overwrite": false,
+                "dontSend": false,
+                "editMessage": "0",
+                "editMessageVarName": "",
+                "storage": "0",
+                "varName2": "",
+                "name": "Send Message"
+              },
+              {
+                "name": "End Action Sequence"
+              },
+              {
+                "channel": "0",
+                "varName": "",
+                "message": "I can't delete the automod!",
+                "buttons": [],
+                "selectMenus": [],
+                "attachments": [],
+                "embeds": [],
+                "reply": true,
+                "ephemeral": true,
+                "tts": false,
+                "overwrite": false,
+                "dontSend": false,
+                "editMessage": "0",
+                "editMessageVarName": "",
+                "storage": "0",
+                "varName2": "",
+                "name": "Send Message"
+              }
+            ]
+          },
+          {
+            "comparison": "1",
+            "value": "'id'",
+            "actions": [
+              {
+                "value": "${slashParams(\"value\")}",
+                "type": "1",
+                "name": "Automod Delete"
+              },
+              {
+                "storage": "1",
+                "varName": "error",
+                "comparison": "1",
+                "value": "'notfound'",
+                "branch": {
+                  "iftrue": "2",
+                  "iffalse": "0",
+                  "iftrueVal": "6"
+                },
+                "name": "Check Variable"
+              },
+              {
+                "storage": "1",
+                "varName": "error",
+                "comparison": "1",
+                "value": "'delete'",
+                "branch": {
+                  "iftrue": "2",
+                  "iffalse": "0",
+                  "iftrueVal": "6"
+                },
+                "name": "Check Variable"
+              },
+              {
+                "channel": "0",
+                "varName": "",
+                "message": "Deleted the automod!",
+                "buttons": [],
+                "selectMenus": [],
+                "attachments": [],
+                "embeds": [],
+                "reply": true,
+                "ephemeral": true,
+                "tts": false,
+                "overwrite": false,
+                "dontSend": false,
+                "editMessage": "0",
+                "editMessageVarName": "",
+                "storage": "0",
+                "varName2": "",
+                "name": "Send Message"
+              },
+              {
+                "name": "End Action Sequence"
+              },
+              {
+                "channel": "0",
+                "varName": "",
+                "message": "I can't delete the automod!",
+                "buttons": [],
+                "selectMenus": [],
+                "attachments": [],
+                "embeds": [],
+                "reply": true,
+                "ephemeral": true,
+                "tts": false,
+                "overwrite": false,
+                "dontSend": false,
+                "editMessage": "0",
+                "editMessageVarName": "",
+                "storage": "0",
+                "varName2": "",
+                "name": "Send Message"
+              }
+            ]
+          }
+        ],
+        "name": "Multi-Check Variable"
+      },
+      {
+        "name": "End Action Sequence"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "You don't have permissions to use this command!",
+        "buttons": [],
+        "selectMenus": [],
+        "attachments": [],
+        "embeds": [],
+        "reply": true,
+        "ephemeral": true,
+        "tts": false,
+        "overwrite": false,
+        "mention": false,
+        "dontSend": false,
+        "editMessage": "0",
+        "editMessageVarName": "",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      }
+    ],
+    "comType": "4",
+    "parameters": [
+      {
+        "name": "deleteby",
+        "description": "",
+        "type": "STRING",
+        "required": true,
+        "choices": [
+          {
+            "name": "name",
+            "value": "name"
+          },
+          {
+            "name": "id",
+            "value": "id"
+          }
+        ]
+      },
+      {
+        "name": "value",
+        "description": "",
+        "type": "STRING",
+        "required": true,
+        "choices": null
+      }
+    ],
+    "description": "Delete the automod"
+}
