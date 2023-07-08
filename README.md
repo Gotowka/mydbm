@@ -17,7 +17,8 @@
 
 - [Delete Guild Template](https://github.com/Gotowka/mydbm/blob/v2/actions/delete_guild_template.js) [1.0]
 
-- [Create Together](https://github.com/Gotowka/mydbm/blob/v2/actions/create_together.js) [1.0]
+- [Connect Together Client](https://github.com/Gotowka/mydbm/blob/v2/actions/connect_together_client) [1.0]
+
 
 - [Reaction Giveaway](https://github.com/Gotowka/mydbm/blob/v2/actions/giveaway_create.js) [1.0]
 
