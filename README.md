@@ -49,7 +49,7 @@
 
 - [Systems2](https://github.com/Gotowka/mydbm/blob/v2/actions/systems2.js) [1.0]
 
-- [Automod Create](https://github.com/Gotowka/mydbm/blob/v2/actions/automod_create.js) [1.0]
+- [Automod Create](https://github.com/Gotowka/mydbm/blob/v2/actions/automod_create.js) [1.1]
 
 - [Automod Delete](https://github.com/Gotowka/mydbm/blob/v2/actions/automod_delete.js) [1.0]
 
