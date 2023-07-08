@@ -127,23 +127,17 @@ module.exports = {
   async action(cache) {
     console.log('ACTION: create_together; [v1.1] (v2.1.9)')
     const data = cache.actions[cache.index];
-    const client = this.getDBM().Bot.bot
-    const { interaction, msg } = cache;
-    const { DiscordTogether } = require('discord-together');
     const storage = parseInt(data.storage, 10);
     const varName = this.evalMessage(data.varName, cache);
-    client.discordTogether = new DiscordTogether(client);
-
-    if ((interaction ?? msg).member.voice.channel) {
-    client.discordTogether.createTogetherCode((interaction ?? msg).member.voice.channelId, data.together).then(invite => {
-    const result = invite.code
-    if (result) {
-    this.storeValue(result, storage, varName, cache);
-    } else {
-      console.log('Error with the discord-together!');
+    const Client = this.getTogether();
+    if (!Client) return console.warn('\x1b[30m[\x1b[31mERROR\x1b[30m]\x1b[36m Use action \x1b[33mconnect_together_client\x1b[36m, https://github.com/Gotowka/mydbm/blob/v2/actions/connect_together_clients\x1b[0m')
+    if ((cache.interaction ?? cache.msg).member.voice.channel) {
+    await Client.createTogetherCode((cache.interaction ?? cache.msg).member.voice.channelId, data.together).then(invite => {
+      this.storeValue(invite.code, storage, varName, cache);
+    }).catch(er => {
+      console.log(er);
       this.storeValue('together', storage, 'Error', cache);
-    }
-    });
+    })
   } else {
     this.storeValue('voice', storage, 'Error', cache);
   }
