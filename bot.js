@@ -9,19 +9,19 @@ DBM.version = "3.2.1";
 
 const DiscordJS = (DBM.DiscordJS = require("discord.js"));
 
-const requiredDjsVersion = "14.11.0";
+const requiredDjsVersion = "14.12.0";
 if (requiredDjsVersion.localeCompare(DiscordJS.version, { numeric: true, sensitivity: "base" }) > 0) {
   console.log(
     `This version of Discord Bot Maker requires discord.js ${requiredDjsVersion}+.
 It is currently ${DiscordJS.version}.
 Please use "Project > Module Manager" and "Project > Reinstall Node Modules" to update to discord.js ${requiredDjsVersion}.\n\n`,
   );
-  throw new Error(`Need discord.js ${requiredDjsVersion} to run!!!`);
+  //throw new Error(`Need discord.js ${requiredDjsVersion} to run!!!`);
 }
 
 const noop = () => void 0;
 
-console.log('BOT: bot.js; [v1.2] (v3.2.1) (14.11.0)')
+console.log('BOT: bot.js; [v1.1] (v3.2.1) (14.12.0.dev)')
 
 const MsgType = {
   MISSING_ACTION: 0,

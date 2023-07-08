@@ -1,4 +1,6 @@
-# 14.11.0 [v3-3.2.1]
+# 14.12.0.dev [v3-3.2.1]
+
+[Bot.js](https://github.com/Gotowka/mydbm/blob/v3/bot.js) [1.1]
 
 **Actions:**
 
@@ -55,3 +57,5 @@
 - [Giveaway END](https://github.com/Gotowka/mydbm/blob/v3/actions/gend.js) [1.0]
 
 - [Games](https://github.com/Gotowka/mydbm/blob/v3/actions/games.js) [1.2]
+
+- [Store Member Info](https://github.com/Gotowka/mydbm/blob/v3/actions/store_member_info.js)
