@@ -43,6 +43,8 @@
 
 - [Command Parameter Set Number Value](https://github.com/Gotowka/mydbm/blob/v3/actions/command_param_set_value.js) [1.0]
 
+- [Fetch Audit Logs](https://github.com/Gotowka/mydbm/blob/v2/actions/fetch_audit_logs.js) [1.0]
+
 - [InviteLogger INFO](https://github.com/Gotowka/mydbm/blob/v2/actions/loggerinfo.js) [1.0]
 
 - [Systems](https://github.com/Gotowka/mydbm/blob/v2/actions/systems.js) [1.0]
