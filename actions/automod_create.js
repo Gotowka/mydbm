@@ -277,6 +277,7 @@ module.exports = {
     if (autoMod.timeout) settings.actions.push({ type: "TIMEOUT", metadata: { durationSeconds: autoMod.autoTime ? DBMEval(autoMod.autoTime, cache) : 10 } });
     if (autoMod.autoRole) {
       let d = DBMEval(autoMod.autoRole, cache)
+      d = cache.server.roles.cache.get(d)
       if (typeof d === 'object') settings.exemptRoles = [d]
     }
     if (autoMod.autoChannel) {
