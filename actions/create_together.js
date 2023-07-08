@@ -24,7 +24,13 @@ module.exports = {
   variableStorage(data, varType) {
     if (parseInt(data.storage, 10) !== varType) return;
     let dataType = 'Together Code'
-    return [data.varName2, dataType];
+    const map = []
+    map.push(data.varName)
+    map.push(dataType)
+
+    map.push('Error')
+    map.push("<Voice/Together>")
+    return map
   },
 
   subtitle(data, presets) {
@@ -51,7 +57,7 @@ module.exports = {
   // are also the names of the fields stored in the action's JSON data.
   //---------------------------------------------------------------------
 
-  fields: ["together", "storage", "varName2"],
+  fields: ["together", "storage", "varName"],
 
   //---------------------------------------------------------------------
   // Command HTML
@@ -71,10 +77,8 @@ module.exports = {
         <u>Mod Info:</u><br>
         Created by money#6283<br>
         Help: https://discord.gg/apUVFy7SUh
-        Err variables: 'voice', 'together'
     </p>
 </div><br>
-    <div>
 <div style="padding-top: 8px; width: 100%;">
   <span class="dbminputlabel">Source Together</span><br>
   <select id="together" class="round">
@@ -105,20 +109,8 @@ module.exports = {
     <option value="krunker">Project K(Known as Krunker)</options>
   </select>
 </div>
-</div>
 <br>
-<div>
-<div style="float: left; width: 35%;">
-  Store In:<br>
-  <select id="storage" class="round">
-    ${data.variables[1]}
-  </select>
-</div>
-<div id="varNameContainer2" style="float: right; width: 60%;">
-  Variable Name:<br>
-  <input id="varName2" class="round" type="text"><br>
-</div>
-</div><br><br>
+<store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName"></store-in-variable>
     `;
   },
 
@@ -139,21 +131,21 @@ module.exports = {
     const { interaction, msg } = cache;
     const { DiscordTogether } = require('discord-together');
     const storage = parseInt(data.storage, 10);
-    const varName2 = this.evalMessage(data.varName2, cache);
+    const varName = this.evalMessage(data.varName, cache);
     client.discordTogether = new DiscordTogether(client);
 
     if ((interaction ?? msg).member.voice.channel) {
     client.discordTogether.createTogetherCode((interaction ?? msg).member.voice.channelId, data.together).then(invite => {
     const result = invite.code
     if (result) {
-    this.storeValue(result, storage, varName2, cache);
+    this.storeValue(result, storage, varName, cache);
     } else {
       console.log('Error with the discord-together!');
-      this.storeValue('together', storage, varName2, cache);
+      this.storeValue('together', storage, 'Error', cache);
     }
     });
   } else {
-    this.storeValue('voice', storage, varName2, cache);
+    this.storeValue('voice', storage, 'Error', cache);
   }
   this.callNextAction(cache);
 },
