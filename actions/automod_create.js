@@ -256,7 +256,7 @@ module.exports = {
     const option = checkAutoMod()
     const autoMod = data[option][0]
     const settings = {
-      name: autoMod.autoName,
+      name: DBMEval(autoMod.autoName),
       eventType: 'MESSAGE_SEND',
       triggerType: option.toUpperCase(),
       enabled: true,
@@ -271,24 +271,24 @@ module.exports = {
         this.storeValue('channel', 1, 'error', cache)
         this.callNextAction(cache);
       }
-      if (autoMod.autoMsg) settings.actions.push({ type: "SEND_ALERT_MESSAGE", metadata: { channel: targetChannel, customMessage: this.evalMessage(autoMod.autoMsg, cache) } });
+      if (autoMod.autoMsg) settings.actions.push({ type: "SEND_ALERT_MESSAGE", metadata: { channel: targetChannel, customMessage: DBMEval(autoMod.autoMsg, cache) } });
       else settings.actions.push({ type: "SEND_ALERT_MESSAGE", metadata: { channel: targetChannel } });
     };
-    if (autoMod.timeout) settings.actions.push({ type: "TIMEOUT", metadata: { durationSeconds: autoMod.autoTime ? this.evalMessage(autoMod.autoTime, cache) : 10 } });
+    if (autoMod.timeout) settings.actions.push({ type: "TIMEOUT", metadata: { durationSeconds: autoMod.autoTime ? DBMEval(autoMod.autoTime, cache) : 10 } });
     if (autoMod.autoRole) {
-      let d = this.evalMessage(autoMod.autoRole, cache)
+      let d = DBMEval(autoMod.autoRole, cache)
       if (typeof d === 'object') settings.exemptRoles = [d]
     }
     if (autoMod.autoChannel) {
-      let d = this.evalMessage(autoMod.autoChannel, cache)
+      let d = DBMEval(autoMod.autoChannel, cache)
       d = cache.server.channels.cache.get(d)
       if (typeof d === 'object') settings.exemptChannels = [d]
     }
-    if (autoMod.autoFilter) {
-      const d = autoMod.autoFilter.split(' ')
+    if (DBMEval(autoMod.autoFilter)) {
+      const d = DBMEval(autoMod.autoFilter).split(' ')
       settings.triggerMetadata.keywordFilter = d
     }
-    if (settings.triggerType === 'MENTION_SPAM') settings.triggerMetadata.mentionTotalLimit = autoMod.autoLimit ? parseInt(this.evalMessage(autoMod.autoLimit, cache)) : 1
+    if (settings.triggerType === 'MENTION_SPAM') settings.triggerMetadata.mentionTotalLimit = autoMod.autoLimit ? parseInt(DBMEval(autoMod.autoLimit, cache)) : 1
 
     await cache.server.autoModerationRules.create(settings).catch(er => {
       console.log(er)
@@ -305,6 +305,11 @@ module.exports = {
 
       console.log('\x1b[30m[\x1b[31mERROR\x1b[30m]\x1b[0m Automod is required!\x1b[0m');
       this.callNextAction(cache);
+    }
+
+    function DBMEval(toeval) {
+      const d = this.evalMessage(toeval, cache)
+      return d;
     }
 
     function getAutomod() {
