@@ -38,7 +38,7 @@
 
 - [Show Modal](https://github.com/Gotowka/mydbm/blob/v3/actions/show_modal.js)
 
-- [Automod Create](https://github.com/Gotowka/mydbm/blob/v3/actions/automod_create.js) [1.3]
+- [Automod Create](https://github.com/Gotowka/mydbm/blob/v3/actions/automod_create.js) [1.4]
 
 - [Automod Delete](https://github.com/Gotowka/mydbm/blob/v3/actions/automod_delete.js) [1.1]
 
