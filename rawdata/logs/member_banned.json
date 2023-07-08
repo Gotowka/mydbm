@@ -1,0 +1,104 @@
+{
+    "name": "Member Banned",
+    "temp": "member",
+    "event-type": "12",
+    "_id": "rWEvm",
+    "actions": [
+      {
+        "type": "22",
+        "name": "Fetch Audit Logs"
+      },
+      {
+        "user": "2",
+        "varName": "Executor",
+        "info": "2",
+        "storage": "1",
+        "varName2": "us1",
+        "name": "Store User Info"
+      },
+      {
+        "user": "2",
+        "varName": "Executor",
+        "info": "1",
+        "storage": "1",
+        "varName2": "id1",
+        "name": "Store User Info"
+      },
+      {
+        "user": "2",
+        "varName": "Executor",
+        "info": "4",
+        "storage": "1",
+        "varName2": "av1",
+        "name": "Store User Info"
+      },
+      {
+        "user": "2",
+        "varName": "Target",
+        "info": "1",
+        "storage": "1",
+        "varName2": "id2",
+        "name": "Store User Info"
+      },
+      {
+        "user": "2",
+        "varName": "Target",
+        "info": "2",
+        "storage": "1",
+        "varName2": "us2",
+        "name": "Store User Info"
+      },
+      {
+        "server": "0",
+        "varName": "",
+        "info": "2",
+        "storage": "1",
+        "varName2": "name",
+        "name": "Store Server Info"
+      },
+      {
+        "server": "0",
+        "varName": "",
+        "info": "5",
+        "storage": "1",
+        "varName2": "icon",
+        "name": "Store Server Info"
+      },
+      {
+        "channel": "4",
+        "varName": "",
+        "message": "",
+        "buttons": [],
+        "selectMenus": [],
+        "attachments": [],
+        "embeds": [
+          {
+            "title": "Member Banned",
+            "url": "",
+            "color": "#ff7d7d",
+            "timestamp": "true",
+            "imageUrl": "",
+            "thumbUrl": "",
+            "description": "\nStaff:\n> ${tempVars(\"us1\")} (<@${tempVars(\"id1\")}>)\n\nUser:\n> ${tempVars(\"us2\")} (<@${tempVars(\"id2\")}>)",
+            "fields": [],
+            "author": "",
+            "authorUrl": "",
+            "authorIcon": "",
+            "footerText": "${tempVars(\"name\")}",
+            "footerIconUrl": "${tempVars(\"icon\")}"
+          }
+        ],
+        "reply": false,
+        "ephemeral": false,
+        "tts": false,
+        "overwrite": false,
+        "mention": false,
+        "dontSend": false,
+        "editMessage": "0",
+        "editMessageVarName": "",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      }
+    ]
+}
