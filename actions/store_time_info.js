@@ -22,7 +22,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   subtitle(data, presets) {
-    const time = ["Year", "Month", "Day of the Month", "Hour", "Minute", "Second", "Milisecond", "Month Text"];
+    const time = ["Year", "Month", "Day of the Month", "Hour", "Minute", "Second", "Milisecond", "Month Text", "Timestamp"];
     return `${time[parseInt(data.type, 10)]}`;
   },
 
@@ -52,7 +52,7 @@ module.exports = {
   // This will make it so the patch version (0.0.X) is not checked.
   //---------------------------------------------------------------------
 
-  meta: { version: "2.1.8", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
+  meta: { version: "2.1.8", preciseCheck: true, author: null, authorUrl: null, downloadUrl: "https://github.com/Gotowka/mydbm/blob/v2/actions/store_time_info.js" },
 
   //---------------------------------------------------------------------
   // Action Fields
@@ -89,6 +89,7 @@ module.exports = {
 			<option value="4">Minute</option>
 			<option value="5">Second</option>
 			<option value="6">Milisecond</option>
+      <option value="8">Timestamp</option>
 		</select>
 	</div>
 </div>
@@ -158,6 +159,9 @@ module.exports = {
           "November",
           "December",
         ][date.getMonth()];
+        break;
+      case 8:
+        result = date.getTime();
         break;
       default:
         break;
