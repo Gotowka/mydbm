@@ -21,7 +21,7 @@ Please use "Project > Module Manager" and "Project > Reinstall Node Modules" to 
 
 const noop = () => void 0;
 module.exports.Money = '1.0.1'
-console.log('BOT: bot.js; [v1.1] (v2.1.9) (13.16.0)')
+console.log('BOT: bot.js; [v1.2] (v2.1.9) (13.16.0)')
 
 const MsgType = {
   MISSING_ACTION: 0,
@@ -1182,6 +1182,7 @@ const ActionsCache = (Actions.ActionsCache = class ActionsCache {
   }
 });
 let mClient
+let tClient
 
 Actions.exists = function (action) {
   if (!action) return false;
@@ -1195,6 +1196,16 @@ Actions.getLocalFile = function (url) {
 Actions.getDBM = function () {
   return DBM;
 };
+
+Actions.togetherConnect = function () {
+  const { DiscordTogether } = require('discord-together');
+
+  tClient = new DiscordTogether(DBM.Bot.bot);
+}
+
+Actions.getTogether = function () {
+  return tClient;
+}
 
 Actions.mongoConnect = async function (uri) {
   const { MongoClient } = require("mongodb");
