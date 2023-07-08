@@ -147,7 +147,13 @@ module.exports = {
           dataType = "Date";
           break;
         case 32:
+          dataType = "Boolean";
+          break;
+        case 33:
           dataType = "Timestamp";
+          break;
+        case 34:
+          dataType = "Text";
           break;
       }
       return [data.varName2, dataType];
@@ -163,7 +169,7 @@ module.exports = {
     // This will make it so the patch version (0.0.X) is not checked.
     //---------------------------------------------------------------------
   
-    meta: { version: "2.1.7", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
+    meta: { version: "3.2.1", preciseCheck: true, author: null, authorUrl: null, downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/store_member_info.js' },
   
     //---------------------------------------------------------------------
     // Action Fields
@@ -199,6 +205,7 @@ module.exports = {
           <option value="1">Member ID</option>
           <option value="2">Member Username</option>
           <option value="3">Member Display Name</option>
+          <option value="34">Member GlobalName</option>
           <option value="4">Member Color</option>
           <option value="15">Member Status</option>
           <option value="16">Member Avatar URL</option>
@@ -378,6 +385,9 @@ module.exports = {
           break;
         case 33:
           result = member.communicationDisabledUntilTimestamp;
+          break;
+        case 34:
+          result = member.user.globalName;
           break;
         default:
           break;
