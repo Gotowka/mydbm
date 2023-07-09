@@ -14,7 +14,7 @@
 
 - [Skip](https://github.com/Gotowka/mydbm/blob/v3/actions/skip.js) [1.1]
 
-- [Stop](https://github.com/Gotowka/mydbm/blob/v3/actions/stop.js) [1.1]
+- [Stop](https://github.com/Gotowka/mydbm/blob/v3/actions/stop.js) [1.2]
 
 - [Store Song Info](https://github.com/Gotowka/mydbm/blob/v3/actions/store_song_info.js) [1.1]
 
