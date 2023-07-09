@@ -870,7 +870,7 @@ module.exports = {
           promise = cache.interaction.editReply(messageOptions);
         } else {
           if (cache.interaction.replied) promise = cache.interaction.followUp(messageOptions)
-          promise = cache.interaction.reply(messageOptions);
+          else promise = cache.interaction.reply(messageOptions);
         }
         promise.then(onComplete).catch((err) => this.displayError(data, cache, err));
       }
