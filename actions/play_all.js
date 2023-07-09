@@ -32,7 +32,7 @@ module.exports = {
 		return [data.varName, dataType, "check", "<Voice/Notfound/Playlist>"];
 	},
 
-  meta: { version: "3.2.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/play_all.js' },
+  meta: { version: "3.2.2", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/play_all.js' },
 
   //---------------------------------------------------------------------
   // Action Fields
@@ -91,7 +91,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   async action(cache) {
-    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mplay_all; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.1\x1b[30m)\x1b[0m')
+    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mplay_all; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.2\x1b[30m)\x1b[0m')
     const data = cache.actions[cache.index];
     const { interaction, msg } = cache
     const { version } = require("discord-player");
@@ -113,7 +113,7 @@ module.exports = {
       fallbackSearchEngine: 'auto',
       requestedBy: (interaction ?? msg).member.user
     })
-    
+
     if (!res.hasTracks()) {
       this.storeValue('notfound', 1, 'check', cache)
       this.callNextAction(cache);

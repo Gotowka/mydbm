@@ -8,7 +8,7 @@ module.exports = {
     return `Get mongoDB collection data`;
   },
 
-  meta: { version: "3.2.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/mongodb_collection_get.js' },
+  meta: { version: "3.2.2", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/mongodb_collection_get.js' },
 
   fields: ["database", "findby", "cname", "value", "storage", "varName"],
 
@@ -49,7 +49,7 @@ module.exports = {
   init() {}, 
 
   async action(cache) {
-    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mmongodb_collection_get; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.1\x1b[30m)\x1b[0m')
+    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mmongodb_collection_get; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.2\x1b[30m)\x1b[0m')
     const data = cache.actions[cache.index];
     const mClient = this.mongoGetClient();
     const fBy = this.evalMessage(data.findby, cache)
