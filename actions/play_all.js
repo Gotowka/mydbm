@@ -29,7 +29,7 @@ module.exports = {
 		const type = parseInt(data.storage, 10);
 		if (type !== varType) return;
 		let dataType = "Song Data";
-		return [data.varName, dataType];
+		return [data.varName, dataType, "check", "<Voice/Notfound/Playlist>"];
 	},
 
   meta: { version: "3.2.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/play_all.js' },
@@ -62,8 +62,7 @@ module.exports = {
         <u>Mod Info:</u><br>
         Created by money#6283<br>
         Help: https://discord.gg/apUVFy7SUh<br>
-        Playlist are disabled!<br>
-        Variables: error('playlist', 'voice', 'notfound')
+        check('voice', 'notfound', 'playlist')
     </p>
 </div><br>
 <div>
@@ -101,13 +100,9 @@ module.exports = {
     if (version !== '6.1.1') console.warn('\x1b[30m[\x1b[31mERROR\x1b[30m]\x1b[0m Change version module, npm i discord-player@6.1.1\x1b[0m')
     const channel = (interaction ?? msg).member.voice.channel
     const url = this.evalMessage(data.url, cache)
-    if (url.includes('playlist')) {
-      this.storeValue('playlist', 1, 'error', cache)
-      this.callNextAction(cache);
-      return;
-    }
+
     if (!channel) {
-      this.storeValue('voice', 1, 'error', cache)
+      this.storeValue('voice', 1, 'check', cache)
       this.callNextAction(cache);
       return;
     }
@@ -116,9 +111,9 @@ module.exports = {
       fallbackSearchEngine: 'auto',
       requestedBy: (interaction ?? msg).member.user
     })
-
-    if (!tracks.tracks) {
-      this.storeValue('notfound', 1, 'error', cache)
+    
+    if (!res.hasTracks()) {
+      this.storeValue('notfound', 1, 'check', cache)
       this.callNextAction(cache);
       return;
     }
