@@ -64,7 +64,7 @@ module.exports = {
     // This will make it so the patch version (0.0.X) is not checked.
     //---------------------------------------------------------------------
   
-    meta: { version: "3.2.0", preciseCheck: true, author: 'DBM Mods', authorUrl: 'https://github.com/dbm-network/mods', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/send_message.js' },
+    meta: { version: "3.2.2", preciseCheck: true, author: 'DBM Mods', authorUrl: 'https://github.com/dbm-network/mods', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/send_message.js' },
   
     //---------------------------------------------------------------------
     // Action Fields
@@ -852,10 +852,12 @@ module.exports = {
       }
   
       else if (data.reply === true && !canReply) {
-        (cache.msg ?? cache.interaction)
+        if (cache.msg) {
+          cache.msg
           .reply(messageOptions)
           .then(onComplete)
           .catch((err) => this.displayError(data, cache, err));
+        }
       }
   
       else if (data.reply === true && canReply) {
@@ -868,7 +870,7 @@ module.exports = {
           promise = cache.interaction.editReply(messageOptions);
         } else {
           if (cache.interaction.replied) promise = cache.interaction.followUp(messageOptions)
-          promise = cache.interaction.reply(messageOptions);
+          else promise = cache.interaction.reply(messageOptions);
         }
         promise.then(onComplete).catch((err) => this.displayError(data, cache, err));
       }
