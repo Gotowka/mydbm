@@ -42,7 +42,7 @@ module.exports = {
   
     variableStorage(data, varType) {
 		if (varType !== 1) return;
-		let dataType = "Error ('queue')";
+		let dataType = "<Queue>";
 		return ['error', dataType];
 	},
   
