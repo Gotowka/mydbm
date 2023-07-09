@@ -12,7 +12,7 @@
 
 - [Pause](https://github.com/Gotowka/mydbm/blob/v3/actions/queue.js) [1.2]
 
-- [Skip](https://github.com/Gotowka/mydbm/blob/v3/actions/skip.js) [1.1]
+- [Skip](https://github.com/Gotowka/mydbm/blob/v3/actions/skip.js) [1.2]
 
 - [Stop](https://github.com/Gotowka/mydbm/blob/v3/actions/stop.js) [1.2]
 
