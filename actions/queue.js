@@ -26,11 +26,16 @@ module.exports = {
     },
   
     variableStorage(data, varType) {
-        const type = parseInt(data.storage, 10);
-        if (type !== varType) return;
-        let dataType = "Queue";
-        return [data.varName2, dataType];
-      },
+      const type = parseInt(data.storage, 10);
+      if (type !== varType) return;
+      const map = []
+      let dataType = "Queue";
+      map.push("error", "<Queue/Page>")
+      map.push("pages", "Only when error: page")
+      map.push(data.varName2, dataType)
+
+      return map;
+    },
   
     meta: { version: "3.2.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/queue.js' },
   
@@ -62,12 +67,11 @@ module.exports = {
           <u>Mod Info:</u><br>
           Created by money#6283<br>
           Help: https://discord.gg/apUVFy7SUh<br>
-          Variables:
-          <span class="dbminputlabel">title, author, page, pages, thumbnail, duration</span>
+          Variables: error('queue', 'page'), pages
       </p>
   </div><br>
-  <span class="dbminputlabel">Page</span>
-  <input id="page" class="round" type="text">
+  <span class="dbminputlabel">Page (Number)</span>
+  <input style="display: left; width: calc(50% - 12px);" id="page" class="round" type="text">
   <br><br>
   <store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>`;
     },
@@ -91,34 +95,32 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
-      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mqueue; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.1\x1b[30m)\x1b[0m')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mqueue; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.1\x1b[30m)\x1b[0m')
       const data = cache.actions[cache.index];
       const player = this.getPlayer()
       if (!player) return console.warn('\x1b[30m[\x1b[31mERROR\x1b[30m]\x1b[36m Use action \x1b[33mconnect_music_player\x1b[36m, https://github.com/Gotowka/mydbm/blob/v3/actions/connect_music_player.js\x1b[0m')
       const queue = player.queues.cache.get((cache.interaction ?? cache.msg).guild.id)
-      if (!queue || !queue.playing) {
-        return cache.interaction.reply("The are not musics in the queue")
-    }
+      if (!queue || !queue.isPlaying()) {
+        this.storeValue('queue', parseInt(data.storage, 10), 'error', cache)
+        this.callNextAction(cache);
+        return;
+      }
       const totalPages = Math.ceil(queue.tracks.length / 10) || 1
       const page = (this.evalMessage(data.page, cache) || 1) - 1
   
-      if (page > totalPages) 
-          return cache.interaction.reply(`Error: The are max ${totalPages} oages`)
+      if (page > totalPages) {
+        this.storeValue('page', parseInt(data.storage, 10), 'error', cache)
+        this.storeValue(totalPages, parseInt(data.storage, 10), 'pages', cache);
+        this.callNextAction(cache);
+        return;
+      }
       
       const queueString = queue.tracks.slice(page * 10, page * 10 + 10).map((song, i) => {
           return `**${page * 10 + i + 1}.** \`[${song.duration}]\` ${song.title} -- <@${song.requestedBy.id}>`
       }).join("\n")
-  
-      const currentSong = queue.current
-  
-     this.storeValue(currentSong.duration, 1, 'duration', cache);
-     this.storeValue(currentSong.title, 1, 'title', cache);
-     this.storeValue(currentSong.requestedBy.tag, 1, 'author', cache);
-     this.storeValue(queueString, 1, data.varName2, cache)
-     this.storeValue(page + 1, 1, 'page', cache);
-     this.storeValue(totalPages, 1, 'pages', cache);
-     this.storeValue(currentSong.setThumbnail, 1, 'thumbnail', cache);
-    this.callNextAction(cache);
+
+     this.storeValue(queueString, 1, data.varName2, cache);
+     this.callNextAction(cache);
     },
   
     //---------------------------------------------------------------------
