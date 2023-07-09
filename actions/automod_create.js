@@ -14,9 +14,9 @@ module.exports = {
   },
 
   variableStorage(data, varType) {
-        if (1 !== varType) return;
-        let dataType = "Check result 'channel'/'create'";
-        return ['error', dataType];
+    if (1 !== varType) return;
+    let dataType = "<Channel/Create>";
+    return ['error', dataType];
   },
 
   meta: { version: "3.2.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/automod_create.js' },
@@ -234,9 +234,9 @@ module.exports = {
     <div style="padding: 8px;">
       <dbm-checkbox style="float: left;" id="aspam" label="Spam" checked></dbm-checkbox>
     
-      <dbm-checkbox style="float: left;" id="akeyword" label="Keyword" checked></dbm-checkbox>
+      <dbm-checkbox style="float: left;" id="akeyword" label="Keyword"></dbm-checkbox>
     
-      <dbm-checkbox style="float: left;" id="amentionspam" label="MentionSPam" checked></dbm-checkbox>
+      <dbm-checkbox style="float: left;" id="amentionspam" label="MentionSPam"></dbm-checkbox>
     
       <br><br>
     
