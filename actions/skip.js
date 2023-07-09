@@ -54,10 +54,18 @@ module.exports = {
       const player = this.getPlayer()
       const storage = parseInt(data.storage, 10);
       if (!player) return console.warn('\x1b[30m[\x1b[31mERROR\x1b[30m]\x1b[36m Use action \x1b[33mconnect_music_player\x1b[36m, https://github.com/Gotowka/mydbm/blob/v3/actions/connect_music_player.js\x1b[0m')
-      if (!interaction.member.voice.channel) return interaction.reply("Error: You must join the voice channel!")
+      if (!(interaction ?? msg).member.voice.channel) {
+        this.storeValue('voice', storage, 'error', cache)
+        this.callNextAction(cache)
+        return;
+      }
       const queue = player.queues.cache.get((interaction ?? msg).guild.id)
 
-      if (!queue) return (interaction ?? msg).reply("Error: I can\'t found the queue");
+      if (!queue) {
+        this.storeValue('queue', storage, 'error', cache)
+        this.callNextAction(cache)
+        return;
+      }
 
       const currentSong = queue.currentTrack
 
