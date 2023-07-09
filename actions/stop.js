@@ -27,8 +27,8 @@ module.exports = {
   
     variableStorage(data, varType) {
 		if (varType !== 1) return;
-		let dataType = "Error ('queue')";
-		return ['error', dataType];
+		let dataType = "Voice Channel";
+		return [data.varName, dataType, 'error', "<Queue>"];
 	},
   
 	meta: { version: "3.2.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/stop.js' },
@@ -41,7 +41,7 @@ module.exports = {
 	// are also the names of the fields stored in the action's JSON data.
 	//---------------------------------------------------------------------
   
-	fields: [],
+	fields: ["storage", "varName"],
   
 	//---------------------------------------------------------------------
 	// Command HTML
@@ -62,7 +62,9 @@ module.exports = {
 		  Created by money#6283<br>
 		  Help: https://discord.gg/apUVFy7SUh
 	  </p>
-  </div>`;
+  </div>
+  <br>
+  <store-in-variable dropdownLabel="Store Voice Channel In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName"></store-in-variable>`;
 	},
   
 	//---------------------------------------------------------------------
@@ -94,8 +96,10 @@ module.exports = {
 		this.callNextAction(cache);
 		return;
 	  }
-	  queue.delete()
-	  await (interaction ?? msg).guild.members?.me?.voice?.disconnect()
+	  queue.delete();
+	  await (interaction ?? msg).guild.members?.me?.voice?.disconnect();
+
+	  this.storeValue((interaction ?? msg).guild.members.me.voice.channel, parseInt(data.storage), data.varName, cache);
 	  this.callNextAction(cache);
 	},
   
