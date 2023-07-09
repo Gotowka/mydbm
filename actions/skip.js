@@ -21,15 +21,16 @@ module.exports = {
 
     variableStorage(data, varType) {
       const type = parseInt(data.storage, 10);
-      if (type !== varType) return;
+      const type2 = parseInt(data.storage2, 10);
+      if (type !== varType && type2 !== varType) return;
       let dataType = "Song Data";
-      return [data.varName, dataType];
+      return [data.varName, dataType, data.varName2, dataType];
     },
   
     meta: { version: "3.2.1", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/skip.js' },
   
   
-    fields: ["storage", "varName"],
+    fields: ["storage", "varName", "storage2", "varName2"],
 
     html(isEvent, data) {
       return `
@@ -40,7 +41,9 @@ module.exports = {
           Help: https://discord.gg/apUVFy7SUh
       </p>
   </div><br>
-  <store-in-variable dropdownLabel="Store Current Song In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName"></store-in-variable>`;
+  <store-in-variable dropdownLabel="Store Current Song In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName"></store-in-variable>
+  <br>
+  <store-in-variable dropdownLabel="Store Next Song In" selectId="storage2" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>`;
     },
   
     init() {},
@@ -49,6 +52,7 @@ module.exports = {
       console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mskip; \x1b[30m[\x1b[32mv1.2\x1b[30m] \x1b[30m(\x1b[36mv3.2.1\x1b[30m)\x1b[0m')
       const { interaction, msg } = cache
       const player = this.getPlayer()
+      const storage = parseInt(data.storage, 10);
       if (!player) return console.warn('\x1b[30m[\x1b[31mERROR\x1b[30m]\x1b[36m Use action \x1b[33mconnect_music_player\x1b[36m, https://github.com/Gotowka/mydbm/blob/v3/actions/connect_music_player.js\x1b[0m')
       if (!interaction.member.voice.channel) return interaction.reply("Error: You must join the voice channel!")
       const queue = player.queues.cache.get((interaction ?? msg).guild.id)
@@ -57,11 +61,10 @@ module.exports = {
 
       const currentSong = queue.currentTrack
 
-      queue.node.skip()
+      await queue.node.skip()
 
-      const storage = parseInt(data.storage, 10);
-      const varName = this.evalMessage(data.varName, cache);
-      this.storeValue(currentSong, storage, varName, cache);
+      this.storeValue(currentSong, storage, data.varName, cache);
+      this.storeValue(queue.tracks[1], storage, data.varName2, cache)
       this.callNextAction(cache);
     },
   
