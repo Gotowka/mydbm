@@ -1087,6 +1087,7 @@ Bot.onSelectMenuInteraction = function (interaction) {
 
 const Actions = (DBM.Actions = {});
 let mClient
+let tClient
 let musicP
 Actions.actionsLocation = null;
 Actions.eventsLocation = null;
@@ -1219,6 +1220,16 @@ Actions.playerConnect = function () {
 
 Actions.getPlayer = function () {
   return musicP;
+}
+
+Actions.togetherConnect = function () {
+  const { DiscordTogether } = require('discord-together');
+
+  tClient = new DiscordTogether(DBM.Bot.bot);
+}
+
+Actions.getTogether = function () {
+  return tClient;
 }
 
 Actions.mongoConnect = async function (uri) {
