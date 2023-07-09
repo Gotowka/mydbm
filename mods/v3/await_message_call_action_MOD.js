@@ -26,7 +26,7 @@ subtitle: function(data) {
 	return `Await ${data.max} ${data.max === "1" ? `message` : `messages`} for ${data.time} ${data.time === "1" ? `milisecond` : `miliseconds`}`;
 },
 
-meta: { version: "3.2.1", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
+meta: { version: "3.2.2", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
 
 
 //---------------------------------------------------------------------

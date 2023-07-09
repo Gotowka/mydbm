@@ -4,7 +4,7 @@ module.exports = {
   section: 'Other Stuff',
   fields: ['findBy', 'commandData', 'saveTo', 'varName'],
   meta: {
-    version: '3.2.1',
+    version: '3.2.2',
     preciseCheck: false,
     author: 'DBM Mods',
     authorUrl: 'https://github.com/dbm-network/mods',

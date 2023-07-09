@@ -2,7 +2,7 @@ module.exports = {
   name: 'Convert Seconds To D/H/M/S',
   section: 'Other Stuff',
   meta: {
-    version: '3.2.1',
+    version: '3.2.2',
     preciseCheck: false,
     author: 'DBM Mods',
     authorUrl: 'https://github.com/dbm-network/mods',
