@@ -67,9 +67,9 @@ module.exports = {
 </div><br>
 <div>
     <span class="dbminputlabel">Music</span><br>
-    <input id="url" class="round" type="text" placeholder="Give a url or title to music">
+    <input id="url" class="round" type="text" placeholder="Give a url or title for the music">
 </div><br>
-<store-in-variable dropdownLabel="Store in" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName"></store-in-variable>`;
+<store-in-variable dropdownLabel="Store Data in" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName"></store-in-variable>`;
   },
 
   //---------------------------------------------------------------------
