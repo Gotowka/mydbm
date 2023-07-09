@@ -107,8 +107,9 @@ module.exports = {
       this.callNextAction(cache);
       return;
     }
-    let queue = player.queues.cache.get((interaction ?? msg).guild.id)
-    const tracks = await player.search(url, {
+
+    const queue = player.queues.cache.get((interaction ?? msg).guild.id)
+    const res = await player.search(url, {
       fallbackSearchEngine: 'auto',
       requestedBy: (interaction ?? msg).member.user
     })
@@ -120,7 +121,7 @@ module.exports = {
     }
 
     if (!queue) {
-      await player.play(channel, tracks.tracks[0], {
+      await player.play(channel, res.tracks[0], {
         nodeOptions: {
           metadata: interaction ?? msg
         },
@@ -132,11 +133,11 @@ module.exports = {
           if (i !== 0) d.queue.addTrack(res.tracks[i])
         }
       })
-    } else queue.addTrack(tracks.tracks[0])
-
+    } else queue.addTracks(res.tracks)
     const storage = parseInt(data.storage, cache)
     const varName = this.evalMessage(data.varName, cache);
-    this.storeValue(tracks.tracks[0], storage, varName, cache);
+    this.storeValue(res.hasPlaylist(), storage, 'check', cache)
+    this.storeValue(res.playlist ?? res.tracks[0], storage, varName, cache);
     this.callNextAction(cache);
   },
 
