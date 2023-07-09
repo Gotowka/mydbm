@@ -97,7 +97,8 @@ module.exports = {
     const { version } = require("discord-player");
     const player = this.getPlayer()
 	  if (!player) return console.warn('\x1b[30m[\x1b[31mERROR\x1b[30m]\x1b[36m Use action \x1b[33mconnect_music_player\x1b[36m, https://github.com/Gotowka/mydbm/blob/v3/actions/connect_music_player.js\x1b[0m')
-    if (version !== '6.1.1') console.warn('\x1b[30m[\x1b[31mERROR\x1b[30m]\x1b[0m Change version module, npm i discord-player@6.1.1\x1b[0m')
+    if (player.extractors.size === 0) return console.warn('\x1b[30m[\x1b[31mERROR\x1b[30m]\x1b[36m Update action \x1b[33mconnect_music_player\x1b[36m, https://github.com/Gotowka/mydbm/blob/v3/actions/connect_music_player.js\x1b[0m')
+    if (version !== '6.6.1') console.warn('\x1b[30m[\x1b[31mERROR\x1b[30m]\x1b[0m Change version module, npm i discord-player@6.6.1\x1b[0m')
     const channel = (interaction ?? msg).member.voice.channel
     const url = this.evalMessage(data.url, cache)
 
@@ -123,7 +124,13 @@ module.exports = {
         nodeOptions: {
           metadata: interaction ?? msg
         },
-        deaf: true
+        connectionOptions: {
+          deaf: true
+        }
+      }).then(d => {
+        for (i = 0; i < d.searchResult.tracks.length; i++) {
+          if (i !== 0) d.queue.addTrack(res.tracks[i])
+        }
       })
     } else queue.addTrack(tracks.tracks[0])
 
