@@ -1216,6 +1216,8 @@ Actions.playerConnect = function () {
      highWaterMark: 1 << 25
    }
   })
+
+  return musicP
 }
 
 Actions.getPlayer = function () {
