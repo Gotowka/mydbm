@@ -1686,27 +1686,45 @@ Actions.getParameterFromParameterData = function (option) {
   return null;
 };
 
-Actions.findMemberOrUserFromName = async function (name, server) {
+Actions.findMemberFromName = async function (name, server) {
   if (!Bot.hasMemberIntents) {
     PrintError(MsgType.MISSING_MEMBER_INTENT_FIND_USER_ID);
   }
-  const user = Bot.bot.users.cache.find((user) => user.username === name);
-  if (user) {
-    const result = await server.members.fetch(user);
-    if (result) {
-      return result;
-    }
-  } else if (server) {
+  const result = await server.members.cache.find((user) => user.username === name);
+  if (result) return result;
+  else {
     const allMembers = await server.members.fetch();
     const member = allMembers.find((user) => user.username === name);
-    if (member) {
-      return member;
-    }
+    if (member) return member;
   }
   return null;
 };
 
-Actions.findMemberOrUserFromID = async function (id, server) {
+Actions.findUserFromName = async function (name) {
+  if (!Bot.hasMemberIntents) {
+    PrintError(MsgType.MISSING_MEMBER_INTENT_FIND_USER_ID);
+  }
+  const user = Bot.bot.users.cache.find((user) => user.username === name);
+  if (user) return user;
+  return null;
+};
+
+Actions.findMemberFromID = async function (id, server) {
+  if (!Bot.hasMemberIntents) {
+    PrintError(MsgType.MISSING_MEMBER_INTENT_FIND_USER_ID);
+  }
+  if (id) {
+    const result = await server?.members?.cache?.get(id);
+    if (result) {
+      return result;
+    }
+  } else {
+    PrintError(MsgType.CANNOT_FIND_USER_BY_ID, id);
+  }
+  return null;
+};
+
+Actions.findUserFromID = async function (id) {
   if (!Bot.hasMemberIntents) {
     PrintError(MsgType.MISSING_MEMBER_INTENT_FIND_USER_ID);
   }
@@ -1808,7 +1826,7 @@ Actions.getSendTarget = async function (type, varName, cache) {
       break;
     case 100: {
       const searchValue = this.evalMessage(varName, cache);
-      const result = await this.findMemberOrUserFromName(searchValue, cache.server);
+      const result = await this.findrUserFromName(searchValue);
       if (result) {
         return result;
       }
@@ -1816,7 +1834,7 @@ Actions.getSendTarget = async function (type, varName, cache) {
     }
     case 101: {
       const searchValue = this.evalMessage(varName, cache);
-      const result = await this.findMemberOrUserFromID(searchValue, cache.server);
+      const result = await this.findUserFromID(searchValue);
       if (result) {
         return result;
       }
@@ -1863,6 +1881,54 @@ Actions.getMemberFromData = async function (typeData, varNameData, cache) {
   return await this.getMember(parseInt(typeData, 10), this.evalMessage(varNameData, cache), cache);
 };
 
+Actions.getUserFromData = async function (typeData, varNameData, cache) {
+  return await this.getUser(parseInt(typeData, 10), this.evalMessage(varNameData, cache), cache);
+};
+
+Actions.getUser = async function (type, varName, cache) {
+  const { interaction, msg } = cache;
+  switch (type) {
+    case 0: {
+      const members = interaction?.options?.resolved?.members ?? msg?.mentions?.members;
+      if (members?.size) {
+        return members.first();
+      }
+      break;
+    }
+    case 1:
+      if (interaction) {
+        return interaction.user;
+      } else if (msg) {
+        return msg.author;
+      }
+      break;
+    case 6:
+      if (interaction?._targetUser) {
+        return interaction._targetUser;
+      }
+      break;
+    case 100: {
+      const searchValue = this.evalMessage(varName, cache);
+      const result = await this.findUserFromName(searchValue);
+      if (result) {
+        return result;
+      }
+      break;
+    }
+    case 101: {
+      const searchValue = this.evalMessage(varName, cache);
+      const result = await this.findUserFromID(searchValue);
+      if (result) {
+        return result;
+      }
+      break;
+    }
+    default:
+      return this.getTargetFromVariableOrParameter(type - 2, varName, cache);
+  }
+  return null;
+};
+
 Actions.getMember = async function (type, varName, cache) {
   const { interaction, msg } = cache;
   switch (type) {
@@ -1887,7 +1953,7 @@ Actions.getMember = async function (type, varName, cache) {
       break;
     case 100: {
       const searchValue = this.evalMessage(varName, cache);
-      const result = await this.findMemberOrUserFromName(searchValue, cache.server);
+      const result = await this.findMemberFromName(searchValue, cache.server);
       if (result) {
         return result;
       }
@@ -1895,7 +1961,7 @@ Actions.getMember = async function (type, varName, cache) {
     }
     case 101: {
       const searchValue = this.evalMessage(varName, cache);
-      const result = await this.findMemberOrUserFromID(searchValue, cache.server);
+      const result = await this.findMemberFromID(searchValue, cache.server);
       if (result) {
         return result;
       }
