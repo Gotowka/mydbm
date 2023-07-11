@@ -1713,35 +1713,51 @@ Actions.getParameterFromParameterData = function (option) {
   return null;
 };
 
-Actions.findMemberOrUserFromName = async function (name, server) {
+Actions.findMemberFromName = async function (name, server) {
   if (!Bot.hasMemberIntents) {
     PrintError(MsgType.MISSING_MEMBER_INTENT_FIND_USER_ID);
   }
-  const user = Bot.bot.users.cache.find((user) => user.username === name);
-  if (user) {
-    const result = await server.members.fetch(user);
-    if (result) {
-      return result;
-    }
-  } else if (server) {
+  const result = await server.members.cache.find((user) => user.username === name);
+  if (result) return result;
+  else {
     const allMembers = await server.members.fetch();
     const member = allMembers.find((user) => user.username === name);
-    if (member) {
-      return member;
-    }
+    if (member) return member;
   }
   return null;
 };
 
-Actions.findMemberOrUserFromID = async function (id, server) {
+Actions.findUserFromName = async function (name) {
+  if (!Bot.hasMemberIntents) {
+    PrintError(MsgType.MISSING_MEMBER_INTENT_FIND_USER_ID);
+  }
+  const user = Bot.bot.users.cache.find((user) => user.username === name);
+  if (user) return user;
+  return null;
+};
+
+Actions.findMemberFromID = async function (id, server) {
+  if (!Bot.hasMemberIntents) {
+    PrintError(MsgType.MISSING_MEMBER_INTENT_FIND_USER_ID);
+  }
+  if (id) {
+    const result = await server?.members?.cache?.get(id);
+    if (result) {
+      return result;
+    }
+  } else {
+    PrintError(MsgType.CANNOT_FIND_USER_BY_ID, id);
+  }
+  return null;
+};
+
+Actions.findUserFromID = async function (id) {
   if (!Bot.hasMemberIntents) {
     PrintError(MsgType.MISSING_MEMBER_INTENT_FIND_USER_ID);
   }
   if (id) {
     const result = await Bot.bot.users.fetch(id);
-    if (result) {
-      return result;
-    }
+    if (result) return result;
   } else {
     PrintError(MsgType.CANNOT_FIND_USER_BY_ID, id);
   }
