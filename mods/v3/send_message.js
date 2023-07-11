@@ -851,13 +851,11 @@ module.exports = {
           .catch((err) => this.displayError(data, cache, err));
       }
   
-      else if (data.reply === true && !canReply) {
-        if (cache.msg) {
-          cache.msg
+      else if (isMessageTarget && target?.reply) {
+        target
           .reply(messageOptions)
           .then(onComplete)
           .catch((err) => this.displayError(data, cache, err));
-        }
       }
   
       else if (data.reply === true && canReply) {
