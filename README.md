@@ -1,6 +1,6 @@
 # 14.11.0 [v3-3.2.2]
 
-[Bot.js](https://github.com/Gotowka/mydbm/blob/v3/bot.js) [1.0]
+[Bot.js](https://github.com/Gotowka/mydbm/blob/v3/bot.js) [1.1]
 
 **Actions:**
 
