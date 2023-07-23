@@ -21,7 +21,7 @@ Please use "Project > Module Manager" and "Project > Reinstall Node Modules" to 
 
 const noop = () => void 0;
 
-console.log('BOT: bot.js; [v1.0] (v3.2.2) (14.11.0)')
+console.log('BOT: bot.js; [v1.1] (v3.2.2) (14.11.0)')
 
 const MsgType = {
   MISSING_ACTION: 0,
@@ -577,6 +577,9 @@ Bot.validateSlashCommandParameterType = function (type) {
     case "USER":
       resul = 6
       break
+    case "VOICE":
+    case "CATEGORY":
+    case "CHANNELS":
     case "CHANNEL":
       resul = 7
       break;
@@ -603,6 +606,26 @@ Bot.pushParametersPlusData = function (pData, cmd) {
   })
 }
 
+Bot.pushParametersChannelTypes = function (pData) {
+  const result = []
+  switch(pData.type) {
+    case "VOICE":
+      result.push(2)
+      break;
+    case "CATEGORY":
+      result.push(4)
+      break;
+    case "CHANNEL":
+      result.push(0)
+      break;
+    case "CHANNELS":
+      result.push(0)
+      result.push(2)
+      break;
+  }
+  pData.channelTypes = result
+}
+
 Bot.validateSlashCommandParameters = function (parameters, commandName, cmd) {
   const requireParams = [];
   const optionalParams = [];
@@ -617,6 +640,7 @@ Bot.validateSlashCommandParameters = function (parameters, commandName, cmd) {
         paramsData.description = this.validateSlashCommandDescription(paramsData.description);
         paramsData.type = this.validateSlashCommandParameterType(paramsData.type)
         paramsData.choices?.map(p => p.type = 3)
+        this.pushParametersChannelTypes(paramsData)
         this.pushParametersPlusData(paramsData, cmd)
         if (paramsData.required) {
           requireParams.push(paramsData);
