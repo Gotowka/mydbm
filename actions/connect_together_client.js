@@ -1,6 +1,6 @@
 module.exports = {
   
-    name: "Together Client Connect",
+    name: "Connect Together Client",
   
     section: "Discord",
   
