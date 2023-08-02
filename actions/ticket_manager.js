@@ -12,12 +12,12 @@ module.exports = {
       const type = parseInt(data.storage, 10);
       if (type !== varType) return;
       let dataType = "Channel Object";
-      return [data.varName2, dataType];
+      return [data.varName, dataType];
     },
 
     meta: { version: "2.1.8", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/ticket_manager.js' },
     
-    fields: ["Tname", "Ttopic", "Tparent", "Tposition", "embeds", "E1", "E2", "limit", "role", "storage", "varName"],
+    fields: ["Tname", "Ttopic", "Tparent", "Tposition", "embeds", "E1", "E2", "sembed", "limit", "role", "storage", "varName"],
   
     html(isEvent, data) {
         return `
@@ -190,6 +190,8 @@ module.exports = {
       <tab label="Settings" icon="cogs">
         <div style="padding: 8px;">
           <div style="padding-bottom: 12px; float: left; width: calc(30% - 12px);">
+          <dbm-checkbox id="sembed" label="Send Embed" checked></dbm-checkbox>
+          <br>
           <span class="dbminputlabel">Limit</span><br>
           <select id="limit" class="round">
                 <option value="0">1</option>
@@ -198,7 +200,8 @@ module.exports = {
           <br>
           <span class="dbminputlabel">Ticket-Role ID</span><br>
           <input id="role" class="round" placeholder="Leave blank to  none" type="text">
-          <br>
+          </div>
+          <div style="padding-bottom: 12px; float: left; width: calc(100% - 12px);">
           <store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName"></store-in-variable>
           </div>
         </div>
@@ -211,7 +214,7 @@ module.exports = {
   
   
     async action(cache) {
-      console.log('ACTION: ticket_manager; [v1.0] (v2.1.9)')
+      console.log('ACTION: ticket_manager; [v1.1] (v2.1.8)')
       const data = cache.actions[cache.index];
       const { interaction } = cache
       const { Permissions, MessageEmbed } = require('discord.js')
@@ -273,7 +276,7 @@ module.exports = {
           const fields = embedData.fields;
           for (let i = 0; i < fields.length; i++) {
             const f = fields[i];
-            embed.addField(this.evalMessage(f.name, cache), this.evalMessage(f.value, cache), f.inline === "true");
+            embed.addFields([{ name: this.evalMessage(f.name, cache), value: this.evalMessage(f.value, cache), inline: f.inline === "true" }]);
           }
         }
 
@@ -296,7 +299,7 @@ module.exports = {
       }
       const send = this.evalMessage(data.E2, cache).replace('[name]', interaction.user.username).replace('[tag]', interaction.user.tag).replace('[id]', interaction.member.id).replace('[ticket]', `<#${channel.id}>`)
       interaction.reply({ content: send, ephemeral: true })
-      channel.send(messageOptions)
+      if (data.sembed) channel.send(messageOptions)
       const storage = parseInt(data.storage, 10);
       const varName = this.evalMessage(data.varName, cache);
       this.storeValue(channel, storage, varName, cache);
