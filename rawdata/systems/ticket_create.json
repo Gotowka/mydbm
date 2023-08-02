@@ -1,0 +1,156 @@
+{
+    "name": "ticket",
+    "permissions": "NONE",
+    "permissions2": "NONE",
+    "restriction": "1",
+    "_id": "Qfowp",
+    "actions": [
+      {
+        "server": "0",
+        "varName": "",
+        "info": "2",
+        "storage": "1",
+        "varName2": "server.name",
+        "name": "Store Server Info"
+      },
+      {
+        "server": "0",
+        "varName": "",
+        "info": "5",
+        "storage": "1",
+        "varName2": "server.icon",
+        "name": "Store Server Info"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "",
+        "buttons": [
+          {
+            "name": "Ticket",
+            "type": "PRIMARY",
+            "id": "msg-button-7ec2f8f",
+            "row": "",
+            "url": "",
+            "emoji": "",
+            "mode": "PERSISTENT",
+            "time": "",
+            "actions": [
+              {
+                "member": "1",
+                "varName": "",
+                "info": "2",
+                "storage": "1",
+                "varName2": "member.name",
+                "name": "Store Member Info"
+              },
+              {
+                "member": "1",
+                "varName": "",
+                "info": "1",
+                "storage": "1",
+                "varName2": "member.id",
+                "name": "Store Member Info"
+              },
+              {
+                "member": "1",
+                "varName": "",
+                "info": "16",
+                "storage": "1",
+                "varName2": "member.icon",
+                "name": "Store Member Info"
+              },
+              {
+                "Tname": "ticket-${tempVars(\"member.name\")}",
+                "Ttopic": "${tempVars(\"member.id\")}",
+                "Tparent": "",
+                "Tposition": "",
+                "embeds": [],
+                "E1": "You have a ticket [ticket]!",
+                "E2": "Created the ticket [ticket]!",
+                "sembed": false,
+                "limit": "0",
+                "role": "",
+                "storage": "1",
+                "varName": "ticket",
+                "name": "Ticket Create"
+              },
+              {
+                "channel": "5",
+                "varName": "ticket",
+                "message": "<@${tempVars(\"member.id\")}>",
+                "buttons": [],
+                "selectMenus": [],
+                "attachments": [],
+                "embeds": [
+                  {
+                    "title": "Ticket",
+                    "url": "",
+                    "color": "",
+                    "timestamp": "false",
+                    "imageUrl": "",
+                    "thumbUrl": "",
+                    "description": "Describe the problem!",
+                    "fields": [],
+                    "author": "",
+                    "authorUrl": "",
+                    "authorIcon": "",
+                    "footerText": "${tempVars(\"member.name\")} (${tempVars(\"member.id\")})",
+                    "footerIconUrl": "${tempVars(\"member.icon\")}"
+                  }
+                ],
+                "reply": false,
+                "ephemeral": false,
+                "tts": false,
+                "overwrite": false,
+                "mention": false,
+                "dontSend": false,
+                "editMessage": "0",
+                "editMessageVarName": "",
+                "storage": "0",
+                "varName2": "",
+                "name": "Send Message"
+              }
+            ]
+          }
+        ],
+        "selectMenus": [],
+        "attachments": [],
+        "embeds": [
+          {
+            "title": "Ticket",
+            "url": "",
+            "color": "",
+            "timestamp": "false",
+            "imageUrl": "",
+            "thumbUrl": "",
+            "description": "Click the button below for help!",
+            "fields": [],
+            "author": "",
+            "authorUrl": "",
+            "authorIcon": "",
+            "footerText": "${tempVars(\"server.name\")}",
+            "footerIconUrl": "${tempVars(\"server.icon\")}"
+          }
+        ],
+        "reply": false,
+        "ephemeral": false,
+        "tts": false,
+        "overwrite": false,
+        "mention": false,
+        "dontSend": false,
+        "editMessage": "0",
+        "editMessageVarName": "",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      },
+      {
+        "storage": "0",
+        "varName": "",
+        "reason": "",
+        "name": "Delete Message"
+      }
+    ],
+    "comType": "0"
+}
