@@ -21,15 +21,17 @@
 
 - [Create Together](https://github.com/Gotowka/mydbm/blob/v2/actions/create_together.js) [1.1]
 
-- [Reaction Giveaway](https://github.com/Gotowka/mydbm/blob/v2/actions/giveaway_create.js) [1.0]
+- [Reaction Giveaway](https://github.com/Gotowka/mydbm/blob/v2/actions/giveaway_create.js) [1.1]
 
-- [Giveaway END](https://github.com/Gotowka/mydbm/blob/v2/actions/gend.js) [1.0]
+- [Giveaway END](https://github.com/Gotowka/mydbm/blob/v2/actions/gend.js) [1.1]
 
-- [Giveaway JOIN](https://github.com/Gotowka/mydbm/blob/v2/actions/gjoin.js) [1.0]
+- [Giveaway JOIN](https://github.com/Gotowka/mydbm/blob/v2/actions/gjoin.js) [1.1]
 
-- [Giveaway START](https://github.com/Gotowka/mydbm/blob/v2/actions/gstart.js) [1.0]
+- [Giveaway START](https://github.com/Gotowka/mydbm/blob/v2/actions/gstart.js) [1.1]
 
-- [Giveaway REROLL](https://github.com/Gotowka/mydbm/blob/v2/actions/greroll.js) [1.0]
+- [Giveaway REROLL](https://github.com/Gotowka/mydbm/blob/v2/actions/greroll.js) [1.1]
+
+- [Giveaway INFO](https://github.com/Gotowka/mydbm/blob/v2/actions/ginfo.js) [1.0]
 
 - [MongoDB Collection Create](https://github.com/Gotowka/mydbm/blob/v3/actions/mongodb_collection_create.js) [1.0]
 
