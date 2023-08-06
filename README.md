@@ -34,18 +34,4 @@
 
 - [Automod Delete](https://github.com/Gotowka/mydbm/blob/v3/actions/automod_delete.js) [1.0]
 
-- [Set Member Channel Perms](https://github.com/Gotowka/mydbm/blob/v3/actions/set_member_channel_perms.js)
-
-- [Check Role Permissions](https://github.com/Gotowka/mydbm/blob/v3/actions/check_role_permissions.js)
-
-- [Check Member Permissions](https://github.com/Gotowka/mydbm/blob/v3/actions/check_member_permissions.js)
-
-- [Set Bot Activity](https://github.com/Gotowka/mydbm/blob/v3/actions/set_bot_activity_MOD.js)
-
-- [Create Channel](https://github.com/Gotowka/mydbm/blob/v3/actions/create_channel.js)
-
-- [Create Embed Message](https://github.com/Gotowka/mydbm/blob/v3/actions/create_embed_message.js)
-
 - [Games](https://github.com/Gotowka/mydbm/blob/v3/actions/games.js) [1.0]
-
-- [Store Member Info](https://github.com/Gotowka/mydbm/blob/v3/actions/store_member_info.js)
