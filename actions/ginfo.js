@@ -135,7 +135,7 @@ module.exports = {
         <span class="dbminputlabel">Information</span><br>
         <select id="source" class="round">
           <option value="host">Host</option>
-          <option value="gift">Gift</option>
+          <option value="prize">Gift</option>
           <option value="users">Users</option>
           ${!isEvent && '<option value="end">Endtime (unix)</option>'}
           ${isEvent && '<option value="guild">Server</option>'}
