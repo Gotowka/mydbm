@@ -1,0 +1,17 @@
+{
+    "name": "online",
+    "temp": "",
+    "event-type": "48",
+    "_id": "mDCUm",
+    "actions": [
+      {
+        "youtube": true,
+        "spotify": true,
+        "soundcloud": false,
+        "applemusic": false,
+        "vimeo": false,
+        "reverbnation": false,
+        "name": "Music Player Connect"
+      }
+    ]
+}
