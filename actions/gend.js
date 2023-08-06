@@ -24,7 +24,14 @@ module.exports = {
     subtitle(data, presets) {
       return `Ending the giveaway`;
     },
-  
+
+    variableStorage(data, varType) {
+        const type = parseInt(data.storage, 10);
+        if (type !== varType) return;
+        let dataType = "Giveaway Data";
+        return [data.varName, dataType];
+    },
+
     //---------------------------------------------------------------------
     // Action Meta Data
     //
@@ -45,7 +52,7 @@ module.exports = {
     // are also the names of the fields stored in the action's JSON data.
     //---------------------------------------------------------------------
   
-    fields: ["style", "label", "call"],
+    fields: ["call", "storage", "varName"],
   
     //---------------------------------------------------------------------
     // Command HTML
@@ -65,23 +72,18 @@ module.exports = {
           <u>Mod Info:</u><br>
           Created by money#6283<br>
           Help: https://discord.gg/apUVFy7SUh
-          variables: prize, hoster, message, users, icon, name
       </p>
-  </div><br><br>
-  <div style="float: left; width: calc(100% - 12px);">
-  <span class="dbminputlabel">Button (Style)<span style="color:red">*</span></span>
-  <input id="style" class="round" placeholder="DANGER, PRIMARY, SECONDARY, SUCCESS" type="text">
-<br>
-<span class="dbminputlabel">Button (Label)<span style="color:red">*</span></span>
-<input id="label" class="round" placeholder="[users] = Users from the giveaway" type="text">
-
-<br>
-
-<div id="varNameContainer" style="float: left; width: 60%;">
-Jump to Action:<br>
-<input id="call" class="round" type="number">
-</div>
-</div>
+  </div><br>
+  <div style="float: left; width: calc(50% - 12px);">
+    <span class="dbminputlabel">Jump To Action</span>
+    <input id="call" class="round" type="number">
+   </div>
+   </div>
+   <div style="float: left; width: calc(100% - 12px);">
+    <br>
+    <store-in-variable dropdownLabel="Store Giveaway In" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></store-in-variable>
+   </div>
+  </div>
   `;
     },
   
@@ -104,23 +106,23 @@ Jump to Action:<br>
     //---------------------------------------------------------------------
   
     async action(cache) {
-      console.log('ACTION: gend; [v1.0] (v2.1.9)')
-      const { MessageButton, MessageActionRow } = require('discord.js')
+      console.log('ACTION: gend; [v1.1] (v2.1.8)')
       const data = cache.actions[cache.index];
       const giveaways = require('../data/giveaways.json')
-      const fs = require('fs')
+      const { writeFileSync } = require('fs')
       const client = this.getDBM().Bot.bot
 
       setInterval(() => {
         Object.keys(giveaways).forEach(async giveawayid => {
             for (var i in giveaways[giveawayid]) {
-                if (new Date().getTime() > giveaways[giveawayid][i].end && giveaways[giveawayid][i].ended == false) {
+                const giveaway = giveaways[giveawayid].at(i)
+                if (new Date().getTime() > giveaway.end && giveaway.ended == false) {
                     let winner = [];
     
-                    if (giveaways[giveawayid][i].members.length > 0) {
-                        while(winner.length < giveaways[giveawayid][i].winners && winner.length < giveaways[giveawayid][i].members.length){
-                            for (o = 0; o < giveaways[giveawayid][i].winners; o++) {
-                                let winnerr = giveaways[giveawayid][i].members[Math.floor(Math.random() * giveaways[giveawayid][i].members.length)]
+                    if (giveaway.members.length > 0) {
+                        while(winner.length < giveaway.winners && winner.length < giveaway.members.length){
+                            for (o = 0; o < giveaway.winners; o++) {
+                                let winnerr = giveaway.members[Math.floor(Math.random() * giveaway.members.length)]
     
                                 if (!winner.includes(winnerr)) {
                                     winner.push(winnerr);
@@ -129,89 +131,27 @@ Jump to Action:<br>
                         };
                     };
     
-                    giveaways[giveawayid][i].ended = true;
-                    giveaways[giveawayid][i].end = new Date().getTime();
-                    
-                    fs.writeFileSync("./data/giveaways.json", JSON.stringify(giveaways));
-                    const messageid = giveaways[giveawayid][i].msg
-                    const channelid = giveaways[giveawayid][i].channel
-                    const guildid = giveaways[giveawayid][i].guild
-                    const guild = client.guilds.cache.get(guildid)
-                    const channel = guild.channels.cache.get(channelid)
-                    const message = channel.messages.cache.get(messageid)
-                    const footer = message.embeds[0].footer.text
-                    const users = footer.split(' ')[2]
-                    const prize = giveaways[giveawayid][i].prize
-                    const hoster = giveaways[giveawayid][i].hoster
-                    this.storeValue(prize, 1, 'prize', cache)
-                    this.storeValue(hoster, 1, 'hoster', cache)
-                    this.storeValue(message, 1, 'message', cache)
-                    this.storeValue(users, 1, 'users', cache)
-                    this.storeValue(guild.iconURL({ dynamic: true }), 1, 'icon', cache)
-                    this.storeValue(guild.name, 1, 'name', cache)
-                    this.storeValue(`<@!${winner.join(">, <@!")}>`, 1, 'winner', cache)
-                    const button = new MessageActionRow().addComponents(
-                        new MessageButton()
-                        .setCustomId('gend')
-                        .setStyle(this.evalMessage(data.style, cache))
-                        .setDisabled(true)
-                        .setLabel(this.evalMessage(data.label, cache).replace('[users]', users))
-                    )
-                    await message.edit({ components: [button] })
-                    const val = parseInt(this.evalMessage(data.call, cache), 10);
+                    giveaway.ended = true;
+                    giveaway.end = new Date().getTime();
+
+                    writeFileSync("./data/giveaways.json", JSON.stringify(giveaways));
+                    const gData = {};
+                    gData.guild = client.guilds.cache.get(giveaway.guild);
+                    gData.channel = gData.guild.channels.cache.get(giveaway.channel) || await gData.guild.channels.fetch(giveaway.channel);
+                    gData.message = gData.channel.messages.cache.get(giveaway.msg) || await gData.channel.messages.fetch(giveaway.msg);
+                    gData.users = giveaway.members.length;
+                    gData.prize = giveaway.prize;
+                    gData.host = giveaway.host;
+                    gData.winners = `<@!${winner.join(">, <@!")}>`;
+
+                    this.storeValue(gData, parseInt(data.storage, 10), data.varName, cache)
+                    const val = parseInt(data.call, 10);
                     const index = Math.max(val - 1, 0);
                     if (cache.actions[index]) {
                       cache.index = index - 1;
                       this.callNextAction(cache);
                     }
-                    fs.writeFileSync("./data/giveaways.json", JSON.stringify(giveaways));
-                } else if (new Date().getTime() > giveaways[giveawayid][i].end + 1000 * 10 && giveaways[giveawayid][i].ended == true) {
-                    let winner2 = [];
-    
-                    if (giveaways[giveawayid][i].members.length > 0) {
-                        while(winner2.length < giveaways[giveawayid][i].winners && winner2.length < giveaways[giveawayid][i].members.length){
-                            for (o = 0; o < giveaways[giveawayid][i].winners; o++) {
-                                let winnerr = giveaways[giveawayid][i].members[Math.floor(Math.random() * giveaways[giveawayid][i].members.length)]
-    
-                                if (!winner2.includes(winnerr)) {
-                                    winner2.push(winnerr);
-                                };
-                            };
-                        };
-                    };
-                    const messageid = giveaways[giveawayid][i].msg
-                    const channelid = giveaways[giveawayid][i].channel
-                    const guildid = giveaways[giveawayid][i].guild
-                    const guild = client.guilds.cache.get(guildid)
-                    const channel = guild.channels.cache.get(channelid)
-                    const message = channel.messages.cache.get(messageid)
-                    const footer = message.embeds[0].footer.text
-                    const users = footer.split(' ').at(2)
-                    const prize = giveaways[giveawayid][i].prize
-                    const hoster = giveaways[giveawayid][i].hoster
-                    this.storeValue(prize, 1, 'prize', cache)
-                    this.storeValue(guild.iconURL({ dynamic: true }), 1, 'icon', cache)
-                    this.storeValue(guild.name, 1, 'name', cache)
-                    this.storeValue(hoster, 1, 'hoster', cache)
-                    this.storeValue(message, 1, 'message', cache)
-                    this.storeValue(users, 1, 'users', cache)
-                    this.storeValue(`<@!${winner2.join(">, <@!")}>`, 1, 'winner', cache)
-                    const button = new MessageActionRow().addComponents(
-                        new MessageButton()
-                        .setCustomId('gend')
-                        .setStyle(this.evalMessage(data.style, cache))
-                        .setDisabled(true)
-                        .setLabel(this.evalMessage(data.label, cache).replace('[users]', users))
-                    )
-                    await message.edit({ components: [button] })
-                    const val = parseInt(this.evalMessage(data.call, cache), 10);
-                    const index = Math.max(val - 1, 0);
-                    if (cache.actions[index]) {
-                      cache.index = index - 1;
-                      this.callNextAction(cache);
-                    }
-                    fs.writeFileSync("./data/giveaways.json", JSON.stringify(giveaways));
-                };
+                }
             };
         });
     }, 1000);
@@ -226,5 +166,4 @@ Jump to Action:<br>
     //---------------------------------------------------------------------
   
     mod() {},
-  };
-  
+};
