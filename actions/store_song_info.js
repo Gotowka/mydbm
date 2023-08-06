@@ -122,11 +122,11 @@ module.exports = {
         </p>
         </div><br>
         <div style="float: left; width: calc(50% - 12px);">
-            <span class="dbminputlabel">Song Object</span><br>
-            <input id="song" class="round" type="text">
+            <span class="dbminputlabel">Song</span><br>
+            <input id="song" class="round" placeholder="Only the variable name" type="text">
         </div>
   
-  <div style="padding-top: 8px;">
+  <div style="float: left; width: calc(100% - 12px);">
       <span class="dbminputlabel">Source Info</span><br>
       <select id="info" class="round">
           <option value="0" selected>Song Title</option>
@@ -139,11 +139,9 @@ module.exports = {
           <option value="7">Song RequestedBy</option>
           <option value="8">Song Source</option>
       </select>
-  </div>
-  
-  <br>
-  
-  <store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>`;
+      <br>
+      <store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>
+  </div>`;
     },
   
     //---------------------------------------------------------------------
@@ -165,9 +163,9 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
-      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mstore_song_info; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.2\x1b[30m)\x1b[0m')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mstore_song_info; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.2\x1b[30m)\x1b[0m')
       const data = cache.actions[cache.index];
-      const song = this.evalMessage(data.song, cache)
+      const song = cache.temp[this.evalMessage(data.song, cache)]
   
       if (!song) {
         this.callNextAction(cache);
