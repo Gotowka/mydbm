@@ -127,6 +127,7 @@ module.exports = {
         </div>
   
   <div style="float: left; width: calc(100% - 12px);">
+      <br>
       <span class="dbminputlabel">Source Info</span><br>
       <select id="info" class="round">
           <option value="0" selected>Song Title</option>
