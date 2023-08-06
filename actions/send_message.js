@@ -578,9 +578,11 @@ module.exports = {
       let target = await this.getSendReplyTarget(channel, this.evalMessage(data.varName, cache), cache);
   
       let messageOptions = {};
-      messageOptions.allowedMentions = {};
-      messageOptions.allowedMentions.repliedUser = []
-      messageOptions.allowedMentions.repliedUser = Boolean(data.mention)
+      if (data.mention) {
+        messageOptions.allowedMentions = {};
+        messageOptions.allowedMentions.repliedUser = []
+        messageOptions.allowedMentions.repliedUser = true
+      }
       const overwrite = data.overwrite;
   
       let isEdit = 0;
