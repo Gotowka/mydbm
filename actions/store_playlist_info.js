@@ -180,7 +180,8 @@ module.exports = {
           result = playlist.title;
           break;
         case 1:
-          result = playlist.id
+          result = playlist.id;
+          break;
         case 2:
           result = playlist.url;
           break;
@@ -195,6 +196,7 @@ module.exports = {
           break;
         case 6:
           result = playlist.description;
+          break;
         case 7:
           result = playlist.source;
           break;
