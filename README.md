@@ -16,7 +16,9 @@
 
 - [Stop](https://github.com/Gotowka/mydbm/blob/v3/actions/stop.js) [1.0]
 
-- [Store Song Info](https://github.com/Gotowka/mydbm/blob/v3/actions/store_song_info.js) [1.0]
+- [Store Song Info](https://github.com/Gotowka/mydbm/blob/v3/actions/store_song_info.js) [1.1]
+
+- [Store Playlist2 Info](https://github.com/Gotowka/mydbm/blob/v3/actions/store_playlist_info.js) [1.1]
 
 - [Connect Music Player](https://github.com/Gotowka/mydbm/blob/v3/actions/connect_music_player.js) [1.0]
 
