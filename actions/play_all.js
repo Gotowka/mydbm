@@ -29,7 +29,7 @@ module.exports = {
 		const type = parseInt(data.storage, 10);
 		if (type !== varType) return;
 		let dataType = "Song Data";
-		return [data.varName, dataType, "check", "<Voice/Notfound/Playlist>"];
+		return [data.varName, dataType, "check", "<Voice/Notfound/Playlist>", "playlist", "Boolean"];
 	},
 
   meta: { version: "3.2.2", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/play_all.js' },
@@ -62,7 +62,8 @@ module.exports = {
         <u>Mod Info:</u><br>
         Created by money#6283<br>
         Help: https://discord.gg/apUVFy7SUh<br>
-        check('voice', 'notfound', 'playlist', 'none')
+        check('voice', 'notfound', 'none')
+        playlist(boolean)
     </p>
 </div><br>
 <div>
@@ -108,7 +109,7 @@ module.exports = {
       return;
     }
 
-    const queue = player.queues.cache.get((interaction ?? msg).guild.id)
+    const queue = player.queues.get((interaction ?? msg).guild.id)
     const res = await player.search(url, {
       fallbackSearchEngine: 'auto',
       requestedBy: (interaction ?? msg).member.user
@@ -136,7 +137,7 @@ module.exports = {
     } else queue.addTracks(res.tracks)
     const storage = parseInt(data.storage, cache)
     const varName = this.evalMessage(data.varName, cache);
-    if (res.playlist) this.storeValue('playlist', storage, 'check', cache)
+    this.storeValue(res.hasPlaylist(), storage, 'playlist', cache)
     this.storeValue('none', storage, 'check', cache)
     this.storeValue(res.playlist ?? res.tracks[0], storage, varName, cache);
     this.callNextAction(cache);
