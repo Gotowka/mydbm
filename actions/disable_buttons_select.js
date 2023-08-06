@@ -127,12 +127,12 @@ module.exports = {
       const type = data.type;
   
       let sourceButton = null;
-      if (cache.interaction.isButton()) {
+      if (cache.interaction?.isButton()) {
         sourceButton = cache.interaction.customId;
       }
   
       let sourceSelect = null;
-      if (cache.interaction.isSelectMenu()) {
+      if (cache.interaction?.isSelectMenu()) {
         sourceSelect = cache.interaction.customId;
       }
   
