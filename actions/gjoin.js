@@ -25,6 +25,12 @@ module.exports = {
     return `Join to the giveaway`;
   },
 
+  variableStorage(data, varType) {
+    if (parseInt(data.storage, 10) !== varType) return;
+    let dataType = "<Yes>";
+    return ['error', dataType];
+  },
+
   //---------------------------------------------------------------------
   // Action Meta Data
   //
@@ -45,7 +51,7 @@ module.exports = {
   // are also the names of the fields stored in the action's JSON data.
   //---------------------------------------------------------------------
 
-  fields: ["footer", "language"],
+  fields: [],
 
   //---------------------------------------------------------------------
   // Command HTML
@@ -66,18 +72,6 @@ module.exports = {
         Created by money#6283<br>
         Help: https://discord.gg/apUVFy7SUh
     </p>
-</div><br>
-<div style="float: left; width: 45%;">
-<span class="dbminputlabel">Footer<span style="color:red">*</span></span>
-<input id="footer" class="round" placeholder="[members] = Users of the giveaway" type="text">
-
-<br>
-
-<span class="dbminputlabel">Language</span><br>
-<select id="language" class="round">
-  <option value="eng" selected>English</option>
-  <option value="pl">Polish</option>
-</select>
 </div>
 `;
   },
@@ -101,50 +95,18 @@ module.exports = {
   //---------------------------------------------------------------------
 
   async action(cache) {
-    console.log('ACTION: gjoin; [v1.0] (v2.1.9)')
-    const { interaction } = cache;
-    const data = cache.actions[cache.index];
-    const lang = data.language
-    const giveaways = require('../data/giveaways.json')
-    const fs = require('fs')
+    console.log('ACTION: gjoin; [v1.1] (v2.1.8)');
+    const { interaction } = cache;;
+    const giveaways = require('../data/giveaways.json');
+    const { writeFileSync } = require('fs');
 
-    let gg;
-            
-    for (i in giveaways[interaction.guildId]) {
-      if (giveaways[interaction.guildId][i].msg == interaction.message.id) {
-        gg = giveaways[interaction.guildId][i];
+    const gg = giveaways[interaction.guild.id].find(a => a.msg === interaction.message.id);
 
-        break;
-      };
-    };
+    if (gg.members.includes(interaction.user.id)) this.storeValue('yes', 1, 'error', cache);
+    else gg.members.push(interaction.user.id);
 
-    if (gg.members.includes(interaction.user.id)) {
-      for (i in gg.members) {
-        if (gg.members[i] == interaction.user.id) {
-          gg.members.splice(i, 1);
-
-          break;
-        };
-      };
-
-      if(lang === 'pl') interaction.reply({ content: "\`✅\` Już nie bierzesz udziału w konkursie!", ephemeral: true });
-      if(lang === 'eng') interaction.reply({ content: "\`✅\` You are no longer participating in the giveaway!", ephemeral: true });
-    } else {
-      gg.members.push(interaction.user.id);
-
-      if(lang === 'pl') interaction.reply({ content: "\`✅\` Bierzesz udział w konkursie!", ephemeral: true });
-      if(lang === 'eng') interaction.reply({ content: "\`✅\` You are in a giveaway!", ephemeral: true });
-    };
-
-    let msg = await interaction.guild.channels.cache.get(gg.channel).messages.fetch(gg.msg);
-
-    let embed = msg.embeds[0];
-    embed.footer.text = this.evalMessage(data.footer, cache).replace('[members]', gg.members.length)
-
-    msg.edit({ embeds: [ embed ] });
-    
-    fs.writeFileSync('./data/giveaways.json', JSON.stringify(giveaways))
-
+    writeFileSync('./data/giveaways.json', JSON.stringify(giveaways));
+    this.callNextAction(cache);
   },
   //---------------------------------------------------------------------
   // Action Bot Mod
