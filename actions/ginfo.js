@@ -27,7 +27,7 @@ module.exports = {
         case "host":
           dataType = "Giveaway Host";
           break;
-        case "gift":
+        case "prize":
           dataType = "Giveaway Gift";
           break;
         case "users":
@@ -60,7 +60,7 @@ module.exports = {
         case "host":
           dataType = "Member";
           break;
-        case "gift":
+        case "prize":
           dataType = "Text";
           break;
         case "users":
