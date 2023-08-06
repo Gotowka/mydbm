@@ -1,0 +1,241 @@
+{
+    "name": "play music",
+    "permissions": "NONE",
+    "permissions2": "NONE",
+    "restriction": "1",
+    "_id": "nINIP",
+    "actions": [
+      {
+        "url": "${slashParams(\"song\")}",
+        "storage": "1",
+        "varName": "songData",
+        "name": "Play Music"
+      },
+      {
+        "storage": "1",
+        "varName": "check",
+        "branches": [
+          {
+            "comparison": "1",
+            "value": "'voice'",
+            "actions": [
+              {
+                "channel": "0",
+                "varName": "",
+                "message": ":x: You need to join the voice channel!",
+                "buttons": [],
+                "selectMenus": [],
+                "attachments": [],
+                "embeds": [],
+                "reply": true,
+                "ephemeral": true,
+                "tts": false,
+                "overwrite": false,
+                "mention": false,
+                "dontSend": false,
+                "editMessage": "intUpdate",
+                "editMessageVarName": "",
+                "storage": "0",
+                "varName2": "",
+                "name": "Send Message"
+              }
+            ]
+          },
+          {
+            "comparison": "1",
+            "value": "'notfound'",
+            "actions": [
+              {
+                "channel": "0",
+                "varName": "",
+                "message": "I can't find the song **${slashParams(\"song\")}**!",
+                "buttons": [],
+                "selectMenus": [],
+                "attachments": [],
+                "embeds": [],
+                "reply": true,
+                "ephemeral": true,
+                "tts": false,
+                "overwrite": false,
+                "mention": false,
+                "dontSend": false,
+                "editMessage": "intUpdate",
+                "editMessageVarName": "",
+                "storage": "0",
+                "varName2": "",
+                "name": "Send Message"
+              }
+            ]
+          },
+          {
+            "comparison": "1",
+            "value": "'none'",
+            "actions": [
+              {
+                "storage": "1",
+                "varName": "playlist",
+                "comparison": "1",
+                "value": "true",
+                "branch": {
+                  "iftrue": "2",
+                  "iffalse": "0",
+                  "iftrueVal": "9"
+                },
+                "name": "Check Variable"
+              },
+              {
+                "song": "songData",
+                "info": "0",
+                "storage": "1",
+                "varName2": "song.title",
+                "name": "Store Song Info"
+              },
+              {
+                "song": "songData",
+                "info": "1",
+                "storage": "1",
+                "varName2": "song.url",
+                "name": "Store Song Info"
+              },
+              {
+                "song": "songData",
+                "info": "5",
+                "storage": "1",
+                "varName2": "song.duration",
+                "name": "Store Song Info"
+              },
+              {
+                "song": "songData",
+                "info": "4",
+                "storage": "1",
+                "varName2": "song.thumbnail",
+                "name": "Store Song Info"
+              },
+              {
+                "song": "songData",
+                "info": "3",
+                "storage": "1",
+                "varName2": "song.views",
+                "name": "Store Song Info"
+              },
+              {
+                "channel": "0",
+                "varName": "",
+                "message": "",
+                "buttons": [],
+                "selectMenus": [],
+                "attachments": [],
+                "embeds": [
+                  {
+                    "title": "${tempVars(\"song.title\")}",
+                    "url": "${tempVars(\"song.url\")}",
+                    "color": "",
+                    "timestamp": "false",
+                    "imageUrl": "",
+                    "thumbUrl": "${tempVars(\"song.thumbnail\")}",
+                    "description": "",
+                    "fields": [],
+                    "author": "",
+                    "authorUrl": "",
+                    "authorIcon": "",
+                    "footerText": "Duration: ${tempVars(\"song.duration\")} | Views: ${tempVars(\"song.views\")}",
+                    "footerIconUrl": ""
+                  }
+                ],
+                "reply": true,
+                "ephemeral": false,
+                "tts": false,
+                "overwrite": false,
+                "mention": false,
+                "dontSend": false,
+                "editMessage": "intUpdate",
+                "editMessageVarName": "",
+                "storage": "0",
+                "varName2": "",
+                "name": "Send Message"
+              },
+              {
+                "name": "End Action Sequence"
+              },
+              {
+                "playlist": "songData",
+                "info": "0",
+                "storage": "1",
+                "varName": "playlist.title",
+                "name": "Store Playlist2 Info"
+              },
+              {
+                "playlist": "songData",
+                "info": "2",
+                "storage": "1",
+                "varName": "playlist.url",
+                "name": "Store Playlist2 Info"
+              },
+              {
+                "playlist": "songData",
+                "info": "5",
+                "storage": "1",
+                "varName": "playlist.thumbnail",
+                "name": "Store Playlist2 Info"
+              },
+              {
+                "playlist": "songData",
+                "info": "8",
+                "storage": "1",
+                "varName": "playlist.songs",
+                "name": "Store Playlist2 Info"
+              },
+              {
+                "channel": "0",
+                "varName": "",
+                "message": "",
+                "buttons": [],
+                "selectMenus": [],
+                "attachments": [],
+                "embeds": [
+                  {
+                    "title": "${tempVars(\"playlist.title\")}",
+                    "url": "${tempVars(\"playlist.url\")}",
+                    "color": "",
+                    "timestamp": "false",
+                    "imageUrl": "",
+                    "thumbUrl": "${tempVars(\"playlist.thumbnail\")}",
+                    "description": "Playlist has ${tempVars(\"playlist.songs\")} songs!",
+                    "fields": [],
+                    "author": "",
+                    "authorUrl": "",
+                    "authorIcon": "",
+                    "footerText": "",
+                    "footerIconUrl": ""
+                  }
+                ],
+                "reply": true,
+                "ephemeral": false,
+                "tts": false,
+                "overwrite": false,
+                "mention": false,
+                "dontSend": false,
+                "editMessage": "intUpdate",
+                "editMessageVarName": "",
+                "storage": "0",
+                "varName2": "",
+                "name": "Send Message"
+              }
+            ]
+          }
+        ],
+        "name": "Multi-Check Variable"
+      }
+    ],
+    "comType": "4",
+    "parameters": [
+      {
+        "name": "song",
+        "description": "Give the url or title",
+        "type": "STRING",
+        "required": true,
+        "choices": null
+      }
+    ],
+    "description": "I play songs"
+}
