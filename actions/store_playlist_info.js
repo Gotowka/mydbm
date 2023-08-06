@@ -120,8 +120,8 @@ module.exports = {
         </p>
       </div><br>
       <div style="float: left; width: calc(50% - 12px);">
-          <span class="dbminputlabel">Playlist Object</span><br>
-          <input id="playlist" class="round" type="text">
+          <span class="dbminputlabel">Playlist</span><br>
+          <input id="playlist" class="round" placeholder="Only the variable name" type="text">
           <br>
           <span class="dbminputlabel">Source Info</span><br>
           <select id="info" class="round">
@@ -165,7 +165,7 @@ module.exports = {
     async action(cache) {
       console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mstore_playlist_info; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.2\x1b[30m)\x1b[0m')
       const data = cache.actions[cache.index];
-      const playlist = this.evalMessage(data.playlist, cache)
+      const playlist = cache.temp[this.evalMessage(data.playlist, cache)]
   
       if (!playlist) {
         this.callNextAction(cache);
