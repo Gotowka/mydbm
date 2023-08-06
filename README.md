@@ -54,8 +54,6 @@
 
 - [Create Embed Message](https://github.com/Gotowka/mydbm/blob/v3/actions/create_embed_message.js)
 
-- [Giveaway END](https://github.com/Gotowka/mydbm/blob/v3/actions/gend.js) [1.0]
-
 - [Games](https://github.com/Gotowka/mydbm/blob/v3/actions/games.js) [1.0]
 
 - [Store Member Info](https://github.com/Gotowka/mydbm/blob/v3/actions/store_member_info.js)
