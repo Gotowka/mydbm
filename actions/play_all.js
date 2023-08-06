@@ -62,7 +62,7 @@ module.exports = {
         <u>Mod Info:</u><br>
         Created by money#6283<br>
         Help: https://discord.gg/apUVFy7SUh<br>
-        check('voice', 'notfound', 'playlist')
+        check('voice', 'notfound', 'playlist', 'none')
     </p>
 </div><br>
 <div>
@@ -136,7 +136,8 @@ module.exports = {
     } else queue.addTracks(res.tracks)
     const storage = parseInt(data.storage, cache)
     const varName = this.evalMessage(data.varName, cache);
-    this.storeValue(res.hasPlaylist(), storage, 'check', cache)
+    if (res.playlist) this.storeValue('playlist', storage, 'check', cache)
+    this.storeValue('none', storage, 'check', cache)
     this.storeValue(res.playlist ?? res.tracks[0], storage, varName, cache);
     this.callNextAction(cache);
   },
