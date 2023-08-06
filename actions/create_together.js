@@ -28,7 +28,7 @@ module.exports = {
     map.push(data.varName)
     map.push(dataType)
 
-    map.push('Error')
+    map.push('error')
     map.push("<Voice/Together>")
     return map
   },
@@ -125,7 +125,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   async action(cache) {
-    console.log('ACTION: create_together; [v1.1] (v2.1.9)')
+    console.log('ACTION: create_together; [v1.2] (v2.1.8)')
     const data = cache.actions[cache.index];
     const storage = parseInt(data.storage, 10);
     const varName = this.evalMessage(data.varName, cache);
@@ -136,10 +136,10 @@ module.exports = {
       this.storeValue(invite.code, storage, varName, cache);
     }).catch(er => {
       console.log(er);
-      this.storeValue('together', storage, 'Error', cache);
+      this.storeValue('together', storage, 'error', cache);
     })
   } else {
-    this.storeValue('voice', storage, 'Error', cache);
+    this.storeValue('voice', storage, 'error', cache);
   }
   this.callNextAction(cache);
 },
