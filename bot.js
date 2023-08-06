@@ -5,7 +5,7 @@
  ******************************************************/
 
 const DBM = {};
-DBM.version = "2.1.9";
+DBM.version = "2.1.8";
 
 const DiscordJS = (DBM.DiscordJS = require("discord.js"));
 
@@ -21,7 +21,7 @@ Please use "Project > Module Manager" and "Project > Reinstall Node Modules" to 
 
 const noop = () => void 0;
 module.exports.Money = '1.0.1'
-console.log('BOT: bot.js; [v1.2] (v2.1.8.1) (13.16.0)')
+console.log('BOT: bot.js; [v1.2] (v2.1.8.2) (13.16.0)')
 
 const MsgType = {
   MISSING_ACTION: 0,
@@ -1325,7 +1325,7 @@ Actions.eval = function (content, cache, logError = true) {
   const server = cache.server;
   const client = DBM.Bot.bot;
   const bot = DBM.Bot.bot;
-  const me = server?.me ?? null;
+  const me = server?.members?.me ?? null;
   let user = "",
     member = "",
     channel = "",
