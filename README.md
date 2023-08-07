@@ -34,4 +34,6 @@
 
 - [Automod Delete](https://github.com/Gotowka/mydbm/blob/v3/actions/automod_delete.js) [1.0]
 
+- [Ticket Manager](https://github.com/Gotowka/mydbm/blob/v3/actions/ticket_manager.js) [1.0]
+
 - [Games](https://github.com/Gotowka/mydbm/blob/v3/actions/games.js) [1.0]
