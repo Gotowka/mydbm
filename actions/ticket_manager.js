@@ -214,7 +214,7 @@ module.exports = {
 
 
   async action(cache) {
-    console.log('ACTION: ticket_manager; [v1.1] (v2.1.8)')
+    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mticket_manager; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.2\x1b[30m)\x1b[0m')
     const data = cache.actions[cache.index];
     const { interaction } = cache
     const { EmbedBuilder, PermissionsBitField } = require('discord.js')
