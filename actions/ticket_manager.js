@@ -15,7 +15,7 @@ module.exports = {
     return [data.varName, dataType];
   },
 
-  meta: { version: "2.1.8", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/ticket_manager.js' },
+  meta: { version: "3.2.2", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/ticket_manager.js' },
   
   fields: ["Tname", "Ttopic", "Tparent", "Tposition", "embeds", "E1", "E2", "sembed", "limit", "role", "storage", "varName"],
 
@@ -217,8 +217,8 @@ module.exports = {
     console.log('ACTION: ticket_manager; [v1.1] (v2.1.8)')
     const data = cache.actions[cache.index];
     const { interaction } = cache
-    const { Permissions, MessageEmbed } = require('discord.js')
-    const guild = interaction.guild
+    const { EmbedBuilder, PermissionsBitField } = require('discord.js')
+    const { guild } = interaction
     const createSettings = {}
     if (data.limit === '0') {
       createSettings.topic = interaction.member.id
@@ -230,27 +230,27 @@ module.exports = {
     if (data.role) createSettings.permissionOverwrites = [
       {
          id: interaction.member.id,
-         allow: [Permissions.FLAGS.VIEW_CHANNEL, Permissions.FLAGS.SEND_MESSAGES],
-         deny: [Permissions.FLAGS.MENTION_EVERYONE]
+         allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages],
+         deny: [PermissionsBitField.Flags.MentionEveryone]
       }, {
           id: interaction.guild.roles.everyone.id,
           allow: [],
-          deny: [Permissions.FLAGS.VIEW_CHANNEL]
+          deny: [PermissionsBitField.Flags.ViewChannel]
       }, {
           id: this.evalMessage(data.role, cache),
-          allow: [Permissions.FLAGS.VIEW_CHANNEL, Permissions.FLAGS.SEND_MESSAGES],
+          allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages],
           deny: []
       }
     ]
     else createSettings.permissionOverwrites = [
       {
          id: interaction.member.id,
-         allow: [Permissions.FLAGS.VIEW_CHANNEL, Permissions.FLAGS.SEND_MESSAGES],
-         deny: [Permissions.FLAGS.MENTION_EVERYONE]
+         allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages],
+         deny: [PermissionsBitField.Flags.MentionEveryone]
       }, {
           id: interaction.guild.roles.everyone.id,
           allow: [],
-          deny: [Permissions.FLAGS.VIEW_CHANNEL]
+          deny: [PermissionsBitField.Flags.ViewChannel]
       }
     ]
     let channel
@@ -261,7 +261,7 @@ module.exports = {
     const embedDatas = data.embeds;
     for (let i = 0; i < embedDatas.length; i++) {
       const embedData = embedDatas[i];
-      const embed = new MessageEmbed();
+      const embed = new EmbedBuilder();
 
       if (embedData.title) embed.setTitle(this.evalMessage(embedData.title, cache));
       if (embedData.url) embed.setURL(this.evalMessage(embedData.url, cache));
