@@ -13,7 +13,7 @@ module.exports = {
   // This is the section the action will fall into.
   //---------------------------------------------------------------------
 
-  section: "Discord",
+  section: "Server Control",
 
   //---------------------------------------------------------------------
   // Action Subtitle
@@ -22,49 +22,9 @@ module.exports = {
   //---------------------------------------------------------------------
 
   variableStorage(data, varType) {
-    if (1 !== varType) return;
-    const map = []
-    let num = 8
-    if (data.show !== true) num = 4
-    for (var i = 0; i < num; i++) {
-      const d = get(i);
-      map.push(d[0])
-      map.push(d[1])
-    }
-
-    return map;
-
-    function get(i) {
-      let res
-      switch (i) {
-          case 0:
-           res = ["Executor", "User"];
-           break;
-          case 1:
-           res = ["Id", "String"];
-           break;
-          case 2:
-           res = ["Target", "Object<User/Role/Channel...>"];
-           break;
-          case 3:
-           res = ["Reason", "String"];
-           break;
-          case 4:
-           res = ["key", "String"];
-           break;
-          case 5:
-           res = ["old", "String"];
-           break;
-          case 6:
-           res = ["new", "String"];
-           break;
-          case 7:
-           res = ["end", "true (only when it\'s end)"];
-           break;
-      }
-      return res;
-    }
-
+    if (parseInt(data.storage, 10) !== varType) return;
+    let dataType = "Audit Log";
+    return [data.varName, dataType];
   },
 
   subtitle(data, presets) {
@@ -256,7 +216,7 @@ module.exports = {
   // are also the names of the fields stored in the action's JSON data.
   //---------------------------------------------------------------------
 
-  fields: ["show", "mapcheck", "type"],
+  fields: ["type", "storage", "varName"],
 
   //---------------------------------------------------------------------
   // Command HTML
@@ -277,12 +237,8 @@ module.exports = {
         Created by money#6283<br>
         Help: https://discord.gg/apUVFy7SUh
     </p>
-</div>
+</div><br>
 <div style="padding-top: 8px; width: 100%;">
-  <dbm-checkbox id="show" label="Show variables" checked></dbm-checkbox>  
-  <br>
-  <dbm-checkbox id="mapcheck" label="Map start for changes list"></dbm-checkbox>
-  <br>
   <span class="dbminputlabel">Source</span><br>
   <select id="type" class="round">
       <option value="1">Guild Update</options>
@@ -340,6 +296,8 @@ module.exports = {
       <option value="144">Auto Moderation Flag To Channel</options>
       <option value="145">Auto Moderation User Communication Disabled</options>
   </select>
+  <br>
+  <store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></store-in-variable>
 </div>`;
   },
 
@@ -354,28 +312,15 @@ module.exports = {
   //---------------------------------------------------------------------
 
   async action(cache) {
-     console.log('ACTION: fetch_audit_logs; [v1.0] (v2.1.8)')
-     const data = cache.actions[cache.index];
+    console.log('ACTION: fetch_audit_logs; [v1.1] (v2.1.8)')
+    const data = cache.actions[cache.index];
     await cache.server.fetchAuditLogs({
       type: parseInt(data.type),
       limit: 1
     }).then(logs => {
       const log = logs.entries.first()
-      const map = ["Executor", "Id", "Target", "Reason"]
-      const map2 = ["executor", "id", "target", "reason"]
-      for (i = 0; i < 4; i++) this.storeValue(log[map2.at(i)], 1, map[i], cache)
-      const index = Math.max(cache.index + 2 - 1, 0);
-      if (data.mapcheck && cache.actions[index]) {
-        cache.index = index - 1;
-        for (i = 0; i < log.changes.length; i++) {
-          const change = log.changes[i]
-          if (i + 1=== log.changes.length) this.storeValue('true', 1, 'end', cache)
-          this.storeValue(change.key, 1, 'key', cache)
-          this.storeValue(change.old, 1, 'old', cache)
-          this.storeValue(change.new, 1, 'new', cache)
-          this.callNextAction(cache);
-        }
-      } else this.callNextAction(cache);
+      this.storeValue(log, parseInt(data.storage), data.varName, cache)
+      this.callNextAction(cache);
     })
   },
 
