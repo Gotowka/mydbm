@@ -59,7 +59,7 @@ module.exports = {
     // are also the names of the fields stored in the action's JSON data.
     //---------------------------------------------------------------------
   
-    fields: ["mdata", "info", "storage", "varName2"],
+    fields: ["type", "mdata", "info", "storage", "varName2"],
   
     //---------------------------------------------------------------------
     // Command HTML
@@ -81,9 +81,8 @@ module.exports = {
             Help: https://discord.gg/apUVFy7SUh<br>
         </p>
         </div><br>
-        <div style="float: left; width: calc(50% - 12px);">
-            <span class="dbminputlabel">MongoDB Collection Data</span><br>
-            <input id="mdata" class="round" placeholder="Only the variable name" type="text">
+        <div style="float: left; width: calc(85% - 12px);">
+          <retrieve-from-variable dropdownLabel="MongoDB Collection Data" selectId="type" variableContainerId="varNameContainer" variableInputId="mdata"></retrieve-from-variable>
         </div>
         <div style="float: rigth; width: calc(50% - 12px);">
         <span class="dbminputlabel">Source Info</span><br>
@@ -113,9 +112,9 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
-      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mmongodb_store_collection_info; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv2.1.8\x1b[30m)\x1b[0m')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mmongodb_store_collection_info; \x1b[30m[\x1b[32mv1.2\x1b[30m] \x1b[30m(\x1b[36mv2.1.8\x1b[30m)\x1b[0m')
       const data = cache.actions[cache.index];
-      const cData = cache.temp[this.evalMessage(data.mdata, cache)]
+      const cData = this.getVariable(parseInt(data.type), data.mdata, cache)
       const info = this.evalMessage(data.info, cache)
       const result = cData[info]
       const storage = parseInt(data.storage, 10);
