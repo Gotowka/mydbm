@@ -99,7 +99,7 @@ module.exports = {
     // are also the names of the fields stored in the action's JSON data.
     //---------------------------------------------------------------------
   
-    fields: ["song", "info", "storage", "varName2"],
+    fields: ["type", "song", "info", "storage", "varName2"],
   
     //---------------------------------------------------------------------
     // Command HTML
@@ -121,13 +121,11 @@ module.exports = {
             Help: https://discord.gg/apUVFy7SUh<br>
         </p>
         </div><br>
-        <div style="float: left; width: calc(50% - 12px);">
-            <span class="dbminputlabel">Song</span><br>
-            <input id="song" class="round" placeholder="Only the variable name" type="text">
+        <div style="float: left; width: calc(85% - 12px);">
+          <retrieve-from-variable dropdownLabel="Song" selectId="type" variableContainerId="varNameContainer" variableInputId="song"></retrieve-from-variable>
         </div>
   
   <div style="float: left; width: calc(100% - 12px);">
-      <br>
       <span class="dbminputlabel">Source Info</span><br>
       <select id="info" class="round">
           <option value="0" selected>Song Title</option>
@@ -164,9 +162,9 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
-      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mstore_song_info; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.2\x1b[30m)\x1b[0m')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mstore_song_info; \x1b[30m[\x1b[32mv1.2\x1b[30m] \x1b[30m(\x1b[36mv3.2.2\x1b[30m)\x1b[0m')
       const data = cache.actions[cache.index];
-      const song = cache.temp[this.evalMessage(data.song, cache)]
+      const song = this.getVariable(parseInt(data.type), data.song, cache)
   
       if (!song) {
         this.callNextAction(cache);
