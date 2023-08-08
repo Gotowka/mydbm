@@ -5,7 +5,7 @@ module.exports = {
     // This is the name of the action displayed in the editor.
     //---------------------------------------------------------------------
   
-    name: "Map Start",
+    name: "Start Audit Logs Map",
   
     //---------------------------------------------------------------------
     // Action Section

@@ -65,7 +65,7 @@
         "variables": "key:old:new",
         "type": "1",
         "array": "changes",
-        "name": "Map Start"
+        "name": "Start Audit Logs Map"
       },
       {
         "storage": "1",
