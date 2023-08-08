@@ -36,7 +36,7 @@ module.exports = {
     // This will make it so the patch version (0.0.X) is not checked.
     //---------------------------------------------------------------------
   
-    meta: { version: "2.1.8", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/map_start.js' },
+    meta: { version: "2.1.8", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/start_audit_logs_map.js' },
     //---------------------------------------------------------------------
     // Action Fields
     //
@@ -92,6 +92,8 @@ module.exports = {
       let i = 0
       const map = []
       array.map(object => {
+        console.log(object)
+        console.log('Log ^ is for the autor if you have error with it!')
         i = i + 1
         const count = data.variables.split('').filter(w => w === ':').length + 1
         getVariables(data.variables, count, map)
