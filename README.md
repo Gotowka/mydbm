@@ -31,13 +31,13 @@
 
 - [Giveaway REROLL](https://github.com/Gotowka/mydbm/blob/v2/actions/greroll.js) [1.1]
 
-- [Giveaway INFO](https://github.com/Gotowka/mydbm/blob/v2/actions/ginfo.js) [1.0]
+- [Giveaway INFO](https://github.com/Gotowka/mydbm/blob/v2/actions/ginfo.js) [1.1]
 
 - [MongoDB Collection Create](https://github.com/Gotowka/mydbm/blob/v3/actions/mongodb_collection_create.js) [1.0]
 
 - [MongoDB Collection Edit](https://github.com/Gotowka/mydbm/blob/v3/actions/mongodb_collection_edit.js) [1.0]
 
-- [MongoDB Store Collection Info](https://github.com/Gotowka/mydbm/blob/v3/actions/mongodb_store_collection_info.js) [1.0]
+- [MongoDB Store Collection Info](https://github.com/Gotowka/mydbm/blob/v3/actions/mongodb_store_collection_info.js) [1.1]
 
 - [MongoDB Collection Get](https://github.com/Gotowka/mydbm/blob/v3/actions/mongodb_collection_get.js) [1.0]
 
@@ -47,7 +47,11 @@
 
 - [Command Parameter Set Number Value](https://github.com/Gotowka/mydbm/blob/v3/actions/command_param_set_value.js) [1.0]
 
-- [Fetch Audit Logs](https://github.com/Gotowka/mydbm/blob/v2/actions/fetch_audit_logs.js) [1.0]
+- [Fetch Audit Logs](https://github.com/Gotowka/mydbm/blob/v2/actions/fetch_audit_logs.js) [1.1]
+
+- [Store Audit Log Info](https://github.com/Gotowka/mydbm/blob/v2/actions/store_audit_log_info.js) [1.0]
+
+- [Start Audit Logs Map](https://github.com/Gotowka/mydbm/blob/v2/actions/start_audit_logs_map.js) [1.0]
 
 - [InviteLogger INFO](https://github.com/Gotowka/mydbm/blob/v2/actions/loggerinfo.js) [1.0]
 
