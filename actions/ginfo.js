@@ -105,7 +105,7 @@ module.exports = {
     // are also the names of the fields stored in the action's JSON data.
     //---------------------------------------------------------------------
   
-    fields: ["giveaway", "source", "storage", "varName"],
+    fields: ["type", "giveaway", "source", "storage", "varName"],
   
     //---------------------------------------------------------------------
     // Command HTML
@@ -127,11 +127,11 @@ module.exports = {
             Help: https://discord.gg/apUVFy7SUh
         </p>
       </div>
+      <div style="float: left; width: calc(85% - 12px);">
+        <br>
+        <retrieve-from-variable dropdownLabel="Giveaway Data" selectId="type" variableContainerId="varNameContainer" variableInputId="giveaway"></retrieve-from-variable>
+      </div>
       <div style="float: left; width: calc(50% - 12px);">
-        <br>
-        <span class="dbminputlabel">Giveaway Data</span>
-        <input id="giveaway" class="round" placeholder="Only the variable name" type="text">
-        <br>
         <span class="dbminputlabel">Information</span><br>
         <select id="source" class="round">
           <option value="host">Host</option>
@@ -146,7 +146,7 @@ module.exports = {
       </div>
       <div style="float: left; width: calc(85% - 12px);">
       <br>
-      <store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></store-in-variable>
+      <store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName"></store-in-variable>
       </div>
     `;
     },
@@ -170,9 +170,9 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
-      console.log('ACTION: store_giveaway_info; [v1.0] (v2.1.8)');
+      console.log('ACTION: ginfo; [v1.1] (v2.1.8)');
       const data = cache.actions[cache.index];
-      const giveaway = cache.temp[data.giveaway];
+      const giveaway = this.getVariable(parseInt(data.type), data.giveaway, cache)
 
       this.storeValue(giveaway[data.source], parseInt(data.storage, 10), data.varName, cache);
       this.callNextAction(cache);
