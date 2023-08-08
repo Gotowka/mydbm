@@ -97,7 +97,7 @@ module.exports = {
     // are also the names of the fields stored in the action's JSON data.
     //---------------------------------------------------------------------
   
-    fields: ["playlist", "info", "storage", "varName"],
+    fields: ["type", "playlist", "info", "storage", "varName"],
   
     //---------------------------------------------------------------------
     // Command HTML
@@ -119,10 +119,10 @@ module.exports = {
             Help: https://discord.gg/apUVFy7SUh<br>
         </p>
       </div><br>
+      <div style="float: left; width: calc(85% - 12px);">
+        <retrieve-from-variable dropdownLabel="Playlist" selectId="type" variableContainerId="varNameContainer" variableInputId="playlist"></retrieve-from-variable>
+      </div>
       <div style="float: left; width: calc(50% - 12px);">
-          <span class="dbminputlabel">Playlist</span><br>
-          <input id="playlist" class="round" placeholder="Only the variable name" type="text">
-          <br>
           <span class="dbminputlabel">Source Info</span><br>
           <select id="info" class="round">
               <option value="0">Playlist Title</option>
@@ -138,7 +138,7 @@ module.exports = {
           </select>
       </div>
   
-      <div style="float: left; width: calc(100% - 12px); padding-top: 8px;">
+      <div style="float: left; width: calc(85% - 12px); padding-top: 8px;">
         <br>
         <store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName"></store-in-variable>
       </div>`;
@@ -163,9 +163,9 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
-      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mstore_playlist_info; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.2\x1b[30m)\x1b[0m')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mstore_playlist_info; \x1b[30m[\x1b[32mv1.2\x1b[30m] \x1b[30m(\x1b[36mv3.2.2\x1b[30m)\x1b[0m')
       const data = cache.actions[cache.index];
-      const playlist = cache.temp[this.evalMessage(data.playlist, cache)]
+      const playlist = this.getVariable(parseInt(data.type), data.playlist, cache)
   
       if (!playlist) {
         this.callNextAction(cache);
