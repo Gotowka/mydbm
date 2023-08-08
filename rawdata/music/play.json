@@ -84,6 +84,7 @@
                 "name": "Check Variable"
               },
               {
+                "type": "1",
                 "song": "songData",
                 "info": "0",
                 "storage": "1",
@@ -91,6 +92,7 @@
                 "name": "Store Song Info"
               },
               {
+                "type": "1",
                 "song": "songData",
                 "info": "1",
                 "storage": "1",
@@ -98,6 +100,7 @@
                 "name": "Store Song Info"
               },
               {
+                "type": "1",
                 "song": "songData",
                 "info": "5",
                 "storage": "1",
@@ -105,6 +108,7 @@
                 "name": "Store Song Info"
               },
               {
+                "type": "1",
                 "song": "songData",
                 "info": "4",
                 "storage": "1",
@@ -112,6 +116,7 @@
                 "name": "Store Song Info"
               },
               {
+                "type": "1",
                 "song": "songData",
                 "info": "3",
                 "storage": "1",
@@ -158,6 +163,7 @@
                 "name": "End Action Sequence"
               },
               {
+                "type": "1",
                 "playlist": "songData",
                 "info": "0",
                 "storage": "1",
@@ -165,6 +171,7 @@
                 "name": "Store Playlist2 Info"
               },
               {
+                "type": "1",
                 "playlist": "songData",
                 "info": "2",
                 "storage": "1",
@@ -172,6 +179,7 @@
                 "name": "Store Playlist2 Info"
               },
               {
+                "type": "1",
                 "playlist": "songData",
                 "info": "5",
                 "storage": "1",
@@ -179,6 +187,7 @@
                 "name": "Store Playlist2 Info"
               },
               {
+                "type": "1",
                 "playlist": "songData",
                 "info": "8",
                 "storage": "1",
