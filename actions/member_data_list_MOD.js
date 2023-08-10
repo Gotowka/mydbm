@@ -19,7 +19,6 @@ module.exports = {
     },
   
     fields: [
-      'debu',
       'numbefst2',
       'numbefst',
       'numbefstselect',
@@ -96,8 +95,8 @@ module.exports = {
       <br>
       
       <div style="float: left; width: 50%;">
-        <span class="dbminputlabel">Result Limit</span>
-        <input id="getresults" class="round" type="text" placeholder="If blank it gets all results.">
+        <span class="dbminputlabel">Results Count</span>
+        <input id="getresults" class="round" type="text" placeholder="a:b a-From b-To">
       </div>
       <br><br><br>
       
@@ -142,7 +141,7 @@ module.exports = {
         let list = []
         Object.keys(file).map(userId => {
             const user = file[userId];
-            const member = (msg ?? interaction).guild.members.cache.get(userId);
+            const member = (msg ?? interaction).guild.members.cache.get(userId) || (msg ?? interaction).guild.members.fetch(userId);
             user.guildMember = member
             user.en = this.evalMessage(data.end, cache);
             user.st = this.evalMessage(data.start, cache);
@@ -170,7 +169,13 @@ module.exports = {
         }
 
         let list2 = ""
+        const res = this.evalMessage(data.getresults)
+        let a = parseInt(res.split(':').at(0)) || 0
+        let b = parseInt(res.split(':').at(1)) || 5
+        if (a === 1) a = 0
         for (let i = 0; i < list.length; i++) {
+          if (a > i) break;
+          if (i > b - 1) break;
             switch (selectionsnum) {
                 case 1:
                   list2 += `${list[i].st + mid + list[i].en}\n`
