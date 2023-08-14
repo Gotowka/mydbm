@@ -47,7 +47,7 @@ module.exports = {
     // are also the names of the fields stored in the action's JSON data.
     //---------------------------------------------------------------------
   
-    fields: ["page", "storage", "varName2"],
+    fields: ["page", "show", "storage", "varName2"],
   
     //---------------------------------------------------------------------
     // Command HTML
@@ -72,7 +72,10 @@ module.exports = {
   </div><br>
   <span class="dbminputlabel">Page (Number)</span>
   <input style="display: left; width: calc(50% - 12px);" id="page" class="round" type="text">
-  <br><br>
+  <br>
+  <span class="dbminputlabel">Visualization</span><br>
+  <input id="show" class="round" type="text" value="**[page].** \`[[duration]]\` [title] - <@[userid]>" >
+  <br>
   <store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>`;
     },
   
@@ -114,9 +117,9 @@ module.exports = {
         this.callNextAction(cache);
         return;
       }
-      
-      const queueString = queue.tracks.slice(page * 10, page * 10 + 10).map((song, i) => {
-          return `**${page * 10 + i + 1}.** \`[${song.duration}]\` ${song.title} -- <@${song.requestedBy.id}>`
+      let txt = this.evalMessage(data.show, cache)
+      const queueString = queue.tracks.data.slice(page * 10, page * 10 + 10).map((song, i) => {
+        return txt.replace('[page]', page * 10 + i + 1).replace('[duration]', song.duration).replace('[title]', song.title).replace('[userid]', song.requestedBy.id)
       }).join("\n")
 
      this.storeValue(queueString, 1, data.varName2, cache);
