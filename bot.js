@@ -14,9 +14,8 @@ if (requiredDjsVersion.localeCompare(DiscordJS.version, { numeric: true, sensiti
   console.log(
     `This version of Discord Bot Maker requires discord.js ${requiredDjsVersion}+.
 It is currently ${DiscordJS.version}.
-Please use "Project > Module Manager" and "Project > Reinstall Node Modules" to update to discord.js ${requiredDjsVersion}.\n\n`,
+Please use npm i discord.js@${requiredDjsVersion}\n\n`,
   );
-  //throw new Error(`Need discord.js ${requiredDjsVersion} to run!!!`);
 }
 
 const noop = () => void 0;
