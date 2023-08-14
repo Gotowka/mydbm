@@ -1,0 +1,235 @@
+{
+    "name": "loop",
+    "permissions": "NONE",
+    "permissions2": "NONE",
+    "restriction": "1",
+    "_id": "nIDIP",
+    "actions": [
+      {
+        "storage": "4",
+        "varName": "type",
+        "branches": [
+          {
+            "comparison": "1",
+            "value": "'1'",
+            "actions": [
+              {
+                "type": "1",
+                "name": "Loop"
+              },
+              {
+                "storage": "1",
+                "varName": "error",
+                "comparison": "1",
+                "value": "'queue'",
+                "branch": {
+                  "iftrue": "0",
+                  "iffalse": "2",
+                  "iffalseVal": "5"
+                },
+                "name": "Check Variable"
+              },
+              {
+                "channel": "0",
+                "varName": "",
+                "message": "I'm not playing any music!",
+                "buttons": [],
+                "selectMenus": [],
+                "attachments": [],
+                "embeds": [],
+                "reply": true,
+                "ephemeral": true,
+                "tts": false,
+                "overwrite": false,
+                "mention": false,
+                "dontSend": false,
+                "editMessage": "0",
+                "editMessageVarName": "",
+                "storage": "0",
+                "varName2": "",
+                "name": "Send Message"
+              },
+              {
+                "name": "End Action Sequence"
+              },
+              {
+                "channel": "0",
+                "varName": "",
+                "message": "Enabled loop!",
+                "buttons": [],
+                "selectMenus": [],
+                "attachments": [],
+                "embeds": [],
+                "reply": true,
+                "ephemeral": false,
+                "tts": false,
+                "overwrite": false,
+                "mention": false,
+                "dontSend": false,
+                "editMessage": "0",
+                "editMessageVarName": "",
+                "storage": "0",
+                "varName2": "",
+                "name": "Send Message"
+              }
+            ]
+          },
+          {
+            "comparison": "1",
+            "value": "'2'",
+            "actions": [
+              {
+                "type": "2",
+                "name": "Loop"
+              },
+              {
+                "storage": "1",
+                "varName": "error",
+                "comparison": "1",
+                "value": "'queue'",
+                "branch": {
+                  "iftrue": "0",
+                  "iffalse": "2",
+                  "iffalseVal": "5"
+                },
+                "name": "Check Variable"
+              },
+              {
+                "channel": "0",
+                "varName": "",
+                "message": "I'm not playing any music!",
+                "buttons": [],
+                "selectMenus": [],
+                "attachments": [],
+                "embeds": [],
+                "reply": true,
+                "ephemeral": true,
+                "tts": false,
+                "overwrite": false,
+                "mention": false,
+                "dontSend": false,
+                "editMessage": "0",
+                "editMessageVarName": "",
+                "storage": "0",
+                "varName2": "",
+                "name": "Send Message"
+              },
+              {
+                "name": "End Action Sequence"
+              },
+              {
+                "channel": "0",
+                "varName": "",
+                "message": "Enabled loop!",
+                "buttons": [],
+                "selectMenus": [],
+                "attachments": [],
+                "embeds": [],
+                "reply": true,
+                "ephemeral": false,
+                "tts": false,
+                "overwrite": false,
+                "mention": false,
+                "dontSend": false,
+                "editMessage": "0",
+                "editMessageVarName": "",
+                "storage": "0",
+                "varName2": "",
+                "name": "Send Message"
+              }
+            ]
+          },
+          {
+            "comparison": "1",
+            "value": "'3'",
+            "actions": [
+              {
+                "type": "0",
+                "name": "Loop"
+              },
+              {
+                "storage": "1",
+                "varName": "error",
+                "comparison": "1",
+                "value": "'queue'",
+                "branch": {
+                  "iftrue": "0",
+                  "iffalse": "2",
+                  "iffalseVal": "5"
+                },
+                "name": "Check Variable"
+              },
+              {
+                "channel": "0",
+                "varName": "",
+                "message": "I'm not playing any music!",
+                "buttons": [],
+                "selectMenus": [],
+                "attachments": [],
+                "embeds": [],
+                "reply": true,
+                "ephemeral": true,
+                "tts": false,
+                "overwrite": false,
+                "mention": false,
+                "dontSend": false,
+                "editMessage": "0",
+                "editMessageVarName": "",
+                "storage": "0",
+                "varName2": "",
+                "name": "Send Message"
+              },
+              {
+                "name": "End Action Sequence"
+              },
+              {
+                "channel": "0",
+                "varName": "",
+                "message": "Enabled loop!",
+                "buttons": [],
+                "selectMenus": [],
+                "attachments": [],
+                "embeds": [],
+                "reply": true,
+                "ephemeral": false,
+                "tts": false,
+                "overwrite": false,
+                "mention": false,
+                "dontSend": false,
+                "editMessage": "0",
+                "editMessageVarName": "",
+                "storage": "0",
+                "varName2": "",
+                "name": "Send Message"
+              }
+            ]
+          }
+        ],
+        "name": "Multi-Check Variable"
+      }
+    ],
+    "comType": "4",
+    "description": "Loop",
+    "parameters": [
+      {
+        "name": "type",
+        "description": "type of the loop",
+        "type": "STRING",
+        "required": true,
+        "choices": [
+          {
+            "name": "track",
+            "value": "1"
+          },
+          {
+            "name": "queue",
+            "value": "2"
+          },
+          {
+            "name": "off",
+            "value": "3"
+          }
+        ]
+      }
+    ]
+}
