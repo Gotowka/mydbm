@@ -9,7 +9,7 @@ DBM.version = "3.2.2";
 
 const DiscordJS = (DBM.DiscordJS = require("discord.js"));
 
-const requiredDjsVersion = "14.12.1";
+const requiredDjsVersion = "14.11.0";
 if (requiredDjsVersion.localeCompare(DiscordJS.version, { numeric: true, sensitivity: "base" }) > 0) {
   console.log(
     `This version of Discord Bot Maker requires discord.js ${requiredDjsVersion}+.
