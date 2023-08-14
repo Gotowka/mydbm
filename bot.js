@@ -9,7 +9,7 @@ DBM.version = "3.2.2";
 
 const DiscordJS = (DBM.DiscordJS = require("discord.js"));
 
-const requiredDjsVersion = "14.11.0";
+const requiredDjsVersion = "14.12.1";
 if (requiredDjsVersion.localeCompare(DiscordJS.version, { numeric: true, sensitivity: "base" }) > 0) {
   console.log(
     `This version of Discord Bot Maker requires discord.js ${requiredDjsVersion}+.
@@ -21,7 +21,7 @@ Please use "Project > Module Manager" and "Project > Reinstall Node Modules" to 
 
 const noop = () => void 0;
 
-console.log('BOT: bot.js; [v1.1] (v3.2.2) (14.11.0)')
+console.log('BOT: bot.js; [v1.2] (v3.2.2) (14.11.0)')
 
 const MsgType = {
   MISSING_ACTION: 0,
@@ -733,6 +733,8 @@ Bot.onReady = function () {
   this.restoreVariables();
   this.registerApplicationCommands();
   this.preformInitialization();
+  DBM.Events.onSongAddedToQueue();
+  DBM.Events.onSongPlaying();
 };
 
 Bot.restoreVariables = function () {
@@ -2654,6 +2656,32 @@ Events.generateData = function () {
 };
 
 Events.data = Events.generateData();
+
+Events.onSongAddedToQueue = function () {
+  if (!$evts['Song Added To Queue']) return;
+  for(const event of Bot.$evts['Song Added To Queue']) {
+    const p = DBM.Actions.getPlayer()
+    const temp = {}
+    p.events.on('audioTrackAdd', (qD, sD) => {
+      temp[event.temp] = sD
+      temp[event.temp2] = qD.options.metadata.channel
+      DBM.Actions.invokeEvent(event, qD.options.guild, temp)
+    }) 
+  }
+}
+
+Events.onSongPlaying = function () {
+  if (!$evts['Start Song Playing']) return;
+  for(const event of Bot.$evts['Start Song Playing']) {
+    const p = DBM.Actions.getPlayer()
+    const temp = {}
+    p.events.on('playerStart', (qD, sD) => {
+      temp[event.temp] = sD
+      temp[event.temp2] = qD.options.metadata.channel
+      DBM.Actions.invokeEvent(event, qD.options.guild, temp)
+    }) 
+  }
+}
 
 Events.registerEvents = function (bot) {
   $evts = Bot.$evts;
