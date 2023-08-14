@@ -1,6 +1,12 @@
-# 14.11.0 [v3-3.2.2]
+# 14.12.1 [v3-3.2.2]
 
-[Bot.js](https://github.com/Gotowka/mydbm/blob/v3/bot.js) [1.1]
+[Bot.js](https://github.com/Gotowka/mydbm/blob/v3/bot.js) [1.2]
+
+**Events:**
+
+- [Song Added To Queue](https://github.com/Gotowka/mydbm/blob/v3/events/song_added_to_queue.js)
+
+- [Start Song Playing](https://github.com/Gotowka/mydbm/blob/v3/events/start_song_playing.js)
 
 **Actions:**
 
