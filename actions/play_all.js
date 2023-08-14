@@ -102,6 +102,7 @@ module.exports = {
     if (version !== '6.6.2') console.warn('\x1b[30m[\x1b[31mERROR\x1b[30m]\x1b[0m Change version module, npm i discord-player@6.6.2\x1b[0m')
     const channel = (interaction ?? msg).member.voice.channel
     const url = this.evalMessage(data.url, cache)
+    if (interaction) interaction.deferReply()
 
     if (!channel) {
       this.storeValue('voice', 1, 'check', cache)
