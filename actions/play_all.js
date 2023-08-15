@@ -92,7 +92,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   async action(cache) {
-    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mplay_all; \x1b[30m[\x1b[32mv1.2\x1b[30m] \x1b[30m(\x1b[36mv3.2.2\x1b[30m)\x1b[0m')
+    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mplay_all; \x1b[30m[\x1b[32mv1.3\x1b[30m] \x1b[30m(\x1b[36mv3.2.2\x1b[30m)\x1b[0m')
     const data = cache.actions[cache.index];
     const { interaction, msg } = cache
     const { version } = require("discord-player");
@@ -102,7 +102,7 @@ module.exports = {
     if (version !== '6.6.2') console.warn('\x1b[30m[\x1b[31mERROR\x1b[30m]\x1b[0m Change version module, npm i discord-player@6.6.2\x1b[0m')
     const channel = (interaction ?? msg).member.voice.channel
     const url = this.evalMessage(data.url, cache)
-    if (interaction) interaction.deferReply()
+    if (interaction) await interaction.deferReply()
 
     if (!channel) {
       this.storeValue('voice', 1, 'check', cache)
