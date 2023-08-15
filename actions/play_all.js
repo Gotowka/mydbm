@@ -92,7 +92,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   async action(cache) {
-    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mplay_all; \x1b[30m[\x1b[32mv1.3\x1b[30m] \x1b[30m(\x1b[36mv3.2.2\x1b[30m)\x1b[0m')
+    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mplay_all; \x1b[30m[\x1b[32mv1.4\x1b[30m] \x1b[30m(\x1b[36mv3.2.2\x1b[30m)\x1b[0m')
     const data = cache.actions[cache.index];
     const { interaction, msg } = cache
     const { version } = require("discord-player");
@@ -100,7 +100,9 @@ module.exports = {
 	  if (!player) return console.warn('\x1b[30m[\x1b[31mERROR\x1b[30m]\x1b[36m Use action \x1b[33mconnect_music_player\x1b[36m, https://github.com/Gotowka/mydbm/blob/v3/actions/connect_music_player.js\x1b[0m')
     if (player.extractors.size === 0) return console.warn('\x1b[30m[\x1b[31mERROR\x1b[30m]\x1b[36m Update action \x1b[33mconnect_music_player\x1b[36m, https://github.com/Gotowka/mydbm/blob/v3/actions/connect_music_player.js\x1b[0m')
     if (version !== '6.6.2') console.warn('\x1b[30m[\x1b[31mERROR\x1b[30m]\x1b[0m Change version module, npm i discord-player@6.6.2\x1b[0m')
-    const channel = (interaction ?? msg).member.voice.channel
+    const emsg = (interaction ?? msg)
+    const queue = player.nodes.get(emsg.guild) || player.nodes.create(emsg.guild)
+    const channel = emsg.member.voice.channel
     const url = this.evalMessage(data.url, cache)
     if (interaction) await interaction.deferReply()
 
@@ -108,7 +110,7 @@ module.exports = {
       this.storeValue('voice', 1, 'check', cache)
       this.callNextAction(cache);
       return;
-    }
+    } else queue.connect(channel, { deaf: true })
 
     const res = await player.search(url, {
       fallbackSearchEngine: 'auto',
@@ -128,8 +130,10 @@ module.exports = {
         deaf: true
       }
     }
-    if (res.hasPlaylist()) await player.play(channel, res.tracks, settings)
-    else await player.play(channel, res.tracks[0], settings)
+
+    if (res.hasPlaylist()) for (let i = 0; i < res.tracks.length; i++) queue.addTrack(res.tracks[i])
+    else queue.addTrack(res.tracks[0])
+    await queue.node.play(null, { metadata: emsg })
     const storage = parseInt(data.storage, cache)
     const varName = this.evalMessage(data.varName, cache);
     this.storeValue(res.hasPlaylist(), storage, 'playlist', cache)
