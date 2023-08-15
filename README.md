@@ -10,7 +10,7 @@
 
 **Actions:**
 
-- [Play Music](https://github.com/Gotowka/mydbm/blob/v3/actions/play_all.js) [1.3]
+- [Play Music](https://github.com/Gotowka/mydbm/blob/v3/actions/play_all.js) [1.4]
 
 - [Loop](https://github.com/Gotowka/mydbm/blob/v3/actions/loop.js) [1.0]
 
@@ -18,7 +18,7 @@
 
 - [Pause](https://github.com/Gotowka/mydbm/blob/v3/actions/queue.js) [1.0]
 
-- [Skip](https://github.com/Gotowka/mydbm/blob/v3/actions/skip.js) [1.0]
+- [Skip](https://github.com/Gotowka/mydbm/blob/v3/actions/skip.js) [1.1]
 
 - [Stop](https://github.com/Gotowka/mydbm/blob/v3/actions/stop.js) [1.0]
 
