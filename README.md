@@ -2,6 +2,10 @@
 
 **Events:**
 
+- [Bot Join Server (2)](https://github.com/Gotowka/mydbm/blob/v2/events/bot_join_server.js)
+
+- [Bot Leave Server (2)](https://github.com/Gotowka/mydbm/blob/v2/events/bot_leave_server.js)
+
 - [InviteLogger JOIN](https://github.com/Gotowka/mydbm/blob/v2/events/invitelogger-join.js)
 
 - [InviteLogger LEAVE](https://github.com/Gotowka/mydbm/blob/v2/events/invitelogger-leave.js)
