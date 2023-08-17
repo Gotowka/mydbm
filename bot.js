@@ -20,7 +20,7 @@ Please use npm i discord.js@${requiredDjsVersion}\n\n`,
 
 const noop = () => void 0;
 
-console.log('BOT: bot.js; [v1.2] (v3.2.2) (14.11.0)')
+console.log('BOT: bot.js; [v1.3] (v3.2.2) (14.11.0)')
 
 const MsgType = {
   MISSING_ACTION: 0,
@@ -637,9 +637,9 @@ Bot.validateSlashCommandParameters = function (parameters, commandName, cmd) {
         existingNames[name] = true;
         paramsData.name = name;
         paramsData.description = this.validateSlashCommandDescription(paramsData.description);
-        paramsData.type = this.validateSlashCommandParameterType(paramsData.type)
         paramsData.choices?.map(p => p.type = 3)
         this.pushParametersChannelTypes(paramsData)
+        paramsData.type = this.validateSlashCommandParameterType(paramsData.type)
         this.pushParametersPlusData(paramsData, cmd)
         if (paramsData.required) {
           requireParams.push(paramsData);
