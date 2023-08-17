@@ -1931,6 +1931,54 @@ Actions.getMemberFromData = async function (typeData, varNameData, cache) {
   return await this.getMember(parseInt(typeData, 10), this.evalMessage(varNameData, cache), cache);
 };
 
+Actions.getUserFromData = async function (typeData, varNameData, cache) {
+  return await this.getUser(parseInt(typeData, 10), this.evalMessage(varNameData, cache), cache);
+};
+
+Actions.getUser = async function (type, varName, cache) {
+  const { interaction, msg } = cache;
+  switch (type) {
+    case 0: {
+      const members = interaction?.options?.resolved?.members ?? msg?.mentions?.members;
+      if (members?.size) {
+        return members.first();
+      }
+      break;
+    }
+    case 1:
+      if (interaction) {
+        return interaction.user;
+      } else if (msg) {
+        return msg.author;
+      }
+      break;
+    case 6:
+      if (interaction?._targetUser) {
+        return interaction._targetUser;
+      }
+      break;
+    case 100: {
+      const searchValue = this.evalMessage(varName, cache);
+      const result = await this.findUserFromName(searchValue);
+      if (result) {
+        return result;
+      }
+      break;
+    }
+    case 101: {
+      const searchValue = this.evalMessage(varName, cache);
+      const result = await this.findUserFromID(searchValue);
+      if (result) {
+        return result;
+      }
+      break;
+    }
+    default:
+      return this.getTargetFromVariableOrParameter(type - 2, varName, cache);
+  }
+  return null;
+};
+
 Actions.getMember = async function (type, varName, cache) {
   const { interaction, msg } = cache;
   switch (type) {
