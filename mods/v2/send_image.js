@@ -45,7 +45,7 @@ module.exports = {
   // are also the names of the fields stored in the action's JSON data.
   //---------------------------------------------------------------------
 
-  fields: ["storage", "varName", "channel", "varName2", "message", "storage2", "varName3"],
+  fields: ["storage", "varName", "channel", "varName2", "message", "int", "storage2", "varName3"],
 
   //---------------------------------------------------------------------
   // Action Storage Function << added
@@ -85,6 +85,9 @@ module.exports = {
 	<textarea id="message" class="dbm_monospace" rows="7" placeholder="Insert message here..." style="white-space: nowrap; resize: none;"></textarea>
 </div>
 
+<br>
+
+<dbm-checkbox id="int" label="Interaction"></dbm-checkbox>
 <br>
 
 <store-in-variable allowNone selectId="storage2" variableInputId="varName3" variableContainerId="varNameContainer3"></store-in-variable>`;
@@ -142,16 +145,22 @@ module.exports = {
             })
             .catch((err) => this.displayError(data, cache, err));
         } else if (target?.send) {
-          interaction
-          .reply({
+          if (data.int) interaction.reply({
               content: this.evalMessage(data.message, cache),
               files: [new DiscordJS.MessageAttachment(buffer, "image.png")],
-            })
-            .then((msg) => {
+            }).then((msg) => {
               this.storeValue(msg, storage2, varName3, cache);
               this.callNextAction(cache);
             })
             .catch((err) => this.displayError(data, cache, err));
+          else target.send({
+            content: this.evalMessage(data.message, cache),
+            files: [new DiscordJS.MessageAttachment(buffer, "image.png")],
+          }).then((msg) => {
+            this.storeValue(msg, storage2, varName3, cache);
+            this.callNextAction(cache);
+          })
+          .catch((err) => this.displayError(data, cache, err));
         }
       })
       .catch((err) => this.displayError(data, cache, err));
