@@ -132,7 +132,7 @@ module.exports = {
     }
 
     let sourceSelect = null;
-    if (cache.interaction?.isSelectMenu()) {
+    if (cache.interaction?.isStringSelectMenu()) {
       sourceSelect = cache.interaction.customId;
     }
 
@@ -142,14 +142,14 @@ module.exports = {
 
     if (message?.components) {
 
-      const { MessageActionRow } = this.getDBM().DiscordJS;
+      const { ActionRowBuilder } = this.getDBM().DiscordJS;
       const oldComponents = message.components;
       const newComponents = [];
 
       for (let i = 0; i < oldComponents.length; i++) {
 
         const compData = oldComponents[i];
-        const comps = (compData instanceof MessageActionRow) ? compData.toJSON() : compData;
+        const comps = (compData instanceof ActionRowBuilder) ? compData.toJSON() : compData;
 
         for (let j = 0; j < comps.components.length; j++) {
 
