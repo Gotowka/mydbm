@@ -148,7 +148,7 @@ module.exports = {
 
       for (let i = 0; i < oldComponents.length; i++) {
 
-        const compData = oldComponents[i];
+        const compData = oldComponents[i].data;
         const comps = (compData instanceof ActionRowBuilder) ? compData.toJSON() : compData;
 
         for (let j = 0; j < comps.components.length; j++) {
