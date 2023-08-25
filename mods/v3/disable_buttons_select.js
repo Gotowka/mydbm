@@ -135,25 +135,21 @@ module.exports = {
     if (cache.interaction?.isStringSelectMenu()) {
       sourceSelect = cache.interaction.customId;
     }
-
     const disable = (data.disable ?? "disable") === "disable";
     let components = null;
     let searchValue = null;
-
     if (message?.components) {
 
-      const { ActionRowBuilder } = this.getDBM().DiscordJS;
       const oldComponents = message.components;
       const newComponents = [];
 
       for (let i = 0; i < oldComponents.length; i++) {
 
-        const compData = oldComponents[i].data;
-        const comps = (compData instanceof ActionRowBuilder) ? compData.toJSON() : compData;
+        const compData = oldComponents[i];
 
-        for (let j = 0; j < comps.components.length; j++) {
+        for (let j = 0; j < compData.components.length; j++) {
 
-          const comp = comps.components[j];
+          const comp = compData.components[j].data;
           const id = comp.custom_id ?? comp.customId;
 
           switch (type) {
@@ -186,7 +182,7 @@ module.exports = {
           }
         }
 
-        newComponents.push(comps);
+        newComponents.push(compData);
 
       }
 
