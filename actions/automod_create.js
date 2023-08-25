@@ -251,7 +251,7 @@ module.exports = {
   init() {},
 
   async action(cache) {
-    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mautomod_create; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.2\x1b[30m)\x1b[0m')
+    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mautomod_create; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.2\x1b[30m)\x1b[0m')
     const data = cache.actions[cache.index];
     const option = checkAutoMod()
     const autoMod = data[option.word][0]
@@ -289,7 +289,7 @@ module.exports = {
       const d = this.evalMessage(autoMod.autoFilter, cache).split(' ')
       settings.triggerMetadata.keywordFilter = d
     }
-    if (settings.triggerType === 'MENTION_SPAM') settings.triggerMetadata.mentionTotalLimit = autoMod.autoLimit ? parseInt(this.evalMessage(autoMod.autoLimit, cache)) : 1
+    if (settings.triggerType === 5) settings.triggerMetadata.mentionTotalLimit = autoMod.autoLimit ? parseInt(this.evalMessage(autoMod.autoLimit, cache)) : 1
 
     await cache.server.autoModerationRules.create(settings).catch(er => {
       console.log(er)
