@@ -2,7 +2,7 @@ module.exports = {
   name: 'Create Stage Voice Channel',
   section: 'Channel Control',
   meta: {
-    version: '3.2.2',
+    version: '3.2.3',
     preciseCheck: false,
     author: 'DBM Mods',
     authorUrl: 'https://github.com/dbm-network/mods',

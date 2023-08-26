@@ -2,7 +2,7 @@ module.exports = {
   name: 'Check If User Reacted',
   section: 'Conditions',
   meta: {
-    version: '3.2.2',
+    version: '3.2.3',
     preciseCheck: false,
     author: 'DBM Mods',
     authorUrl: 'https://github.com/dbm-network/mods',

@@ -169,7 +169,7 @@ module.exports = {
     // This will make it so the patch version (0.0.X) is not checked.
     //---------------------------------------------------------------------
   
-    meta: { version: "3.2.2", preciseCheck: true, author: null, authorUrl: null, downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/store_member_info.js' },
+    meta: { version: "3.2.3", preciseCheck: true, author: null, authorUrl: null, downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/store_member_info.js' },
   
     //---------------------------------------------------------------------
     // Action Fields

@@ -2,7 +2,7 @@ module.exports = {
   name: 'YouTube Search',
   section: 'Audio Control',
   meta: {
-    version: '3.2.2',
+    version: '3.2.3',
     preciseCheck: false,
     author: 'DBM Mods',
     authorUrl: 'https://github.com/dbm-network/mods',

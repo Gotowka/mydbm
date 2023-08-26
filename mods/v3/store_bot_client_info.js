@@ -2,7 +2,7 @@ module.exports = {
     name: 'Store Bot Client Info',
     section: 'Bot Client Control',
     meta: {
-      version: '3.2.2',
+      version: '3.2.3',
       preciseCheck: false,
       author: 'Gotowka',
       authorUrl: 'https://github.com/Gotowka/dbmmody/blob/main/beta/store_bot_client_info.js',
