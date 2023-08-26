@@ -9,7 +9,7 @@ DBM.version = "3.2.2";
 
 const DiscordJS = (DBM.DiscordJS = require("discord.js"));
 
-const requiredDjsVersion = "14.11.0";
+const requiredDjsVersion = "14.13.0";
 if (requiredDjsVersion.localeCompare(DiscordJS.version, { numeric: true, sensitivity: "base" }) > 0) {
   console.log(
     `This version of Discord Bot Maker requires discord.js ${requiredDjsVersion}+.
@@ -20,7 +20,7 @@ Please use npm i discord.js@${requiredDjsVersion}\n\n`,
 
 const noop = () => void 0;
 
-console.log('BOT: bot.js; [v1.3] (v3.2.2) (14.11.0)')
+console.log('BOT: bot.js; [v1.0] (v3.2.2) (14.13.0)')
 
 const MsgType = {
   MISSING_ACTION: 0,
@@ -569,13 +569,13 @@ Bot.validateSlashCommandParameterType = function (type) {
       break;
     case "NUMBER":
       resul = 10
-      break
+      break;
     case "BOOLEAN":
       resul = 5
       break;
     case "USER":
       resul = 6
-      break
+      break;
     case "VOICE":
     case "CATEGORY":
     case "CHANNELS":
@@ -584,7 +584,7 @@ Bot.validateSlashCommandParameterType = function (type) {
       break;
     case "ROLE":
       resul = 8
-      break
+      break;
     case "ATTACHMENT":
       resul = 11
       break;
