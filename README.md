@@ -1,6 +1,6 @@
 # 14.11.0 [v3-3.2.2]
 
-[Bot.js](https://github.com/Gotowka/mydbm/blob/v3/bot.js) [1.3]
+[Bot.js](https://github.com/Gotowka/mydbm/blob/v3/bot.js) [1.0]
 
 **Events:**
 
@@ -10,9 +10,11 @@
 
 **Actions:**
 
-- [Play Music](https://github.com/Gotowka/mydbm/blob/v3/actions/play_all.js) [1.4]
+- [Play Music](https://github.com/Gotowka/mydbm/blob/v3/actions/play_all.js) [1.0]
 
 - [Loop](https://github.com/Gotowka/mydbm/blob/v3/actions/loop.js) [1.0]
+
+- [Volume](https://github.com/Gotowka/mydbm/blob/v3/actions/volume.js) [1.0]
 
 - [Queue](https://github.com/Gotowka/mydbm/blob/v3/actions/queue.js) [1.0]
 
@@ -22,9 +24,9 @@
 
 - [Stop](https://github.com/Gotowka/mydbm/blob/v3/actions/stop.js) [1.0]
 
-- [Store Song Info](https://github.com/Gotowka/mydbm/blob/v3/actions/store_song_info.js) [1.2]
+- [Store Song Info](https://github.com/Gotowka/mydbm/blob/v3/actions/store_song_info.js) [1.0]
 
-- [Store Playlist2 Info](https://github.com/Gotowka/mydbm/blob/v3/actions/store_playlist_info.js) [1.2]
+- [Store Playlist2 Info](https://github.com/Gotowka/mydbm/blob/v3/actions/store_playlist_info.js) [1.0]
 
 - [Connect Music Player](https://github.com/Gotowka/mydbm/blob/v3/actions/connect_music_player.js) [1.0]
 
@@ -36,7 +38,7 @@
 
 - [Show Modal](https://github.com/Gotowka/mydbm/blob/v3/actions/show_modal.js)
 
-- [Automod Create](https://github.com/Gotowka/mydbm/blob/v3/actions/automod_create.js) [1.1]
+- [Automod Create](https://github.com/Gotowka/mydbm/blob/v3/actions/automod_create.js) [1.0]
 
 - [Automod Delete](https://github.com/Gotowka/mydbm/blob/v3/actions/automod_delete.js) [1.0]
 
