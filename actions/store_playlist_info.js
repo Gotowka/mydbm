@@ -87,7 +87,7 @@ module.exports = {
     // This will make it so the patch version (0.0.X) is not checked.
     //---------------------------------------------------------------------
   
-    meta: { version: "3.2.2", preciseCheck: false, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/store_playlist_info.js' },
+    meta: { version: "3.2.3", preciseCheck: false, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/store_playlist_info.js' },
   
     //---------------------------------------------------------------------
     // Action Fields
@@ -163,7 +163,7 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
-      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mstore_playlist_info; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.2\x1b[30m)\x1b[0m')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mstore_playlist_info; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.3\x1b[30m)\x1b[0m')
       const data = cache.actions[cache.index];
       const playlist = this.getVariable(parseInt(data.type), data.playlist, cache)
   

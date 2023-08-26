@@ -15,7 +15,7 @@ module.exports = {
     return `Connecting Music Player with ${list}/6 extractors!`;
   },
 
-  meta: { version: "3.2.2", preciseCheck: false, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/connect_music_player.js' },
+  meta: { version: "3.2.3", preciseCheck: false, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/connect_music_player.js' },
 
   fields: ["youtube", "spotify", "soundcloud", "applemusic", "vimeo", "reverbnation"],
 
@@ -49,7 +49,7 @@ module.exports = {
   init() {}, 
 
   async action(cache) {
-    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mconnect_music_player; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.2\x1b[30m)\x1b[0m')
+    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mconnect_music_player; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.3\x1b[30m)\x1b[0m')
     const { SpotifyExtractor, SoundCloudExtractor, YoutubeExtractor, AppleMusicExtractor, VimeoExtractor, ReverbnationExtractor } = require('@discord-player/extractor')
     const data = cache.actions[cache.index]
     const player = this.playerConnect()
