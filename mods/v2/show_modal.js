@@ -233,7 +233,7 @@ module.exports = {
           this.callNextAction(cache);
         });
 
-        cache.interaction.showModal(modalData);
+        await cache.interaction.showModal(modalData);
 
       } else {
 
