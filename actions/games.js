@@ -11,7 +11,7 @@ module.exports = {
 
   meta: { version: "3.2.3", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/games.js' },
 
-  fields: ["game"],
+  fields: ["game", "embeds"],
 
   html(isEvent, data) {
     return `
@@ -40,9 +40,45 @@ module.exports = {
       <option value="12">Flood</option>
   </select>
 </div>
+<br><br><br>
+
+<tab-system style="margin-top: 20px;">
 
 
-`;
+  <tab label="Embeds" icon="book image">
+    <div style="padding: 8px;">
+
+      <dialog-list id="embeds" fields='["title", "overtitle", "color"]' dialogTitle="Embed Info" dialogWidth="540" dialogHeight="460" listLabel="Embeds" listStyle="height: calc(100vh - 450px);" itemName="Embed" itemCols="1" itemHeight="30px;" itemTextFunction="data.title + ' - ' + data.description" itemStyle="text-align: left; line-height: 30px;">
+        <div style="padding: 16px 16px 0px 16px;">
+
+          <tab-system>
+
+            <tab label="General" icon="certificate">
+              <div style="padding: 8px">
+                <div style="float: left; width: calc(50% - 12px);">
+                  <span class="dbminputlabel">Title</span><br>
+                  <input id="title" class="round" type="text">
+
+                  <br>
+
+                  <span class="dbminputlabel">Color</span><br>
+                  <input id="color" class="round" type="text" placeholder="Leave blank for default...">
+                </div>
+
+                <div style="float: right; width: calc(50% - 12px);">
+                  <span class="dbminputlabel">Over Title</span><br>
+                  <input id="overtitle" class="round" type="text" placeholder="Leave blank for none...">
+                </div>
+              </div>
+            </tab>
+          </tab-system>
+
+        </div>
+      </dialog-list>
+
+    </div>
+  </tab>
+</tab-system>`;
   },
 
   //---------------------------------------------------------------------
@@ -73,6 +109,17 @@ module.exports = {
     if (cache.interaction) settings.isSlashGame = true
     else settings.isSlashGame = false
     let game = data.game
+
+    const embedDatas = data.embeds;
+    if (embedDatas.length === 1) {
+      settings.embed = {}
+      const embedData = embedDatas[0];
+
+      if (embedData.title) settings.embed.title = this.evalMessage(embedData.title, cache);
+      if (embedData.overtitle) settings.embed.overTitle = this.evalMessage(embedData.overtitle, cache)
+      if (embedData.color) settings.embed.color = this.evalMessage(embedData.color, cache)
+    }
+
     switch(game) {
       case "0": 
           game = new Snake(settings)
