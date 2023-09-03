@@ -214,7 +214,7 @@ module.exports = {
 
 
   async action(cache) {
-    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mticket_manager; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.3\x1b[30m)\x1b[0m')
+    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mticket_manager; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.3\x1b[30m)\x1b[0m')
     const data = cache.actions[cache.index];
     const { interaction } = cache
     const { EmbedBuilder, PermissionsBitField } = require('discord.js')
@@ -225,6 +225,7 @@ module.exports = {
       const t = guild.channels.cache.find(c => c.topic === interaction.member.id)
       if (t) return interaction.reply({ content: this.evalMessage(data.E1, cache).replace('[name]', interaction.user.username).replace('[tag]', interaction.user.tag).replace('[id]', interaction.member.id).replace('[ticket]', `<#${t.id}`), ephemeral: true });
     } else if (data.Ttopic) createSettings.topic = this.evalMessage(data.Ttopic, cache)
+    if (data.Tname) createSettings.name = this.evalMessage(data.Tname, cache)
     if (data.Tparent) createSettings.parent = this.evalMessage(data.Tparent, cache)
     if (data.Tposition) createSettings.position = this.evalMessage(data.Tposition, cache)
     if (data.role) createSettings.permissionOverwrites = [
@@ -254,7 +255,7 @@ module.exports = {
       }
     ]
     let channel
-    await guild.channels.create(this.evalMessage(data.Tname, cache), createSettings).then(c => channel = c)
+    await guild.channels.create(createSettings).then(c => channel = c)
 
     const messageOptions = {}
     messageOptions.embeds = []
