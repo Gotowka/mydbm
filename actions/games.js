@@ -100,7 +100,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   async action(cache) {
-    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mgames; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.3\x1b[30m)\x1b[0m')
+    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mgames; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.3\x1b[30m)\x1b[0m')
     const data = cache.actions[cache.index];
     const { Snake, TwoZeroFourEight, FastType, Wordle, FindEmoji, GuessThePokemon, MatchPairs, WouldYouRather, Slots, Hangman, Minesweeper, Flood } = require('discord-gamecord')
     const settings = {
