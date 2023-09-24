@@ -1,0 +1,51 @@
+{
+  "name": "event logger join",
+  "temp": "member",
+  "event-type": "InviteLogger JOIN",
+  "_id": "PaOoH",
+  "actions": [
+    {
+      "invite": "${tempVars(\"invite\")}",
+      "info": "0",
+      "storage": "1",
+      "varName2": "owner",
+      "name": "InviteLogger INFO"
+    },
+    {
+      "invite": "${tempVars(\"invite\")}",
+      "info": "4",
+      "storage": "1",
+      "varName2": "invites",
+      "name": "InviteLogger INFO"
+    },
+    {
+      "member": "2",
+      "varName": "member",
+      "info": "1",
+      "storage": "1",
+      "varName2": "id",
+      "name": "Store Member Info"
+    },
+    {
+      "channel": "4",
+      "varName": "",
+      "message": "<@${tempVars(\"id\")}> dołączył. Zaprosił go: ${tempVars(\"owner\")}\nZaproszenia: ${tempVars(\"invites\")}",
+      "buttons": [],
+      "selectMenus": [],
+      "attachments": [],
+      "embeds": [],
+      "reply": false,
+      "ephemeral": false,
+      "tts": false,
+      "overwrite": false,
+      "mention": false,
+      "dontSend": false,
+      "editMessage": "0",
+      "editMessageVarName": "",
+      "storage": "0",
+      "varName2": "",
+      "name": "Send Message"
+    }
+  ],
+  "temp2": "invite"
+}
