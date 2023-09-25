@@ -35,7 +35,7 @@ module.exports = {
   // This will make it so the patch version (0.0.X) is not checked.
   //---------------------------------------------------------------------
 
-  meta: { version: "2.1.8", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
+  meta: { version: "2.1.9", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
 
   //---------------------------------------------------------------------
   // Action Fields
@@ -149,7 +149,7 @@ module.exports = {
       for (let i = 0; i < oldComponents.length; i++) {
 
         const compData = oldComponents[i];
-        const comps = (compData instanceof MessageActionRow) ? compData.toJSON() : compData;
+        const comps = compData.toJSON()
 
         for (let j = 0; j < comps.components.length; j++) {
 
