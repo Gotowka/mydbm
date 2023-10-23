@@ -692,7 +692,7 @@ module.exports = {
         }
         const bt = new ButtonBuilder()
         .setStyle(button.type)
-        .setLabel(button.name)
+        .setLabel(this.evalMessage(button.name, cache))
 
         if (button.emoji) bt.setEmoji(button.emoji)
         
@@ -723,7 +723,7 @@ module.exports = {
       for (var a in data.selectMenus[i].options) {
         const op = data.selectMenus[i].options[a]
         const set = {}
-        set.label = op.label
+        set.label = this.evalMessage(op.label, cache)
         set.description = op.description
         set.value = op.value
         set.default = op.default === 'true'
