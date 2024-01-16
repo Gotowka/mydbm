@@ -92,7 +92,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   async action(cache) {
-    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mplay_all; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.3\x1b[30m)\x1b[0m')
+    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mplay_all; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.3\x1b[30m)\x1b[0m')
     const data = cache.actions[cache.index];
     const { interaction, msg } = cache
     const { version } = require("discord-player");
@@ -104,7 +104,7 @@ module.exports = {
     const queue = player.nodes.get(emsg.guild) || player.nodes.create(emsg.guild)
     const channel = emsg.member.voice.channel
     const url = this.evalMessage(data.url, cache)
-    if (interaction) await interaction.deferReply()
+    if (interaction.isChatInputCommand()) await interaction.deferReply()
 
     if (!channel) {
       this.storeValue('voice', 1, 'check', cache)
@@ -122,14 +122,14 @@ module.exports = {
       this.callNextAction(cache);
       return;
     }
-    const settings = {
-      nodeOptions: {
-        metadata: interaction ?? msg
-      },
-      connectionOptions: {
-        deaf: true
-      }
-    }
+    // const settings = {
+    //   nodeOptions: {
+    //     metadata: interaction ?? msg
+    //   },
+    //   connectionOptions: {
+    //     deaf: true
+    //   }
+    // }
 
     if (res.hasPlaylist()) for (let i = 0; i < res.tracks.length; i++) queue.addTrack(res.tracks[i])
     else queue.addTrack(res.tracks[0])
