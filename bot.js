@@ -1876,7 +1876,7 @@ Actions.getSendTarget = async function (type, varName, cache) {
       break;
     case 100: {
       const searchValue = this.evalMessage(varName, cache);
-      const result = await this.findMemberOrUserFromName(searchValue, cache.server);
+      const result = await this.findMemberFromName(searchValue, cache.server);
       if (result) {
         return result;
       }
@@ -1884,7 +1884,7 @@ Actions.getSendTarget = async function (type, varName, cache) {
     }
     case 101: {
       const searchValue = this.evalMessage(varName, cache);
-      const result = await this.findMemberOrUserFromID(searchValue, cache.server);
+      const result = await this.findMemberFromID(searchValue, cache.server);
       if (result) {
         return result;
       }
@@ -2003,7 +2003,7 @@ Actions.getMember = async function (type, varName, cache) {
       break;
     case 100: {
       const searchValue = this.evalMessage(varName, cache);
-      const result = await this.findMemberOrUserFromName(searchValue, cache.server);
+      const result = await this.findMemberFromName(searchValue, cache.server);
       if (result) {
         return result;
       }
@@ -2011,7 +2011,7 @@ Actions.getMember = async function (type, varName, cache) {
     }
     case 101: {
       const searchValue = this.evalMessage(varName, cache);
-      const result = await this.findMemberOrUserFromID(searchValue, cache.server);
+      const result = await this.findMemberFromID(searchValue, cache.server);
       if (result) {
         return result;
       }
