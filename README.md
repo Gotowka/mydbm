@@ -1,6 +1,6 @@
 # 14.13.0 [v3-3.2.3]
 
-[Bot.js](https://github.com/Gotowka/mydbm/blob/v3/bot.js) [1.0]
+[Bot.js](https://github.com/Gotowka/mydbm/blob/v3/bot.js) [1.1]
 
 **Events:**
 
@@ -10,7 +10,7 @@
 
 **Actions:**
 
-- [Play Music](https://github.com/Gotowka/mydbm/blob/v3/actions/play_all.js) [1.1]
+- [Play Music](https://github.com/Gotowka/mydbm/blob/v3/actions/play_all.js) [1.0]
 
 - [Loop](https://github.com/Gotowka/mydbm/blob/v3/actions/loop.js) [1.0]
 
