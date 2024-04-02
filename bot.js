@@ -20,7 +20,7 @@ Please use npm i discord.js@${requiredDjsVersion}\n\n`,
 
 const noop = () => void 0;
 
-console.log('BOT: bot.js; [v1.0] (v3.2.3) (14.13.0)')
+console.log('BOT: bot.js; [v1.1] (v3.2.3) (14.13.0)')
 
 const MsgType = {
   MISSING_ACTION: 0,
