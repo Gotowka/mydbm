@@ -282,7 +282,7 @@ Bot.initBot = function () {
   const options = this.makeClientOptions();
   options.intents = this.intents();
   if (this.usePartials()) {
-    options.partials = this.partials();
+    options.partials = this.partials().map(a => parseInt(a));
   }
   this.hasMemberIntents = (options.intents & DiscordJS.GatewayIntentBits.GuildMembers) !== 0;
   this.hasMessageContentIntents = (options.intents & DiscordJS.GatewayIntentBits.MessageContent) !== 0;
