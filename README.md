@@ -1,6 +1,6 @@
 # 14.13.0 [v3-3.2.3]
 
-[Bot.js](https://github.com/Gotowka/mydbm/blob/v3/bot.js) [1.1]
+[Bot.js](https://github.com/Gotowka/mydbm/blob/v3/bot.js) [1.2]
 
 **Events:**
 
