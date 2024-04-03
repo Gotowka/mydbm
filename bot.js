@@ -350,7 +350,7 @@ Bot.reformatCommands = function () {
 
       if(com.comType === "4" || '5' || '6') {
         this._textCommandCount++;
-        if(com.restriction === "7") {
+        if(com.restriction === "3") {
           this._dmTextCommandCount++;
         }
       }
@@ -709,7 +709,7 @@ Bot.checkForCommandErrors = function () {
   if (this._textCommandCount > 0 && !this.hasMessageContentIntents) {
     PrintError(MsgType.SERVER_MESSAGE_INTENT_REQUIRED, this._textCommandCount);
   }
-  if (this._dmTextCommandCount > 0 && (!this.usePartials() || !this.partials().includes("CHANNEL"))) {
+  if (this._dmTextCommandCount > 0 && (!this.usePartials() || !this.partials().includes("1"))) {
     PrintError(MsgType.CHANNEL_PARTIAL_REQUIRED, this._dmTextCommandCount);
   }
 };
