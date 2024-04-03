@@ -20,7 +20,8 @@ Please use npm i discord.js@${requiredDjsVersion}\n\n`,
 
 const noop = () => void 0;
 
-console.log('BOT: bot.js; [v1.1] (v3.2.3) (14.13.0)')
+if (DiscordJS.version !== '14.13.0') console.log(`BOT: bot.js; [v1.2] (v3.2.3) (DJS: \x1b[31m\x1b[1m${DiscordJS.version}\x1b[0m --> \x1b[32m\x1b[1m14.13.0\x1b[0m)`)
+else console.log(`BOT: bot.js; [v1.2] (v3.2.3) (\x1b[32m\x1b[1m14.13.0\x1b[0m)`)
 
 const MsgType = {
   MISSING_ACTION: 0,
