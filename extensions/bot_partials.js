@@ -115,7 +115,7 @@ module.exports = {
     for(let i = 0; i < PARTIALS.length; i++) {
       const partial = PARTIALS[i];
       result += `
-        <div style="${i === 4 ? "width: 100%" : "width: 50%"}; float: left">
+        <div style="${i === 6 ? "width: 100%" : "width: 50%"}; float: left">
           <input type="checkbox" id="${partial}" name="${partial}" value="${partial}" ${data.partials.includes(partial) ? "checked" : ""}>
           <label for="${partial}">${partialNames[i]}</label>
         </div>
