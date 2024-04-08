@@ -94,7 +94,7 @@ module.exports = {
   <input id="reason" placeholder="Optional" class="round" type="text">
 </div>
 <br>
-<store-in-variable allowNone selectId="storage" variableInputId="varName2" variableContainerId="varNameContainer"></store-in-variable>`;
+<store-in-variable allowNone selectId="storage" variableInputId="varName2" variableContainerId="varNameContainer2"></store-in-variable>`;
   },
 
   //---------------------------------------------------------------------
