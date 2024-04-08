@@ -57,7 +57,7 @@ module.exports = {
   // are also the names of the fields stored in the action's JSON data.
   //---------------------------------------------------------------------
 
-  fields: ["channelName", "categoryID", "topic", "position", "reason", "storage", "varName"],
+  fields: ["server", "varName", "channelName", "categoryID", "topic", "position", "reason", "storage", "varName2"],
 
   //---------------------------------------------------------------------
   // Command HTML
@@ -72,6 +72,8 @@ module.exports = {
 
   html(isEvent, data) {
     return `
+<server-input dropdownLabel="Server" selectId="server" variableContainerId="varNameContainer" variableInputId="varName"></server-input>
+<br><br><br>
 <span class="dbminputlabel">Name</span><br>
 <input id="channelName" class="round" type="text">
 <br>
@@ -86,15 +88,13 @@ module.exports = {
 	<span class="dbminputlabel">Position</span><br>
 	<input id="position" class="round" type="text" placeholder="Leave blank for default!"><br>
 </div>
-<br><br><br><br>
-<hr class="subtlebar" style="margin-top: 0px;">
 <br>
 <div>
   <span class="dbminputlabel">Reason</span>
   <input id="reason" placeholder="Optional" class="round" type="text">
 </div>
 <br>
-<store-in-variable allowNone selectId="storage" variableInputId="varName" variableContainerId="varNameContainer"></store-in-variable>`;
+<store-in-variable allowNone selectId="storage" variableInputId="varName2" variableContainerId="varNameContainer"></store-in-variable>`;
   },
 
   //---------------------------------------------------------------------
@@ -115,9 +115,9 @@ module.exports = {
   // so be sure to provide checks for variable existence.
   //---------------------------------------------------------------------
 
-  action(cache) {
+  async action(cache) {
     const data = cache.actions[cache.index];
-    const server = cache.server;
+    const server = await this.getServerFromData(data.server, data.varName, cache) ?? cache.server;
     if (!server?.channels?.create) {
       this.callNextAction(cache);
     }
@@ -138,7 +138,7 @@ module.exports = {
       .create(channelData)
       .then((channel) => {
         const storage = parseInt(data.storage, 10);
-        const varName = this.evalMessage(data.varName, cache);
+        const varName = this.evalMessage(data.varName2 ?? data.varName, cache);
         this.storeValue(channel, storage, varName, cache);
         this.callNextAction(cache);
       })
