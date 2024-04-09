@@ -57,7 +57,7 @@ module.exports = {
   // are also the names of the fields stored in the action's JSON data.
   //---------------------------------------------------------------------
 
-  fields: ["server", "varName", "channelName", "categoryID", "topic", "position", "reason", "storage", "varName2"],
+  fields: ["server", "varName2", "channelName", "categoryID", "topic", "position", "reason", "storage", "varName"],
 
   //---------------------------------------------------------------------
   // Command HTML
@@ -72,7 +72,7 @@ module.exports = {
 
   html(isEvent, data) {
     return `
-<server-input dropdownLabel="Server" selectId="server" variableContainerId="varNameContainer" variableInputId="varName"></server-input>
+<server-input dropdownLabel="Server" selectId="server" variableContainerId="varNameContainer2" variableInputId="varName2"></server-input>
 <br><br><br>
 <span class="dbminputlabel">Name</span><br>
 <input id="channelName" class="round" type="text">
@@ -94,7 +94,7 @@ module.exports = {
   <input id="reason" placeholder="Optional" class="round" type="text">
 </div>
 <br>
-<store-in-variable allowNone selectId="storage" variableInputId="varName2" variableContainerId="varNameContainer2"></store-in-variable>`;
+<store-in-variable allowNone selectId="storage" variableInputId="varName" variableContainerId="varNameContainer"></store-in-variable>`;
   },
 
   //---------------------------------------------------------------------
@@ -117,7 +117,7 @@ module.exports = {
 
   async action(cache) {
     const data = cache.actions[cache.index];
-    const server = await this.getServerFromData(data.server, data.varName, cache) ?? cache.server;
+    const server = await this.getServerFromData(data.server, data.varName2, cache) ?? cache.server;
     if (!server?.channels?.create) {
       this.callNextAction(cache);
     }
@@ -138,7 +138,7 @@ module.exports = {
       .create(channelData)
       .then((channel) => {
         const storage = parseInt(data.storage, 10);
-        const varName = this.evalMessage(data.varName2 ?? data.varName, cache);
+        const varName = this.evalMessage(data.varName, cache)
         this.storeValue(channel, storage, varName, cache);
         this.callNextAction(cache);
       })
