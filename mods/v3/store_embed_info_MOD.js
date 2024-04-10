@@ -6,7 +6,7 @@ module.exports = {
     preciseCheck: false,
     author: 'DBM Mods',
     authorUrl: 'https://github.com/dbm-network/mods',
-    downloadURL: 'https://github.com/dbm-network/mods/blob/master/actions/store_embed_info_MOD.js',
+    downloadURL: 'https://github.com/Gotowka/mydbm/blob/main/mods/v3/store_embed_info_MOD.js',
   },
 
   subtitle(data) {
@@ -27,12 +27,12 @@ module.exports = {
     );
   },
 
-  fields: ['message', 'varName', 'info', 'storage', 'varName2'],
+  fields: ['message', 'varName2', 'info', 'storage', 'varName'],
 
   html() {
     return `
 <div>
-  <message-input dropdownLabel="Source Message" selectId="message" variableContainerId="varNameContainer" variableInputId="varName"></message-input>
+  <message-input dropdownLabel="Source Message" selectId="message" variableContainerId="varNameContainer2" variableInputId="varName2"></message-input>
 </div>
 <br><br><br>
 
@@ -57,7 +57,7 @@ module.exports = {
 <br>
 
 <div>
-  <store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>
+  <store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></store-in-variable>
 </div>`;
   },
 
@@ -65,12 +65,14 @@ module.exports = {
 
   async action(cache) {
     const data = cache.actions[cache.index];
-    const varName = this.evalMessage(data.varName, cache);
+    const varName2 = data.varName2;
     const info = parseInt(data.info, 10);
-    const embed = this.getVariable(parseInt(data.message, 10), varName, cache);
+    let embed;
+
+    if (parseInt(data.message) === 0) embed = cache.msg.embeds[0].data;
+    else embed = this.getVariable(parseInt(data.message, 10), varName2, cache)?.embeds[0]?.data;
 
     if (!embed) {
-      console.error('Store Embed Info: Source Embed was not given');
       return this.callNextAction(cache);
     }
 
@@ -114,7 +116,8 @@ module.exports = {
     }
     if (result !== undefined) {
       const storage = parseInt(data.storage, 10);
-      this.storeValue(result, storage, this.evalMessage(data.varName2, cache), cache);
+      const varName = this.evalMessage(data.varName, cache);
+      this.storeValue(result, storage, varName, cache);
     }
     this.callNextAction(cache);
   },
