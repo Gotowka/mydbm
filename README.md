@@ -30,6 +30,8 @@
 
 - [Connect Music Player](https://github.com/Gotowka/mydbm/blob/v3/actions/connect_music_player.js) [1.0]
 
+- [Store Poll Info](https://github.com/Gotowka/mydbm/blob/v3/actions/store_poll_info.js) [1.0]
+
 - [Command Parameter Set String Length](https://github.com/Gotowka/mydbm/blob/v3/actions/command_param_set_length.js) [1.0]
 
 - [Command Parameter Set Number Value](https://github.com/Gotowka/mydbm/blob/v3/actions/command_param_set_value.js) [1.0]
