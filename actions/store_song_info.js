@@ -194,13 +194,13 @@ module.exports = {
           result = song.duration;
           break;
         case 6:
-          result = song.description
+          result = song.description;
           break;
         case 7:
-          result = song.requestedBy
+          result = song.requestedBy;
           break;
         case 8:
-          result = song.source
+          result = song.source;
           break;
         default:
           break;
