@@ -161,7 +161,7 @@ module.exports = {
       let result;
       switch (info) {
         case 0:
-          result = poll.question;
+          result = poll.question.text;
           break;
         case 1:
           result = poll.answers;
