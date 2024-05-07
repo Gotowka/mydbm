@@ -2146,6 +2146,13 @@ Actions.getChannel = async function (type, varName, cache) {
         return server.getDefaultChannel();
       }
       break;
+    case 6: {
+      const channels = interaction?.options?.resolved?.channels ?? msg?.mentions?.channels;
+        if (channels?.size) {
+          return channels.first();
+        }
+        break;
+      }
     case 7:
       if (server) {
         return server.publicUpdatesChannel;
