@@ -36,10 +36,6 @@
 
 - [Command Parameter Set Number Value](https://github.com/Gotowka/mydbm/blob/v3/actions/command_param_set_value.js) [1.0]
 
-- [Send Message](https://github.com/Gotowka/mydbm/blob/v3/actions/send_message.js)
-
-- [Show Modal](https://github.com/Gotowka/mydbm/blob/v3/actions/show_modal.js)
-
 - [Automod Create](https://github.com/Gotowka/mydbm/blob/v3/actions/automod_create.js) [1.0]
 
 - [Automod Delete](https://github.com/Gotowka/mydbm/blob/v3/actions/automod_delete.js) [1.0]
