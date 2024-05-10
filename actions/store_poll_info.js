@@ -194,7 +194,7 @@ module.exports = {
       if (result !== undefined) {
         const storage = parseInt(data.storage, 10);
         const varName = this.evalMessage(data.varName, cache);
-        if (info == 3) {
+        if (info == 1) {
             result.map(a => {
                 const out = `${a.text}:${a.voteCount}`
                 this.storeValue(out, storage, a.text, cache);
