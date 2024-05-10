@@ -46,8 +46,10 @@ module.exports = {
       let dataType = "Unknown Type";
       switch (info) {
         case 0:
+          dataType = "Text";
+          break;
         case 1:
-         dataType = "Text";
+         dataType = "Answer:voteCount";
          break;
         case 2:
          dataType = "Boolean";
@@ -60,6 +62,9 @@ module.exports = {
          break;
         case 5:
          dataType = "Boolean";
+         break;
+        case 6:
+         dataType = "Number";
          break;
       }
       return [data.varName, dataType];
@@ -115,6 +120,7 @@ module.exports = {
           <select id="info" class="round">
               <option value="0">Poll Question</option>
               <option value="1">Poll Answers</option>
+              <option value="6">Poll Answers (Number)</option>
               <option value="2">Poll AllowMultiselect</option>
               <option value="3">Poll ExpiresAt</option>
               <option value="4">Poll Expires Timestamp</option>
@@ -177,6 +183,9 @@ module.exports = {
           break;
         case 5:
           result = poll.resultsFinalized;
+          break;
+        case 6:
+          result = poll.answers.size;
           break;
         default:
           break;
