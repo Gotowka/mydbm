@@ -29,6 +29,7 @@ module.exports = {
         "Expired Date",
         "Expired Timestamp",
         "Ended",
+        "Answers Count"
       ];
       return `Get the - ${info[parseInt(data.info, 10)]}`;
     },
@@ -43,13 +44,14 @@ module.exports = {
       const type = parseInt(data.storage, 10);
       if (type !== varType) return;
       const info = parseInt(data.info, 10);
+      if (info == 1) return ["1", "Object<text,voteCount>", "2", "Object<text,voteCount>"];
       let dataType = "Unknown Type";
       switch (info) {
         case 0:
-          dataType = "Text";
-          break;
+         dataType = "Text";
+         break;
         case 1:
-         dataType = "Answer:voteCount";
+         dataType = "Object<text,voteCount>";
          break;
         case 2:
          dataType = "Boolean";
@@ -120,7 +122,7 @@ module.exports = {
           <select id="info" class="round">
               <option value="0">Poll Question</option>
               <option value="1">Poll Answers</option>
-              <option value="6">Poll Answers (Number)</option>
+              <option value="6">Poll Answers Count</option>
               <option value="2">Poll AllowMultiselect</option>
               <option value="3">Poll ExpiresAt</option>
               <option value="4">Poll Expires Timestamp</option>
@@ -131,6 +133,10 @@ module.exports = {
       <div style="float: left; width: calc(85% - 12px); padding-top: 8px;">
         <br>
         <store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName"></store-in-variable>
+        <br>
+        <p>
+        <u>Note:</u><br>
+        For the Poll Answers the variable name is 1 and 2, if poll has more then 2 option answers then it goes also 3, 4, 5, ...
       </div>`;
     },
   
@@ -153,7 +159,7 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
-      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mstore_poll_info; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.3\x1b[30m)\x1b[0m')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mstore_poll_info; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.3\x1b[30m)\x1b[0m');
       const data = cache.actions[cache.index];
       const poll = (await this.getMessageFromData(data.message, data.vname, cache)).poll;
   
@@ -196,9 +202,8 @@ module.exports = {
         const varName = this.evalMessage(data.varName, cache);
         if (info == 1) {
             result.map(a => {
-                const out = `${a.text}:${a.voteCount}`
-                this.storeValue(out, storage, a.text, cache);
-            })
+              this.storeValue(a, storage, a.id, cache);
+          });
         } else this.storeValue(result, storage, varName, cache);
       }
       this.callNextAction(cache);
