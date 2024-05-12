@@ -27,7 +27,7 @@ module.exports = {
       return [data.varName, dataType, data.varName2, dataType];
     },
   
-    meta: { version: "3.2.3", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/skip.js' },
+    meta: { version: "3.2.4", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/skip.js' },
   
   
     fields: ["storage", "varName", "storage2", "varName2"],
@@ -49,7 +49,7 @@ module.exports = {
     init() {},
   
     async action(cache) {
-      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mskip; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.3\x1b[30m)\x1b[0m')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mskip; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.4\x1b[30m)\x1b[0m')
       const data = cache.actions[cache.index];
       const { interaction, msg } = cache
       const player = this.getPlayer()

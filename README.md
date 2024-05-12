@@ -1,6 +1,6 @@
-# 14.15.2 [v3-3.2.3]
+# 14.15.2 [v3-3.2.4]
 
-[Bot.js](https://github.com/Gotowka/mydbm/blob/v3/bot.js) [1.3]
+[Bot.js](https://github.com/Gotowka/mydbm/blob/v3/bot.js) [1.0]
 
 **Events:**
 
@@ -30,7 +30,7 @@
 
 - [Connect Music Player](https://github.com/Gotowka/mydbm/blob/v3/actions/connect_music_player.js) [1.0]
 
-- [Store Poll Info](https://github.com/Gotowka/mydbm/blob/v3/actions/store_poll_info.js) [1.1]
+- [Store Poll Info](https://github.com/Gotowka/mydbm/blob/v3/actions/store_poll_info.js) [1.0]
 
 - [Command Parameter Set String Length](https://github.com/Gotowka/mydbm/blob/v3/actions/command_param_set_length.js) [1.0]
 
@@ -40,6 +40,6 @@
 
 - [Automod Delete](https://github.com/Gotowka/mydbm/blob/v3/actions/automod_delete.js) [1.0]
 
-- [Ticket Manager](https://github.com/Gotowka/mydbm/blob/v3/actions/ticket_manager.js) [1.1]
+- [Ticket Manager](https://github.com/Gotowka/mydbm/blob/v3/actions/ticket_manager.js) [1.0]
 
-- [Games](https://github.com/Gotowka/mydbm/blob/v3/actions/games.js) [1.1]
+- [Games](https://github.com/Gotowka/mydbm/blob/v3/actions/games.js) [1.0]
