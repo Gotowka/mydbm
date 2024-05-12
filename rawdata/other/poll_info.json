@@ -1,0 +1,96 @@
+{
+    "name": "Poll info",
+    "permissions": "NONE",
+    "permissions2": "NONE",
+    "restriction": "1",
+    "_id": "PYTsZ",
+    "actions": [
+      {
+        "channel": "6",
+        "varName": "Channel",
+        "info": "1",
+        "search": "${slashParams(\"msgid\")}",
+        "storage": "1",
+        "varName2": "msg",
+        "name": "Find Message"
+      },
+      {
+        "message": "1",
+        "vname": "msg",
+        "info": "0",
+        "storage": "1",
+        "varName": "question",
+        "name": "Store Poll Info"
+      },
+      {
+        "message": "1",
+        "vname": "msg",
+        "info": "1",
+        "storage": "1",
+        "varName": "",
+        "name": "Store Poll Info"
+      },
+      {
+        "message": "1",
+        "vname": "msg",
+        "info": "2",
+        "storage": "1",
+        "varName": "allow",
+        "name": "Store Poll Info"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "",
+        "buttons": [],
+        "selectMenus": [],
+        "attachments": [],
+        "embeds": [
+          {
+            "title": "Poll Information",
+            "url": "",
+            "color": "Random",
+            "timestamp": "false",
+            "imageUrl": "",
+            "thumbUrl": "",
+            "description": "Question: ${tempVars(\"question\")}\nAnswers: \\n* ${tempVars(\"1\").text} (${tempVars(\"1\").voteCount})\\n* ${tempVars(\"2\").text} (${tempVars(\"2\").voteCount})\nMultiple Answers: ${tempVars(\"allow\")}",
+            "fields": [],
+            "author": "",
+            "authorUrl": "",
+            "authorIcon": "",
+            "footerText": "",
+            "footerIconUrl": ""
+          }
+        ],
+        "reply": true,
+        "ephemeral": false,
+        "tts": false,
+        "overwrite": false,
+        "mention": false,
+        "dontSend": false,
+        "editMessage": "0",
+        "editMessageVarName": "",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      }
+    ],
+    "comType": "4",
+    "parameters": [
+      {
+        "name": "Channel",
+        "description": "Channel with the poll",
+        "type": "CHANNEL",
+        "required": true,
+        "choices": null
+      },
+      {
+        "name": "msgid",
+        "description": "Message id of the poll",
+        "type": "STRING",
+        "required": true,
+        "choices": null
+      }
+    ],
+    "description": "Information about the poll"
+}
