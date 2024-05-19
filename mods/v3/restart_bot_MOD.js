@@ -3,7 +3,7 @@ module.exports = {
   name: 'Restart Bot',
   section: 'Bot Client Control',
   meta: {
-    version: '3.2.3',
+    version: '3.2.4',
     preciseCheck: false,
     author: 'DBM Mods',
     authorUrl: 'https://github.com/dbm-network/mods',

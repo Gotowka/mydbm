@@ -33,7 +33,7 @@ subtitle: function(data) {
 // about the mods for people to see in the list.
 //---------------------------------------------------------------------
 
-meta: { version: "3.2.3", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
+meta: { version: "3.2.4", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
 
 
 //---------------------------------------------------------------------

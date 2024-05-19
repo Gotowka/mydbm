@@ -41,7 +41,7 @@ module.exports = {
         return [data.varName2, dataType];
       },
   
-    meta: { version: "3.2.3", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka/autorskieakcje/blob/main/store_shard_info.js', downloadUrl: 'https://github.com/Gotowka/autorskieakcje/blob/main/store_shard_info.js' },
+    meta: { version: "3.2.4", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka/autorskieakcje/blob/main/store_shard_info.js', downloadUrl: 'https://github.com/Gotowka/autorskieakcje/blob/main/store_shard_info.js' },
   
     //---------------------------------------------------------------------
     // Action Fields

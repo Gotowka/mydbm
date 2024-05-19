@@ -2,7 +2,7 @@ module.exports = {
   name: 'Clear reactions from message',
   section: 'Reaction Control',
   meta: {
-    version: '3.2.3',
+    version: '3.2.4',
     preciseCheck: false,
     author: 'DBM Mods',
     authorUrl: 'https://github.com/dbm-network/mods',
