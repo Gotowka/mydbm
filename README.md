@@ -96,3 +96,5 @@
 - [Member Role From Number](https://github.com/Gotowka/mydbm/blob/v2/actions/get_member_role_from_number.js) [1.0]
 
 - [Store Voice Channel Info](https://github.com/Gotowka/mydbm/blob/v2/actions/store_voice_channel_info.js)
+
+- [Store Member Data List](https://github.com/Gotowka/mydbm/blob/v2/actions/member_data_list_MOD.js)
