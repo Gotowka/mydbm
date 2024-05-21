@@ -2,6 +2,8 @@
 
 [Bot.js](https://github.com/Gotowka/mydbm/blob/v3/bot.js) [1.0]
 
+- If someone is curious, [DiscordBotPanel](https://discord.gg/59JvYgdGgm) works on v3
+
 **Events:**
 
 - [Song Added To Queue](https://github.com/Gotowka/mydbm/blob/v3/events/song_added_to_queue.js)
@@ -20,7 +22,7 @@
 
 - [Pause](https://github.com/Gotowka/mydbm/blob/v3/actions/queue.js) [1.0]
 
-- [Skip](https://github.com/Gotowka/mydbm/blob/v3/actions/skip.js) [1.1]
+- [Skip](https://github.com/Gotowka/mydbm/blob/v3/actions/skip.js) [1.0]
 
 - [Stop](https://github.com/Gotowka/mydbm/blob/v3/actions/stop.js) [1.0]
 
