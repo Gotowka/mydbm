@@ -61,7 +61,8 @@ module.exports = {
       <span class="dbminputlabel">Start</span>
       <select id="start" class="round" style="width:33%">
         <option value="result" >Result</option>
-        <option value="username"selected>Username</option>
+        <option value="username"selected>Username (User)</option>
+        <option value="displayName">displayName (Guild)</option>
         <option value="id">Mention</option>
       </select>
     </div>
@@ -79,6 +80,7 @@ module.exports = {
         <select id="end" class="round" style="width:100%">
           <option value="result" selected>Result</option>
           <option value="username">Username</option>
+          <option value="displayName">displayName (Guild)</option>
           <option value="id">Mention</option>
         </select>
       </div>
@@ -130,13 +132,17 @@ module.exports = {
           user.guildMember = member
           user.en = this.evalMessage(data.end, cache);
           user.st = this.evalMessage(data.start, cache);
+
           if (user.st === 'id') user.st = `<@` + member.user.id + `>`;
-          else if (user.st === 'result') user.st = user[this.evalMessage(data.dataName)]
-          else user.st = member.user[user.st]
+          else if (user.st === 'result') user.st = user[this.evalMessage(data.dataName)];
+          else if (user.st === 'displayName') user.st = member[user.st];
+          else user.st = member.user[user.st];
+
           if (user.en === 'id') user.en = `<@` + member.user.id + `>`;
-          else if (user.en === 'result') user.en = user[this.evalMessage(data.dataName)]
-          else user.en = member.user[user.en]
-          list.push(user)
+          else if (user.en === 'result') user.en = user[this.evalMessage(data.dataName)];
+          else if (user.en === 'displayName') user.en = member[user.en];
+          else user.en = member.user[user.en];
+          list.push(user);
       })
 
       switch (sortType) {
