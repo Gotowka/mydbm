@@ -161,17 +161,21 @@ module.exports = {
 
       let list2 = ""
       const res = this.evalMessage(data.getresults)
-      let a = parseInt(res.split(':').at(0)) || 0
-      let b = parseInt(res.split(':').at(1)) || 5
-      if (a !== 0) a = a - 1
+      let a = parseInt(res.split(':').at(0)) || 0;
+      let b = parseInt(res.split(':').at(1)) || 5;
+      if (a === 0) a = 0;
       for (let i = a; i < b; i++) {
-        switch (selectionsnum) {
-          case 1:
-            list2 += `${list[i].st + mid + list[i].en}\n`
-            break;
-          case 2:
-            list2 +=`${i + 1 + numbefst2} ${list[i].st}${mid}${list[i].en}\n`
-            break;
+        try {
+          switch (selectionsnum) {
+            case 1:
+              list2 += `${list[i].st + mid + list[i].en}\n`
+              break;
+            case 2:
+              list2 +=`${i + 1 + numbefst2} ${list[i].st}${mid}${list[i].en}\n`
+              break;
+          }
+        } catch(err) {
+
         }
       }
 
