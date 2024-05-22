@@ -69,7 +69,11 @@
 
 - [Timeout Member](https://github.com/Gotowka/mydbm/blob/v2/actions/timeout_member.js)
 
-- [Tempban Member](https://github.com/Gotowka/mydbm/blob/v2/actions/tempban_member.js) [1.0]
+- [Tempban Member](https://github.com/Gotowka/mydbm/blob/v2/actions/tempban_member.js) [1.1]
+
+- [Tempban END](https://github.com/Gotowka/mydbm/blob/v2/actions/tempban_end.js) [1.0]
+
+- [Tempban INFO](https://github.com/Gotowka/mydbm/blob/v2/actions/tempban_info.js) [1.0]
 
 - [Store Command Info](https://github.com/Gotowka/mydbm/blob/v2/actions/store_command_info_MOD.js)
 
