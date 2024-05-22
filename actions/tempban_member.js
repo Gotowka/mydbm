@@ -24,6 +24,12 @@ module.exports = {
     subtitle(data, presets) {
       return `${presets.getMemberText(data.member, data.varName)}`;
     },
+
+    variableStorage(data, varType) {
+      const type = parseInt(data.storage, 10);
+      if (type !== varType) return;
+      return [data.varName, "Unix Timestamp"];
+  },
   
     //---------------------------------------------------------------------
     // Action Meta Data
@@ -45,7 +51,7 @@ module.exports = {
     // are also the names of the fields stored in the action's JSON data.
     //---------------------------------------------------------------------
   
-    fields: ["title", "description", "color", "reason", "time", "member", "varName"],
+    fields: ["member", "save", "time", "reason", "storage", "varName"],
   
     //---------------------------------------------------------------------
     // Command HTML
@@ -63,38 +69,26 @@ module.exports = {
       <div>
       <p>
           <u>Mod Info:</u><br>
-          Created by money#6283<br>
-          Variables: endtime
+          Created by money#6283
+          Help: https://discord.gg/apUVFy7SUh
       </p>
   </div><br>
   <div style="float: left; width: calc(50% - 12px);">
-  <span class="dbminputlabel">Title <span style="color:red">*</span></span>
-  <input id="title" class="round" type="text">
+  <member-input style="width: calc(180% - 12px);" dropdownLabel="Member" selectId="member" variableContainerId="varNameContainer2" variableInputId="save"></member-input>
+
+  <br><br><br>
+
+  <span class="dbminputlabel">Time</span>
+  <input id="time" class="round" placeholder="example: 5s/5m/5h/5d" type="text">
   
   <br>
-  
-  <span class="dbminputlabel">Description</span>
-  <textarea id="description" class="dbm_monospace" rows="4" placeholder="Wszystkie dostępne skróty masz dostępne w Mod Info" white-space: nowrap; resize: none;"></textarea>
-  
+
+  <span class="dbminputlabel">Reason</span>
+  <input id="reason" class="round" type="text">
+
   <br>
   
-  <span class="dbminputlabel">Color</span>
-  <input id="color" class="round" type="text">
-  </div>
-  <div style="float: right; width: calc(50% - 12px);">
-  
-  <br>
-  <span class="dbminputlabel">Reason</span><br>
-  <textarea id="reason" class="dbm_monospace" rows="3" placeholder="Insert reason here..." style="white-space: nowrap; resize: none;"></textarea>
-  
-  <br>
-  
-  <span class="dbminputlabel">Time <span style="color:red">*</span></span>
-  <input id="time" class="round" type="text">
-  
-  <br>
-  
-  <member-input dropdownLabel="Member" selectId="member" variableContainerId="varNameContainer" variableInputId="varName"></member-input>
+  <store-in-variable style="width: calc(180% - 12px);" dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></store-in-variable>
   </div>
   `;
     },
@@ -118,16 +112,13 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
-      console.log('ACTION: tempban_member; [v1.0] (v2.1.9)')
-      const { MessageEmbed } = require('discord.js')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mtempban_member; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv2.1.8\x1b[30m)\x1b[0m');
+      const bData = require('../data/bans.json');
+      const fs = require('fs')
       const data = cache.actions[cache.index];
-      const { interaction } = cache
       const member = await this.getMemberFromData(data.member, data.varName, cache);
-      const title = this.evalMessage(data.title, cache)
-      const description = this.evalMessage(data.description, cache)
-      const color = this.evalMessage(data.color, cache) || 'RANDOM'
-  
-      let duration = this.evalMessage(data.time, cache)
+      const reason = this.evalMessage(data.reason, cache);
+      let duration = this.evalMessage(data.time, cache);
 
       if (duration.includes("s")) {
           duration = duration.split("s")[0] * 1000;
@@ -141,25 +132,24 @@ module.exports = {
           duration = duration * 1000;
       };
   
+      const endtime = new Date().getTime() + duration;
       const endban = Date.parse(new Date(new Date().getTime() + duration)) / 1000;
-      const endtime = `<t:${endban}:R>`
-      this.storeValue(endtime, 1, 'endtime', cache)
-      const days = '0'
-      await member.createDM()
-      const embed = new MessageEmbed()
-      .setTitle(title)
-      .setColor(color)
-      if (description) embed.setDescription(description)
+      
+      bData[member.id] = [{
+        guild: member.guild.id,
+        staff: (cache.msg ?? cache.interaction).member,
+        reason,
+        end: endtime,
+        unix: endban
+      }]
 
-      member.send({ embeds: [embed] })
-      await member.ban({ days, reason })
+      await member.ban({ reason })
       .then(() => {
-        interaction.reply({ content: 'Zbanowano!', ephemeral: true })
-        setTimeout(() => {
-            interaction.guild.bans.remove(member.id, reason)
-            this.callNextAction(cache)
-        }, dur);
+        fs.writeFileSync("./data/bans.json", JSON.stringify(bData))
+        this.storeValue(endban, parseInt(data.storage, 10), data.varName, cache);
+        this.callNextAction(cache);
       })
+      .catch(er => console.log(er))
     },
   
     //---------------------------------------------------------------------
@@ -172,5 +162,4 @@ module.exports = {
     //---------------------------------------------------------------------
   
     mod() {},
-  };
-  
+};
