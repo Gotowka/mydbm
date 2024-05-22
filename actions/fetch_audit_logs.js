@@ -312,7 +312,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   async action(cache) {
-    console.log('ACTION: fetch_audit_logs; [v1.1] (v2.1.8)')
+    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mfetch_audit_logs; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv2.1.8\x1b[30m)\x1b[0m')
     const data = cache.actions[cache.index];
     await cache.server.fetchAuditLogs({
       type: parseInt(data.type),

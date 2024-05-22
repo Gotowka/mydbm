@@ -125,7 +125,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   async action(cache) {
-    console.log('ACTION: create_together; [v1.2] (v2.1.8)')
+    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mcreate_together; \x1b[30m[\x1b[32mv1.2\x1b[30m] \x1b[30m(\x1b[36mv2.1.8\x1b[30m)\x1b[0m')
     const data = cache.actions[cache.index];
     const storage = parseInt(data.storage, 10);
     const varName = this.evalMessage(data.varName, cache);

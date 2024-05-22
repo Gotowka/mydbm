@@ -106,7 +106,7 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
-      console.log('ACTION: gend; [v1.1] (v2.1.8)')
+        console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mgend; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv2.1.8\x1b[30m)\x1b[0m')
       const data = cache.actions[cache.index];
       const giveaways = require('../data/giveaways.json')
       const { writeFileSync } = require('fs')

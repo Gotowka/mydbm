@@ -402,7 +402,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   async action(cache) {
-    console.log('ACTION: systems; [v1.0] (v2.1.9)')
+    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33msystems; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv2.1.8\x1b[30m)\x1b[0m')
     const { interaction, msg } = cache;
     const client = this.getDBM().Bot.bot
     const { levelRank, Tvpis, joinCard, leaveCard } = require('discord-systems')

@@ -86,7 +86,7 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
-      console.log('ACTION: start_map; [v1.0] (v2.1.8)')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mstart_audit_logs_map; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv2.1.8\x1b[30m)\x1b[0m')
       const data = cache.actions[cache.index];
       const array = this.getVariable(parseInt(data.type), data.array, cache)
       let i = 0
