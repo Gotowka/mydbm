@@ -134,12 +134,12 @@ module.exports = {
           user.st = this.evalMessage(data.start, cache);
 
           if (user.st === 'id') user.st = `<@` + member.user.id + `>`;
-          else if (user.st === 'result') user.st = user[this.evalMessage(data.dataName)];
+          else if (user.st === 'result') user.st = user[this.evalMessage(data.dataName, cache)];
           else if (user.st === 'displayName') user.st = member[user.st];
           else user.st = member.user[user.st];
 
           if (user.en === 'id') user.en = `<@` + member.user.id + `>`;
-          else if (user.en === 'result') user.en = user[this.evalMessage(data.dataName)];
+          else if (user.en === 'result') user.en = user[this.evalMessage(data.dataName, cache)];
           else if (user.en === 'displayName') user.en = member[user.en];
           else user.en = member.user[user.en];
           list.push(user);
@@ -147,10 +147,10 @@ module.exports = {
 
       switch (sortType) {
           case 1:
-            list = sort(list).desc((u) => parseInt(u[this.evalMessage(data.dataName)], 10));
+            list = sort(list).desc((u) => parseInt(u[this.evalMessage(data.dataName, cache)], 10));
             break;
           case 2:
-            list = sort(list).asc((u) => parseInt(u[this.evalMessage(data.dataName)], 10));
+            list = sort(list).asc((u) => parseInt(u[this.evalMessage(data.dataName, cache)], 10));
             break;
           case 0:
             list = list;
@@ -160,7 +160,7 @@ module.exports = {
       }
 
       let list2 = ""
-      const res = this.evalMessage(data.getresults)
+      const res = this.evalMessage(data.getresults, cache)
       let a = parseInt(res.split(':').at(0)) || 0;
       let b = parseInt(res.split(':').at(1)) || 5;
       if (a === 0) a = 0;
