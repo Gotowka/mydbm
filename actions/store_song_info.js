@@ -64,7 +64,7 @@ module.exports = {
       return [data.varName, dataType];
     },
   
-    meta: { version: "2.1.8", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/store_song_info.js' },
+    meta: { version: "2.1.8", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka/mydbm/tree/v2-beta', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2-beta/actions/store_song_info.js' },
   
     fields: ["type", "song", "info", "storage", "varName"],
   

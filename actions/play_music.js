@@ -5,8 +5,8 @@ module.exports = {
       version: '2.1.8',
       preciseCheck: false,
       author: 'Gotowka',
-      authorUrl: 'https://github.com/Gotowka/mydbm/tree/v2',
-      downloadURL: 'https://github.com/Gotowka/mydbm/blob/v2/actions/play_music.js',
+      authorUrl: 'https://github.com/Gotowka/mydbm/tree/v2-beta',
+      downloadURL: 'https://github.com/Gotowka/mydbm/blob/v2-beta/actions/play_music.js',
     },
     fields: ['query', 'storage', 'varName'],
   
