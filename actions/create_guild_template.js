@@ -50,7 +50,7 @@ module.exports = {
 
 
   async action(cache) {
-    console.log('ACTION: create_guild_template; [v1.0] (v2.1.9)')
+    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mcreate_guild_template; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv2.1.8\x1b[30m)\x1b[0m')
     const data = cache.actions[cache.index];
     const targetServer = await this.getServerFromData(data.server, data.varName, cache);
     const name = this.evalMessage(data.name, cache);
