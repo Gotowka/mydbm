@@ -8,9 +8,15 @@ module.exports = {
     return `${presets.getMemberText(data.member, data.varName)}`;
   },
 
+  variableStorage(data, varType) {
+    const type = parseInt(data.storage, 10);
+    if (type !== varType) return;
+    return [data.varName, "Unix Timestamp"];
+  },
+
   meta: { version: "2.1.8", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/timeout_member.js' },
 
-  fields: ["member", "varName", "time", "reason"],
+  fields: ["member", "varName2", "time", "reason", "storage", "varName"],
 
   html(isEvent, data) {
     return `
@@ -18,31 +24,32 @@ module.exports = {
     <p>
         <u>Mod Info:</u><br>
         Created by money#6283<br>
-        Variables: endtime
+        Help: https://discord.gg/apUVFy7SUh
     </p>
 </div><br>
-<member-input dropdownLabel="Member" selectId="member" variableContainerId="varNameContainer" variableInputId="varName"></member-input>
+<member-input dropdownLabel="Member" selectId="member" variableContainerId="varNameContainer2" variableInputId="varName2"></member-input>
 
-<br><br><br><br>
+<br><br><br>
 
-<div style="float: right; width: 50%;">
+<div style="float: left; width: 50%;">
 <span class="dbminputlabel">Time</span><br>
 <input id="time" class="round" placeholder="Type: np 1s/1m/1h/1d" type="text">
-</div><br><br><br>
+<br>
+<span class="dbminputlabel">Reason</span><br>
+<input id="reason" class="round" type="text">
+</div><br><br><br><br><br><br><br>
 
-<div style="padding-top: 16px;">
-  <span class="dbminputlabel">Reason</span><br>
-  <textarea id="reason" class="dbm_monospace" rows="5" placeholder="Insert reason here..." style="white-space: nowrap; resize: none;"></textarea>
-</div>`;
+<store-in-variable style="width: calc(80% - 12px);" dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></store-in-variable>
+`;
   },
 
   init() {},
 
   async action(cache) {
     const data = cache.actions[cache.index];
-    const member = await this.getMemberFromData(data.member, data.varName, cache);
+    const member = await this.getMemberFromData(data.member, data.varName2, cache);
     
-    let duration = this.evalMessage(data.time, cache)
+    let duration = this.evalMessage(data.time, cache);
 
     if (duration.includes("s")) {
         duration = duration.split("s")[0] * 1e3;
@@ -55,14 +62,13 @@ module.exports = {
     } else {
         duration = 5 * 1e3;
     };
-    duration = new Date() + duration
     const endTimeout = Date.parse(new Date(new Date().getTime() + duration)) / 1000;
+    duration = Date.now() + duration;
     const reason = this.evalMessage(data.reason, cache);
     if (member?.disableCommunicationUntil) {
       member.disableCommunicationUntil(duration, reason)
         .then(() => {
-          const endtime = `<t:${endTimeout}:R>`
-          this.storeValue(endtime, 1, 'endtime', cache)
+          this.storeValue(endTimeout, parseInt(data.storage, 10), data.varName, cache);
           this.callNextAction(cache)
         })
         .catch((err) => this.displayError(data, cache, err));
