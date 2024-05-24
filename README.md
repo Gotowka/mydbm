@@ -17,7 +17,7 @@
 
 **Actions:**
 
-- [Create Guild Template](https://github.com/Gotowka/mydbm/blob/v2/actions/create_guild_template.js) [1.0]
+- [Create Guild Template](https://github.com/Gotowka/mydbm/blob/v2/actions/create_guild_template.js) [1.1]
 
 - [Delete Guild Template](https://github.com/Gotowka/mydbm/blob/v2/actions/delete_guild_template.js) [1.0]
 
