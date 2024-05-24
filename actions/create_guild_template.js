@@ -17,7 +17,7 @@ module.exports = {
 
   meta: { version: "2.1.8", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/create_guild_template.js' },
   
-  fields: ["server", "varName", "name", "description", "storage", "varName"],
+  fields: ["server", "varName2", "tname", "description", "storage", "varName"],
 
   html(isEvent, data) {
     return `
@@ -28,21 +28,21 @@ module.exports = {
         Help: https://discord.gg/apUVFy7SUh
     </p>
 </div><br>
-<server-input dropdownLabel="Source Server" selectId="server" variableContainerId="varNameContainer" variableInputId="varName"></server-input>
+<server-input dropdownLabel="Source Server" selectId="server" variableContainerId="varNameContainer2" variableInputId="varName2"></server-input>
 
-<br><br><br><br>
+<br><br><br>
 <div style="float: left; width: 50%;">
 <span class="dbminputlabel">Name</span><br>
-<input id="name" class="round" type="text">
+<input id="tname" class="round" type="text">
 </div>
-<br><br><br><br>
+<br><br><br>
 <div style="float: left; width: 50%;">
 <span class="dbminputlabel">Description</span><br>
 <input id="description" class="round" type="text">
-</div><br><br><br>
+</div><br><br>
 
 <div style="padding-top: 16px;">
-<store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName"></store-in-variable>
+<store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></store-in-variable>
 </div>`;
   },
 
@@ -53,7 +53,7 @@ module.exports = {
     console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mcreate_guild_template; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv2.1.8\x1b[30m)\x1b[0m')
     const data = cache.actions[cache.index];
     const targetServer = await this.getServerFromData(data.server, data.varName, cache);
-    const name = this.evalMessage(data.name, cache);
+    const name = this.evalMessage(data.tname, cache);
     const description = this.evalMessage(data.description, cache);
   targetServer.createTemplate(name, description)
   .then((template) => {
