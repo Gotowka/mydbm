@@ -1,4 +1,4 @@
-# 13.16.0 [v2-2.1.8]
+# 13.17.1 [v2-2.1.9]
 
 **Events:**
 
@@ -17,31 +17,39 @@
 
 **Actions:**
 
-- [Create Guild Template](https://github.com/Gotowka/mydbm/blob/v2/actions/create_guild_template.js) [1.1]
+- [Create Guild Template](https://github.com/Gotowka/mydbm/blob/v2/actions/create_guild_template.js) [1.0]
 
 - [Delete Guild Template](https://github.com/Gotowka/mydbm/blob/v2/actions/delete_guild_template.js) [1.0]
 
 - [Connect Together Client](https://github.com/Gotowka/mydbm/blob/v2/actions/connect_together_client.js) [1.0]
 
-- [Create Together](https://github.com/Gotowka/mydbm/blob/v2/actions/create_together.js) [1.3]
+- [Create Together](https://github.com/Gotowka/mydbm/blob/v2/actions/create_together.js) [1.0]
 
-- [Reaction Giveaway](https://github.com/Gotowka/mydbm/blob/v2/actions/giveaway_create.js) [1.1]
+- [Play Music](https://github.com/Gotowka/mydbm/blob/v2/actions/play_music.js) [1.0]
 
-- [Giveaway END](https://github.com/Gotowka/mydbm/blob/v2/actions/gend.js) [1.1]
+- [Volume](https://github.com/Gotowka/mydbm/blob/v2/actions/volume.js) [1.0]
 
-- [Giveaway JOIN](https://github.com/Gotowka/mydbm/blob/v2/actions/gjoin.js) [1.1]
+- [Skip](https://github.com/Gotowka/mydbm/blob/v2/actions/skip.js) [1.0]
 
-- [Giveaway START](https://github.com/Gotowka/mydbm/blob/v2/actions/gstart.js) [1.1]
+- [Store Song Info](https://github.com/Gotowka/mydbm/blob/v2/actions/store_song_info.js) [1.0]
 
-- [Giveaway REROLL](https://github.com/Gotowka/mydbm/blob/v2/actions/greroll.js) [1.1]
+- [Reaction Giveaway](https://github.com/Gotowka/mydbm/blob/v2/actions/giveaway_create.js) [1.0]
 
-- [Giveaway INFO](https://github.com/Gotowka/mydbm/blob/v2/actions/ginfo.js) [1.1]
+- [Giveaway END](https://github.com/Gotowka/mydbm/blob/v2/actions/gend.js) [1.0]
+
+- [Giveaway JOIN](https://github.com/Gotowka/mydbm/blob/v2/actions/gjoin.js) [1.0]
+
+- [Giveaway START](https://github.com/Gotowka/mydbm/blob/v2/actions/gstart.js) [1.0]
+
+- [Giveaway REROLL](https://github.com/Gotowka/mydbm/blob/v2/actions/greroll.js) [1.0]
+
+- [Giveaway INFO](https://github.com/Gotowka/mydbm/blob/v2/actions/ginfo.js) [1.0]
 
 - [MongoDB Collection Create](https://github.com/Gotowka/mydbm/blob/v3/actions/mongodb_collection_create.js) [1.0]
 
 - [MongoDB Collection Edit](https://github.com/Gotowka/mydbm/blob/v3/actions/mongodb_collection_edit.js) [1.0]
 
-- [MongoDB Store Collection Info](https://github.com/Gotowka/mydbm/blob/v3/actions/mongodb_store_collection_info.js) [1.1]
+- [MongoDB Store Collection Info](https://github.com/Gotowka/mydbm/blob/v3/actions/mongodb_store_collection_info.js) [1.0]
 
 - [MongoDB Collection Get](https://github.com/Gotowka/mydbm/blob/v3/actions/mongodb_collection_get.js) [1.0]
 
@@ -51,7 +59,7 @@
 
 - [Command Parameter Set Number Value](https://github.com/Gotowka/mydbm/blob/v3/actions/command_param_set_value.js) [1.0]
 
-- [Fetch Audit Logs](https://github.com/Gotowka/mydbm/blob/v2/actions/fetch_audit_logs.js) [1.1]
+- [Fetch Audit Logs](https://github.com/Gotowka/mydbm/blob/v2/actions/fetch_audit_logs.js) [1.0]
 
 - [Store Audit Log Info](https://github.com/Gotowka/mydbm/blob/v2/actions/store_audit_log_info.js) [1.0]
 
@@ -63,13 +71,13 @@
 
 - [Systems2](https://github.com/Gotowka/mydbm/blob/v2/actions/systems2.js) [1.0]
 
-- [Automod Create](https://github.com/Gotowka/mydbm/blob/v2/actions/automod_create.js) [1.1]
+- [Automod Create](https://github.com/Gotowka/mydbm/blob/v2/actions/automod_create.js) [1.0]
 
 - [Automod Delete](https://github.com/Gotowka/mydbm/blob/v2/actions/automod_delete.js) [1.0]
 
 - [Timeout Member](https://github.com/Gotowka/mydbm/blob/v2/actions/timeout_member.js)
 
-- [Tempban Member](https://github.com/Gotowka/mydbm/blob/v2/actions/tempban_member.js) [1.1]
+- [Tempban Member](https://github.com/Gotowka/mydbm/blob/v2/actions/tempban_member.js) [1.0]
 
 - [Tempban END](https://github.com/Gotowka/mydbm/blob/v2/actions/tempban_end.js) [1.0]
 
