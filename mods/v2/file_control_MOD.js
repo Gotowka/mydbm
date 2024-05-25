@@ -3,7 +3,7 @@ module.exports = {
   section: 'File Stuff',
   fields: ['input', 'format', 'filename', 'filepath', 'filepath2', 'filetask', 'input2', 'togglestatus'],
   meta: {
-    version: '2.1.8',
+    version: '2.1.9',
     preciseCheck: false,
     author: 'DBM Mods',
     authorUrl: 'https://github.com/dbm-network/mods',

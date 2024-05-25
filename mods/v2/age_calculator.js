@@ -1,7 +1,7 @@
 module.exports = {
 name: "Age Calculator",
 section: "Other Stuff",
-meta: { version: "2.1.8", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
+meta: { version: "2.1.9", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
 subtitle: function(data) {
 	//const info = ['Age', 'Format'];
 	const info = ['MM/DD/YYYY','DD/MM/YYYY','MM/YYYY/DD','DD/YYYY/MM','YYYY/MM/DD','YYYY/DD/MM'];

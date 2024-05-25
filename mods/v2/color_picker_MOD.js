@@ -26,7 +26,7 @@ subtitle: function(data) {
 	return `${data.color}`;
 },
 
-meta: { version: "2.1.8", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
+meta: { version: "2.1.9", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
 
 //---------------------------------------------------------------------
 // Action Storage Function

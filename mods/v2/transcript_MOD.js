@@ -2,7 +2,7 @@ module.exports = {
   name: 'Transcript',
   section: 'Other Stuff',
   meta: {
-    version: '2.1.8',
+    version: '2.1.9',
     preciseCheck: false,
     author: 'DBM Mods',
     authorUrl: null,
