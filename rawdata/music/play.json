@@ -1,0 +1,167 @@
+{
+    "name": "play",
+    "permissions": "SEND_MESSAGES",
+    "permissions2": "NONE",
+    "restriction": "1",
+    "_id": "wFHBY",
+    "actions": [
+      {
+        "query": "${slashParams(\"url\")}",
+        "call": "2",
+        "callS": "8",
+        "storage": "1",
+        "varName": "ms",
+        "name": "Play Music"
+      },
+      {
+        "type": "1",
+        "song": "ms",
+        "info": "0",
+        "storage": "1",
+        "varName": "song.title",
+        "name": "Store Song Info"
+      },
+      {
+        "type": "1",
+        "song": "ms",
+        "info": "1",
+        "storage": "1",
+        "varName": "song.url",
+        "name": "Store Song Info"
+      },
+      {
+        "type": "1",
+        "song": "ms",
+        "info": "4",
+        "storage": "1",
+        "varName": "song.thumbnail",
+        "name": "Store Song Info"
+      },
+      {
+        "type": "1",
+        "song": "ms",
+        "info": "10",
+        "storage": "1",
+        "varName": "author.avatar",
+        "name": "Store Song Info"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "",
+        "buttons": [],
+        "selectMenus": [],
+        "attachments": [],
+        "embeds": [
+          {
+            "title": "${tempVars(\"song.title\")}",
+            "url": "${tempVars(\"song.url\")}",
+            "color": "",
+            "timestamp": "false",
+            "imageUrl": "${tempVars(\"song.thumbnail\")}",
+            "thumbUrl": "${tempVars(\"author.avatar\")}",
+            "description": "",
+            "fields": [],
+            "author": "",
+            "authorUrl": "",
+            "authorIcon": "",
+            "footerText": "",
+            "footerIconUrl": ""
+          }
+        ],
+        "reply": true,
+        "ephemeral": false,
+        "tts": false,
+        "overwrite": false,
+        "mention": false,
+        "dontSend": false,
+        "editMessage": "0",
+        "editMessageVarName": "",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      },
+      {
+        "name": "End Action Sequence"
+      },
+      {
+        "type": "1",
+        "song": "ms",
+        "info": "0",
+        "storage": "1",
+        "varName": "song.title",
+        "name": "Store Song Info"
+      },
+      {
+        "type": "1",
+        "song": "ms",
+        "info": "1",
+        "storage": "1",
+        "varName": "song.url",
+        "name": "Store Song Info"
+      },
+      {
+        "type": "1",
+        "song": "ms",
+        "info": "4",
+        "storage": "1",
+        "varName": "song.thumbnail",
+        "name": "Store Song Info"
+      },
+      {
+        "type": "1",
+        "song": "ms",
+        "info": "10",
+        "storage": "1",
+        "varName": "author.avatar",
+        "name": "Store Song Info"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "",
+        "buttons": [],
+        "selectMenus": [],
+        "attachments": [],
+        "embeds": [
+          {
+            "title": "${tempVars(\"song.title\")}",
+            "url": "${tempVars(\"song.url\")}",
+            "color": "",
+            "timestamp": "false",
+            "imageUrl": "${tempVars(\"song.thumbnail\")}",
+            "thumbUrl": "${tempVars(\"author.avatar\")}",
+            "description": "",
+            "fields": [],
+            "author": "",
+            "authorUrl": "",
+            "authorIcon": "",
+            "footerText": "",
+            "footerIconUrl": ""
+          }
+        ],
+        "reply": false,
+        "ephemeral": false,
+        "tts": false,
+        "overwrite": false,
+        "mention": false,
+        "dontSend": false,
+        "editMessage": "0",
+        "editMessageVarName": "",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      }
+    ],
+    "comType": "4",
+    "parameters": [
+      {
+        "name": "url",
+        "description": "Url for the music",
+        "type": "STRING",
+        "required": true,
+        "choices": null
+      }
+    ],
+    "description": "Play music"
+}

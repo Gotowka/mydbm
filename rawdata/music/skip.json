@@ -1,0 +1,70 @@
+{
+    "name": "skip",
+    "permissions": "NONE",
+    "permissions2": "NONE",
+    "restriction": "1",
+    "_id": "xmbXS",
+    "actions": [
+      {
+        "storage": "1",
+        "varName": "cS",
+        "storage2": "1",
+        "varName2": "nS",
+        "name": "Skip"
+      },
+      {
+        "type": "1",
+        "song": "cS",
+        "info": "0",
+        "storage": "1",
+        "varName": "cTitle",
+        "name": "Store Song Info"
+      },
+      {
+        "type": "1",
+        "song": "nS",
+        "info": "0",
+        "storage": "1",
+        "varName": "nTitle",
+        "name": "Store Song Info"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "",
+        "buttons": [],
+        "selectMenus": [],
+        "attachments": [],
+        "embeds": [
+          {
+            "title": "Skip",
+            "url": "",
+            "color": "",
+            "timestamp": "false",
+            "imageUrl": "",
+            "thumbUrl": "",
+            "description": "**${tempVars(\"cTitle\")}** --> **${tempVars(\"nTitle\")}**",
+            "fields": [],
+            "author": "",
+            "authorUrl": "",
+            "authorIcon": "",
+            "footerText": "",
+            "footerIconUrl": ""
+          }
+        ],
+        "reply": true,
+        "ephemeral": false,
+        "tts": false,
+        "overwrite": false,
+        "mention": false,
+        "dontSend": false,
+        "editMessage": "0",
+        "editMessageVarName": "",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      }
+    ],
+    "comType": "4",
+    "description": "Skip current song"
+}

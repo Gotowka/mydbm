@@ -1,0 +1,60 @@
+{
+    "name": "volume",
+    "permissions": "NONE",
+    "permissions2": "NONE",
+    "restriction": "1",
+    "_id": "pVkrP",
+    "actions": [
+      {
+        "volume": "${slashParams(\"volume\")}",
+        "name": "Volume"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "",
+        "buttons": [],
+        "selectMenus": [],
+        "attachments": [],
+        "embeds": [
+          {
+            "title": "Volume",
+            "url": "",
+            "color": "",
+            "timestamp": "false",
+            "imageUrl": "",
+            "thumbUrl": "",
+            "description": "Changed the volume to **${slashParams(\"volume\")}**",
+            "fields": [],
+            "author": "",
+            "authorUrl": "",
+            "authorIcon": "",
+            "footerText": "",
+            "footerIconUrl": ""
+          }
+        ],
+        "reply": true,
+        "ephemeral": false,
+        "tts": false,
+        "overwrite": false,
+        "mention": false,
+        "dontSend": false,
+        "editMessage": "0",
+        "editMessageVarName": "",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      }
+    ],
+    "comType": "4",
+    "parameters": [
+      {
+        "name": "volume",
+        "description": "New volume",
+        "type": "INTEGER",
+        "required": true,
+        "choices": null
+      }
+    ],
+    "description": "Change the volume of the music"
+}
