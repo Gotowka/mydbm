@@ -144,7 +144,8 @@ module.exports = {
           else if (user.en === 'result') user.en = user[this.evalMessage(data.dataName, cache)];
           else if (user.en === 'displayName') user.en = member[user.en];
           else user.en = member.user[user.en];
-          list.push(user);
+
+          if (user.st !== undefined && user.en !== undefined) list.push(user);
       })
 
       switch (sortType) {
