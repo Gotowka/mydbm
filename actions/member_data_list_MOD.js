@@ -122,7 +122,9 @@ module.exports = {
     const selectionsnum = parseInt(data.numbefstselect, 10);
     const sortType = parseInt(data.sort, 10);
     const { sort } = require('fast-sort');
-    let file = require('../data/players.json');
+    const { readFileSync } = require('fs-extra')
+    let file = readFileSync('./data/players.json', { encoding: 'utf8'})
+    file = JSON.parse(file)
 
     if (file) {
       let list = []
