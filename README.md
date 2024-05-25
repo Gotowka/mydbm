@@ -23,7 +23,7 @@
 
 - [Connect Together Client](https://github.com/Gotowka/mydbm/blob/v2/actions/connect_together_client.js) [1.0]
 
-- [Create Together](https://github.com/Gotowka/mydbm/blob/v2/actions/create_together.js) [1.1]
+- [Create Together](https://github.com/Gotowka/mydbm/blob/v2/actions/create_together.js) [1.3]
 
 - [Reaction Giveaway](https://github.com/Gotowka/mydbm/blob/v2/actions/giveaway_create.js) [1.1]
 
