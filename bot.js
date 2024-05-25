@@ -5,15 +5,15 @@
  ******************************************************/
 
 const DBM = {};
-DBM.version = "2.1.8";
+DBM.version = "2.1.9";
 
 const DiscordJS = (DBM.DiscordJS = require("discord.js"));
 
 const noop = () => void 0;
 
 module.exports.Money = '1.0.1'
-if (DiscordJS.version !== '13.16.0') console.log(`BOT: bot.js; [v1.2] (v2.1.8.2) (DJS: \x1b[31m\x1b[1m${DiscordJS.version}\x1b[0m --> \x1b[32m\x1b[1m13.16.0\x1b[0m)`)
-else console.log(`BOT: bot.js; [v1.2] (v2.1.8.2) (\x1b[32m\x1b[1m13.16.0\x1b[0m)`)
+if (DiscordJS.version !== '13.17.1') console.log(`BOT: bot.js; [v1.0] (v2.1.9) (DJS: \x1b[31m\x1b[1m${DiscordJS.version}\x1b[0m --> \x1b[32m\x1b[1m13.17.1\x1b[0m)`)
+else console.log(`BOT: bot.js; [v1.0] (v2.1.9) (\x1b[32m\x1b[1m13.17.1\x1b[0m)`)
 
 const MsgType = {
   MISSING_ACTION: 0,
