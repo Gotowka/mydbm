@@ -12,8 +12,8 @@ const DiscordJS = (DBM.DiscordJS = require("discord.js"));
 const noop = () => void 0;
 
 module.exports.Money = '1.0.1'
-if (DiscordJS.version !== '13.17.1') console.log(`BOT: bot.js; [v1.0] (v2.1.9-beta.1) (DJS: \x1b[31m\x1b[1m${DiscordJS.version}\x1b[0m --> \x1b[32m\x1b[1m13.17.1\x1b[0m)`)
-else console.log(`BOT: bot.js; [v1.0] (v2.1.9-beta.1) (\x1b[32m\x1b[1m13.17.1\x1b[0m)`)
+if (DiscordJS.version !== '13.17.1') console.log(`BOT: bot.js; [v1.0] (v2.1.9-beta.2) (DJS: \x1b[31m\x1b[1m${DiscordJS.version}\x1b[0m --> \x1b[32m\x1b[1m13.17.1\x1b[0m)`)
+else console.log(`BOT: bot.js; [v1.0] (v2.1.9-beta.2) (\x1b[32m\x1b[1m13.17.1\x1b[0m)`)
 
 const MsgType = {
   MISSING_ACTION: 0,
@@ -3125,6 +3125,18 @@ try {
 } catch(e) {
   Audio.voice = null;
   console.log('npm install @discordjs/voice')
+}
+
+Audio.map = new Map();
+
+Audio.playSong = (guild, song) => {
+  const queue = Audio.map.get(guild.id)
+
+  const stream = Audio.ytdl(song.video_url, { filter: 'audioonly', highWaterMark: 1<<25 });
+  const resource = Audio.voice.createAudioResource(stream, { inlineVolume: true });
+
+  queue.player.play(resource);
+  queue.resource = resource;
 }
 
 //#endregion
