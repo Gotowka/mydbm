@@ -1,0 +1,469 @@
+{
+    "name": "together",
+    "permissions": "NONE",
+    "permissions2": "NONE",
+    "restriction": "1",
+    "_id": "yInDK",
+    "actions": [
+      {
+        "server": "0",
+        "varName": "",
+        "info": "5",
+        "storage": "1",
+        "varName2": "icon",
+        "name": "Store Server Info"
+      },
+      {
+        "server": "0",
+        "varName": "",
+        "info": "2",
+        "storage": "1",
+        "varName2": "name",
+        "name": "Store Server Info"
+      },
+      {
+        "member": "1",
+        "varName": "",
+        "info": "21",
+        "storage": "1",
+        "varName2": "tag",
+        "name": "Store Member Info"
+      },
+      {
+        "member": "1",
+        "varName": "",
+        "info": "16",
+        "storage": "1",
+        "varName2": "av",
+        "name": "Store Member Info"
+      },
+      {
+        "member": "1",
+        "varName": "",
+        "info": "1",
+        "storage": "1",
+        "varName2": "id",
+        "name": "Store Member Info"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "",
+        "buttons": [],
+        "selectMenus": [
+          {
+            "placeholder": "Wybierz gre",
+            "id": "msg-select-2932b15",
+            "tempVarName": "together",
+            "row": "",
+            "min": "1",
+            "max": "1",
+            "mode": "PERSISTENT",
+            "time": "",
+            "options": [
+              {
+                "label": "Youtube",
+                "description": "Youtube Together",
+                "value": "youtube",
+                "emoji": "",
+                "default": "false"
+              },
+              {
+                "label": "Spellcast",
+                "description": "Spellcast Together",
+                "value": "spellcast",
+                "emoji": "",
+                "default": "false"
+              },
+              {
+                "label": "Poker",
+                "description": "Poker Together",
+                "value": "poker",
+                "emoji": "",
+                "default": "false"
+              },
+              {
+                "label": "Chess",
+                "description": "Chess Together",
+                "value": "chess",
+                "emoji": "",
+                "default": "false"
+              },
+              {
+                "label": "Checkers",
+                "description": "Checkers Together",
+                "value": "checkers",
+                "emoji": "",
+                "default": "false"
+              },
+              {
+                "label": "SketchHeads",
+                "description": "SketchHeads Together",
+                "value": "sketchheads",
+                "emoji": "",
+                "default": "false"
+              },
+              {
+                "label": "Letter League",
+                "description": "Letter League Together",
+                "value": "lettertile",
+                "emoji": "",
+                "default": "false"
+              },
+              {
+                "label": "Putt Party",
+                "description": "Putt Party Together",
+                "value": "puttparty",
+                "emoji": "",
+                "default": "false"
+              },
+              {
+                "label": "Bobble League",
+                "description": "Bobble League Together",
+                "value": "bobble",
+                "emoji": "",
+                "default": "false"
+              },
+              {
+                "label": "Land.io",
+                "description": "Land.io Together",
+                "value": "land",
+                "emoji": "",
+                "default": "false"
+              },
+              {
+                "label": "Know What I Meme",
+                "description": "Know What I Meme Together",
+                "value": "meme",
+                "emoji": "",
+                "default": "false"
+              },
+              {
+                "label": "Gartic Phone",
+                "description": "Gartic Phone Together",
+                "value": "garticphone",
+                "emoji": "",
+                "default": "false"
+              },
+              {
+                "label": "Color Together",
+                "description": "Color Together",
+                "value": "color",
+                "emoji": "",
+                "default": "false"
+              },
+              {
+                "label": "Chef Showdown",
+                "description": "Chef Showdown Together",
+                "value": "chefshowdown",
+                "emoji": "",
+                "default": "false"
+              },
+              {
+                "label": "Krunker",
+                "description": "Krunker Together",
+                "value": "krunker",
+                "emoji": "",
+                "default": "false"
+              },
+              {
+                "label": "Colonist",
+                "description": "Colonist Together ",
+                "value": "colonist",
+                "emoji": "",
+                "default": "false"
+              },
+              {
+                "label": "Death by AI",
+                "description": "Death by AI Together",
+                "value": "ai",
+                "emoji": "",
+                "default": "false"
+              }
+            ],
+            "actions": [
+              {
+                "storage": "1",
+                "varName": "together",
+                "branches": [
+                  {
+                    "comparison": "1",
+                    "value": "'youtube'",
+                    "actions": [
+                      {
+                        "together": "youtube",
+                        "storage": "2",
+                        "varName": "code",
+                        "name": "Create Together"
+                      }
+                    ]
+                  },
+                  {
+                    "comparison": "1",
+                    "value": "'spellcast'",
+                    "actions": [
+                      {
+                        "together": "spellcast",
+                        "storage": "2",
+                        "varName": "code",
+                        "name": "Create Together"
+                      }
+                    ]
+                  },
+                  {
+                    "comparison": "1",
+                    "value": "'poker'",
+                    "actions": [
+                      {
+                        "together": "poker",
+                        "storage": "2",
+                        "varName": "code",
+                        "name": "Create Together"
+                      }
+                    ]
+                  },
+                  {
+                    "comparison": "1",
+                    "value": "'chess'",
+                    "actions": [
+                      {
+                        "together": "chess",
+                        "storage": "2",
+                        "varName": "code",
+                        "name": "Create Together"
+                      }
+                    ]
+                  },
+                  {
+                    "comparison": "1",
+                    "value": "'checkers'",
+                    "actions": [
+                      {
+                        "together": "checkers",
+                        "storage": "2",
+                        "varName": "code",
+                        "name": "Create Together"
+                      }
+                    ]
+                  },
+                  {
+                    "comparison": "1",
+                    "value": "'sketchheads'",
+                    "actions": [
+                      {
+                        "together": "sketchheads",
+                        "storage": "2",
+                        "varName": "code",
+                        "name": "Create Together"
+                      }
+                    ]
+                  },
+                  {
+                    "comparison": "1",
+                    "value": "'lettertile'",
+                    "actions": [
+                      {
+                        "together": "lettertile",
+                        "storage": "2",
+                        "varName": "code",
+                        "name": "Create Together"
+                      }
+                    ]
+                  },
+                  {
+                    "comparison": "1",
+                    "value": "'puttparty'",
+                    "actions": [
+                      {
+                        "together": "puttparty",
+                        "storage": "2",
+                        "varName": "code",
+                        "name": "Create Together"
+                      }
+                    ]
+                  },
+                  {
+                    "comparison": "1",
+                    "value": "'bobble'",
+                    "actions": [
+                      {
+                        "together": "bobble",
+                        "storage": "2",
+                        "varName": "code",
+                        "name": "Create Together"
+                      }
+                    ]
+                  },
+                  {
+                    "comparison": "1",
+                    "value": "'land'",
+                    "actions": [
+                      {
+                        "together": "land",
+                        "storage": "2",
+                        "varName": "code",
+                        "name": "Create Together"
+                      }
+                    ]
+                  },
+                  {
+                    "comparison": "1",
+                    "value": "'meme'",
+                    "actions": [
+                      {
+                        "together": "meme",
+                        "storage": "2",
+                        "varName": "code",
+                        "name": "Create Together"
+                      }
+                    ]
+                  },
+                  {
+                    "comparison": "1",
+                    "value": "'garticphone'",
+                    "actions": [
+                      {
+                        "together": "garticphone",
+                        "storage": "2",
+                        "varName": "code",
+                        "name": "Create Together"
+                      }
+                    ]
+                  },
+                  {
+                    "comparison": "1",
+                    "value": "'color'",
+                    "actions": [
+                      {
+                        "together": "color",
+                        "storage": "2",
+                        "varName": "code",
+                        "name": "Create Together"
+                      }
+                    ]
+                  },
+                  {
+                    "comparison": "1",
+                    "value": "'chefshowdown'",
+                    "actions": [
+                      {
+                        "together": "chefshowdown",
+                        "storage": "2",
+                        "varName": "code",
+                        "name": "Create Together"
+                      }
+                    ]
+                  },
+                  {
+                    "comparison": "1",
+                    "value": "'krunker'",
+                    "actions": [
+                      {
+                        "together": "krunker",
+                        "storage": "2",
+                        "varName": "code",
+                        "name": "Create Together"
+                      }
+                    ]
+                  },
+                  {
+                    "comparison": "1",
+                    "value": "'colonist'",
+                    "actions": [
+                      {
+                        "together": "colonist",
+                        "storage": "2",
+                        "varName": "code",
+                        "name": "Create Together"
+                      }
+                    ]
+                  },
+                  {
+                    "comparison": "1",
+                    "value": "'ai'",
+                    "actions": [
+                      {
+                        "together": "ai",
+                        "storage": "2",
+                        "varName": "code",
+                        "name": "Create Together"
+                      }
+                    ]
+                  }
+                ],
+                "name": "Multi-Check Variable"
+              },
+              {
+                "channel": "0",
+                "varName": "",
+                "message": "",
+                "buttons": [],
+                "selectMenus": [],
+                "attachments": [],
+                "embeds": [
+                  {
+                    "title": "Discord Together",
+                    "url": "",
+                    "color": "#f76363",
+                    "timestamp": "false",
+                    "imageUrl": "",
+                    "thumbUrl": "",
+                    "description": "**Together**\nAby zagrać w **${tempVars(\"together\")}** [kliknij](${serverVars(\"code\")})",
+                    "fields": [],
+                    "author": "",
+                    "authorUrl": "",
+                    "authorIcon": "",
+                    "footerText": "",
+                    "footerIconUrl": ""
+                  }
+                ],
+                "reply": true,
+                "ephemeral": false,
+                "tts": false,
+                "overwrite": false,
+                "mention": false,
+                "dontSend": false,
+                "editMessage": "0",
+                "editMessageVarName": "",
+                "storage": "0",
+                "varName2": "",
+                "name": "Send Message"
+              }
+            ]
+          }
+        ],
+        "attachments": [],
+        "embeds": [
+          {
+            "title": "Discord Together",
+            "url": "",
+            "color": "#f76363",
+            "timestamp": "true",
+            "imageUrl": "",
+            "thumbUrl": "${tempVars(\"icon\")}",
+            "description": "Aby rozpocząć gre, wybierz poniżej w co byś chciał zagrać!",
+            "fields": [],
+            "author": "",
+            "authorUrl": "",
+            "authorIcon": "",
+            "footerText": "${tempVars(\"tag\")} (${tempVars(\"id\")})",
+            "footerIconUrl": "${tempVars(\"av\")}"
+          }
+        ],
+        "reply": true,
+        "ephemeral": false,
+        "tts": false,
+        "overwrite": false,
+        "mention": false,
+        "dontSend": false,
+        "editMessage": "0",
+        "editMessageVarName": "",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      }
+    ],
+    "comType": "4",
+    "description": "Stwórz wybrany przez ciebie together",
+    "parameters": []
+}
