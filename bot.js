@@ -3110,31 +3110,13 @@ Files.initEncryption();
 //---------------------------------------------------------------------
 
 const Audio = (DBM.Audio = {});
-const { setTimeout } = require("node:timers/promises");
-
-Audio.checkIfHasDependency = function(key) {
-  if(!Audio.packageJson) {
-    const path = require("node:path");
-    Audio.packageJson = require("node:fs").readFileSync(path.join(__dirname, "package.json"));
-    Audio.packageJson = JSON.parse(Audio.packageJson).dependencies;
-    if(!Audio.packageJson) {
-      Audio.packageJson = 1;
-    }
-  }
-  if(Audio.packageJson !== 1) {
-    return !!Audio.packageJson[key];
-  }
-  return false;
-}
 
 Audio.ytdl = null;
 try {
   Audio.ytdl = require("ytdl-core");
 } catch(e) {
   Audio.ytdl = null;
-  if(Audio.checkIfHasDependency("ytdl-core")) {
-    console.error(e);
-  }
+  console.log('npm install ytdl-core')
 }
 
 Audio.voice = null;
@@ -3142,366 +3124,28 @@ try {
   Audio.voice = require("@discordjs/voice");
 } catch(e) {
   Audio.voice = null;
-  if(Audio.checkIfHasDependency("@discordjs/voice")) {
-    console.error(e);
-  }
+  console.log('npm install @discordjs/voice')
 }
 
-Audio.rawYtdl = null;
+Audio.yts = null;
 try {
-  Audio.rawYtdl = require("youtube-dl-exec").exec;
+  Audio.yts = require("yt-search");
 } catch(e) {
-  Audio.rawYtdl = null;
-  if(Audio.checkIfHasDependency("youtube-dl-exec")) {
-    console.error(e);
-  }
+  Audio.yts = null;
+  console.log('npm install yt-search')
 }
 
-Audio.Subscription = class {
-  /** @param {import('@discordjs/voice').VoiceConnection} voiceConnection */
-  constructor(voiceConnection) {
-    this.voiceConnection = voiceConnection;
-    this.audioPlayer = Audio.voice.createAudioPlayer();
-    this.queue = [];
-    this.volume = 0.5;
-    this.bitrate = 96;
+Audio.map = new Map();
 
-    this.voiceConnection.on("stateChange", async (_, newState) => {
-      if (newState.status === Audio.voice.VoiceConnectionStatus.Disconnected) {
-        if (
-          newState.reason === Audio.voice.VoiceConnectionDisconnectReason.WebSocketClose &&
-          newState.closeCode === 4014
-        ) {
-          try {
-            // Probably moved voice channel
-            await Audio.voice.entersState(this.voiceConnection, Audio.voice.VoiceConnectionStatus.Connecting, 5_000);
-          } catch {
-            // Probably removed from voice channel
-            if (this.voiceConnection.state.status !== Audio.voice.VoiceConnectionStatus.Destroyed) {
-              this.voiceConnection.destroy();
-            }
-          }
-        } else if (this.voiceConnection.rejoinAttempts < 5) {
-          await setTimeout((this.voiceConnection.rejoinAttempts + 1) * 5_000);
-          this.voiceConnection.rejoin();
-        } else {
-          this.voiceConnection.destroy();
-        }
-      } else if (newState.status === Audio.voice.VoiceConnectionStatus.Destroyed) {
-        this.stop();
-      } else if (
-        !this.readyLock &&
-        (newState.status === Audio.voice.VoiceConnectionStatus.Connecting ||
-          newState.status === Audio.voice.VoiceConnectionStatus.Signalling)
-      ) {
-        this.readyLock = true;
-        try {
-          await Audio.voice.entersState(this.voiceConnection, Audio.voice.VoiceConnectionStatus.Ready, 20_000);
-        } catch {
-          if (this.voiceConnection.state.status !== Audio.voice.VoiceConnectionStatus.Destroyed) {
-            this.voiceConnection.destroy();
-          }
-        } finally {
-          this.readyLock = false;
-        }
-      }
-    });
+Audio.playSong = (guild, song) => {
+  const queue = Audio.map.get(guild.id)
 
-    this.audioPlayer.on("stateChange", (oldState, newState) => {
-      if (
-        newState.status === Audio.voice.AudioPlayerStatus.Idle &&
-        oldState.status !== Audio.voice.AudioPlayerStatus.Idle
-      ) {
-        void this.processQueue();
-      }
-    });
+  const stream = Audio.ytdl(song.video_url, { filter: 'audioonly', highWaterMark: 1<<25 });
+  const resource = Audio.voice.createAudioResource(stream, { inlineVolume: true });
 
-    this.audioPlayer.on("error", console.error);
-
-    voiceConnection.subscribe(this.audioPlayer);
-  }
-
-  enqueue(track, beginning = false) {
-    if (beginning) this.queue.unshift(track);
-    else this.queue.push(track);
-    void this.processQueue();
-  }
-
-  stop() {
-    this.queueLock = true;
-    this.queue = [];
-    this.audioPlayer.stop(true);
-  }
-
-  async processQueue() {
-    if (this.queueLock || this.audioPlayer.state.status !== Audio.voice.AudioPlayerStatus.Idle) {
-      return;
-    }
-
-    if (this.queue.length === 0) {
-      const leaveVoiceTimeout = Files.data.settings.leaveVoiceTimeout ?? "0";
-      let seconds = parseInt(leaveVoiceTimeout, 10);
-
-      if (isNaN(seconds) || seconds < 0) seconds = 0;
-      if (leaveVoiceTimeout === "" || !isFinite(seconds)) return;
-
-      require("node:timers")
-        .setTimeout(async () => {
-          let guild = null;
-          try {
-            guild = await Bot.bot.guilds.resolve(this.voiceConnection.joinConfig.guildId);
-          } catch(e) {
-            console.error(e);
-          }
-          if (guild) {
-            Audio.disconnectFromVoice(guild);
-          }
-        }, seconds * 1e3)
-        .unref();
-      return;
-    }
-
-    this.queueLock = true;
-
-    const nextTrack = this.queue.shift();
-    try {
-      const resource = await nextTrack.createAudioResource();
-      if (Audio.inlineVolume && typeof resource?.volume?.volume === "number") {
-        resource.volume.volume = this.volume ?? 0.5;
-      }
-      // resource.encoder.setBitrate(this.bitrate * 1e3);
-      this.audioPlayer.play(resource);
-      this.queueLock = false;
-    } catch(e) {
-      if(e.toString().includes("opus.node")) {
-        console.warn(`-- DBM Error Note --
-If you're seeing an error here, it's likely that the version of
-NodeJS/NPM or the operating system used to install @discordjs/opus
-is different from the NodeJS/NPM/OS running this bot.
-Try deleting "node_modules" and running "npm install" to resolve the issue.
-`);
-      }
-      console.error(e);
-      this.queueLock = false;
-      return this.processQueue();
-    }
-  }
-};
-
-Audio.Track = class {
-  /**
-   * @param {Object} options
-   * @param {String} options.url
-   * @param {String} options.title
-   */
-  constructor({ url, title }) {
-    this.url = url;
-    this.title = title;
-  }
-
-  createAudioResource() {
-    return new Promise((resolve, reject) => {
-      const child = Audio.rawYtdl(
-        this.url,
-        {
-          o: "-",
-          q: "",
-          f: "bestaudio[ext=webm+acodec=opus+asr=48000]/bestaudio",
-          r: "100K",
-        },
-        { stdio: ["ignore", "pipe", "ignore"] },
-      );
-      if (!child.stdout) {
-        reject(new Error("Got not stdout from child"));
-        return;
-      }
-      const stream = child.stdout;
-      const onError = (error) => {
-        if (!child.killed) child.kill();
-        stream.resume();
-        reject(error);
-      };
-      child
-        .once("spawn", () =>
-          Audio.voice
-            .demuxProbe(stream)
-            .then((probe) =>
-              resolve(
-                Audio.voice.createAudioResource(probe.stream, {
-                  metadata: this,
-                  inlineVolume: !!Audio.inlineVolume,
-                  inputType: probe.type,
-                }),
-              ),
-            )
-            .catch(onError),
-        )
-        .catch(onError);
-    });
-  }
-
-  static async from(url) {
-    let info = null;
-    try {
-      info = await Audio.ytdl.getInfo(url);
-    } catch(e) {
-      PrintError(MsgType.ERROR_GETTING_YT_INFO, e.stack.toString());
-    }
-    return new Audio.Track({ title: info?.videoDetails?.title ?? "", url });
-  }
-};
-
-Audio.BasicTrack = class {
-  /**
-   * @param {Object} options
-   * @param {String} options.url
-   */
-  constructor({ url }) {
-    this.url = url;
-  }
-
-  createAudioResource() {
-    return Audio.voice.createAudioResource(this.url, {
-      inlineVolume: !!Audio.inlineVolume,
-      inputType: Audio.voice.StreamType.Arbitrary,
-    });
-  }
-};
-
-Audio.subscriptions = new Map();
-
-Audio.connectToVoice = function (voiceChannel) {
-  if (!Audio.voice || !Audio.rawYtdl || !Audio.ytdl) {
-    return PrintError(MsgType.MISSING_MUSIC_MODULES);
-  }
-
-  Audio.inlineVolume ??= (Files.data.settings.mutableVolume ?? "true") === "true";
-
-  var existingSubscription = this.subscriptions.get(voiceChannel?.guild?.id);
-  if (existingSubscription) {
-
-    const status = existingSubscription.voiceConnection?.state?.status;
-    if (status === Audio.voice.VoiceConnectionStatus.Disconnected) {
-      existingSubscription.voiceConnection.destroy();
-      existingSubscription = null;
-    } else if (status === Audio.voice.VoiceConnectionStatus.Destroyed) {
-      existingSubscription = null;
-    }
-
-    if (existingSubscription?.voiceConnection?.joinConfig?.channelId === voiceChannel.id) {
-      return;
-    }
-  }
-
-  const subscription = new this.Subscription(
-    this.voice.joinVoiceChannel({
-      adapterCreator: voiceChannel.guild.voiceAdapterCreator,
-      channelId: voiceChannel.id,
-      guildId: voiceChannel.guildId,
-      selfDeaf: (Files.data.settings.autoDeafen ?? "true") === "true",
-    }),
-  );
-
-  this.subscriptions.set(
-    voiceChannel.guildId,
-    subscription,
-  );
-
-  return subscription;
-};
-
-Audio.getSubscription = function (guild) {
-  const subscription = this.subscriptions.get(guild?.id);
-  if (!subscription) {
-    const voiceChannel = guild?.me?.voice?.channel;
-    if (voiceChannel) {
-      return this.connectToVoice(voiceChannel);
-    }
-  }
-  return subscription;
-};
-
-Audio.disconnectFromVoice = function (guild) {
-  if (!guild) return;
-  const subscription = this.getSubscription(guild);
-  if (!subscription) return;
-  subscription.voiceConnection.destroy();
-  this.subscriptions.delete(guild?.id);
-};
-
-Audio.setVolume = function (volume, guild) {
-  if (Audio.inlineVolume === false) return PrintError(MsgType.MUTABLE_VOLUME_DISABLED);
-  if (!guild) return;
-  const subscription = this.getSubscription(guild);
-  if (!subscription) return PrintError(MsgType.MUTABLE_VOLUME_NOT_IN_CHANNEL);
-  subscription.volume = volume;
-  if (subscription.audioPlayer.state.status === this.voice.AudioPlayerStatus.Playing) {
-    subscription.audioPlayer.state.resource.volume.volume = volume;
-  }
-};
-
-Audio.addAudio = async function (info, guild, isQueue) {
-  if (!guild) return;
-  if (isQueue) {
-    Audio.addToQueue(info, guild);
-  } else {
-    Audio.playImmediately(info, guild);
-  }
-};
-
-Audio.addToQueue = async function ([type, options, url], guild) {
-  if (!guild) return;
-  const id = guild.id;
-  const subscription = this.getSubscription(guild);
-  if (!subscription) return;
-  if (typeof options.volume !== "undefined") this.setVolume(options.volume, guild);
-  if (typeof options.bitrate !== "undefined") subscription.bitrate = options.bitrate;
-  let track = null;
-  try {
-    track = await this.getTrack(url, type);
-  } catch(e) {
-    PrintError(MsgType.ERROR_CREATING_AUDIO, e.stack.toString());
-  }
-  if (track !== null) {
-    subscription.enqueue(track);
-  }
-};
-
-Audio.playImmediately = async function ([type, options, url], guild) {
-  if (!guild) return;
-  const subscription = this.getSubscription(guild);
-  if (!subscription) return;
-  if (typeof options.volume !== "undefined") this.setVolume(options.volume, guild);
-  if (typeof options.bitrate !== "undefined") subscription.bitrate = options.bitrate;
-  let track = null;
-  try {
-    track = await this.getTrack(url, type);
-  } catch(e) {
-    PrintError(MsgType.ERROR_CREATING_AUDIO, e.stack.toString());
-  }
-  if (track !== null) {
-    subscription.enqueue(track, true);
-  }
-  subscription.audioPlayer.stop(true);
-};
-
-Audio.clearQueue = function (cache) {
-  if (!cache.server) return;
-  const subscription = this.getSubscription(cache.server);
-  if (!subscription) return;
-  subscription.queue = [];
-};
-
-Audio.getTrack = function (url, type) {
-  switch (type) {
-    case "file":
-      return new this.BasicTrack({ url: Actions.getLocalFile(url) });
-    case "url":
-      return new this.BasicTrack({ url });
-    case "yt":
-      return this.Track.from(url);
-  }
-};
+  queue.player.play(resource);
+  queue.resource = resource;
+}
 
 //#endregion
 
