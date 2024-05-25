@@ -39,7 +39,7 @@ module.exports = {
   
   <p>
     <u><b><span style="color: white;">NOTE:</span></b></u><br>
-    required modules, npm i @discordjs/voice @discordjs/opus libsodium-wrappers ffmpeg-static ytdl-core
+    required modules, npm i @discordjs/voice @discordjs/opus libsodium-wrappers ffmpeg-static ytdl-core yt-search
   </p>
   `;
     },
@@ -51,6 +51,7 @@ module.exports = {
       const data = cache.actions[cache.index];
       const voice = this.getDBM().Audio.voice;
       const ytdl = this.getDBM().Audio.ytdl;
+      const ytSearch = this.getDBM().Audio.yts;
       const voiceChannel = (cache.msg ?? cache.interaction).member.voice.channel;
       const dQ = this.getDBM().Audio.map;
       const query = this.evalMessage(data.query, cache);
@@ -63,7 +64,19 @@ module.exports = {
         adapterCreator: voiceChannel.guild.voiceAdapterCreator,
       });
 
-      const songInfo = (await ytdl.getInfo(query)).videoDetails;
+      try {
+        let songInfo = await ytSearch(query);
+        songInfo = (await ytdl.getInfo(songInfo.videos[0].url)).videoDetails;
+      } catch(er) {
+        console.log("music not found!")
+        const val = parseInt(data.callS, 10);
+        const index = Math.max(val - 1, 0);
+        if (cache.actions[index]) {
+          cache.index = index - 1;
+          this.storeValue(undefined, storage, varName, cache);
+          this.callNextAction(cache);
+        }
+      }
 
       const serverQ = dQ.get((cache.msg ?? cache.interaction).guild.id);
       if (!serverQ) {

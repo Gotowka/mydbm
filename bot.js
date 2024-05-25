@@ -3127,6 +3127,14 @@ try {
   console.log('npm install @discordjs/voice')
 }
 
+Audio.yts = null;
+try {
+  Audio.yts = require("yt-search");
+} catch(e) {
+  Audio.yts = null;
+  console.log('npm install yt-search')
+}
+
 Audio.map = new Map();
 
 Audio.playSong = (guild, song) => {
