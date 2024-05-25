@@ -15,7 +15,7 @@ module.exports = {
       return [data.varName, dataType];
     },
 
-    meta: { version: "2.1.8", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/ticket_manager.js' },
+    meta: { version: "2.1.9", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/ticket_manager.js' },
     
     fields: ["Tname", "Ttopic", "Tparent", "Tposition", "embeds", "E1", "E2", "sembed", "limit", "role", "storage", "varName"],
   
@@ -214,7 +214,7 @@ module.exports = {
   
   
     async action(cache) {
-      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mticket_manager; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv2.1.8\x1b[30m)\x1b[0m')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mticket_manager; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv2.1.9\x1b[30m)\x1b[0m')
       const data = cache.actions[cache.index];
       const { interaction } = cache
       const { Permissions, MessageEmbed } = require('discord.js')

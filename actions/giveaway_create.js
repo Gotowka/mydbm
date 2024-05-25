@@ -15,7 +15,7 @@ module.exports = {
     return ['endTime', dataType, 'winner', '<Member>', 'check', 'boolean'];
   },
 
-  meta: { version: "2.1.8", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/giveaway_create.js' },
+  meta: { version: "2.1.9", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/giveaway_create.js' },
 
   fields: ["msg", "gift", "find", "time", "type", "call"],
 
@@ -84,7 +84,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   async action(cache) {
-    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mgiveaway_create; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv2.1.8\x1b[30m)\x1b[0m')
+    console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mgiveaway_create; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv2.1.9\x1b[30m)\x1b[0m')
     const data = cache.actions[cache.index]
     const { interaction, msg } = cache
     const mess = (interaction ?? msg)

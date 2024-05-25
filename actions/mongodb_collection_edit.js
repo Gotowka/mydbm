@@ -8,7 +8,7 @@ module.exports = {
       return `Edit mongoDB collection data`;
     },
   
-    meta: { version: "2.1.8", preciseCheck: false, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/mongodb_collection_edit.js' },
+    meta: { version: "2.1.9", preciseCheck: false, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/mongodb_collection_edit.js' },
   
     fields: ["database", "fdata", "cname", "udata"],
   

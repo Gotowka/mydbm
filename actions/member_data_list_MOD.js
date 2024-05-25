@@ -2,11 +2,11 @@ module.exports = {
   name: 'Store Member Data List',
   section: 'Member Control',
   meta: {
-    version: '2.1.8',
+    version: '2.1.9',
     preciseCheck: false,
     author: 'Gotowka/DBM Mods',
-    authorUrl: 'https://github.com/dbm-network/mods',
-    downloadURL: 'https://github.com/dbm-network/mods/blob/master/actions/member_data_list_MOD.js',
+    authorUrl: 'https://github.com/Gotowka/mydbm/tree/v2',
+    downloadURL: 'https://github.com/Gotowka/mydbm/blob/v2/actions/member_data_list_MOD.js',
   },
 
   subtitle(data) {

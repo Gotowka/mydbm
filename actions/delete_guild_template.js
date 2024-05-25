@@ -8,7 +8,7 @@ module.exports = {
       return `Delete the guild template`;
     },
   
-    meta: { version: "2.1.8", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/delete_guild_template.js' },
+    meta: { version: "2.1.9", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/delete_guild_template.js' },
     
     fields: ["server", "varName"],
   
@@ -28,7 +28,7 @@ module.exports = {
   
   
     async action(cache) {
-      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mdelete_guild_template; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv2.1.8\x1b[30m)\x1b[0m')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mdelete_guild_template; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv2.1.9\x1b[30m)\x1b[0m')
       const data = cache.actions[cache.index];
       const targetServer = await this.getServerFromData(data.server, data.varName, cache);
     const template = await targetServer.fetchTemplates()

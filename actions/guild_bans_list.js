@@ -15,7 +15,7 @@ module.exports = {
         return [data.varName2, dataType];
       },
   
-    meta: { version: "2.1.8", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/guild_bans_list.js' },
+    meta: { version: "2.1.9", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/guild_bans_list.js' },
   
     fields: ["guild", "list", "storage", "varName2"],
   
@@ -42,7 +42,7 @@ module.exports = {
     init() {},
   
     async action(cache) {
-      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mguild_bans_list; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv2.1.8\x1b[30m)\x1b[0m')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mguild_bans_list; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv2.1.9\x1b[30m)\x1b[0m')
         const data = cache.actions[cache.index];
         const cc = this.getDBM().Bot.bot
         const guild = cc.guilds.cache.get(this.evalMessage(data.guild, cache))

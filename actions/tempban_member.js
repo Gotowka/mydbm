@@ -41,7 +41,7 @@ module.exports = {
     // This will make it so the patch version (0.0.X) is not checked.
     //---------------------------------------------------------------------
   
-    meta: { version: "2.1.8", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/tempban_member.js', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/tempban_member.js' },
+    meta: { version: "2.1.9", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/tempban_member.js', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/tempban_member.js' },
   
     //---------------------------------------------------------------------
     // Action Fields
@@ -112,7 +112,7 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
-      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mtempban_member; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv2.1.8\x1b[30m)\x1b[0m');
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mtempban_member; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv2.1.9\x1b[30m)\x1b[0m');
       const bData = require('../data/bans.json');
       const fs = require('fs')
       const data = cache.actions[cache.index];
