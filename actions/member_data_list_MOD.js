@@ -119,6 +119,7 @@ module.exports = {
     const varName2 = this.evalMessage(data.varName2, cache);
     const mid = ' ' + this.evalMessage(data.middle, cache) + ' ';
     const numbefst2 = this.evalMessage(data.numbefst2, cache);
+    const dataName = this.evalMessage(data.dataName, cache);
     const selectionsnum = parseInt(data.numbefstselect, 10);
     const sortType = parseInt(data.sort, 10);
     const { sort } = require('fast-sort');
@@ -128,20 +129,19 @@ module.exports = {
 
     if (file) {
       let list = []
-      Object.keys(file).map(userId => {
-          const user = file[userId];
-          const member = (msg ?? interaction).guild.members.cache.get(userId) || (msg ?? interaction).guild.members.fetch(userId);
+      Object.keys(file).map(userId => ({ ...file[userId], userId })).filter(a => a[dataName] !== undefined).map(user => {
+          const member = (msg ?? interaction).guild.members.cache.get(user.userId) || (msg ?? interaction).guild.members.fetch(user.userId);
           user.guildMember = member
           user.en = this.evalMessage(data.end, cache);
           user.st = this.evalMessage(data.start, cache);
 
           if (user.st === 'id') user.st = `<@` + member.user.id + `>`;
-          else if (user.st === 'result') user.st = user[this.evalMessage(data.dataName, cache)];
+          else if (user.st === 'result') user.st = user[dataName];
           else if (user.st === 'displayName') user.st = member[user.st];
           else user.st = member.user[user.st];
 
           if (user.en === 'id') user.en = `<@` + member.user.id + `>`;
-          else if (user.en === 'result') user.en = user[this.evalMessage(data.dataName, cache)];
+          else if (user.en === 'result') user.en = user[dataName];
           else if (user.en === 'displayName') user.en = member[user.en];
           else user.en = member.user[user.en];
 
@@ -150,10 +150,10 @@ module.exports = {
 
       switch (sortType) {
           case 1:
-            list = sort(list).desc((u) => parseInt(u[this.evalMessage(data.dataName, cache)], 10));
+            list = sort(list).desc((u) => parseInt(u[dataName], 10));
             break;
           case 2:
-            list = sort(list).asc((u) => parseInt(u[this.evalMessage(data.dataName, cache)], 10));
+            list = sort(list).asc((u) => parseInt(u[dataName], 10));
             break;
           case 0:
             list = list;
