@@ -130,8 +130,8 @@ module.exports = {
     if (file) {
       let list = []
       Object.keys(file).map(userId => ({ ...file[userId], userId })).filter(a => a[dataName] !== undefined).map(user => {
-          const member = (msg ?? interaction).guild.members.cache.get(user.userId) || (msg ?? interaction).guild.members.fetch(user.userId);
-          user.guildMember = member
+          const member = (msg ?? interaction).guild.members.cache.get(user.userId);
+          user.guildMember = member;
           user.en = this.evalMessage(data.end, cache);
           user.st = this.evalMessage(data.start, cache);
 
