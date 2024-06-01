@@ -110,3 +110,5 @@
 - [Store Voice Channel Info](https://github.com/Gotowka/mydbm/blob/v2/actions/store_voice_channel_info.js)
 
 - [Store Member Data List](https://github.com/Gotowka/mydbm/blob/v2/actions/member_data_list_MOD.js)
+
+- [Member Data Remove](https://github.com/Gotowka/mydbm/blob/v2/actions/member_data_remove.js) [1.0]
