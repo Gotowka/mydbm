@@ -130,22 +130,24 @@ module.exports = {
     if (file) {
       let list = []
       Object.keys(file).map(userId => ({ ...file[userId], userId })).filter(a => a[dataName] !== undefined).map(user => {
-        const member = (msg ?? interaction).guild.members.cache.get(user.userId);
-        user.guildMember = member;
-        user.en = this.evalMessage(data.end, cache);
-        user.st = this.evalMessage(data.start, cache);
-
-        if (user.st === 'id') user.st = `<@` + member.user.id + `>`;
-        else if (user.st === 'result') user.st = user[dataName];
-        else if (user.st === 'displayName') user.st = member[user.st];
-        else user.st = member.user[user.st];
-
-        if (user.en === 'id') user.en = `<@` + member.user.id + `>`;
-        else if (user.en === 'result') user.en = user[dataName];
-        else if (user.en === 'displayName') user.en = member[user.en];
-        else user.en = member.user[user.en];
-
-        if (user.st !== undefined && user.en !== undefined) list.push(user);
+        const member = (msg ?? interaction).guild?.members?.cache?.get(user.userId);
+        if (!member) {
+          user.guildMember = member;
+          user.en = this.evalMessage(data.end, cache);
+          user.st = this.evalMessage(data.start, cache);
+  
+          if (user.st === 'id') user.st = `<@` + member.user.id + `>`;
+          else if (user.st === 'result') user.st = user[dataName];
+          else if (user.st === 'displayName') user.st = member[user.st];
+          else user.st = member.user[user.st];
+  
+          if (user.en === 'id') user.en = `<@` + member.user.id + `>`;
+          else if (user.en === 'result') user.en = user[dataName];
+          else if (user.en === 'displayName') user.en = member[user.en];
+          else user.en = member.user[user.en];
+  
+          if (user.st !== undefined && user.en !== undefined) list.push(user);
+        }
       })
 
       switch (sortType) {
