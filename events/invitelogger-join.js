@@ -25,38 +25,40 @@ module.exports = {
               log[member.id] = []
               log[member.id].push({
                 code: invite.code,
-                inviter: inviter.tag,
+                inviter: inviter.id,
               })
               
               if (!inv[invite.code]) {
                 inv[invite.code] = []
                 inv[invite.code].push({
                   code: invite.code,
-                  owner: inviter.tag,
+                  owner: inviter.id,
                   joins: '1',
                   leaves: '0',
                   middle: '1'
                 })
               } else {
                   const count = parseInt(inv[invite.code][0].joins) + 1
+                  inv[invite.code][0].owner = inviter.id
                   inv[invite.code][0].middle = count - parseInt(inv[invite.code][0].leaves)
-                inv[invite.code][0].joins = count
+                  inv[invite.code][0].joins = count
               }
             } else {
               log[member.id][0].code = invite.code
-              log[member.id][0].inviter = inviter.tag,
+              log[member.id][0].inviter = inviter.id,
               log[member.id][0].uses = invite.uses
               if (!inv[invite.code]) {
                 inv[invite.code] = []
                 inv[invite.code].push({
                   code: invite.code,
-                  owner: inviter.tag,
+                  owner: inviter.id,
                   joins: '1',
                   leaves: '0',
                   middle: '1'
                 })
               } else {
                   const count = parseInt(inv[invite.code][0].joins) + 1
+                  inv[invite.code][0].owner = inviter.id
                   inv[invite.code][0].middle = count - parseInt(inv[invite.code][0].leaves)
                   inv[invite.code][0].joins = count
               }
