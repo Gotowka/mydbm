@@ -31,19 +31,19 @@ module.exports = {
         let dataType = "Unknown Type";
         switch (info) {
           case 0:
-            dataType = "Invite Owner";
+            dataType = "Invite Owner<ID>";
             break;
           case 1:
-            dataType = "Invite Code";
+            dataType = "Invite Code<Text>";
             break;
           case 2:
-            dataType = "Invite Joins"
+            dataType = "Invite Joins<Number>"
             break;
           case 3:
-            dataType = "Invite Leaves";
+            dataType = "Invite Leaves<Number>";
             break;
           case 4:
-            dataType = "Invite Middle";
+            dataType = "Invite Middle<Number>";
             break;
         }
         return [data.varName2, dataType];
@@ -131,61 +131,41 @@ module.exports = {
     //---------------------------------------------------------------------
   
     async action(cache) {
-      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mloggerinfo; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv2.1.9\x1b[30m)\x1b[0m')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mloggerinfo; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv2.1.9\x1b[30m)\x1b[0m')
       const data = cache.actions[cache.index];
       const invite = await this.evalMessage(data.invite, cache);
-      const info = parseInt(data.info, 10)
-      let result
-      if (invite.includes('code:')) {
-        switch(info) {
-          case 0:
-              result = invite.owner
-              break;
-          case 1:
-              result = invite.code;
-              break;
-          case 2:
-              result = invite.joins;
-              break;
-          case 3:
-              result = invite.leaves;
-              break;
-          case 4: 
-              result = invite.middle
-              break;
-          default: 
-              break;
-          }
-      } else {
-        const inv = require('../data/invites.json')
-        if (!inv[invite]) return console.log(`I can't found ${invite} in database`);
-        switch(info) {
-          case 0:
-              result = inv[invite][0].owner
-              break;
-          case 1:
-              result = inv[invite][0].code;
-              break;
-          case 2:
-              result = inv[invite][0].joins;
-              break;
-          case 3:
-              result = inv[invite][0].leaves;
-              break;
-          case 4: 
-              result = inv[invite][0].middle
-              break;
-          default: 
-              break;
-          }
+      const info = parseInt(data.info, 10);
+      let result;
+      const inv = require('../data/invites.json');
+      if (!inv[invite]) return console.log(`[InviteLogger-INFO] I can't found ${invite} in database`);
+
+      switch(info) {
+        case 0:
+          result = inv[invite][0].owner
+          break;
+        case 1:
+          result = inv[invite][0].code;
+          break;
+        case 2:
+          result = inv[invite][0].joins;
+          break;
+        case 3:
+          result = inv[invite][0].leaves;
+          break;
+        case 4: 
+          result = inv[invite][0].middle
+          break;
+        default: 
+          break;
       }
-        if (result !== undefined) {
-            const storage = parseInt(data.storage, 10);
-            const varName2 = this.evalMessage(data.varName2, cache);
-            this.storeValue(result, storage, varName2, cache);
-          }
+    
+    if (result !== undefined) {
+      const storage = parseInt(data.storage, 10);
+      const varName2 = this.evalMessage(data.varName2, cache);
+      this.storeValue(result, storage, varName2, cache);
+    }
       
-          this.callNextAction(cache);
+    this.callNextAction(cache);
     },
 
   mod() {},
