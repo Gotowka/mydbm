@@ -5,8 +5,10 @@ module.exports = {
       version: '2.1.9',
       preciseCheck: false,
       author: 'Gotowka',
+      authorUrl: 'https://github.com/Gotowka/mydbm/tree/v2',
+      downloadURL: 'https://github.com/Gotowka/mydbm/blob/v2/actions/play_music.js',
     },
-    fields: ['query', 'call', 'callS', 'storage', 'varName'],
+    fields: ['query', 'call', 'callS', 'callE', 'storage', 'varName'],
   
     subtitle(data) {
       return `${data.query}`;
@@ -30,6 +32,9 @@ module.exports = {
     <br>
     <span class="dbminputlabel">Jump To Action (Next song playing)</span>
     <input id="callS" class="round" type="number">
+    <br>
+    <span class="dbminputlabel">Jump To Action (Song not found)</span>
+    <input id="callE" class="round" type="number">
   </div>
   <br><br><br><br><br><br><br>
   <store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></store-in-variable>
@@ -45,7 +50,7 @@ module.exports = {
     init() {},
   
     async action(cache) {
-      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mplay_music; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv2.1.9\x1b[30m)\x1b[0m')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mplay_music; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv2.1.9\x1b[30m)\x1b[0m')
       const data = cache.actions[cache.index];
       const voice = this.getDBM().Audio.voice;
       const ytdl = this.getDBM().Audio.ytdl;
@@ -56,26 +61,26 @@ module.exports = {
       const storage = parseInt(data.storage, 10);
       const varName = this.evalMessage(data.varName, cache);
 
-      const connection = voice.joinVoiceChannel({
-        channelId: voiceChannel.id,
-        guildId: voiceChannel.guild.id,
-        adapterCreator: voiceChannel.guild.voiceAdapterCreator,
-      });
-
       let songInfo
       try {
         songInfo = await ytSearch(query);
         songInfo = (await ytdl.getInfo(songInfo.videos[0].url)).videoDetails;
       } catch(er) {
-        console.log("music not found!")
-        const val = parseInt(data.callS, 10);
+        const val = parseInt(data.callE, 10);
         const index = Math.max(val - 1, 0);
         if (cache.actions[index]) {
           cache.index = index - 1;
           this.storeValue(undefined, storage, varName, cache);
           this.callNextAction(cache);
         }
+        return;
       }
+
+      const connection = voice.joinVoiceChannel({
+        channelId: voiceChannel.id,
+        guildId: voiceChannel.guild.id,
+        adapterCreator: voiceChannel.guild.voiceAdapterCreator,
+      });
 
       const serverQ = dQ.get((cache.msg ?? cache.interaction).guild.id);
       if (!serverQ) {
