@@ -471,14 +471,6 @@ module.exports = {
       if (this.evalMessage(data.embeds[0].footericon, cache)) settings.embed.footer.iconURL = this.evalMessage(data.embeds[0].footericon, cache)
       else settings.embed.footer.iconURL = 'https://i.imgur.com/pq2ElIT.jpg'
       test.calculator(msg ?? interaction, settings)
-      } else if (data.ssuggest == true) {
-          settings.suggest = this.evalMessage(data.suggests[0].suggest, cache)
-          settings.guild = client.guilds.cache.get(this.evalMessage(data.guild, cache))
-          settings.member = guild.members.cache.get(this.evalMessage(data.suggests[0].member, cache))
-          settings.channel = guild.channels.cache.get(this.evalMessage(data.suggests[0].channel, cache))
-          settings.message = channel.messages.cache.get(this.evalMessage(data.suggests[0].message, cache))
-          settings.client = client
-        new Suggest(settings).start()
       }
     },
 
