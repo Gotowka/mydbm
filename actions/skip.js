@@ -16,7 +16,7 @@ module.exports = {
       return [data.varName, dataType, data.varName2, dataType];
     },
   
-    meta: { version: "2.1.9", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2-beta/actions/skip.js' },
+    meta: { version: "2.1.9", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka/mydbm/tree/v2', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/skip.js' },
   
   
     fields: ["storage", "varName", "storage2", "varName2"],

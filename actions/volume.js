@@ -8,7 +8,7 @@ module.exports = {
 	  return `Changing the volume`;
 	},
   
-	meta: { version: "2.1.9", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2-beta/actions/volume.js' },
+	meta: { version: "2.1.9", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka/mydbm/tree/v2', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/volume.js' },
   
 	fields: ["volume"],
   
