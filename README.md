@@ -25,7 +25,7 @@
 
 - [Create Together](https://github.com/Gotowka/mydbm/blob/v2/actions/create_together.js) [1.0]
 
-- [Play Music](https://github.com/Gotowka/mydbm/blob/v2/actions/play_music.js) [1.0]
+- [Play Music](https://github.com/Gotowka/mydbm/blob/v2/actions/play_music.js) [1.1]
 
 - [Volume](https://github.com/Gotowka/mydbm/blob/v2/actions/volume.js) [1.0]
 
@@ -69,7 +69,7 @@
 
 - [Systems](https://github.com/Gotowka/mydbm/blob/v2/actions/systems.js) [1.0]
 
-- [Systems2](https://github.com/Gotowka/mydbm/blob/v2/actions/systems2.js) [1.0]
+- [Systems2](https://github.com/Gotowka/mydbm/blob/v2/actions/systems2.js) [1.1]
 
 - [Automod Create](https://github.com/Gotowka/mydbm/blob/v2/actions/automod_create.js) [1.0]
 
