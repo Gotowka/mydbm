@@ -109,6 +109,11 @@ module.exports = {
     <option value="krunker">Project K(Known as Krunker)</options>
     <option value="colonist">Colonist</options>
     <option value="ai">Death by AI</options>
+    <option value="bopz">BOPZ.io</options>
+    <option value="radio">Tuneln Radio & Podcasts</options>
+    <option value="rythm">Rythm</options>
+    <option value="goober">Goober Dash</options>
+    <option value="farm">Farm Merge Valley</options>
   </select>
 </div>
 <br>
