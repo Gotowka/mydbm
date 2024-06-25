@@ -12,7 +12,7 @@ module.exports = {
   variableStorage(data, varType) {
     if (1 !== varType) return;
     let dataType = "Unix Timestamp";
-    return ['endTime', dataType, 'winner', '<Member>', 'check', 'boolean'];
+    return ['endTime', dataType, 'check', 'boolean', 'winner', '<Member>'];
   },
 
   meta: { version: "2.1.9", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v2/actions/giveaway_create.js' },
