@@ -1,12 +1,14 @@
 # 13.17.1 [v2-2.1.9]
 
+- [Bot.js](https://github.com/Gotowka/mydbm/blob/v2/bot.js) [1.1]
+
 **Events:**
 
 - [Bot Join Server (2)](https://github.com/Gotowka/mydbm/blob/v2/events/bot_join_server.js)
 
 - [Bot Leave Server (2)](https://github.com/Gotowka/mydbm/blob/v2/events/bot_leave_server.js)
 
-- [InviteLogger JOIN](https://github.com/Gotowka/mydbm/blob/v2/events/invitelogger-join.js) [1.1]
+- [InviteLogger JOIN](https://github.com/Gotowka/mydbm/blob/v2/events/invitelogger-join.js) [1.2]
 
 - [InviteLogger LEAVE](https://github.com/Gotowka/mydbm/blob/v2/events/invitelogger-leave.js)
 
@@ -66,6 +68,8 @@
 - [Start Audit Logs Map](https://github.com/Gotowka/mydbm/blob/v2/actions/start_audit_logs_map.js) [1.0]
 
 - [InviteLogger INFO](https://github.com/Gotowka/mydbm/blob/v2/actions/loggerinfo.js) [1.1]
+
+- [InviteLogger LoadInvites](https://github.com/Gotowka/mydbm/blob/v2/actions/logger_loadInvites_.js) [1.0]
 
 - [Systems](https://github.com/Gotowka/mydbm/blob/v2/actions/systems.js) [1.0]
 
