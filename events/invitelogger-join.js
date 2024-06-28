@@ -6,59 +6,58 @@ module.exports = {
 
   mod (DBM) {
     DBM.Events = DBM.Events || {}
-    let oldinv
     const { Actions, Bot } = DBM
-    const { Collection } = require('discord.js')
     const { writeFileSync } = require('fs-extra')
     DBM.Events.loggerJoin = async function (member) {
       if (!Bot.$evts['InviteLogger JOIN']) return;
       const guild = member.guild
       for (const event of Bot.$evts["InviteLogger JOIN"]) {
+        try {
           const log = require('../data/logger.json')
           const inv = require('../data/invites.json')
-          const invites = oldinv
           const newInvites = await member.guild.invites.fetch()
+          const invites = Actions.getInvites();
           const oldInvites = invites.get(guild.id);
-          const invite = await newInvites.find(i => i.uses > oldInvites.get(i.code));
-          const inviter = await guild.members.cache.get(invite.inviter.id).user;
+          let invite
+          if (oldInvites.size == 0) invite = newInvites.at(0);
+          else invite = await newInvites.find(i => i.uses > oldInvites.get(i.code))
           if (!log[member.id]) {
             log[member.id] = []
             log[member.id].push({
               code: invite.code,
-              inviter: inviter.id,
+              inviter: invite.inviter.id,
             })
               
             if (!inv[invite.code]) {
               inv[invite.code] = []
               inv[invite.code].push({
                 code: invite.code,
-                owner: inviter.id,
+                owner: invite.inviter.id,
                 joins: '1',
                 leaves: '0',
                 middle: '1'
               })
             } else {
                 const count = parseInt(inv[invite.code][0].joins) + 1
-                inv[invite.code][0].owner = inviter.id
+                inv[invite.code][0].owner = invite.inviter.id
                 inv[invite.code][0].middle = count - parseInt(inv[invite.code][0].leaves)
                 inv[invite.code][0].joins = count
             }
           } else {
             log[member.id][0].code = invite.code
-            log[member.id][0].inviter = inviter.id,
-            log[member.id][0].uses = invite.uses
+            log[member.id][0].inviter = invite.inviter.id
             if (!inv[invite.code]) {
               inv[invite.code] = []
               inv[invite.code].push({
                 code: invite.code,
-                owner: inviter.id,
+                owner: invite.inviter.id,
                 joins: '1',
                 leaves: '0',
                 middle: '1'
               })
             } else {
                 const count = parseInt(inv[invite.code][0].joins) + 1
-                inv[invite.code][0].owner = inviter.id
+                inv[invite.code][0].owner = invite.inviter.id
                 inv[invite.code][0].middle = count - parseInt(inv[invite.code][0].leaves)
                 inv[invite.code][0].joins = count
               }
@@ -70,17 +69,23 @@ module.exports = {
           if (event.temp) temp[event.temp] = member
           if (event.temp2) temp[event.temp2] = invite.code
           await Actions.invokeEvent(event, guild, temp)
+        } catch(er) {
+          console.log(er)
+        }
+        await Actions.invokeEvent(event, guild, temp)
       }
     }
     const onReady = Bot.onReady
     Bot.onReady = async function (...params) {
       const client = Bot.bot
-      const xd = new Collection()
       await client.guilds.cache.forEach(async (guild) => {
-       const firstInvites = await guild.invites.fetch()
-       xd.set(guild.id, new Collection(firstInvites.map((invite) => [invite.code, invite.uses])))
+        try {
+          Actions.loadLogger()
+          await Actions.loadInvites(guild)
+        }  catch(er) {
+          console.log(er)
+        }
       })
-      oldinv = xd
       Bot.bot.on('guildMemberAdd', DBM.Events.loggerJoin)
       onReady.apply(this, ...params)
     }
