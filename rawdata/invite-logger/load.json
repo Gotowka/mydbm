@@ -1,0 +1,11 @@
+{
+    "name": "event logger loadInvites",
+    "temp": "invite",
+    "event-type": "49",
+    "_id": "WGUsw",
+    "actions": [
+      {
+        "name": "InviteLogger LoadInvites"
+      }
+    ]
+}
