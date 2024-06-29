@@ -1,6 +1,6 @@
 # 14.15.2 [v3-3.2.4]
 
-[Bot.js](https://github.com/Gotowka/mydbm/blob/v3/bot.js) [1.1]
+[Bot.js](https://github.com/Gotowka/mydbm/blob/v3/bot.js) [1.2]
 
 - If someone is curious, [DiscordBotPanel](https://discord.gg/59JvYgdGgm) works on v3
 
