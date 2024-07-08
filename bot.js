@@ -9,8 +9,8 @@ DBM.version = "3.2.4";
 
 const DiscordJS = (DBM.DiscordJS = require("discord.js"));
 
-if (DiscordJS.version !== '14.15.2') console.log(`BOT: bot.js; [v1.2] (v3.2.4) (DJS: \x1b[31m\x1b[1m${DiscordJS.version}\x1b[0m --> \x1b[32m\x1b[1m14.15.2\x1b[0m)`)
-else console.log(`BOT: bot.js; [v1.2] (v3.2.4) (\x1b[32m\x1b[1m14.15.2\x1b[0m)`)
+if (DiscordJS.version !== '14.15.3') console.log(`BOT: bot.js; [v1.2] (v3.2.4) (DJS: \x1b[31m\x1b[1m${DiscordJS.version}\x1b[0m --> \x1b[32m\x1b[1m14.15.3\x1b[0m)`)
+else console.log(`BOT: bot.js; [v1.2] (v3.2.4) (\x1b[32m\x1b[1m14.15.3\x1b[0m)`)
 
 const noop = () => void 0;
 
