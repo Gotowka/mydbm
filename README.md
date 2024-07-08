@@ -1,4 +1,4 @@
-# 14.15.2 [v3-3.2.4]
+# 14.15.3 [v3-3.2.4]
 
 [Bot.js](https://github.com/Gotowka/mydbm/blob/v3/bot.js) [1.2]
 
@@ -40,7 +40,7 @@
 
 - [Automod Create](https://github.com/Gotowka/mydbm/blob/v3/actions/automod_create.js) [1.0]
 
-- [Automod Delete](https://github.com/Gotowka/mydbm/blob/v3/actions/automod_delete.js) [1.0]
+- [Automod Delete](https://github.com/Gotowka/mydbm/blob/v3/actions/automod_delete.js) [1.1]
 
 - [Ticket Manager](https://github.com/Gotowka/mydbm/blob/v3/actions/ticket_manager.js) [1.0]
 
