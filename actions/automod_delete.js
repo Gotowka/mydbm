@@ -8,6 +8,13 @@ module.exports = {
       return `Delete automod - ${data.value}`;
     },
   
+    variableStorage(data, varType) {
+      const type = parseInt(data.storage, 10);
+      if (type !== varType) return;
+      let dataType = "<Notfound/Delete>";
+      return ['error', dataType];
+    },
+
     meta: { version: "3.2.4", preciseCheck: true, author: 'Gotowka', authorUrl: 'https://github.com/Gotowka', downloadUrl: 'https://github.com/Gotowka/mydbm/blob/v3/actions/automod_delete.js' },
     
     fields: ["value", "type"],
@@ -37,7 +44,7 @@ module.exports = {
     init() {},
   
     async action(cache) {
-      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mautomod_delete; \x1b[30m[\x1b[32mv1.0\x1b[30m] \x1b[30m(\x1b[36mv3.2.4\x1b[30m)\x1b[0m')
+      console.log('\x1b[30m[\x1b[35mACTION\x1b[30m]: \x1b[33mautomod_delete; \x1b[30m[\x1b[32mv1.1\x1b[30m] \x1b[30m(\x1b[36mv3.2.4\x1b[30m)\x1b[0m')
       const data = cache.actions[cache.index];
       const value = this.evalMessage(data.value, cache)
       const type = parseInt(data.type)
