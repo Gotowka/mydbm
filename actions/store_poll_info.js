@@ -25,10 +25,10 @@ module.exports = {
       const info = [
         "Question",
         "Answers",
-        "AllowMultiselect",
+        "If it Allows Multiple Answers",
         "Expired Date",
         "Expired Timestamp",
-        "Ended",
+        "If it ended",
         "Answers Count"
       ];
       return `Get the - ${info[parseInt(data.info, 10)]}`;
