@@ -49,11 +49,11 @@ module.exports = {
       let dataType = "Unknown Type";
       switch (info) {
         case 0:
-          dataType = "Song Title";
-          break;
+         dataType = "Song Title";
+         break;
         case 1:
-          dataType = "Song Url";
-          break;
+         dataType = "Song Url";
+         break;
         case 2:
          dataType = "Song Author";
          break;
