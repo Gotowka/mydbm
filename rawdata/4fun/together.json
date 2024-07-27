@@ -214,6 +214,13 @@
               "value": "farm",
               "emoji": "",
               "default": "false"
+            },
+            {
+              "label": "Rocket Bot Royal",
+              "description": "Rocket Bot Royal Together",
+              "value": "rocket",
+              "emoji": "",
+              "default": "false"
             }
           ],
           "actions": [
@@ -479,6 +486,18 @@
                   "actions": [
                     {
                       "together": "rythm",
+                      "storage": "2",
+                      "varName": "code",
+                      "name": "Create Together"
+                    }
+                  ]
+                },
+                {
+                  "comparison": "1",
+                  "value": "'rocket'",
+                  "actions": [
+                    {
+                      "together": "rocket",
                       "storage": "2",
                       "varName": "code",
                       "name": "Create Together"
