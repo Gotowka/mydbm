@@ -114,6 +114,7 @@ module.exports = {
     <option value="rythm">Rythm</options>
     <option value="goober">Goober Dash</options>
     <option value="farm">Farm Merge Valley</options>
+    <option value="rocket">Rocket Bot Royale</options>
   </select>
 </div>
 <br>
