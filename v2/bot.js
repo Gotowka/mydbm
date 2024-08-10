@@ -1175,6 +1175,7 @@ const ActionsCache = (Actions.ActionsCache = class ActionsCache {
 let mClient;
 let tClient;
 let loggerInvites;
+let akinator = {};
 
 Actions.exists = function (action) {
   if (!action) return false;
@@ -1188,6 +1189,14 @@ Actions.getLocalFile = function (url) {
 Actions.getDBM = function () {
   return DBM;
 };
+
+Actions.akinatorGet = function (id) {
+  return akinator[id]
+}
+  
+Actions.akinatorSet = function (id, aki) {
+  akinator[id] = aki
+}
 
 Actions.loadLogger = function () {
   loggerInvites = new Collection();
