@@ -1,0 +1,35 @@
+{
+    "name": "start",
+    "permissions": "NONE",
+    "permissions2": "NONE",
+    "restriction": "1",
+    "_id": "snVOL",
+    "actions": [
+      {
+        "region": "pl",
+        "proxy": "",
+        "name": "Akinator Start"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "${tempVars(\"question\")}\nAnswers:\n${tempVars(\"answers\")}",
+        "buttons": [],
+        "selectMenus": [],
+        "attachments": [],
+        "embeds": [],
+        "reply": true,
+        "ephemeral": false,
+        "tts": false,
+        "overwrite": false,
+        "mention": false,
+        "dontSend": false,
+        "editMessage": "intUpdate",
+        "editMessageVarName": "",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      }
+    ],
+    "comType": "4"
+}

@@ -1,0 +1,115 @@
+{
+    "name": "play",
+    "permissions": "NONE",
+    "permissions2": "NONE",
+    "restriction": "1",
+    "_id": "RJLjL",
+    "actions": [
+      {
+        "answer": "${slashParams(\"answer\")}",
+        "name": "Akinator Play"
+      },
+      {
+        "storage": "1",
+        "varName": "name",
+        "comparison": "0",
+        "value": "",
+        "branch": {
+          "iftrue": "2",
+          "iffalse": "0",
+          "iftrueVal": "5"
+        },
+        "name": "Check Variable"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "${tempVars(\"question\")}\nAnswers:\n${tempVars(\"answers\")}",
+        "buttons": [],
+        "selectMenus": [],
+        "attachments": [],
+        "embeds": [],
+        "reply": true,
+        "ephemeral": false,
+        "tts": false,
+        "overwrite": false,
+        "mention": false,
+        "dontSend": false,
+        "editMessage": "intUpdate",
+        "editMessageVarName": "",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      },
+      {
+        "name": "End Action Sequence"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "",
+        "buttons": [],
+        "selectMenus": [],
+        "attachments": [],
+        "embeds": [
+          {
+            "title": "${tempVars(\"name\")}",
+            "url": "",
+            "color": "RANDOM",
+            "timestamp": "false",
+            "imageUrl": "",
+            "thumbUrl": "${tempVars(\"photo\")}",
+            "description": "* ${tempVars(\"description\")}\n* ${tempVars(\"pseudo\")}",
+            "fields": [],
+            "author": "",
+            "authorUrl": "",
+            "authorIcon": "",
+            "footerText": "",
+            "footerIconUrl": ""
+          }
+        ],
+        "reply": true,
+        "ephemeral": false,
+        "tts": false,
+        "overwrite": false,
+        "mention": false,
+        "dontSend": false,
+        "editMessage": "intUpdate",
+        "editMessageVarName": "",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      }
+    ],
+    "comType": "4",
+    "parameters": [
+      {
+        "name": "answer",
+        "description": "t",
+        "type": "STRING",
+        "required": true,
+        "choices": [
+          {
+            "name": "yes",
+            "value": "0"
+          },
+          {
+            "name": "no",
+            "value": "1"
+          },
+          {
+            "name": "idk",
+            "value": "2"
+          },
+          {
+            "name": "maybe",
+            "value": "3"
+          },
+          {
+            "name": "maybe-not",
+            "value": "4"
+          }
+        ]
+      }
+    ]
+}
