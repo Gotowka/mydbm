@@ -1107,6 +1107,7 @@ let mClient;
 let tClient;
 let loggerInvites;
 let musicP;
+let akinator = {};
 Actions.actionsLocation = null;
 Actions.eventsLocation = null;
 Actions.extensionsLocation = null;
@@ -1211,6 +1212,14 @@ Actions.getLocalFile = function (url) {
 Actions.getDBM = function () {
   return DBM;
 };
+
+Actions.akinatorGet = function (id) {
+  return akinator[id]
+}
+  
+Actions.akinatorSet = function (id, aki) {
+  akinator[id] = aki
+}
 
 Actions.loadLogger = function () {
   loggerInvites = new Collection();
