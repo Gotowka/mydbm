@@ -1172,6 +1172,7 @@ const ActionsCache = (Actions.ActionsCache = class ActionsCache {
     });
   }
 });
+const { Collection } = require('discord.js')
 let mClient
 let tClient
 let loggerInvites
