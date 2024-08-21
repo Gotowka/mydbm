@@ -115,6 +115,8 @@ module.exports = {
     <option value="goober">Goober Dash</options>
     <option value="farm">Farm Merge Valley</options>
     <option value="rocket">Rocket Bot Royale</options>
+    <option value="amazon">Amazon Music</options>
+    <option value="roll">Roll 20</options>
   </select>
 </div>
 <br>
