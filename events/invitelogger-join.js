@@ -72,7 +72,6 @@ module.exports = {
         } catch(er) {
           console.log(er)
         }
-        await Actions.invokeEvent(event, guild, temp)
       }
     }
     const onReady = Bot.onReady
